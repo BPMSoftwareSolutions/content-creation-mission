@@ -1,0 +1,3640 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "project-strategic-evidence-review::verify-review-preservation-law",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:66af8445b4f6014fe536be54533526f0fe70e0918d8fd47a0ae0697b69742120"
+  },
+  "scenarioSurface": {
+    "key": "project-strategic-evidence-review::verify-review-preservation-law",
+    "capabilityId": "project-strategic-evidence-review",
+    "capabilityName": "Project one read-only strategic evidence review",
+    "scenarioId": "verify-review-preservation-law",
+    "scenarioName": "Verify the review preservation and decision prohibition law",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one limitations statement, one review due time, and one decision emission claim",
+        "line": 65
+      }
+    ],
+    "event": [
+      {
+        "text": "the preservation law is verified",
+        "line": 66
+      }
+    ],
+    "outcome": [
+      {
+        "text": "limitations and review due time are declared, divergences are retained, and any decision emission claim is rejected, reporting REVIEW_LIMITATIONS_ABSENT, REVIEW_DUE_ABSENT, or DECISION_EMISSION_PROHIBITED otherwise",
+        "line": 67
+      }
+    ],
+    "products": [
+      "strategic-review-record"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "strategic governance"
+    ],
+    "altitude": null,
+    "notes": "  Market observes. Market intelligence interprets. Strategy governs.\n\n  This capability owns the joining of the two evidence planes. Its\n  input is the exact strategic intent and market thesis identities, the\n  admitted external market fit record, the admitted internal strategic\n  interpretation record, and the review profile. Its outcome is one\n  read-only review record. The review preserves both planes\n  independently, retains limitations, counterevidence, evidence\n  windows, and review due time, and emits no decision: decisionEmitted\n  is always false. No composite score exists. An operational choice\n  requires separate accountable authorization.",
+    "source": {
+      "capsuleFile": "project-strategic-evidence-review.sfxcap",
+      "capsuleDigest": "sha256:66af8445b4f6014fe536be54533526f0fe70e0918d8fd47a0ae0697b69742120",
+      "featureEntry": "features/project-strategic-evidence-review.feature",
+      "featureDigest": "sha256:4a76316cacf27070d0f8656992db495362ed8d8184160181b6e6a8e0a587eb9b",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/project-strategic-evidence-review.feature",
+      "scenarioLine": 64
+    },
+    "tags": [
+      "@capability:project-strategic-evidence-review",
+      "@root-scenario:project-strategic-evidence-review",
+      "@scenario:verify-review-preservation-law",
+      "@input:strategic-review-record",
+      "@input-contract:strategic-review-record.v1",
+      "@event:review-preservation-law-verification-requested",
+      "@event-authority:verify-review-preservation-law.v1",
+      "@outcome:strategic-review-record",
+      "@outcome-contract:strategic-review-record.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/nodes/3"
+        },
+        "value": {
+          "nodeId": "verify-review-preservation-law",
+          "scenario": {
+            "scenarioId": "verify-review-preservation-law",
+            "input": {
+              "inputId": "strategic-review-record",
+              "contract": {
+                "contractId": "strategic-review-record.v1"
+              }
+            },
+            "event": {
+              "eventId": "review-preservation-law-verification-requested",
+              "executionAuthorityId": "verify-review-preservation-law.v1"
+            },
+            "outcome": {
+              "outcomeId": "strategic-review-record",
+              "contract": {
+                "contractId": "strategic-review-record.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "verify-review-preservation-law.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:verify-review-preservation-law-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "strategic-review-record.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/project-strategic-evidence-review/record.schema.json",
+                  "schemaDigest": "1687bcdb20d6f5cd204ffb222e87dce839136afba533fb641e1c7960a1ce3560",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/project-strategic-evidence-review/record.schema.json",
+                    "title": "Strategic review record v1",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "reviewId",
+                      "strategicIntentId",
+                      "strategicIntentDigest",
+                      "marketThesisId",
+                      "marketThesisDigest",
+                      "externalMarketFitRecord",
+                      "internalStrategicInterpretationRecord",
+                      "competitiveDifferentiationRecord",
+                      "evidenceWindows",
+                      "limitations",
+                      "divergences",
+                      "reviewDueAt",
+                      "reviewProfileId",
+                      "reviewProfileDigest"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "strategic-review-record.v1"
+                      },
+                      "reviewId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "strategicIntentId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "strategicIntentDigest": {
+                        "type": "string"
+                      },
+                      "marketThesisId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "marketThesisDigest": {
+                        "type": "string"
+                      },
+                      "externalMarketFitRecord": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "evaluationDisposition",
+                          "marketFitReceiptDigest"
+                        ],
+                        "properties": {
+                          "evaluationDisposition": {
+                            "type": "string"
+                          },
+                          "marketFitDisposition": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "marketFitReceiptDigest": {
+                            "type": "string"
+                          },
+                          "findingCodes": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "internalStrategicInterpretationRecord": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "evaluationDisposition",
+                          "interpretationDisposition",
+                          "receiptDigest"
+                        ],
+                        "properties": {
+                          "evaluationDisposition": {
+                            "type": "string"
+                          },
+                          "interpretationDisposition": {
+                            "type": "string"
+                          },
+                          "receiptDigest": {
+                            "type": "string"
+                          },
+                          "findingCodes": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "competitiveDifferentiationRecord": {
+                        "type": "string"
+                      },
+                      "evidenceWindows": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "limitations": {
+                        "type": "string"
+                      },
+                      "divergences": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "reviewDueAt": {
+                        "type": "string"
+                      },
+                      "reviewProfileId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reviewProfileDigest": {
+                        "type": "string"
+                      },
+                      "decisionEmitted": {
+                        "type": "boolean"
+                      },
+                      "reviewDisposition": {
+                        "enum": [
+                          "REVIEW_ADMITTED",
+                          "REVIEW_HELD"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "reviewReceiptDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "identityBindingResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "bound"
+                        ],
+                        "properties": {
+                          "bound": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "evidencePlaneBindingResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "bound"
+                        ],
+                        "properties": {
+                          "bound": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "preservationLawResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "preserved"
+                        ],
+                        "properties": {
+                          "preserved": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/5"
+        },
+        "value": {
+          "bindingId": "port:verify-review-preservation-law-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "let",
+              "bindings": {
+                "limitationsDeclared": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "limitations"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": ""
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": false
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "reviewDueDeclared": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "reviewDueAt"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": ""
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": false
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "decisionEmissionClaimed": {
+                  "op": "equals",
+                  "left": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "decisionEmitted"
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "preserved": {
+                  "op": "every",
+                  "from": {
+                    "op": "array",
+                    "items": [
+                      {
+                        "op": "path",
+                        "from": "limitationsDeclared",
+                        "path": ""
+                      },
+                      {
+                        "op": "path",
+                        "from": "reviewDueDeclared",
+                        "path": ""
+                      },
+                      {
+                        "op": "if",
+                        "when": {
+                          "op": "path",
+                          "from": "decisionEmissionClaimed",
+                          "path": ""
+                        },
+                        "then": {
+                          "op": "literal",
+                          "value": false
+                        },
+                        "else": {
+                          "op": "literal",
+                          "value": true
+                        }
+                      }
+                    ]
+                  },
+                  "as": "check",
+                  "where": {
+                    "op": "path",
+                    "from": "check",
+                    "path": ""
+                  }
+                }
+              },
+              "value": {
+                "op": "merge",
+                "values": [
+                  {
+                    "op": "path",
+                    "from": "input",
+                    "path": ""
+                  },
+                  {
+                    "op": "object",
+                    "fields": {
+                      "preservationLawResult": {
+                        "op": "object",
+                        "fields": {
+                          "preserved": {
+                            "op": "path",
+                            "from": "preserved",
+                            "path": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/5"
+        },
+        "value": {
+          "bindingId": "port:verify-review-preservation-law-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/contracts/input.schema.json",
+          "entryDigest": "sha256:089d67de4e2de937902f42dd3cd6fb7af2445b5df5adedb4bd8d1420473991ae",
+          "snapshot": "data/capsule-evidence/entries/089d67de4e2de937902f42dd3cd6fb7af2445b5df5adedb4bd8d1420473991ae-0a530d404b7db889.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/project-strategic-evidence-review/record.schema.json",
+          "title": "Strategic review record v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "reviewId",
+            "strategicIntentId",
+            "strategicIntentDigest",
+            "marketThesisId",
+            "marketThesisDigest",
+            "externalMarketFitRecord",
+            "internalStrategicInterpretationRecord",
+            "competitiveDifferentiationRecord",
+            "evidenceWindows",
+            "limitations",
+            "divergences",
+            "reviewDueAt",
+            "reviewProfileId",
+            "reviewProfileDigest"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "strategic-review-record.v1"
+            },
+            "reviewId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "strategicIntentId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "strategicIntentDigest": {
+              "type": "string"
+            },
+            "marketThesisId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "marketThesisDigest": {
+              "type": "string"
+            },
+            "externalMarketFitRecord": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evaluationDisposition",
+                "marketFitReceiptDigest"
+              ],
+              "properties": {
+                "evaluationDisposition": {
+                  "type": "string"
+                },
+                "marketFitDisposition": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "marketFitReceiptDigest": {
+                  "type": "string"
+                },
+                "findingCodes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "internalStrategicInterpretationRecord": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evaluationDisposition",
+                "interpretationDisposition",
+                "receiptDigest"
+              ],
+              "properties": {
+                "evaluationDisposition": {
+                  "type": "string"
+                },
+                "interpretationDisposition": {
+                  "type": "string"
+                },
+                "receiptDigest": {
+                  "type": "string"
+                },
+                "findingCodes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "competitiveDifferentiationRecord": {
+              "type": "string"
+            },
+            "evidenceWindows": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "limitations": {
+              "type": "string"
+            },
+            "divergences": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "reviewDueAt": {
+              "type": "string"
+            },
+            "reviewProfileId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reviewProfileDigest": {
+              "type": "string"
+            },
+            "decisionEmitted": {
+              "type": "boolean"
+            },
+            "reviewDisposition": {
+              "enum": [
+                "REVIEW_ADMITTED",
+                "REVIEW_HELD"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "reviewReceiptDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "identityBindingResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bound"
+              ],
+              "properties": {
+                "bound": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "evidencePlaneBindingResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bound"
+              ],
+              "properties": {
+                "bound": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "preservationLawResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "preserved"
+              ],
+              "properties": {
+                "preserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-8678777fd10cd651.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-d3ba8d54f68e4ed0.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-67342f173d82c37c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-291b40d1a2509317.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-two-plane-review-admitted-no-decision",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-admitted",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_ADMITTED"
+                },
+                {
+                  "conditionId": "no-findings",
+                  "path": "findingCodes",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "decision-never-emitted",
+                  "path": "decisionEmitted",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "review-receipt-bound",
+                  "path": "reviewReceiptDigest",
+                  "operator": "equals",
+                  "value": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "external-plane-unbound-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "EXTERNAL_EVIDENCE_UNBOUND"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "internal-plane-unbound-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "INTERNAL_EVIDENCE_UNBOUND"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "intent-divergence-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STRATEGIC_INTENT_IDENTITY_DIVERGED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "differentiation-record-unbound-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "COMPETITIVE_COMPARISON_RECORD",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DIFFERENTIATION_RECORD_UNBOUND"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "decision-emission-claim-rejected",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f",
+              "decisionEmitted": true
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_EMISSION_PROHIBITED"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-8c3dc3da55f98b00.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one limitations statement, one review due time, and one decision emission claim",
+        "line": 65
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/contracts/input.schema.json",
+          "entryDigest": "sha256:089d67de4e2de937902f42dd3cd6fb7af2445b5df5adedb4bd8d1420473991ae",
+          "snapshot": "data/capsule-evidence/entries/089d67de4e2de937902f42dd3cd6fb7af2445b5df5adedb4bd8d1420473991ae-0a530d404b7db889.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/project-strategic-evidence-review/record.schema.json",
+          "title": "Strategic review record v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "reviewId",
+            "strategicIntentId",
+            "strategicIntentDigest",
+            "marketThesisId",
+            "marketThesisDigest",
+            "externalMarketFitRecord",
+            "internalStrategicInterpretationRecord",
+            "competitiveDifferentiationRecord",
+            "evidenceWindows",
+            "limitations",
+            "divergences",
+            "reviewDueAt",
+            "reviewProfileId",
+            "reviewProfileDigest"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "strategic-review-record.v1"
+            },
+            "reviewId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "strategicIntentId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "strategicIntentDigest": {
+              "type": "string"
+            },
+            "marketThesisId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "marketThesisDigest": {
+              "type": "string"
+            },
+            "externalMarketFitRecord": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evaluationDisposition",
+                "marketFitReceiptDigest"
+              ],
+              "properties": {
+                "evaluationDisposition": {
+                  "type": "string"
+                },
+                "marketFitDisposition": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "marketFitReceiptDigest": {
+                  "type": "string"
+                },
+                "findingCodes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "internalStrategicInterpretationRecord": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evaluationDisposition",
+                "interpretationDisposition",
+                "receiptDigest"
+              ],
+              "properties": {
+                "evaluationDisposition": {
+                  "type": "string"
+                },
+                "interpretationDisposition": {
+                  "type": "string"
+                },
+                "receiptDigest": {
+                  "type": "string"
+                },
+                "findingCodes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "competitiveDifferentiationRecord": {
+              "type": "string"
+            },
+            "evidenceWindows": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "limitations": {
+              "type": "string"
+            },
+            "divergences": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "reviewDueAt": {
+              "type": "string"
+            },
+            "reviewProfileId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reviewProfileDigest": {
+              "type": "string"
+            },
+            "decisionEmitted": {
+              "type": "boolean"
+            },
+            "reviewDisposition": {
+              "enum": [
+                "REVIEW_ADMITTED",
+                "REVIEW_HELD"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "reviewReceiptDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "identityBindingResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bound"
+              ],
+              "properties": {
+                "bound": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "evidencePlaneBindingResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bound"
+              ],
+              "properties": {
+                "bound": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "preservationLawResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "preserved"
+              ],
+              "properties": {
+                "preserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-8678777fd10cd651.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-d3ba8d54f68e4ed0.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-67342f173d82c37c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-291b40d1a2509317.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "strategic governance"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/nodes/3"
+        },
+        "value": {
+          "nodeId": "verify-review-preservation-law",
+          "scenario": {
+            "scenarioId": "verify-review-preservation-law",
+            "input": {
+              "inputId": "strategic-review-record",
+              "contract": {
+                "contractId": "strategic-review-record.v1"
+              }
+            },
+            "event": {
+              "eventId": "review-preservation-law-verification-requested",
+              "executionAuthorityId": "verify-review-preservation-law.v1"
+            },
+            "outcome": {
+              "outcomeId": "strategic-review-record",
+              "contract": {
+                "contractId": "strategic-review-record.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "verify-review-preservation-law.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:verify-review-preservation-law-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "strategic-review-record.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/project-strategic-evidence-review/record.schema.json",
+                  "schemaDigest": "1687bcdb20d6f5cd204ffb222e87dce839136afba533fb641e1c7960a1ce3560",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/project-strategic-evidence-review/record.schema.json",
+                    "title": "Strategic review record v1",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "reviewId",
+                      "strategicIntentId",
+                      "strategicIntentDigest",
+                      "marketThesisId",
+                      "marketThesisDigest",
+                      "externalMarketFitRecord",
+                      "internalStrategicInterpretationRecord",
+                      "competitiveDifferentiationRecord",
+                      "evidenceWindows",
+                      "limitations",
+                      "divergences",
+                      "reviewDueAt",
+                      "reviewProfileId",
+                      "reviewProfileDigest"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "strategic-review-record.v1"
+                      },
+                      "reviewId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "strategicIntentId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "strategicIntentDigest": {
+                        "type": "string"
+                      },
+                      "marketThesisId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "marketThesisDigest": {
+                        "type": "string"
+                      },
+                      "externalMarketFitRecord": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "evaluationDisposition",
+                          "marketFitReceiptDigest"
+                        ],
+                        "properties": {
+                          "evaluationDisposition": {
+                            "type": "string"
+                          },
+                          "marketFitDisposition": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "marketFitReceiptDigest": {
+                            "type": "string"
+                          },
+                          "findingCodes": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "internalStrategicInterpretationRecord": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "evaluationDisposition",
+                          "interpretationDisposition",
+                          "receiptDigest"
+                        ],
+                        "properties": {
+                          "evaluationDisposition": {
+                            "type": "string"
+                          },
+                          "interpretationDisposition": {
+                            "type": "string"
+                          },
+                          "receiptDigest": {
+                            "type": "string"
+                          },
+                          "findingCodes": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "competitiveDifferentiationRecord": {
+                        "type": "string"
+                      },
+                      "evidenceWindows": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "limitations": {
+                        "type": "string"
+                      },
+                      "divergences": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "reviewDueAt": {
+                        "type": "string"
+                      },
+                      "reviewProfileId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reviewProfileDigest": {
+                        "type": "string"
+                      },
+                      "decisionEmitted": {
+                        "type": "boolean"
+                      },
+                      "reviewDisposition": {
+                        "enum": [
+                          "REVIEW_ADMITTED",
+                          "REVIEW_HELD"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "reviewReceiptDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "identityBindingResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "bound"
+                        ],
+                        "properties": {
+                          "bound": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "evidencePlaneBindingResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "bound"
+                        ],
+                        "properties": {
+                          "bound": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "preservationLawResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "preserved"
+                        ],
+                        "properties": {
+                          "preserved": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/5"
+        },
+        "value": {
+          "bindingId": "port:verify-review-preservation-law-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "let",
+              "bindings": {
+                "limitationsDeclared": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "limitations"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": ""
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": false
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "reviewDueDeclared": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "reviewDueAt"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": ""
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": false
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "decisionEmissionClaimed": {
+                  "op": "equals",
+                  "left": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "decisionEmitted"
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "preserved": {
+                  "op": "every",
+                  "from": {
+                    "op": "array",
+                    "items": [
+                      {
+                        "op": "path",
+                        "from": "limitationsDeclared",
+                        "path": ""
+                      },
+                      {
+                        "op": "path",
+                        "from": "reviewDueDeclared",
+                        "path": ""
+                      },
+                      {
+                        "op": "if",
+                        "when": {
+                          "op": "path",
+                          "from": "decisionEmissionClaimed",
+                          "path": ""
+                        },
+                        "then": {
+                          "op": "literal",
+                          "value": false
+                        },
+                        "else": {
+                          "op": "literal",
+                          "value": true
+                        }
+                      }
+                    ]
+                  },
+                  "as": "check",
+                  "where": {
+                    "op": "path",
+                    "from": "check",
+                    "path": ""
+                  }
+                }
+              },
+              "value": {
+                "op": "merge",
+                "values": [
+                  {
+                    "op": "path",
+                    "from": "input",
+                    "path": ""
+                  },
+                  {
+                    "op": "object",
+                    "fields": {
+                      "preservationLawResult": {
+                        "op": "object",
+                        "fields": {
+                          "preserved": {
+                            "op": "path",
+                            "from": "preserved",
+                            "path": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/5"
+        },
+        "value": {
+          "bindingId": "port:verify-review-preservation-law-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "limitations and review due time are declared, divergences are retained, and any decision emission claim is rejected, reporting REVIEW_LIMITATIONS_ABSENT, REVIEW_DUE_ABSENT, or DECISION_EMISSION_PROHIBITED otherwise",
+        "line": 67
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-two-plane-review-admitted-no-decision",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-admitted",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_ADMITTED"
+                },
+                {
+                  "conditionId": "no-findings",
+                  "path": "findingCodes",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "decision-never-emitted",
+                  "path": "decisionEmitted",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "review-receipt-bound",
+                  "path": "reviewReceiptDigest",
+                  "operator": "equals",
+                  "value": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "external-plane-unbound-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "EXTERNAL_EVIDENCE_UNBOUND"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "internal-plane-unbound-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "INTERNAL_EVIDENCE_UNBOUND"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "intent-divergence-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STRATEGIC_INTENT_IDENTITY_DIVERGED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "differentiation-record-unbound-held",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "COMPETITIVE_COMPARISON_RECORD",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DIFFERENTIATION_RECORD_UNBOUND"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-strategic-evidence-review/fixtures.authority.json",
+          "entryDigest": "sha256:f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6",
+          "snapshot": "data/capsule-evidence/entries/f534013434006d50c28095fc7f6985a401889766d5d923deb07833922be38bc6-115041fc4672204e.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "decision-emission-claim-rejected",
+            "input": {
+              "contractId": "strategic-review-record.v1",
+              "reviewId": "friction-thesis-review-2026-q3",
+              "strategicIntentId": "reduce-meaning-to-capability-friction.v1",
+              "strategicIntentDigest": "sha256:2bccd2a0664d60879348764e27a47dca374cbf93678aeaa3140384b3f8f829b0",
+              "marketThesisId": "meaning-to-capability-friction-market-thesis.v1",
+              "marketThesisDigest": "sha256:5fa371cb2cfeb5ad0d7fa294ade42c492336099bc28dcc2a6e4efc797142952d",
+              "externalMarketFitRecord": {
+                "evaluationDisposition": "MARKET_FIT_EVALUATED",
+                "marketFitDisposition": "MARKET_REINFORCES_INTENT",
+                "marketFitReceiptDigest": "sha256:071d65f2e3d0c663164853d9dc8b833816165cd8d859920fd7e7675b3aa59d03",
+                "findingCodes": []
+              },
+              "internalStrategicInterpretationRecord": {
+                "evaluationDisposition": "STRATEGIC_INTERPRETATION_EVALUATED",
+                "interpretationDisposition": "STRATEGIC_EVIDENCE_SUPPORTS_BOUNDED_SCOPE",
+                "receiptDigest": "sha256:386b9d402793a39965ea4c21748a71385b948df4b00f4c25491712c3cc47dfe9",
+                "findingCodes": []
+              },
+              "competitiveDifferentiationRecord": "NOT_PROVIDED",
+              "evidenceWindows": [
+                "2026-01-01/2026-08-18"
+              ],
+              "limitations": "external corpus has one real captured source; single-series derivations; internal plane bounded to the admitted product promise set",
+              "divergences": [],
+              "reviewDueAt": "2026-11-18",
+              "reviewProfileId": "sidefx-strategic-review-profile.v1",
+              "reviewProfileDigest": "sha256:3f3874c3f3a03ea2bdba9257524a1525eedb58769ea4a539c5e79bc7141e612f",
+              "decisionEmitted": true
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-strategic-evidence-review",
+              "scenarioSequence": [
+                "project-strategic-evidence-review"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "review-disposition",
+                  "path": "reviewDisposition",
+                  "operator": "equals",
+                  "value": "REVIEW_HELD"
+                },
+                {
+                  "conditionId": "finding-code",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_EMISSION_PROHIBITED"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/mechanicBindings/5"
+        },
+        "value": {
+          "bindingId": "port:verify-review-preservation-law-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "verify-review-preservation-law",
+        "scenario": {
+          "scenarioId": "verify-review-preservation-law",
+          "input": {
+            "inputId": "strategic-review-record",
+            "contract": {
+              "contractId": "strategic-review-record.v1"
+            }
+          },
+          "event": {
+            "eventId": "review-preservation-law-verification-requested",
+            "executionAuthorityId": "verify-review-preservation-law.v1"
+          },
+          "outcome": {
+            "outcomeId": "strategic-review-record",
+            "contract": {
+              "contractId": "strategic-review-record.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "verify-review-preservation-law.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:verify-review-preservation-law-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-strategic-evidence-review/execution-plan.node.json",
+          "entryDigest": "sha256:6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8",
+          "snapshot": "data/capsule-evidence/entries/6e4219eadf1c3679fdf9699bb6ef76d24b385da4d7c44f2eb6a6535e4899c4d8-d467969c57314522.json",
+          "pointer": "/nodes/3"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

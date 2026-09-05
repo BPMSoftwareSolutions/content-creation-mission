@@ -1,0 +1,11 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object",
+ "required":["scenarioKey","imageDigest","directorVersion","dimensions","disposition","findings"],
+ "properties":{
+  "imageDigest":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+  "disposition":{"enum":["VISUAL_EXPERIENCE_CONFORMS","VISUAL_EXPERIENCE_DOES_NOT_CONFORM"]},
+  "dimensions":{"type":"object","required":["phaseDistinction","humanLegibility","causalClarity","outcomeClosure","continuity","semanticFidelity","labelIndependence","operationalReality"],"additionalProperties":{"type":"object","required":["passes","observation"],"properties":{"passes":{"type":"boolean"},"observation":{"type":"string","minLength":10}}}},
+  "findings":{"type":"array","items":{"type":"string"}}
+ }
+}

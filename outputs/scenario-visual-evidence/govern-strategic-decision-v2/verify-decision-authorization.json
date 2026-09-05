@@ -1,0 +1,3468 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "govern-strategic-decision-v2::verify-decision-authorization",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:2713e4e078b78e13e4f3754199286707a3596fbbe96da415e3698373f772d8d8"
+  },
+  "scenarioSurface": {
+    "key": "govern-strategic-decision-v2::verify-decision-authorization",
+    "capabilityId": "govern-strategic-decision-v2",
+    "capabilityName": "Govern one strategic decision over the admitted evidence review",
+    "scenarioId": "verify-decision-authorization",
+    "scenarioName": "Verify the decision authority, owner, and authorization identity",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one decision authority identity, one accountable owner, and one governance authorization identity",
+        "line": 54
+      }
+    ],
+    "event": [
+      {
+        "text": "authorization verification is evaluated",
+        "line": 55
+      }
+    ],
+    "outcome": [
+      {
+        "text": "the decision authority is the admitted strategic decision authority, the owner is declared, and the authorization identity matches, reporting DECISION_AUTHORITY_UNADMITTED, ACCOUNTABLE_OWNER_ABSENT, or DECISION_AUTHORIZATION_ABSENT otherwise",
+        "line": 56
+      }
+    ],
+    "products": [
+      "strategic-decision-record-v2"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "strategic governance"
+    ],
+    "altitude": null,
+    "notes": "  Market observes. Market intelligence interprets. Strategy governs.\n\n  This capability owns the decision step. Its input is one admitted\n  strategic review record, one accountable owner, one governance\n  authorization identity, one admitted decision choice, one rationale,\n  and the decision authority. Its outcome is DECISION_ADMITTED or\n  DECISION_HELD. The choice belongs to governance, never to the fit\n  resolver or the review projection. The allowed choices are\n  CONTINUE_BOUNDED_VALIDATION, PAUSE_AND_REVIEW_COUNTEREVIDENCE,\n  REQUEST_ADDITIONAL_MARKET_EVIDENCE,\n  REQUEST_ADDITIONAL_INTERNAL_EVIDENCE, REVISE_STRATEGIC_THESIS, and\n  RECORD_NO_ACTION. Historical decisions and evidence remain immutable;\n  a successor thesis preserves its predecessor digest.",
+    "source": {
+      "capsuleFile": "govern-strategic-decision-v2.sfxcap",
+      "capsuleDigest": "sha256:2713e4e078b78e13e4f3754199286707a3596fbbe96da415e3698373f772d8d8",
+      "featureEntry": "features/govern-strategic-decision-v2.feature",
+      "featureDigest": "sha256:cc048563c21453371dab404fb282845ddf447576b49074c7665002ae22c76785",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/govern-strategic-decision-v2.feature",
+      "scenarioLine": 53
+    },
+    "tags": [
+      "@capability:govern-strategic-decision-v2",
+      "@root-scenario:govern-strategic-decision-v2",
+      "@scenario:verify-decision-authorization",
+      "@input:strategic-decision-record-v2",
+      "@input-contract:strategic-decision-record.v2",
+      "@event:decision-authorization-verification-requested",
+      "@event-authority:verify-decision-authorization.v1",
+      "@outcome:strategic-decision-record-v2",
+      "@outcome-contract:strategic-decision-record.v2",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/nodes/2"
+        },
+        "value": {
+          "nodeId": "verify-decision-authorization",
+          "scenario": {
+            "scenarioId": "verify-decision-authorization",
+            "input": {
+              "inputId": "strategic-decision-record-v2",
+              "contract": {
+                "contractId": "strategic-decision-record.v2"
+              }
+            },
+            "event": {
+              "eventId": "decision-authorization-verification-requested",
+              "executionAuthorityId": "verify-decision-authorization.v1"
+            },
+            "outcome": {
+              "outcomeId": "strategic-decision-record-v2",
+              "contract": {
+                "contractId": "strategic-decision-record.v2"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "verify-decision-authorization.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:verify-decision-authorization-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "strategic-decision-record.v2": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/govern-strategic-decision-v2/record.schema.json",
+                  "schemaDigest": "a1e2a370bd354292fbf6e8a92208ec9b70200669d31f51798e4c384748271955",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/govern-strategic-decision-v2/record.schema.json",
+                    "title": "Strategic decision record v2",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "decisionId",
+                      "reviewReceiptDigest",
+                      "reviewDisposition",
+                      "accountableOwner",
+                      "authorizationId",
+                      "choice",
+                      "rationale",
+                      "evidenceRefs",
+                      "effectiveFrom",
+                      "reviewedAt",
+                      "predecessorDigest",
+                      "decisionAuthorityId",
+                      "decisionAuthorityDigest"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "strategic-decision-record.v2"
+                      },
+                      "decisionId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reviewReceiptDigest": {
+                        "type": "string"
+                      },
+                      "reviewDisposition": {
+                        "enum": [
+                          "REVIEW_ADMITTED",
+                          "REVIEW_HELD"
+                        ]
+                      },
+                      "accountableOwner": {
+                        "type": "string"
+                      },
+                      "authorizationId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "choice": {
+                        "enum": [
+                          "CONTINUE_BOUNDED_VALIDATION",
+                          "PAUSE_AND_REVIEW_COUNTEREVIDENCE",
+                          "REQUEST_ADDITIONAL_MARKET_EVIDENCE",
+                          "REQUEST_ADDITIONAL_INTERNAL_EVIDENCE",
+                          "REVISE_STRATEGIC_THESIS",
+                          "RECORD_NO_ACTION"
+                        ]
+                      },
+                      "rationale": {
+                        "type": "string"
+                      },
+                      "evidenceRefs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "effectiveFrom": {
+                        "type": "string"
+                      },
+                      "reviewedAt": {
+                        "type": "string"
+                      },
+                      "predecessorDigest": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "decisionAuthorityId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "decisionAuthorityDigest": {
+                        "type": "string"
+                      },
+                      "decisionDisposition": {
+                        "enum": [
+                          "DECISION_ADMITTED",
+                          "DECISION_HELD"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "decisionReceiptDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "reviewBindingResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "bound"
+                        ],
+                        "properties": {
+                          "bound": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "authorizationResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "admitted"
+                        ],
+                        "properties": {
+                          "admitted": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "choiceResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "admitted"
+                        ],
+                        "properties": {
+                          "admitted": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:verify-decision-authorization-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "let",
+              "bindings": {
+                "authorityBound": {
+                  "op": "every",
+                  "from": {
+                    "op": "array",
+                    "items": [
+                      {
+                        "op": "equals",
+                        "left": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "decisionAuthorityId"
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": "sidefx-strategic-decision-authority.v2"
+                        }
+                      },
+                      {
+                        "op": "if",
+                        "when": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "input",
+                            "path": "decisionAuthorityDigest"
+                          },
+                          "right": {
+                            "op": "literal",
+                            "value": ""
+                          }
+                        },
+                        "then": {
+                          "op": "literal",
+                          "value": false
+                        },
+                        "else": {
+                          "op": "literal",
+                          "value": true
+                        }
+                      }
+                    ]
+                  },
+                  "as": "check",
+                  "where": {
+                    "op": "path",
+                    "from": "check",
+                    "path": ""
+                  }
+                },
+                "ownerDeclared": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "accountableOwner"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": ""
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": false
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "authorizationAdmitted": {
+                  "op": "equals",
+                  "left": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "authorizationId"
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": "sidefx-strategic-governance-authorization.v1"
+                  }
+                },
+                "admitted": {
+                  "op": "every",
+                  "from": {
+                    "op": "array",
+                    "items": [
+                      {
+                        "op": "path",
+                        "from": "authorityBound",
+                        "path": ""
+                      },
+                      {
+                        "op": "path",
+                        "from": "ownerDeclared",
+                        "path": ""
+                      },
+                      {
+                        "op": "path",
+                        "from": "authorizationAdmitted",
+                        "path": ""
+                      }
+                    ]
+                  },
+                  "as": "check",
+                  "where": {
+                    "op": "path",
+                    "from": "check",
+                    "path": ""
+                  }
+                }
+              },
+              "value": {
+                "op": "merge",
+                "values": [
+                  {
+                    "op": "path",
+                    "from": "input",
+                    "path": ""
+                  },
+                  {
+                    "op": "object",
+                    "fields": {
+                      "authorizationResult": {
+                        "op": "object",
+                        "fields": {
+                          "admitted": {
+                            "op": "path",
+                            "from": "admitted",
+                            "path": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:verify-decision-authorization-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/contracts/input.schema.json",
+          "entryDigest": "sha256:5dc78e290beb5286a1eb9f9c2494c509b6bc2afca0b16fbc439542751c08c468",
+          "snapshot": "data/capsule-evidence/entries/5dc78e290beb5286a1eb9f9c2494c509b6bc2afca0b16fbc439542751c08c468-880c0f0ee3df7a79.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/govern-strategic-decision-v2/record.schema.json",
+          "title": "Strategic decision record v2",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "decisionId",
+            "reviewReceiptDigest",
+            "reviewDisposition",
+            "accountableOwner",
+            "authorizationId",
+            "choice",
+            "rationale",
+            "evidenceRefs",
+            "effectiveFrom",
+            "reviewedAt",
+            "predecessorDigest",
+            "decisionAuthorityId",
+            "decisionAuthorityDigest"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "strategic-decision-record.v2"
+            },
+            "decisionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reviewReceiptDigest": {
+              "type": "string"
+            },
+            "reviewDisposition": {
+              "enum": [
+                "REVIEW_ADMITTED",
+                "REVIEW_HELD"
+              ]
+            },
+            "accountableOwner": {
+              "type": "string"
+            },
+            "authorizationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "choice": {
+              "enum": [
+                "CONTINUE_BOUNDED_VALIDATION",
+                "PAUSE_AND_REVIEW_COUNTEREVIDENCE",
+                "REQUEST_ADDITIONAL_MARKET_EVIDENCE",
+                "REQUEST_ADDITIONAL_INTERNAL_EVIDENCE",
+                "REVISE_STRATEGIC_THESIS",
+                "RECORD_NO_ACTION"
+              ]
+            },
+            "rationale": {
+              "type": "string"
+            },
+            "evidenceRefs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "effectiveFrom": {
+              "type": "string"
+            },
+            "reviewedAt": {
+              "type": "string"
+            },
+            "predecessorDigest": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "decisionAuthorityId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "decisionAuthorityDigest": {
+              "type": "string"
+            },
+            "decisionDisposition": {
+              "enum": [
+                "DECISION_ADMITTED",
+                "DECISION_HELD"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "decisionReceiptDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "reviewBindingResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bound"
+              ],
+              "properties": {
+                "bound": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "authorizationResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "admitted"
+              ],
+              "properties": {
+                "admitted": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "choiceResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "admitted"
+              ],
+              "properties": {
+                "admitted": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/contracts/outcome.schema.json",
+          "entryDigest": "sha256:c6b948a144c79c66701919145185a1fd0f04777afc9aa6a442a8c1db9d9b89f1",
+          "snapshot": "data/capsule-evidence/entries/c6b948a144c79c66701919145185a1fd0f04777afc9aa6a442a8c1db9d9b89f1-aaba293c6f55665f.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "decisionDisposition",
+            "decisionChoice",
+            "decisionRationale",
+            "decisionAuthority",
+            "reviewReceipt",
+            "accountableOwner",
+            "governanceAuthorization"
+          ],
+          "properties": {
+            "decisionDisposition": {
+              "type": "string",
+              "enum": [
+                "DECISION_ADMITTED",
+                "DECISION_HELD"
+              ]
+            },
+            "decisionChoice": {
+              "type": "string",
+              "enum": [
+                "CONTINUE_BOUNDED_VALIDATION",
+                "PAUSE_AND_REVIEW_COUNTEREVIDENCE",
+                "REQUEST_ADDITIONAL_MARKET_EVIDENCE",
+                "REQUEST_ADDITIONAL_INTERNAL_EVIDENCE",
+                "REVISE_STRATEGIC_THESIS",
+                "RECORD_NO_ACTION"
+              ]
+            },
+            "decisionRationale": {
+              "type": "string"
+            },
+            "decisionAuthority": {
+              "type": "string"
+            },
+            "reviewReceipt": {
+              "type": "string"
+            },
+            "accountableOwner": {
+              "type": "string"
+            },
+            "governanceAuthorization": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-fd49c68825fa56a6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-cdf9df1c22de5e05.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-3167497561d7668c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-5b55a97b4533265c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-review-continue-bounded-validation-decision-admitted",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations; validation continues within the declared scope",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "decision-admitted",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_ADMITTED"
+                },
+                {
+                  "conditionId": "no-findings",
+                  "path": "findingCodes",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "decision-receipt-bound",
+                  "path": "decisionReceiptDigest",
+                  "operator": "equals",
+                  "value": "sha256:a9637969570cf86c0fb6122ffaecfa18cddc704072c664b33922b9b4f9ca715b"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-review-revise-thesis-with-predecessor-admitted",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q4-revision",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "REVISE_STRATEGIC_THESIS",
+              "rationale": "counterevidence retained in review warrants a successor thesis authority",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-11-18",
+              "reviewedAt": "2026-11-18",
+              "predecessorDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "decision-admitted",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_ADMITTED"
+                },
+                {
+                  "conditionId": "choice-admitted",
+                  "path": "choice",
+                  "operator": "equals",
+                  "value": "REVISE_STRATEGIC_THESIS"
+                },
+                {
+                  "conditionId": "predecessor-preserved",
+                  "path": "predecessorDigest",
+                  "operator": "equals",
+                  "value": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unadmitted-review-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_HELD",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "review-unadmitted-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_REVIEW_UNADMITTED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "absent-authorization-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "unknown-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "authorization-absent-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_AUTHORIZATION_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "absent-rationale-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "rationale-absent-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_RATIONALE_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "absent-owner-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "owner-absent-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "ACCOUNTABLE_OWNER_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-a0b7008bb0f291ac.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one decision authority identity, one accountable owner, and one governance authorization identity",
+        "line": 54
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/contracts/input.schema.json",
+          "entryDigest": "sha256:5dc78e290beb5286a1eb9f9c2494c509b6bc2afca0b16fbc439542751c08c468",
+          "snapshot": "data/capsule-evidence/entries/5dc78e290beb5286a1eb9f9c2494c509b6bc2afca0b16fbc439542751c08c468-880c0f0ee3df7a79.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/govern-strategic-decision-v2/record.schema.json",
+          "title": "Strategic decision record v2",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "decisionId",
+            "reviewReceiptDigest",
+            "reviewDisposition",
+            "accountableOwner",
+            "authorizationId",
+            "choice",
+            "rationale",
+            "evidenceRefs",
+            "effectiveFrom",
+            "reviewedAt",
+            "predecessorDigest",
+            "decisionAuthorityId",
+            "decisionAuthorityDigest"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "strategic-decision-record.v2"
+            },
+            "decisionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reviewReceiptDigest": {
+              "type": "string"
+            },
+            "reviewDisposition": {
+              "enum": [
+                "REVIEW_ADMITTED",
+                "REVIEW_HELD"
+              ]
+            },
+            "accountableOwner": {
+              "type": "string"
+            },
+            "authorizationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "choice": {
+              "enum": [
+                "CONTINUE_BOUNDED_VALIDATION",
+                "PAUSE_AND_REVIEW_COUNTEREVIDENCE",
+                "REQUEST_ADDITIONAL_MARKET_EVIDENCE",
+                "REQUEST_ADDITIONAL_INTERNAL_EVIDENCE",
+                "REVISE_STRATEGIC_THESIS",
+                "RECORD_NO_ACTION"
+              ]
+            },
+            "rationale": {
+              "type": "string"
+            },
+            "evidenceRefs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "effectiveFrom": {
+              "type": "string"
+            },
+            "reviewedAt": {
+              "type": "string"
+            },
+            "predecessorDigest": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "decisionAuthorityId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "decisionAuthorityDigest": {
+              "type": "string"
+            },
+            "decisionDisposition": {
+              "enum": [
+                "DECISION_ADMITTED",
+                "DECISION_HELD"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "decisionReceiptDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "reviewBindingResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "bound"
+              ],
+              "properties": {
+                "bound": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "authorizationResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "admitted"
+              ],
+              "properties": {
+                "admitted": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "choiceResult": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "admitted"
+              ],
+              "properties": {
+                "admitted": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/contracts/outcome.schema.json",
+          "entryDigest": "sha256:c6b948a144c79c66701919145185a1fd0f04777afc9aa6a442a8c1db9d9b89f1",
+          "snapshot": "data/capsule-evidence/entries/c6b948a144c79c66701919145185a1fd0f04777afc9aa6a442a8c1db9d9b89f1-aaba293c6f55665f.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "decisionDisposition",
+            "decisionChoice",
+            "decisionRationale",
+            "decisionAuthority",
+            "reviewReceipt",
+            "accountableOwner",
+            "governanceAuthorization"
+          ],
+          "properties": {
+            "decisionDisposition": {
+              "type": "string",
+              "enum": [
+                "DECISION_ADMITTED",
+                "DECISION_HELD"
+              ]
+            },
+            "decisionChoice": {
+              "type": "string",
+              "enum": [
+                "CONTINUE_BOUNDED_VALIDATION",
+                "PAUSE_AND_REVIEW_COUNTEREVIDENCE",
+                "REQUEST_ADDITIONAL_MARKET_EVIDENCE",
+                "REQUEST_ADDITIONAL_INTERNAL_EVIDENCE",
+                "REVISE_STRATEGIC_THESIS",
+                "RECORD_NO_ACTION"
+              ]
+            },
+            "decisionRationale": {
+              "type": "string"
+            },
+            "decisionAuthority": {
+              "type": "string"
+            },
+            "reviewReceipt": {
+              "type": "string"
+            },
+            "accountableOwner": {
+              "type": "string"
+            },
+            "governanceAuthorization": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-fd49c68825fa56a6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-cdf9df1c22de5e05.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-3167497561d7668c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-5b55a97b4533265c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "strategic governance"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/nodes/2"
+        },
+        "value": {
+          "nodeId": "verify-decision-authorization",
+          "scenario": {
+            "scenarioId": "verify-decision-authorization",
+            "input": {
+              "inputId": "strategic-decision-record-v2",
+              "contract": {
+                "contractId": "strategic-decision-record.v2"
+              }
+            },
+            "event": {
+              "eventId": "decision-authorization-verification-requested",
+              "executionAuthorityId": "verify-decision-authorization.v1"
+            },
+            "outcome": {
+              "outcomeId": "strategic-decision-record-v2",
+              "contract": {
+                "contractId": "strategic-decision-record.v2"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "verify-decision-authorization.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:verify-decision-authorization-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "strategic-decision-record.v2": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/govern-strategic-decision-v2/record.schema.json",
+                  "schemaDigest": "a1e2a370bd354292fbf6e8a92208ec9b70200669d31f51798e4c384748271955",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/govern-strategic-decision-v2/record.schema.json",
+                    "title": "Strategic decision record v2",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "decisionId",
+                      "reviewReceiptDigest",
+                      "reviewDisposition",
+                      "accountableOwner",
+                      "authorizationId",
+                      "choice",
+                      "rationale",
+                      "evidenceRefs",
+                      "effectiveFrom",
+                      "reviewedAt",
+                      "predecessorDigest",
+                      "decisionAuthorityId",
+                      "decisionAuthorityDigest"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "strategic-decision-record.v2"
+                      },
+                      "decisionId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reviewReceiptDigest": {
+                        "type": "string"
+                      },
+                      "reviewDisposition": {
+                        "enum": [
+                          "REVIEW_ADMITTED",
+                          "REVIEW_HELD"
+                        ]
+                      },
+                      "accountableOwner": {
+                        "type": "string"
+                      },
+                      "authorizationId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "choice": {
+                        "enum": [
+                          "CONTINUE_BOUNDED_VALIDATION",
+                          "PAUSE_AND_REVIEW_COUNTEREVIDENCE",
+                          "REQUEST_ADDITIONAL_MARKET_EVIDENCE",
+                          "REQUEST_ADDITIONAL_INTERNAL_EVIDENCE",
+                          "REVISE_STRATEGIC_THESIS",
+                          "RECORD_NO_ACTION"
+                        ]
+                      },
+                      "rationale": {
+                        "type": "string"
+                      },
+                      "evidenceRefs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "effectiveFrom": {
+                        "type": "string"
+                      },
+                      "reviewedAt": {
+                        "type": "string"
+                      },
+                      "predecessorDigest": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "decisionAuthorityId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "decisionAuthorityDigest": {
+                        "type": "string"
+                      },
+                      "decisionDisposition": {
+                        "enum": [
+                          "DECISION_ADMITTED",
+                          "DECISION_HELD"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "decisionReceiptDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "reviewBindingResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "bound"
+                        ],
+                        "properties": {
+                          "bound": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "authorizationResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "admitted"
+                        ],
+                        "properties": {
+                          "admitted": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "choiceResult": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "admitted"
+                        ],
+                        "properties": {
+                          "admitted": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:verify-decision-authorization-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "let",
+              "bindings": {
+                "authorityBound": {
+                  "op": "every",
+                  "from": {
+                    "op": "array",
+                    "items": [
+                      {
+                        "op": "equals",
+                        "left": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "decisionAuthorityId"
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": "sidefx-strategic-decision-authority.v2"
+                        }
+                      },
+                      {
+                        "op": "if",
+                        "when": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "input",
+                            "path": "decisionAuthorityDigest"
+                          },
+                          "right": {
+                            "op": "literal",
+                            "value": ""
+                          }
+                        },
+                        "then": {
+                          "op": "literal",
+                          "value": false
+                        },
+                        "else": {
+                          "op": "literal",
+                          "value": true
+                        }
+                      }
+                    ]
+                  },
+                  "as": "check",
+                  "where": {
+                    "op": "path",
+                    "from": "check",
+                    "path": ""
+                  }
+                },
+                "ownerDeclared": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "accountableOwner"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": ""
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": false
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": true
+                  }
+                },
+                "authorizationAdmitted": {
+                  "op": "equals",
+                  "left": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "authorizationId"
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": "sidefx-strategic-governance-authorization.v1"
+                  }
+                },
+                "admitted": {
+                  "op": "every",
+                  "from": {
+                    "op": "array",
+                    "items": [
+                      {
+                        "op": "path",
+                        "from": "authorityBound",
+                        "path": ""
+                      },
+                      {
+                        "op": "path",
+                        "from": "ownerDeclared",
+                        "path": ""
+                      },
+                      {
+                        "op": "path",
+                        "from": "authorizationAdmitted",
+                        "path": ""
+                      }
+                    ]
+                  },
+                  "as": "check",
+                  "where": {
+                    "op": "path",
+                    "from": "check",
+                    "path": ""
+                  }
+                }
+              },
+              "value": {
+                "op": "merge",
+                "values": [
+                  {
+                    "op": "path",
+                    "from": "input",
+                    "path": ""
+                  },
+                  {
+                    "op": "object",
+                    "fields": {
+                      "authorizationResult": {
+                        "op": "object",
+                        "fields": {
+                          "admitted": {
+                            "op": "path",
+                            "from": "admitted",
+                            "path": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:verify-decision-authorization-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "the decision authority is the admitted strategic decision authority, the owner is declared, and the authorization identity matches, reporting DECISION_AUTHORITY_UNADMITTED, ACCOUNTABLE_OWNER_ABSENT, or DECISION_AUTHORIZATION_ABSENT otherwise",
+        "line": 56
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-review-continue-bounded-validation-decision-admitted",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations; validation continues within the declared scope",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "decision-admitted",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_ADMITTED"
+                },
+                {
+                  "conditionId": "no-findings",
+                  "path": "findingCodes",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "decision-receipt-bound",
+                  "path": "decisionReceiptDigest",
+                  "operator": "equals",
+                  "value": "sha256:a9637969570cf86c0fb6122ffaecfa18cddc704072c664b33922b9b4f9ca715b"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-review-revise-thesis-with-predecessor-admitted",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q4-revision",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "REVISE_STRATEGIC_THESIS",
+              "rationale": "counterevidence retained in review warrants a successor thesis authority",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-11-18",
+              "reviewedAt": "2026-11-18",
+              "predecessorDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "decision-admitted",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_ADMITTED"
+                },
+                {
+                  "conditionId": "choice-admitted",
+                  "path": "choice",
+                  "operator": "equals",
+                  "value": "REVISE_STRATEGIC_THESIS"
+                },
+                {
+                  "conditionId": "predecessor-preserved",
+                  "path": "predecessorDigest",
+                  "operator": "equals",
+                  "value": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unadmitted-review-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_HELD",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "review-unadmitted-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_REVIEW_UNADMITTED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "absent-authorization-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "unknown-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "authorization-absent-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_AUTHORIZATION_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "absent-rationale-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "strategic-governance",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "rationale-absent-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "DECISION_RATIONALE_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/govern-strategic-decision-v2/fixtures.authority.json",
+          "entryDigest": "sha256:6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5",
+          "snapshot": "data/capsule-evidence/entries/6d4d35f210dab880a7d534c9bee71b3ec18136b87b3c3f4b8c9553eb9d4d97f5-2195038b4412b4f0.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "absent-owner-held",
+            "input": {
+              "contractId": "strategic-decision-record.v2",
+              "decisionId": "friction-thesis-decision-2026-q3",
+              "reviewReceiptDigest": "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca",
+              "reviewDisposition": "REVIEW_ADMITTED",
+              "accountableOwner": "",
+              "authorizationId": "sidefx-strategic-governance-authorization.v1",
+              "choice": "CONTINUE_BOUNDED_VALIDATION",
+              "rationale": "the admitted review shows both evidence planes bound with declared limitations",
+              "evidenceRefs": [
+                "sha256:d64ed8e191b51802f86b8b82f10b8ce3f801cdb61d12f609a2092eef7c8f83ca"
+              ],
+              "effectiveFrom": "2026-08-18",
+              "reviewedAt": "2026-08-18",
+              "predecessorDigest": null,
+              "decisionAuthorityId": "sidefx-strategic-decision-authority.v2",
+              "decisionAuthorityDigest": "sha256:ad48e08f8324f3c8b1bff74ac7988f1857e1322f448c15156996c86448c1470f"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "govern-strategic-decision-v2",
+              "scenarioSequence": [
+                "govern-strategic-decision-v2"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "held",
+                  "path": "decisionDisposition",
+                  "operator": "equals",
+                  "value": "DECISION_HELD"
+                },
+                {
+                  "conditionId": "owner-absent-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "ACCOUNTABLE_OWNER_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:verify-decision-authorization-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "verify-decision-authorization",
+        "scenario": {
+          "scenarioId": "verify-decision-authorization",
+          "input": {
+            "inputId": "strategic-decision-record-v2",
+            "contract": {
+              "contractId": "strategic-decision-record.v2"
+            }
+          },
+          "event": {
+            "eventId": "decision-authorization-verification-requested",
+            "executionAuthorityId": "verify-decision-authorization.v1"
+          },
+          "outcome": {
+            "outcomeId": "strategic-decision-record-v2",
+            "contract": {
+              "contractId": "strategic-decision-record.v2"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "verify-decision-authorization.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:verify-decision-authorization-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/govern-strategic-decision-v2/execution-plan.node.json",
+          "entryDigest": "sha256:ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e",
+          "snapshot": "data/capsule-evidence/entries/ed1ba0ba085999fd3f6bb5d47b91e9691ef8c8dd12f2a86f9b38afda8605ad8e-d463dbf59e602c17.json",
+          "pointer": "/nodes/2"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

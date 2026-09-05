@@ -1,0 +1,3943 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "project-input-binding::project-input-binding",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:06ce4613b4fae364760a23ee1ec1e118dd3b513008f68a1d3b3257e95fd05090"
+  },
+  "scenarioSurface": {
+    "key": "project-input-binding::project-input-binding",
+    "capabilityId": "project-input-binding",
+    "capabilityName": "Project semantic input binding",
+    "scenarioId": "project-input-binding",
+    "scenarioName": "Preserve declared input semantics for projection",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one admitted semantic input and its state and event bindings",
+        "line": 22
+      }
+    ],
+    "event": [
+      {
+        "text": "semantic input binding is projected",
+        "line": 23
+      }
+    ],
+    "outcome": [
+      {
+        "text": "its intent, value constraints, state, commit, accessibility, and lineage facts are preserved without choosing a native input implementation",
+        "line": 24
+      }
+    ],
+    "products": [
+      "semantic-input-binding-projection-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "projection-engine"
+    ],
+    "altitude": null,
+    "notes": "\n  A declared input must preserve its input intent, state relationship, label,\n  placeholder, accepted value constraints, optional commit event, accessibility\n  obligations, and lineage without choosing a native input type or change API.",
+    "source": {
+      "capsuleFile": "project-input-binding.sfxcap",
+      "capsuleDigest": "sha256:06ce4613b4fae364760a23ee1ec1e118dd3b513008f68a1d3b3257e95fd05090",
+      "featureEntry": "features/project-input-binding.feature",
+      "featureDigest": "sha256:20ffa1ec80bfdb9eafe18c9d0d22a740d6e1be4d285d4653415b87de085686e9",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/project-input-binding.feature",
+      "scenarioLine": 21
+    },
+    "tags": [
+      "@capability:project-input-binding",
+      "@root-scenario:project-input-binding",
+      "@scenario:project-input-binding",
+      "@input:semantic-input-binding-facts",
+      "@input-contract:project-input-binding-input.v1",
+      "@event:semantic-input-binding-projection-requested",
+      "@event-authority:semantic-input-binding-projection.v1",
+      "@outcome:semantic-input-binding-projection-known",
+      "@outcome-contract:semantic-input-binding-projection-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "project-input-binding",
+          "scenario": {
+            "scenarioId": "project-input-binding",
+            "input": {
+              "inputId": "semantic-input-binding-facts",
+              "contract": {
+                "contractId": "project-input-binding-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "semantic-input-binding-projection-requested",
+              "executionAuthorityId": "semantic-input-binding-projection.v1"
+            },
+            "outcome": {
+              "outcomeId": "semantic-input-binding-projection-known",
+              "contract": {
+                "contractId": "semantic-input-binding-projection-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "project-input-binding.operation.1",
+              "mechanicBindingId": "port:project-input-binding-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "project-input-binding-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "c2a605af4959b43e6e7ff29af4564feb1b821a789015a9a4af432c6f982314f3",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "project-input-binding-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "inputId",
+                          "inputIntent",
+                          "stateBinding",
+                          "label",
+                          "placeholder",
+                          "valueConstraints",
+                          "accessibility",
+                          "lineage"
+                        ],
+                        "properties": {
+                          "inputId": {
+                            "type": "string"
+                          },
+                          "inputIntent": {
+                            "type": "string"
+                          },
+                          "stateBinding": {
+                            "type": "object",
+                            "required": [
+                              "statePath",
+                              "readOnly"
+                            ],
+                            "properties": {
+                              "statePath": {
+                                "type": "string"
+                              },
+                              "readOnly": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "placeholder": {
+                            "type": "string"
+                          },
+                          "valueConstraints": {
+                            "type": "object"
+                          },
+                          "commitEvent": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "accessibility": {
+                            "type": "object",
+                            "required": [
+                              "ariaLabel",
+                              "roleDescription"
+                            ],
+                            "properties": {
+                              "ariaLabel": {
+                                "type": "string"
+                              },
+                              "roleDescription": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "lineage": {
+                            "type": "object",
+                            "required": [
+                              "sourceScenarioId",
+                              "declaredLocation"
+                            ],
+                            "properties": {
+                              "sourceScenarioId": {
+                                "type": "string"
+                              },
+                              "declaredLocation": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "semantic-input-binding-projection-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "338b5f24118e98c467283b6e6e63986cd1616e7aa99de20f56d4d919b5203691",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "semantic-input-binding-projection-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "inputId",
+                          "inputIntent",
+                          "stateBinding",
+                          "label",
+                          "placeholder",
+                          "valueConstraints",
+                          "accessibility",
+                          "lineage",
+                          "nativeImplementationDeferred",
+                          "disposition"
+                        ],
+                        "properties": {
+                          "inputId": {
+                            "type": "string"
+                          },
+                          "inputIntent": {
+                            "type": "string"
+                          },
+                          "stateBinding": {
+                            "type": "object",
+                            "required": [
+                              "statePath",
+                              "readOnly"
+                            ],
+                            "properties": {
+                              "statePath": {
+                                "type": "string"
+                              },
+                              "readOnly": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "placeholder": {
+                            "type": "string"
+                          },
+                          "valueConstraints": {
+                            "type": "object"
+                          },
+                          "commitEvent": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "accessibility": {
+                            "type": "object",
+                            "required": [
+                              "ariaLabel",
+                              "roleDescription"
+                            ],
+                            "properties": {
+                              "ariaLabel": {
+                                "type": "string"
+                              },
+                              "roleDescription": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "lineage": {
+                            "type": "object",
+                            "required": [
+                              "sourceScenarioId",
+                              "declaredLocation"
+                            ],
+                            "properties": {
+                              "sourceScenarioId": {
+                                "type": "string"
+                              },
+                              "declaredLocation": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "nativeImplementationDeferred": {
+                            "const": true
+                          },
+                          "disposition": {
+                            "const": "projected"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-input-binding-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "semantic-input-binding-projection-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "inputId": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.inputId"
+                    },
+                    "inputIntent": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.inputIntent"
+                    },
+                    "stateBinding": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.stateBinding"
+                    },
+                    "label": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.label"
+                    },
+                    "placeholder": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.placeholder"
+                    },
+                    "valueConstraints": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.valueConstraints"
+                    },
+                    "commitEvent": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.commitEvent"
+                    },
+                    "accessibility": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.accessibility"
+                    },
+                    "lineage": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.lineage"
+                    },
+                    "nativeImplementationDeferred": {
+                      "op": "literal",
+                      "value": true
+                    },
+                    "disposition": {
+                      "op": "literal",
+                      "value": "projected"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-input-binding-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-input-binding/contracts/input.schema.json",
+          "entryDigest": "sha256:c2a605af4959b43e6e7ff29af4564feb1b821a789015a9a4af432c6f982314f3",
+          "snapshot": "data/capsule-evidence/entries/c2a605af4959b43e6e7ff29af4564feb1b821a789015a9a4af432c6f982314f3-f76dc6485bfe0149.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "project-input-binding-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "inputId",
+                "inputIntent",
+                "stateBinding",
+                "label",
+                "placeholder",
+                "valueConstraints",
+                "accessibility",
+                "lineage"
+              ],
+              "properties": {
+                "inputId": {
+                  "type": "string"
+                },
+                "inputIntent": {
+                  "type": "string"
+                },
+                "stateBinding": {
+                  "type": "object",
+                  "required": [
+                    "statePath",
+                    "readOnly"
+                  ],
+                  "properties": {
+                    "statePath": {
+                      "type": "string"
+                    },
+                    "readOnly": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "label": {
+                  "type": "string"
+                },
+                "placeholder": {
+                  "type": "string"
+                },
+                "valueConstraints": {
+                  "type": "object"
+                },
+                "commitEvent": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "accessibility": {
+                  "type": "object",
+                  "required": [
+                    "ariaLabel",
+                    "roleDescription"
+                  ],
+                  "properties": {
+                    "ariaLabel": {
+                      "type": "string"
+                    },
+                    "roleDescription": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "lineage": {
+                  "type": "object",
+                  "required": [
+                    "sourceScenarioId",
+                    "declaredLocation"
+                  ],
+                  "properties": {
+                    "sourceScenarioId": {
+                      "type": "string"
+                    },
+                    "declaredLocation": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/project-input-binding/contracts/outcome.schema.json",
+          "entryDigest": "sha256:338b5f24118e98c467283b6e6e63986cd1616e7aa99de20f56d4d919b5203691",
+          "snapshot": "data/capsule-evidence/entries/338b5f24118e98c467283b6e6e63986cd1616e7aa99de20f56d4d919b5203691-35d57fc4d7cf6b2d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "semantic-input-binding-projection-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "inputId",
+                "inputIntent",
+                "stateBinding",
+                "label",
+                "placeholder",
+                "valueConstraints",
+                "accessibility",
+                "lineage",
+                "nativeImplementationDeferred",
+                "disposition"
+              ],
+              "properties": {
+                "inputId": {
+                  "type": "string"
+                },
+                "inputIntent": {
+                  "type": "string"
+                },
+                "stateBinding": {
+                  "type": "object",
+                  "required": [
+                    "statePath",
+                    "readOnly"
+                  ],
+                  "properties": {
+                    "statePath": {
+                      "type": "string"
+                    },
+                    "readOnly": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "label": {
+                  "type": "string"
+                },
+                "placeholder": {
+                  "type": "string"
+                },
+                "valueConstraints": {
+                  "type": "object"
+                },
+                "commitEvent": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "accessibility": {
+                  "type": "object",
+                  "required": [
+                    "ariaLabel",
+                    "roleDescription"
+                  ],
+                  "properties": {
+                    "ariaLabel": {
+                      "type": "string"
+                    },
+                    "roleDescription": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "lineage": {
+                  "type": "object",
+                  "required": [
+                    "sourceScenarioId",
+                    "declaredLocation"
+                  ],
+                  "properties": {
+                    "sourceScenarioId": {
+                      "type": "string"
+                    },
+                    "declaredLocation": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "nativeImplementationDeferred": {
+                  "const": true
+                },
+                "disposition": {
+                  "const": "projected"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-c58e10769ef29429.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-f30ccac63c44145c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-086202ee4358d537.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-2a03cb608dcadbc7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-file-path-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "authority-file-path-input",
+                "inputIntent": "file-selection",
+                "stateBinding": {
+                  "statePath": "targetAuthorityPath",
+                  "readOnly": false
+                },
+                "label": "Authority File Path",
+                "placeholder": "Select an authority JSON file...",
+                "valueConstraints": {
+                  "allowedExtensions": [
+                    ".json"
+                  ],
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "authority-file-selected",
+                  "trigger": "on-change"
+                },
+                "accessibility": {
+                  "ariaLabel": "Authority File Path",
+                  "roleDescription": "file input"
+                },
+                "lineage": {
+                  "sourceScenarioId": "load-authority-scenario",
+                  "declaredLocation": "ScenarioKernel.Wpf/AuthorityFileInput.cs"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "authority-file-path-input",
+                    "inputIntent": "file-selection",
+                    "stateBinding": {
+                      "statePath": "targetAuthorityPath",
+                      "readOnly": false
+                    },
+                    "label": "Authority File Path",
+                    "placeholder": "Select an authority JSON file...",
+                    "valueConstraints": {
+                      "allowedExtensions": [
+                        ".json"
+                      ],
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "authority-file-selected",
+                      "trigger": "on-change"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Authority File Path",
+                      "roleDescription": "file input"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "load-authority-scenario",
+                      "declaredLocation": "ScenarioKernel.Wpf/AuthorityFileInput.cs"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "authority-file-path-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "file-selection"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-text-entry-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "consumer-name-input",
+                "inputIntent": "text-entry",
+                "stateBinding": {
+                  "statePath": "consumerId",
+                  "readOnly": false
+                },
+                "label": "Consumer Name",
+                "placeholder": "Enter consumer name...",
+                "valueConstraints": {
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "consumer-name-entered",
+                  "trigger": "on-blur"
+                },
+                "accessibility": {
+                  "ariaLabel": "Consumer Name Text Entry",
+                  "roleDescription": "text entry"
+                },
+                "lineage": {
+                  "sourceScenarioId": "configure-consumer-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "consumer-name-input",
+                    "inputIntent": "text-entry",
+                    "stateBinding": {
+                      "statePath": "consumerId",
+                      "readOnly": false
+                    },
+                    "label": "Consumer Name",
+                    "placeholder": "Enter consumer name...",
+                    "valueConstraints": {
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "consumer-name-entered",
+                      "trigger": "on-blur"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Consumer Name Text Entry",
+                      "roleDescription": "text entry"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "configure-consumer-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "consumer-name-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "text-entry"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-numeric-entry-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "retry-limit-input",
+                "inputIntent": "numeric-entry",
+                "stateBinding": {
+                  "statePath": "retryCount",
+                  "readOnly": false
+                },
+                "label": "Retry Limit",
+                "placeholder": "0",
+                "valueConstraints": {
+                  "minimum": 0,
+                  "maximum": 10,
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "retry-limit-changed",
+                  "trigger": "on-change"
+                },
+                "accessibility": {
+                  "ariaLabel": "Retry Limit Numeric Field",
+                  "roleDescription": "numeric input"
+                },
+                "lineage": {
+                  "sourceScenarioId": "policy-configuration-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "retry-limit-input",
+                    "inputIntent": "numeric-entry",
+                    "stateBinding": {
+                      "statePath": "retryCount",
+                      "readOnly": false
+                    },
+                    "label": "Retry Limit",
+                    "placeholder": "0",
+                    "valueConstraints": {
+                      "minimum": 0,
+                      "maximum": 10,
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "retry-limit-changed",
+                      "trigger": "on-change"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Retry Limit Numeric Field",
+                      "roleDescription": "numeric input"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "policy-configuration-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "retry-limit-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "numeric-entry"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-toggle-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "telemetry-toggle-input",
+                "inputIntent": "toggle-selection",
+                "stateBinding": {
+                  "statePath": "telemetryEnabled",
+                  "readOnly": false
+                },
+                "label": "Enable Telemetry",
+                "placeholder": "",
+                "valueConstraints": {
+                  "required": false
+                },
+                "commitEvent": {
+                  "eventId": "telemetry-toggled",
+                  "trigger": "on-change"
+                },
+                "accessibility": {
+                  "ariaLabel": "Enable Telemetry Switch",
+                  "roleDescription": "toggle switch"
+                },
+                "lineage": {
+                  "sourceScenarioId": "telemetry-settings-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "telemetry-toggle-input",
+                    "inputIntent": "toggle-selection",
+                    "stateBinding": {
+                      "statePath": "telemetryEnabled",
+                      "readOnly": false
+                    },
+                    "label": "Enable Telemetry",
+                    "placeholder": "",
+                    "valueConstraints": {
+                      "required": false
+                    },
+                    "commitEvent": {
+                      "eventId": "telemetry-toggled",
+                      "trigger": "on-change"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Enable Telemetry Switch",
+                      "roleDescription": "toggle switch"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "telemetry-settings-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "telemetry-toggle-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "toggle-selection"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-readonly-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "digest-display-input",
+                "inputIntent": "read-only-text",
+                "stateBinding": {
+                  "statePath": "authorityDigest",
+                  "readOnly": true
+                },
+                "label": "Authority Digest",
+                "placeholder": "sha256:...",
+                "valueConstraints": {
+                  "required": false
+                },
+                "commitEvent": null,
+                "accessibility": {
+                  "ariaLabel": "Authority Digest Read-Only Field",
+                  "roleDescription": "readonly text"
+                },
+                "lineage": {
+                  "sourceScenarioId": "summary-display-scenario",
+                  "declaredLocation": "AuthorityFileInput.cs"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "digest-display-input",
+                    "inputIntent": "read-only-text",
+                    "stateBinding": {
+                      "statePath": "authorityDigest",
+                      "readOnly": true
+                    },
+                    "label": "Authority Digest",
+                    "placeholder": "sha256:...",
+                    "valueConstraints": {
+                      "required": false
+                    },
+                    "commitEvent": null,
+                    "accessibility": {
+                      "ariaLabel": "Authority Digest Read-Only Field",
+                      "roleDescription": "readonly text"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "summary-display-scenario",
+                      "declaredLocation": "AuthorityFileInput.cs"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "digest-display-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "read-only-text"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-secret-entry-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "api-secret-input",
+                "inputIntent": "secret-entry",
+                "stateBinding": {
+                  "statePath": "apiKey",
+                  "readOnly": false
+                },
+                "label": "API Secret Token",
+                "placeholder": "••••••••",
+                "valueConstraints": {
+                  "minLength": 16,
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "api-secret-committed",
+                  "trigger": "on-blur"
+                },
+                "accessibility": {
+                  "ariaLabel": "API Secret Key Field",
+                  "roleDescription": "password field"
+                },
+                "lineage": {
+                  "sourceScenarioId": "security-setup-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "api-secret-input",
+                    "inputIntent": "secret-entry",
+                    "stateBinding": {
+                      "statePath": "apiKey",
+                      "readOnly": false
+                    },
+                    "label": "API Secret Token",
+                    "placeholder": "••••••••",
+                    "valueConstraints": {
+                      "minLength": 16,
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "api-secret-committed",
+                      "trigger": "on-blur"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "API Secret Key Field",
+                      "roleDescription": "password field"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "security-setup-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "api-secret-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "secret-entry"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/project-input-binding/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-a1ac7281ca6b24bd.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one admitted semantic input and its state and event bindings",
+        "line": 22
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-input-binding/contracts/input.schema.json",
+          "entryDigest": "sha256:c2a605af4959b43e6e7ff29af4564feb1b821a789015a9a4af432c6f982314f3",
+          "snapshot": "data/capsule-evidence/entries/c2a605af4959b43e6e7ff29af4564feb1b821a789015a9a4af432c6f982314f3-f76dc6485bfe0149.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "project-input-binding-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "inputId",
+                "inputIntent",
+                "stateBinding",
+                "label",
+                "placeholder",
+                "valueConstraints",
+                "accessibility",
+                "lineage"
+              ],
+              "properties": {
+                "inputId": {
+                  "type": "string"
+                },
+                "inputIntent": {
+                  "type": "string"
+                },
+                "stateBinding": {
+                  "type": "object",
+                  "required": [
+                    "statePath",
+                    "readOnly"
+                  ],
+                  "properties": {
+                    "statePath": {
+                      "type": "string"
+                    },
+                    "readOnly": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "label": {
+                  "type": "string"
+                },
+                "placeholder": {
+                  "type": "string"
+                },
+                "valueConstraints": {
+                  "type": "object"
+                },
+                "commitEvent": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "accessibility": {
+                  "type": "object",
+                  "required": [
+                    "ariaLabel",
+                    "roleDescription"
+                  ],
+                  "properties": {
+                    "ariaLabel": {
+                      "type": "string"
+                    },
+                    "roleDescription": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "lineage": {
+                  "type": "object",
+                  "required": [
+                    "sourceScenarioId",
+                    "declaredLocation"
+                  ],
+                  "properties": {
+                    "sourceScenarioId": {
+                      "type": "string"
+                    },
+                    "declaredLocation": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/project-input-binding/contracts/outcome.schema.json",
+          "entryDigest": "sha256:338b5f24118e98c467283b6e6e63986cd1616e7aa99de20f56d4d919b5203691",
+          "snapshot": "data/capsule-evidence/entries/338b5f24118e98c467283b6e6e63986cd1616e7aa99de20f56d4d919b5203691-35d57fc4d7cf6b2d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "semantic-input-binding-projection-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "inputId",
+                "inputIntent",
+                "stateBinding",
+                "label",
+                "placeholder",
+                "valueConstraints",
+                "accessibility",
+                "lineage",
+                "nativeImplementationDeferred",
+                "disposition"
+              ],
+              "properties": {
+                "inputId": {
+                  "type": "string"
+                },
+                "inputIntent": {
+                  "type": "string"
+                },
+                "stateBinding": {
+                  "type": "object",
+                  "required": [
+                    "statePath",
+                    "readOnly"
+                  ],
+                  "properties": {
+                    "statePath": {
+                      "type": "string"
+                    },
+                    "readOnly": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "label": {
+                  "type": "string"
+                },
+                "placeholder": {
+                  "type": "string"
+                },
+                "valueConstraints": {
+                  "type": "object"
+                },
+                "commitEvent": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "accessibility": {
+                  "type": "object",
+                  "required": [
+                    "ariaLabel",
+                    "roleDescription"
+                  ],
+                  "properties": {
+                    "ariaLabel": {
+                      "type": "string"
+                    },
+                    "roleDescription": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "lineage": {
+                  "type": "object",
+                  "required": [
+                    "sourceScenarioId",
+                    "declaredLocation"
+                  ],
+                  "properties": {
+                    "sourceScenarioId": {
+                      "type": "string"
+                    },
+                    "declaredLocation": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "nativeImplementationDeferred": {
+                  "const": true
+                },
+                "disposition": {
+                  "const": "projected"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-c58e10769ef29429.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-f30ccac63c44145c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-086202ee4358d537.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-2a03cb608dcadbc7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "projection-engine"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "project-input-binding",
+          "scenario": {
+            "scenarioId": "project-input-binding",
+            "input": {
+              "inputId": "semantic-input-binding-facts",
+              "contract": {
+                "contractId": "project-input-binding-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "semantic-input-binding-projection-requested",
+              "executionAuthorityId": "semantic-input-binding-projection.v1"
+            },
+            "outcome": {
+              "outcomeId": "semantic-input-binding-projection-known",
+              "contract": {
+                "contractId": "semantic-input-binding-projection-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "project-input-binding.operation.1",
+              "mechanicBindingId": "port:project-input-binding-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "project-input-binding-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "c2a605af4959b43e6e7ff29af4564feb1b821a789015a9a4af432c6f982314f3",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "project-input-binding-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "inputId",
+                          "inputIntent",
+                          "stateBinding",
+                          "label",
+                          "placeholder",
+                          "valueConstraints",
+                          "accessibility",
+                          "lineage"
+                        ],
+                        "properties": {
+                          "inputId": {
+                            "type": "string"
+                          },
+                          "inputIntent": {
+                            "type": "string"
+                          },
+                          "stateBinding": {
+                            "type": "object",
+                            "required": [
+                              "statePath",
+                              "readOnly"
+                            ],
+                            "properties": {
+                              "statePath": {
+                                "type": "string"
+                              },
+                              "readOnly": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "placeholder": {
+                            "type": "string"
+                          },
+                          "valueConstraints": {
+                            "type": "object"
+                          },
+                          "commitEvent": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "accessibility": {
+                            "type": "object",
+                            "required": [
+                              "ariaLabel",
+                              "roleDescription"
+                            ],
+                            "properties": {
+                              "ariaLabel": {
+                                "type": "string"
+                              },
+                              "roleDescription": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "lineage": {
+                            "type": "object",
+                            "required": [
+                              "sourceScenarioId",
+                              "declaredLocation"
+                            ],
+                            "properties": {
+                              "sourceScenarioId": {
+                                "type": "string"
+                              },
+                              "declaredLocation": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "semantic-input-binding-projection-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "338b5f24118e98c467283b6e6e63986cd1616e7aa99de20f56d4d919b5203691",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "semantic-input-binding-projection-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "inputId",
+                          "inputIntent",
+                          "stateBinding",
+                          "label",
+                          "placeholder",
+                          "valueConstraints",
+                          "accessibility",
+                          "lineage",
+                          "nativeImplementationDeferred",
+                          "disposition"
+                        ],
+                        "properties": {
+                          "inputId": {
+                            "type": "string"
+                          },
+                          "inputIntent": {
+                            "type": "string"
+                          },
+                          "stateBinding": {
+                            "type": "object",
+                            "required": [
+                              "statePath",
+                              "readOnly"
+                            ],
+                            "properties": {
+                              "statePath": {
+                                "type": "string"
+                              },
+                              "readOnly": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "placeholder": {
+                            "type": "string"
+                          },
+                          "valueConstraints": {
+                            "type": "object"
+                          },
+                          "commitEvent": {
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "accessibility": {
+                            "type": "object",
+                            "required": [
+                              "ariaLabel",
+                              "roleDescription"
+                            ],
+                            "properties": {
+                              "ariaLabel": {
+                                "type": "string"
+                              },
+                              "roleDescription": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "lineage": {
+                            "type": "object",
+                            "required": [
+                              "sourceScenarioId",
+                              "declaredLocation"
+                            ],
+                            "properties": {
+                              "sourceScenarioId": {
+                                "type": "string"
+                              },
+                              "declaredLocation": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "nativeImplementationDeferred": {
+                            "const": true
+                          },
+                          "disposition": {
+                            "const": "projected"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-input-binding-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "semantic-input-binding-projection-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "inputId": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.inputId"
+                    },
+                    "inputIntent": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.inputIntent"
+                    },
+                    "stateBinding": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.stateBinding"
+                    },
+                    "label": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.label"
+                    },
+                    "placeholder": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.placeholder"
+                    },
+                    "valueConstraints": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.valueConstraints"
+                    },
+                    "commitEvent": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.commitEvent"
+                    },
+                    "accessibility": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.accessibility"
+                    },
+                    "lineage": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.lineage"
+                    },
+                    "nativeImplementationDeferred": {
+                      "op": "literal",
+                      "value": true
+                    },
+                    "disposition": {
+                      "op": "literal",
+                      "value": "projected"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-input-binding-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "its intent, value constraints, state, commit, accessibility, and lineage facts are preserved without choosing a native input implementation",
+        "line": 24
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-file-path-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "authority-file-path-input",
+                "inputIntent": "file-selection",
+                "stateBinding": {
+                  "statePath": "targetAuthorityPath",
+                  "readOnly": false
+                },
+                "label": "Authority File Path",
+                "placeholder": "Select an authority JSON file...",
+                "valueConstraints": {
+                  "allowedExtensions": [
+                    ".json"
+                  ],
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "authority-file-selected",
+                  "trigger": "on-change"
+                },
+                "accessibility": {
+                  "ariaLabel": "Authority File Path",
+                  "roleDescription": "file input"
+                },
+                "lineage": {
+                  "sourceScenarioId": "load-authority-scenario",
+                  "declaredLocation": "ScenarioKernel.Wpf/AuthorityFileInput.cs"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "authority-file-path-input",
+                    "inputIntent": "file-selection",
+                    "stateBinding": {
+                      "statePath": "targetAuthorityPath",
+                      "readOnly": false
+                    },
+                    "label": "Authority File Path",
+                    "placeholder": "Select an authority JSON file...",
+                    "valueConstraints": {
+                      "allowedExtensions": [
+                        ".json"
+                      ],
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "authority-file-selected",
+                      "trigger": "on-change"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Authority File Path",
+                      "roleDescription": "file input"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "load-authority-scenario",
+                      "declaredLocation": "ScenarioKernel.Wpf/AuthorityFileInput.cs"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "authority-file-path-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "file-selection"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-text-entry-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "consumer-name-input",
+                "inputIntent": "text-entry",
+                "stateBinding": {
+                  "statePath": "consumerId",
+                  "readOnly": false
+                },
+                "label": "Consumer Name",
+                "placeholder": "Enter consumer name...",
+                "valueConstraints": {
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "consumer-name-entered",
+                  "trigger": "on-blur"
+                },
+                "accessibility": {
+                  "ariaLabel": "Consumer Name Text Entry",
+                  "roleDescription": "text entry"
+                },
+                "lineage": {
+                  "sourceScenarioId": "configure-consumer-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "consumer-name-input",
+                    "inputIntent": "text-entry",
+                    "stateBinding": {
+                      "statePath": "consumerId",
+                      "readOnly": false
+                    },
+                    "label": "Consumer Name",
+                    "placeholder": "Enter consumer name...",
+                    "valueConstraints": {
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "consumer-name-entered",
+                      "trigger": "on-blur"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Consumer Name Text Entry",
+                      "roleDescription": "text entry"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "configure-consumer-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "consumer-name-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "text-entry"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-numeric-entry-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "retry-limit-input",
+                "inputIntent": "numeric-entry",
+                "stateBinding": {
+                  "statePath": "retryCount",
+                  "readOnly": false
+                },
+                "label": "Retry Limit",
+                "placeholder": "0",
+                "valueConstraints": {
+                  "minimum": 0,
+                  "maximum": 10,
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "retry-limit-changed",
+                  "trigger": "on-change"
+                },
+                "accessibility": {
+                  "ariaLabel": "Retry Limit Numeric Field",
+                  "roleDescription": "numeric input"
+                },
+                "lineage": {
+                  "sourceScenarioId": "policy-configuration-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "retry-limit-input",
+                    "inputIntent": "numeric-entry",
+                    "stateBinding": {
+                      "statePath": "retryCount",
+                      "readOnly": false
+                    },
+                    "label": "Retry Limit",
+                    "placeholder": "0",
+                    "valueConstraints": {
+                      "minimum": 0,
+                      "maximum": 10,
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "retry-limit-changed",
+                      "trigger": "on-change"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Retry Limit Numeric Field",
+                      "roleDescription": "numeric input"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "policy-configuration-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "retry-limit-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "numeric-entry"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-toggle-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "telemetry-toggle-input",
+                "inputIntent": "toggle-selection",
+                "stateBinding": {
+                  "statePath": "telemetryEnabled",
+                  "readOnly": false
+                },
+                "label": "Enable Telemetry",
+                "placeholder": "",
+                "valueConstraints": {
+                  "required": false
+                },
+                "commitEvent": {
+                  "eventId": "telemetry-toggled",
+                  "trigger": "on-change"
+                },
+                "accessibility": {
+                  "ariaLabel": "Enable Telemetry Switch",
+                  "roleDescription": "toggle switch"
+                },
+                "lineage": {
+                  "sourceScenarioId": "telemetry-settings-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "telemetry-toggle-input",
+                    "inputIntent": "toggle-selection",
+                    "stateBinding": {
+                      "statePath": "telemetryEnabled",
+                      "readOnly": false
+                    },
+                    "label": "Enable Telemetry",
+                    "placeholder": "",
+                    "valueConstraints": {
+                      "required": false
+                    },
+                    "commitEvent": {
+                      "eventId": "telemetry-toggled",
+                      "trigger": "on-change"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "Enable Telemetry Switch",
+                      "roleDescription": "toggle switch"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "telemetry-settings-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "telemetry-toggle-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "toggle-selection"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-readonly-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "digest-display-input",
+                "inputIntent": "read-only-text",
+                "stateBinding": {
+                  "statePath": "authorityDigest",
+                  "readOnly": true
+                },
+                "label": "Authority Digest",
+                "placeholder": "sha256:...",
+                "valueConstraints": {
+                  "required": false
+                },
+                "commitEvent": null,
+                "accessibility": {
+                  "ariaLabel": "Authority Digest Read-Only Field",
+                  "roleDescription": "readonly text"
+                },
+                "lineage": {
+                  "sourceScenarioId": "summary-display-scenario",
+                  "declaredLocation": "AuthorityFileInput.cs"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "digest-display-input",
+                    "inputIntent": "read-only-text",
+                    "stateBinding": {
+                      "statePath": "authorityDigest",
+                      "readOnly": true
+                    },
+                    "label": "Authority Digest",
+                    "placeholder": "sha256:...",
+                    "valueConstraints": {
+                      "required": false
+                    },
+                    "commitEvent": null,
+                    "accessibility": {
+                      "ariaLabel": "Authority Digest Read-Only Field",
+                      "roleDescription": "readonly text"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "summary-display-scenario",
+                      "declaredLocation": "AuthorityFileInput.cs"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "digest-display-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "read-only-text"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-input-binding/fixtures.authority.json",
+          "entryDigest": "sha256:7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24",
+          "snapshot": "data/capsule-evidence/entries/7ac07d15a9ab0f37b6885ebb7b68a0906b6b3426052bc929f49e43f4551a7e24-2059f99fa6df0fed.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "fixture-secret-entry-input",
+            "input": {
+              "contractId": "project-input-binding-input.v1",
+              "payload": {
+                "inputId": "api-secret-input",
+                "inputIntent": "secret-entry",
+                "stateBinding": {
+                  "statePath": "apiKey",
+                  "readOnly": false
+                },
+                "label": "API Secret Token",
+                "placeholder": "••••••••",
+                "valueConstraints": {
+                  "minLength": 16,
+                  "required": true
+                },
+                "commitEvent": {
+                  "eventId": "api-secret-committed",
+                  "trigger": "on-blur"
+                },
+                "accessibility": {
+                  "ariaLabel": "API Secret Key Field",
+                  "roleDescription": "password field"
+                },
+                "lineage": {
+                  "sourceScenarioId": "security-setup-scenario",
+                  "declaredLocation": "consumer-application-provider.ts"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-input-binding-port": {
+                "output": {
+                  "contractId": "semantic-input-binding-projection-evidence.v1",
+                  "payload": {
+                    "inputId": "api-secret-input",
+                    "inputIntent": "secret-entry",
+                    "stateBinding": {
+                      "statePath": "apiKey",
+                      "readOnly": false
+                    },
+                    "label": "API Secret Token",
+                    "placeholder": "••••••••",
+                    "valueConstraints": {
+                      "minLength": 16,
+                      "required": true
+                    },
+                    "commitEvent": {
+                      "eventId": "api-secret-committed",
+                      "trigger": "on-blur"
+                    },
+                    "accessibility": {
+                      "ariaLabel": "API Secret Key Field",
+                      "roleDescription": "password field"
+                    },
+                    "lineage": {
+                      "sourceScenarioId": "security-setup-scenario",
+                      "declaredLocation": "consumer-application-provider.ts"
+                    },
+                    "nativeImplementationDeferred": true,
+                    "disposition": "projected"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-input-binding",
+              "scenarioSequence": [
+                "project-input-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "input-id-preserved",
+                  "path": "payload.inputId",
+                  "operator": "equals",
+                  "value": "api-secret-input"
+                },
+                {
+                  "conditionId": "input-intent-preserved",
+                  "path": "payload.inputIntent",
+                  "operator": "equals",
+                  "value": "secret-entry"
+                },
+                {
+                  "conditionId": "native-deferred-flag-set",
+                  "path": "payload.nativeImplementationDeferred",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-input-binding-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "project-input-binding",
+        "scenario": {
+          "scenarioId": "project-input-binding",
+          "input": {
+            "inputId": "semantic-input-binding-facts",
+            "contract": {
+              "contractId": "project-input-binding-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "semantic-input-binding-projection-requested",
+            "executionAuthorityId": "semantic-input-binding-projection.v1"
+          },
+          "outcome": {
+            "outcomeId": "semantic-input-binding-projection-known",
+            "contract": {
+              "contractId": "semantic-input-binding-projection-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "project-input-binding.operation.1",
+            "mechanicBindingId": "port:project-input-binding-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-input-binding/execution-plan.node.json",
+          "entryDigest": "sha256:35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb",
+          "snapshot": "data/capsule-evidence/entries/35903c23a19295835ac5005517c6b81e92f50a6b6cd8af574413ba3fda3f28cb-76fa851abeac57f8.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

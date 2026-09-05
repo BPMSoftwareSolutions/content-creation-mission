@@ -1,0 +1,1924 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "deliver-capsule-estate-mcp::register-capsule-estate-mcp-tools",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:283ffeec5cea1ef9b82cbd3b26bd941215ec1b5d25da6894987114faa2748e9b"
+  },
+  "scenarioSurface": {
+    "key": "deliver-capsule-estate-mcp::register-capsule-estate-mcp-tools",
+    "capabilityId": "deliver-capsule-estate-mcp",
+    "capabilityName": "Deliver capsule estate operations through MCP stdio",
+    "scenarioId": "register-capsule-estate-mcp-tools",
+    "scenarioName": "Register exactly the five authority-declared tools",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "the admitted tool declarations for sidefx_capsules_verify, sidefx_capsules_list, sidefx_capsule_inspect, sidefx_capability_test, and sidefx_capability_invoke",
+        "line": 32
+      }
+    ],
+    "event": [
+      {
+        "text": "the MCP tool catalog is requested",
+        "line": 33
+      }
+    ],
+    "outcome": [
+      {
+        "text": "each tool exposes its exact title, description, JSON input schema, safety annotations, and bound capsule operation and no undeclared tool is registered",
+        "line": 34
+      }
+    ],
+    "products": [
+      "capsule-estate-mcp-delivery-result"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "agentic client"
+    ],
+    "altitude": null,
+    "notes": "  An agentic client receives one MCP stdio server whose exact identity,\n  protocol, tools, descriptions, input schemas, annotations, and operation\n  bindings come from the admitted MCP interface authority. MCP delivery owns\n  protocol carriers only; operate-capsule-estate owns every capsule operation.",
+    "source": {
+      "capsuleFile": "deliver-capsule-estate-mcp.sfxcap",
+      "capsuleDigest": "sha256:283ffeec5cea1ef9b82cbd3b26bd941215ec1b5d25da6894987114faa2748e9b",
+      "featureEntry": "features/deliver-capsule-estate-mcp.feature",
+      "featureDigest": "sha256:0a25431010ea4c4d74258cb6675f72ab97c5e1db444ac246d802b32e69e6681a",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/deliver-capsule-estate-mcp.feature",
+      "scenarioLine": 31
+    },
+    "tags": [
+      "@capability:deliver-capsule-estate-mcp",
+      "@root-scenario:deliver-capsule-estate-mcp",
+      "@scenario:register-capsule-estate-mcp-tools",
+      "@input:capsule-estate-mcp-delivery-request",
+      "@input-contract:capsule-estate-mcp-delivery-request.v1",
+      "@event:capsule-estate-mcp-tool-registration-requested",
+      "@event-authority:register-capsule-estate-mcp-tools.v1",
+      "@outcome:capsule-estate-mcp-delivery-result",
+      "@outcome-contract:capsule-estate-mcp-delivery-result.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/nodes/1"
+        },
+        "value": {
+          "nodeId": "register-capsule-estate-mcp-tools",
+          "scenario": {
+            "scenarioId": "register-capsule-estate-mcp-tools",
+            "input": {
+              "inputId": "capsule-estate-mcp-delivery-request",
+              "contract": {
+                "contractId": "capsule-estate-mcp-delivery-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "capsule-estate-mcp-tool-registration-requested",
+              "executionAuthorityId": "register-capsule-estate-mcp-tools.v1"
+            },
+            "outcome": {
+              "outcomeId": "capsule-estate-mcp-delivery-result",
+              "contract": {
+                "contractId": "capsule-estate-mcp-delivery-result.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "register-capsule-estate-mcp-tools.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:register-capsule-estate-mcp-tools-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "capsule-estate-mcp-delivery-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-request.v1.json",
+                  "schemaDigest": "4c88c39b6c752ec0e18103e4500dffd2ff288148c2b95be12d5e4674d72fe9fa",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-request.v1.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "enum": [
+                          "capsule-estate-mcp-delivery-request.v1",
+                          "capsule-estate-mcp-delivery-result.v1"
+                        ]
+                      },
+                      "payload": {
+                        "type": "object",
+                        "properties": {
+                          "toolResult": {
+                            "type": "object",
+                            "properties": {
+                              "isError": {
+                                "type": "boolean"
+                              },
+                              "content": {
+                                "type": "string"
+                              },
+                              "structuredResult": {}
+                            },
+                            "required": [
+                              "isError",
+                              "content",
+                              "structuredResult"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "capsule-estate-mcp-delivery-result.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-result.v1.json",
+                  "schemaDigest": "bb2267eb77f95576a887fba3530ae02dad3ad61f3d844ee46ef6d9ba29df9e80",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-result.v1.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload",
+                      "mcp",
+                      "mcpResult"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "capsule-estate-mcp-delivery-result.v1"
+                      },
+                      "payload": {
+                        "type": "object"
+                      },
+                      "mcp": {
+                        "type": "object",
+                        "required": [
+                          "serverIdentity",
+                          "protocolVersion",
+                          "tools",
+                          "transport"
+                        ],
+                        "properties": {
+                          "serverIdentity": {
+                            "type": "object",
+                            "required": [
+                              "name",
+                              "version"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "version": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "protocolVersion": {
+                            "type": "string"
+                          },
+                          "tools": {
+                            "type": "array",
+                            "minItems": 5,
+                            "maxItems": 5,
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "name",
+                                "operation",
+                                "capabilityOperation",
+                                "title",
+                                "description",
+                                "annotations",
+                                "inputSchema"
+                              ],
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "operation": {
+                                  "enum": [
+                                    "verify",
+                                    "list",
+                                    "inspect",
+                                    "test",
+                                    "invoke"
+                                  ]
+                                },
+                                "capabilityOperation": {
+                                  "enum": [
+                                    "verify",
+                                    "list",
+                                    "inspect",
+                                    "prove-direct-execution",
+                                    "invoke"
+                                  ]
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "annotations": {
+                                  "type": "object"
+                                },
+                                "inputSchema": {
+                                  "type": "object"
+                                }
+                              }
+                            }
+                          },
+                          "transport": {
+                            "const": "stdio"
+                          }
+                        }
+                      },
+                      "mcpResult": {
+                        "type": "object",
+                        "required": [
+                          "isError",
+                          "content",
+                          "structuredResult"
+                        ],
+                        "properties": {
+                          "isError": {
+                            "type": "boolean"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "structuredResult": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:register-capsule-estate-mcp-tools-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "path",
+              "from": "input",
+              "path": ""
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:register-capsule-estate-mcp-tools-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/contracts/input.schema.json",
+          "entryDigest": "sha256:9992e7f7cd28dcc7028f141060a50ba4c52fa62341ec6c983b7129a835d7c8e1",
+          "snapshot": "data/capsule-evidence/entries/9992e7f7cd28dcc7028f141060a50ba4c52fa62341ec6c983b7129a835d7c8e1-80a4a01583744ab6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-request.v1.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "enum": [
+                "capsule-estate-mcp-delivery-request.v1",
+                "capsule-estate-mcp-delivery-result.v1"
+              ]
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "toolResult": {
+                  "type": "object",
+                  "properties": {
+                    "isError": {
+                      "type": "boolean"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "structuredResult": {}
+                  },
+                  "required": [
+                    "isError",
+                    "content",
+                    "structuredResult"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/contracts/outcome.schema.json",
+          "entryDigest": "sha256:e1bdf7381e5c998c40dd2c590b1fdb456efd32c9db29f184d4ad7659be726895",
+          "snapshot": "data/capsule-evidence/entries/e1bdf7381e5c998c40dd2c590b1fdb456efd32c9db29f184d4ad7659be726895-b146bd9e64edea95.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-result.v1.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload",
+            "mcp",
+            "mcpResult"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "capsule-estate-mcp-delivery-result.v1"
+            },
+            "payload": {
+              "type": "object"
+            },
+            "mcp": {
+              "type": "object",
+              "required": [
+                "serverIdentity",
+                "protocolVersion",
+                "tools",
+                "transport"
+              ],
+              "properties": {
+                "serverIdentity": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "version"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "protocolVersion": {
+                  "type": "string"
+                },
+                "tools": {
+                  "type": "array",
+                  "minItems": 5,
+                  "maxItems": 5,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "name",
+                      "operation",
+                      "capabilityOperation",
+                      "title",
+                      "description",
+                      "annotations",
+                      "inputSchema"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "operation": {
+                        "enum": [
+                          "verify",
+                          "list",
+                          "inspect",
+                          "test",
+                          "invoke"
+                        ]
+                      },
+                      "capabilityOperation": {
+                        "enum": [
+                          "verify",
+                          "list",
+                          "inspect",
+                          "prove-direct-execution",
+                          "invoke"
+                        ]
+                      },
+                      "title": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "annotations": {
+                        "type": "object"
+                      },
+                      "inputSchema": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                },
+                "transport": {
+                  "const": "stdio"
+                }
+              }
+            },
+            "mcpResult": {
+              "type": "object",
+              "required": [
+                "isError",
+                "content",
+                "structuredResult"
+              ],
+              "properties": {
+                "isError": {
+                  "type": "boolean"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "structuredResult": {}
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "initial-request",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {}
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-server-is-defined",
+                  "path": "mcp.serverIdentity.name",
+                  "operator": "equals",
+                  "value": "sidefx-capsule-estate"
+                },
+                {
+                  "conditionId": "mcp-result-is-initialized",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Server initialized. No tool result to represent."
+                },
+                {
+                  "conditionId": "mcp-result-is-not-error",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-list",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "capsule-a, capsule-b",
+                  "structuredResult": [
+                    "capsule-a",
+                    "capsule-b"
+                  ]
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-content-is-correct",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Tool execution succeeded: capsule-a, capsule-b"
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.0",
+                  "operator": "equals",
+                  "value": "capsule-a"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-inspect",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "Details for capsule-a",
+                  "structuredResult": {
+                    "id": "capsule-a",
+                    "version": "1.1"
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-content-is-correct",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Tool execution succeeded: Details for capsule-a"
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.id",
+                  "operator": "equals",
+                  "value": "capsule-a"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-invoke",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "Invocation successful",
+                  "structuredResult": {
+                    "status": "ok",
+                    "output": "hello"
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.output",
+                  "operator": "equals",
+                  "value": "hello"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-verify",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "Verification passed",
+                  "structuredResult": {
+                    "verified": true,
+                    "issues": 0
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.verified",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "governed-failure",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": true,
+                  "content": "capsule not found",
+                  "structuredResult": {
+                    "code": "NOT_FOUND"
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-error",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "mcp-result-content-is-correct",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Tool execution failed: capsule not found"
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.code",
+                  "operator": "equals",
+                  "value": "NOT_FOUND"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-1e305c41e091c903.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "the admitted tool declarations for sidefx_capsules_verify, sidefx_capsules_list, sidefx_capsule_inspect, sidefx_capability_test, and sidefx_capability_invoke",
+        "line": 32
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/contracts/input.schema.json",
+          "entryDigest": "sha256:9992e7f7cd28dcc7028f141060a50ba4c52fa62341ec6c983b7129a835d7c8e1",
+          "snapshot": "data/capsule-evidence/entries/9992e7f7cd28dcc7028f141060a50ba4c52fa62341ec6c983b7129a835d7c8e1-80a4a01583744ab6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-request.v1.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "enum": [
+                "capsule-estate-mcp-delivery-request.v1",
+                "capsule-estate-mcp-delivery-result.v1"
+              ]
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "toolResult": {
+                  "type": "object",
+                  "properties": {
+                    "isError": {
+                      "type": "boolean"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "structuredResult": {}
+                  },
+                  "required": [
+                    "isError",
+                    "content",
+                    "structuredResult"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/contracts/outcome.schema.json",
+          "entryDigest": "sha256:e1bdf7381e5c998c40dd2c590b1fdb456efd32c9db29f184d4ad7659be726895",
+          "snapshot": "data/capsule-evidence/entries/e1bdf7381e5c998c40dd2c590b1fdb456efd32c9db29f184d4ad7659be726895-b146bd9e64edea95.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-result.v1.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload",
+            "mcp",
+            "mcpResult"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "capsule-estate-mcp-delivery-result.v1"
+            },
+            "payload": {
+              "type": "object"
+            },
+            "mcp": {
+              "type": "object",
+              "required": [
+                "serverIdentity",
+                "protocolVersion",
+                "tools",
+                "transport"
+              ],
+              "properties": {
+                "serverIdentity": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "version"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "protocolVersion": {
+                  "type": "string"
+                },
+                "tools": {
+                  "type": "array",
+                  "minItems": 5,
+                  "maxItems": 5,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "name",
+                      "operation",
+                      "capabilityOperation",
+                      "title",
+                      "description",
+                      "annotations",
+                      "inputSchema"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "operation": {
+                        "enum": [
+                          "verify",
+                          "list",
+                          "inspect",
+                          "test",
+                          "invoke"
+                        ]
+                      },
+                      "capabilityOperation": {
+                        "enum": [
+                          "verify",
+                          "list",
+                          "inspect",
+                          "prove-direct-execution",
+                          "invoke"
+                        ]
+                      },
+                      "title": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "annotations": {
+                        "type": "object"
+                      },
+                      "inputSchema": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                },
+                "transport": {
+                  "const": "stdio"
+                }
+              }
+            },
+            "mcpResult": {
+              "type": "object",
+              "required": [
+                "isError",
+                "content",
+                "structuredResult"
+              ],
+              "properties": {
+                "isError": {
+                  "type": "boolean"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "structuredResult": {}
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "agentic client"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/nodes/1"
+        },
+        "value": {
+          "nodeId": "register-capsule-estate-mcp-tools",
+          "scenario": {
+            "scenarioId": "register-capsule-estate-mcp-tools",
+            "input": {
+              "inputId": "capsule-estate-mcp-delivery-request",
+              "contract": {
+                "contractId": "capsule-estate-mcp-delivery-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "capsule-estate-mcp-tool-registration-requested",
+              "executionAuthorityId": "register-capsule-estate-mcp-tools.v1"
+            },
+            "outcome": {
+              "outcomeId": "capsule-estate-mcp-delivery-result",
+              "contract": {
+                "contractId": "capsule-estate-mcp-delivery-result.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "register-capsule-estate-mcp-tools.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:register-capsule-estate-mcp-tools-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "capsule-estate-mcp-delivery-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-request.v1.json",
+                  "schemaDigest": "4c88c39b6c752ec0e18103e4500dffd2ff288148c2b95be12d5e4674d72fe9fa",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-request.v1.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "enum": [
+                          "capsule-estate-mcp-delivery-request.v1",
+                          "capsule-estate-mcp-delivery-result.v1"
+                        ]
+                      },
+                      "payload": {
+                        "type": "object",
+                        "properties": {
+                          "toolResult": {
+                            "type": "object",
+                            "properties": {
+                              "isError": {
+                                "type": "boolean"
+                              },
+                              "content": {
+                                "type": "string"
+                              },
+                              "structuredResult": {}
+                            },
+                            "required": [
+                              "isError",
+                              "content",
+                              "structuredResult"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "capsule-estate-mcp-delivery-result.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-result.v1.json",
+                  "schemaDigest": "bb2267eb77f95576a887fba3530ae02dad3ad61f3d844ee46ef6d9ba29df9e80",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/capsule-estate-mcp-delivery-result.v1.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload",
+                      "mcp",
+                      "mcpResult"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "capsule-estate-mcp-delivery-result.v1"
+                      },
+                      "payload": {
+                        "type": "object"
+                      },
+                      "mcp": {
+                        "type": "object",
+                        "required": [
+                          "serverIdentity",
+                          "protocolVersion",
+                          "tools",
+                          "transport"
+                        ],
+                        "properties": {
+                          "serverIdentity": {
+                            "type": "object",
+                            "required": [
+                              "name",
+                              "version"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "version": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "protocolVersion": {
+                            "type": "string"
+                          },
+                          "tools": {
+                            "type": "array",
+                            "minItems": 5,
+                            "maxItems": 5,
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "name",
+                                "operation",
+                                "capabilityOperation",
+                                "title",
+                                "description",
+                                "annotations",
+                                "inputSchema"
+                              ],
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "operation": {
+                                  "enum": [
+                                    "verify",
+                                    "list",
+                                    "inspect",
+                                    "test",
+                                    "invoke"
+                                  ]
+                                },
+                                "capabilityOperation": {
+                                  "enum": [
+                                    "verify",
+                                    "list",
+                                    "inspect",
+                                    "prove-direct-execution",
+                                    "invoke"
+                                  ]
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "annotations": {
+                                  "type": "object"
+                                },
+                                "inputSchema": {
+                                  "type": "object"
+                                }
+                              }
+                            }
+                          },
+                          "transport": {
+                            "const": "stdio"
+                          }
+                        }
+                      },
+                      "mcpResult": {
+                        "type": "object",
+                        "required": [
+                          "isError",
+                          "content",
+                          "structuredResult"
+                        ],
+                        "properties": {
+                          "isError": {
+                            "type": "boolean"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "structuredResult": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:register-capsule-estate-mcp-tools-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "path",
+              "from": "input",
+              "path": ""
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:register-capsule-estate-mcp-tools-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "each tool exposes its exact title, description, JSON input schema, safety annotations, and bound capsule operation and no undeclared tool is registered",
+        "line": 34
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "initial-request",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {}
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-server-is-defined",
+                  "path": "mcp.serverIdentity.name",
+                  "operator": "equals",
+                  "value": "sidefx-capsule-estate"
+                },
+                {
+                  "conditionId": "mcp-result-is-initialized",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Server initialized. No tool result to represent."
+                },
+                {
+                  "conditionId": "mcp-result-is-not-error",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-list",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "capsule-a, capsule-b",
+                  "structuredResult": [
+                    "capsule-a",
+                    "capsule-b"
+                  ]
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-content-is-correct",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Tool execution succeeded: capsule-a, capsule-b"
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.0",
+                  "operator": "equals",
+                  "value": "capsule-a"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-inspect",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "Details for capsule-a",
+                  "structuredResult": {
+                    "id": "capsule-a",
+                    "version": "1.1"
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-content-is-correct",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Tool execution succeeded: Details for capsule-a"
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.id",
+                  "operator": "equals",
+                  "value": "capsule-a"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-invoke",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "Invocation successful",
+                  "structuredResult": {
+                    "status": "ok",
+                    "output": "hello"
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.output",
+                  "operator": "equals",
+                  "value": "hello"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "success-verify",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": false,
+                  "content": "Verification passed",
+                  "structuredResult": {
+                    "verified": true,
+                    "issues": 0
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-success",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.verified",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/deliver-capsule-estate-mcp/fixtures.authority.json",
+          "entryDigest": "sha256:efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea",
+          "snapshot": "data/capsule-evidence/entries/efcbeaba809eb487e7d3ad2cab9d9775f48fe853030def11fe40bca410ebadea-ccb84c7eb951c6a7.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "governed-failure",
+            "input": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1",
+              "payload": {
+                "toolResult": {
+                  "isError": true,
+                  "content": "capsule not found",
+                  "structuredResult": {
+                    "code": "NOT_FOUND"
+                  }
+                }
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "deliver-capsule-estate-mcp",
+              "scenarioSequence": [
+                "deliver-capsule-estate-mcp"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mcp-result-is-error",
+                  "path": "mcpResult.isError",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "mcp-result-content-is-correct",
+                  "path": "mcpResult.content",
+                  "operator": "equals",
+                  "value": "Tool execution failed: capsule not found"
+                },
+                {
+                  "conditionId": "mcp-result-structured-is-preserved",
+                  "path": "mcpResult.structuredResult.code",
+                  "operator": "equals",
+                  "value": "NOT_FOUND"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:register-capsule-estate-mcp-tools-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "register-capsule-estate-mcp-tools",
+        "scenario": {
+          "scenarioId": "register-capsule-estate-mcp-tools",
+          "input": {
+            "inputId": "capsule-estate-mcp-delivery-request",
+            "contract": {
+              "contractId": "capsule-estate-mcp-delivery-request.v1"
+            }
+          },
+          "event": {
+            "eventId": "capsule-estate-mcp-tool-registration-requested",
+            "executionAuthorityId": "register-capsule-estate-mcp-tools.v1"
+          },
+          "outcome": {
+            "outcomeId": "capsule-estate-mcp-delivery-result",
+            "contract": {
+              "contractId": "capsule-estate-mcp-delivery-result.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "register-capsule-estate-mcp-tools.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:register-capsule-estate-mcp-tools-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/deliver-capsule-estate-mcp/execution-plan.node.json",
+          "entryDigest": "sha256:647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020",
+          "snapshot": "data/capsule-evidence/entries/647b0e0e43f38f7f0c8ec6e896d15eda17eb2be3d324b636339f227f97f74020-17641b1c40b0fb17.json",
+          "pointer": "/nodes/1"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

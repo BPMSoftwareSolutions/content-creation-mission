@@ -1,0 +1,1467 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "greet-by-name::greet-by-name",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:38ba62f8ef4dda45033d71068a3a288ccac22aac79f10244eb85b2d626e19aec"
+  },
+  "scenarioSurface": {
+    "key": "greet-by-name::greet-by-name",
+    "capabilityId": "greet-by-name",
+    "capabilityName": "Construct a greeting from one name input",
+    "scenarioId": "greet-by-name",
+    "scenarioName": "Greet a caller by name",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one admitted non-empty person name",
+        "line": 16
+      }
+    ],
+    "event": [
+      {
+        "text": "a personalized greeting is requested",
+        "line": 17
+      }
+    ],
+    "outcome": [
+      {
+        "text": "the exact greeting Hello, {name}! is returned without an external effect",
+        "line": 18
+      }
+    ],
+    "products": [
+      "personal-greeting"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "caller"
+    ],
+    "altitude": null,
+    "notes": "  A caller supplies one admitted name and receives one deterministic personalized greeting without an external effect.",
+    "source": {
+      "capsuleFile": "greet-by-name.sfxcap",
+      "capsuleDigest": "sha256:38ba62f8ef4dda45033d71068a3a288ccac22aac79f10244eb85b2d626e19aec",
+      "featureEntry": "features/greet-by-name.feature",
+      "featureDigest": "sha256:a66cac981f61013a1173951261063b7e519116ee3f9455e7c62e9d165530d24f",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/greet-by-name.feature",
+      "scenarioLine": 15
+    },
+    "tags": [
+      "@capability:greet-by-name",
+      "@root-scenario:greet-by-name",
+      "@scenario:greet-by-name",
+      "@input:personal-greeting-request",
+      "@input-contract:personal-greeting-request.v1",
+      "@event:greet-by-name",
+      "@event-authority:greet-by-name.v1",
+      "@outcome:personal-greeting",
+      "@outcome-contract:personal-greeting.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "greet-by-name",
+          "scenario": {
+            "scenarioId": "greet-by-name",
+            "input": {
+              "inputId": "personal-greeting-request",
+              "contract": {
+                "contractId": "personal-greeting-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "greet-by-name",
+              "executionAuthorityId": "greet-by-name.v1"
+            },
+            "outcome": {
+              "outcomeId": "personal-greeting",
+              "contract": {
+                "contractId": "personal-greeting.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "greet-by-name.operation.1",
+              "mechanicBindingId": "port:greet-by-name-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "personal-greeting-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/personal-greeting-request.v1.schema.json",
+                  "schemaDigest": "31807687c194244bade279c2f52ac470848494aca3a0522faa41f1350c70f0f6",
+                  "schema": {
+                    "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting-request.v1.schema.json",
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "additionalProperties": false,
+                    "properties": {
+                      "contractId": {
+                        "const": "personal-greeting-request.v1"
+                      },
+                      "payload": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "name": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "personal-greeting.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/personal-greeting.v1.schema.json",
+                  "schemaDigest": "9d9af0e65a46d4a6c952e818610173f2d8de2c4989b701b0517714f5692cea5e",
+                  "schema": {
+                    "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting.v1.schema.json",
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "additionalProperties": false,
+                    "properties": {
+                      "contractId": {
+                        "const": "personal-greeting.v1"
+                      },
+                      "payload": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:greet-by-name-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "personal-greeting.v1"
+                },
+                "payload": {
+                  "fields": {
+                    "message": {
+                      "op": "format",
+                      "template": "Hello, {name}!",
+                      "values": {
+                        "name": {
+                          "from": "input",
+                          "op": "path",
+                          "path": "payload.name"
+                        }
+                      }
+                    }
+                  },
+                  "op": "object"
+                }
+              },
+              "op": "object"
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:greet-by-name-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/greet-by-name/contracts/input.schema.json",
+          "entryDigest": "sha256:b800857e3c2d721221a37b98ef2fb2daf2e761df365e89a92359b5a6eabee1fb",
+          "snapshot": "data/capsule-evidence/entries/b800857e3c2d721221a37b98ef2fb2daf2e761df365e89a92359b5a6eabee1fb-7c9620f011902382.json",
+          "pointer": ""
+        },
+        "value": {
+          "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting-request.v1.schema.json",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "additionalProperties": false,
+          "properties": {
+            "contractId": {
+              "const": "personal-greeting-request.v1"
+            },
+            "payload": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "maxLength": 100,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/greet-by-name/contracts/outcome.schema.json",
+          "entryDigest": "sha256:18489ffe8c38d0181db073af4e471ac1329a76a4441fb53037208800a5439424",
+          "snapshot": "data/capsule-evidence/entries/18489ffe8c38d0181db073af4e471ac1329a76a4441fb53037208800a5439424-61d2be6e4fdd9aca.json",
+          "pointer": ""
+        },
+        "value": {
+          "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting.v1.schema.json",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "additionalProperties": false,
+          "properties": {
+            "contractId": {
+              "const": "personal-greeting.v1"
+            },
+            "payload": {
+              "additionalProperties": false,
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "type": "object"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "altitude": "CAPABILITY",
+          "cell": {
+            "energized": {
+              "authority": {
+                "authorityId": "greet-by-name.v1",
+                "digest": "sha256:fbabd8af1d50b6aad34477e9fb7ebb295e6836f7c283e2d13e5294a0b9a8c222"
+              },
+              "identity": "greet-by-name"
+            },
+            "first": {
+              "contract": {
+                "authorityId": "personal-greeting-request.v1",
+                "digest": "sha256:bd40abcedc238e30316c51e59dd6d1cdecc6661d0385dc07ab8f6a6ad97695d5"
+              },
+              "identity": "personal-greeting-request"
+            },
+            "result": {
+              "contract": {
+                "authorityId": "personal-greeting.v1",
+                "digest": "sha256:5419cde6e99c1d8f54632a249905eb3e3cb64c9ab0156c6763efbcab5284a3df"
+              },
+              "identity": "personal-greeting"
+            }
+          },
+          "kind": "responsibility",
+          "nodeId": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "authorizedDimensions": [
+              "execution-id",
+              "route-id",
+              "terminal-disposition"
+            ],
+            "causalAddress": "greet-by-name/greet-by-name",
+            "checkpoints": [
+              "greet-by-name-admit-input",
+              "greet-by-name-emit-outcome"
+            ],
+            "evidenceDestination": "greet-by-name-evidence-ledger",
+            "measurements": [
+              {
+                "measurementId": "greet-by-name-completion",
+                "unit": "count"
+              }
+            ],
+            "sampling": {
+              "strategy": "ALWAYS"
+            },
+            "semanticAddress": "sidefx://capability/greet-by-name/node/greet-by-name"
+          },
+          "projectionOrdinal": 0
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/2"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "edgeId": "greet-by-name-descends-to-construct-personal-greeting",
+          "from": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-descends-to-construct-personal-greeting-traversed"
+            ]
+          },
+          "projectionOrdinal": 2,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "DESCENDS",
+          "to": "greet-by-name-construct-personal-greeting-operation",
+          "topology": "ALTITUDE_DESCENT"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/3"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "boundedReturn": {
+            "authority": {
+              "authorityId": "greet-by-name.v1",
+              "digest": "sha256:fbabd8af1d50b6aad34477e9fb7ebb295e6836f7c283e2d13e5294a0b9a8c222"
+            },
+            "bound": 1,
+            "kind": "RESUMPTION"
+          },
+          "edgeId": "greet-by-name-construct-personal-greeting-resumption-returns-to-greet-by-name",
+          "from": "greet-by-name-construct-personal-greeting-resumption",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-construct-personal-greeting-resumption-returns-to-greet-by-name-traversed"
+            ]
+          },
+          "projectionOrdinal": 3,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "BOUNDED_RETURN",
+          "to": "greet-by-name",
+          "topology": "BOUNDED_RETURN"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/4"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "edgeId": "greet-by-name-establishes-greet-by-name-complete",
+          "from": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-establishes-greet-by-name-complete-traversed"
+            ]
+          },
+          "projectionOrdinal": 4,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "TERMINATES",
+          "to": "greet-by-name-complete",
+          "topology": "TRANSITION"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/greet-by-name/fixtures.authority.json",
+          "entryDigest": "sha256:a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451",
+          "snapshot": "data/capsule-evidence/entries/a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451-cd71723cce9742ba.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "expected": {
+              "disposition": "terminated",
+              "outcomeAssertions": [
+                {
+                  "conditionId": "exact-contract",
+                  "operator": "equals",
+                  "path": "contractId",
+                  "value": "personal-greeting.v1"
+                },
+                {
+                  "conditionId": "exact-message",
+                  "operator": "equals",
+                  "path": "payload.message",
+                  "value": "Hello, Sidney!"
+                }
+              ],
+              "scenarioSequence": [
+                "greet-by-name"
+              ],
+              "terminalScenarioId": "greet-by-name"
+            },
+            "fixtureId": "constructs-greeting-for-sidney",
+            "input": {
+              "contractId": "personal-greeting-request.v1",
+              "payload": {
+                "name": "Sidney"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/greet-by-name/fixtures.authority.json",
+          "entryDigest": "sha256:a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451",
+          "snapshot": "data/capsule-evidence/entries/a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451-cd71723cce9742ba.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "expected": {
+              "disposition": "terminated",
+              "outcomeAssertions": [
+                {
+                  "conditionId": "exact-contract",
+                  "operator": "equals",
+                  "path": "contractId",
+                  "value": "personal-greeting.v1"
+                },
+                {
+                  "conditionId": "exact-message",
+                  "operator": "equals",
+                  "path": "payload.message",
+                  "value": "Hello, Zoë!"
+                }
+              ],
+              "scenarioSequence": [
+                "greet-by-name"
+              ],
+              "terminalScenarioId": "greet-by-name"
+            },
+            "fixtureId": "preserves-multibyte-name",
+            "input": {
+              "contractId": "personal-greeting-request.v1",
+              "payload": {
+                "name": "Zoë"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/greet-by-name/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-64a352db2c6c01b6.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one admitted non-empty person name",
+        "line": 16
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/greet-by-name/contracts/input.schema.json",
+          "entryDigest": "sha256:b800857e3c2d721221a37b98ef2fb2daf2e761df365e89a92359b5a6eabee1fb",
+          "snapshot": "data/capsule-evidence/entries/b800857e3c2d721221a37b98ef2fb2daf2e761df365e89a92359b5a6eabee1fb-7c9620f011902382.json",
+          "pointer": ""
+        },
+        "value": {
+          "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting-request.v1.schema.json",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "additionalProperties": false,
+          "properties": {
+            "contractId": {
+              "const": "personal-greeting-request.v1"
+            },
+            "payload": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "maxLength": 100,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/greet-by-name/contracts/outcome.schema.json",
+          "entryDigest": "sha256:18489ffe8c38d0181db073af4e471ac1329a76a4441fb53037208800a5439424",
+          "snapshot": "data/capsule-evidence/entries/18489ffe8c38d0181db073af4e471ac1329a76a4441fb53037208800a5439424-61d2be6e4fdd9aca.json",
+          "pointer": ""
+        },
+        "value": {
+          "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting.v1.schema.json",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "additionalProperties": false,
+          "properties": {
+            "contractId": {
+              "const": "personal-greeting.v1"
+            },
+            "payload": {
+              "additionalProperties": false,
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "type": "object"
+        }
+      }
+    ],
+    "actors": [
+      "caller"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "greet-by-name",
+          "scenario": {
+            "scenarioId": "greet-by-name",
+            "input": {
+              "inputId": "personal-greeting-request",
+              "contract": {
+                "contractId": "personal-greeting-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "greet-by-name",
+              "executionAuthorityId": "greet-by-name.v1"
+            },
+            "outcome": {
+              "outcomeId": "personal-greeting",
+              "contract": {
+                "contractId": "personal-greeting.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "greet-by-name.operation.1",
+              "mechanicBindingId": "port:greet-by-name-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "personal-greeting-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/personal-greeting-request.v1.schema.json",
+                  "schemaDigest": "31807687c194244bade279c2f52ac470848494aca3a0522faa41f1350c70f0f6",
+                  "schema": {
+                    "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting-request.v1.schema.json",
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "additionalProperties": false,
+                    "properties": {
+                      "contractId": {
+                        "const": "personal-greeting-request.v1"
+                      },
+                      "payload": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "name": {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "personal-greeting.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/personal-greeting.v1.schema.json",
+                  "schemaDigest": "9d9af0e65a46d4a6c952e818610173f2d8de2c4989b701b0517714f5692cea5e",
+                  "schema": {
+                    "$id": "https://schemas.agentic-harness.local/contracts/personal-greeting.v1.schema.json",
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "additionalProperties": false,
+                    "properties": {
+                      "contractId": {
+                        "const": "personal-greeting.v1"
+                      },
+                      "payload": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:greet-by-name-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "personal-greeting.v1"
+                },
+                "payload": {
+                  "fields": {
+                    "message": {
+                      "op": "format",
+                      "template": "Hello, {name}!",
+                      "values": {
+                        "name": {
+                          "from": "input",
+                          "op": "path",
+                          "path": "payload.name"
+                        }
+                      }
+                    }
+                  },
+                  "op": "object"
+                }
+              },
+              "op": "object"
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:greet-by-name-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "altitude": "CAPABILITY",
+          "cell": {
+            "energized": {
+              "authority": {
+                "authorityId": "greet-by-name.v1",
+                "digest": "sha256:fbabd8af1d50b6aad34477e9fb7ebb295e6836f7c283e2d13e5294a0b9a8c222"
+              },
+              "identity": "greet-by-name"
+            },
+            "first": {
+              "contract": {
+                "authorityId": "personal-greeting-request.v1",
+                "digest": "sha256:bd40abcedc238e30316c51e59dd6d1cdecc6661d0385dc07ab8f6a6ad97695d5"
+              },
+              "identity": "personal-greeting-request"
+            },
+            "result": {
+              "contract": {
+                "authorityId": "personal-greeting.v1",
+                "digest": "sha256:5419cde6e99c1d8f54632a249905eb3e3cb64c9ab0156c6763efbcab5284a3df"
+              },
+              "identity": "personal-greeting"
+            }
+          },
+          "kind": "responsibility",
+          "nodeId": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "authorizedDimensions": [
+              "execution-id",
+              "route-id",
+              "terminal-disposition"
+            ],
+            "causalAddress": "greet-by-name/greet-by-name",
+            "checkpoints": [
+              "greet-by-name-admit-input",
+              "greet-by-name-emit-outcome"
+            ],
+            "evidenceDestination": "greet-by-name-evidence-ledger",
+            "measurements": [
+              {
+                "measurementId": "greet-by-name-completion",
+                "unit": "count"
+              }
+            ],
+            "sampling": {
+              "strategy": "ALWAYS"
+            },
+            "semanticAddress": "sidefx://capability/greet-by-name/node/greet-by-name"
+          },
+          "projectionOrdinal": 0
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/2"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "edgeId": "greet-by-name-descends-to-construct-personal-greeting",
+          "from": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-descends-to-construct-personal-greeting-traversed"
+            ]
+          },
+          "projectionOrdinal": 2,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "DESCENDS",
+          "to": "greet-by-name-construct-personal-greeting-operation",
+          "topology": "ALTITUDE_DESCENT"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/3"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "boundedReturn": {
+            "authority": {
+              "authorityId": "greet-by-name.v1",
+              "digest": "sha256:fbabd8af1d50b6aad34477e9fb7ebb295e6836f7c283e2d13e5294a0b9a8c222"
+            },
+            "bound": 1,
+            "kind": "RESUMPTION"
+          },
+          "edgeId": "greet-by-name-construct-personal-greeting-resumption-returns-to-greet-by-name",
+          "from": "greet-by-name-construct-personal-greeting-resumption",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-construct-personal-greeting-resumption-returns-to-greet-by-name-traversed"
+            ]
+          },
+          "projectionOrdinal": 3,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "BOUNDED_RETURN",
+          "to": "greet-by-name",
+          "topology": "BOUNDED_RETURN"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/4"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "edgeId": "greet-by-name-establishes-greet-by-name-complete",
+          "from": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-establishes-greet-by-name-complete-traversed"
+            ]
+          },
+          "projectionOrdinal": 4,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "TERMINATES",
+          "to": "greet-by-name-complete",
+          "topology": "TRANSITION"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "the exact greeting Hello, {name}! is returned without an external effect",
+        "line": 18
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/greet-by-name/fixtures.authority.json",
+          "entryDigest": "sha256:a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451",
+          "snapshot": "data/capsule-evidence/entries/a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451-cd71723cce9742ba.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "expected": {
+              "disposition": "terminated",
+              "outcomeAssertions": [
+                {
+                  "conditionId": "exact-contract",
+                  "operator": "equals",
+                  "path": "contractId",
+                  "value": "personal-greeting.v1"
+                },
+                {
+                  "conditionId": "exact-message",
+                  "operator": "equals",
+                  "path": "payload.message",
+                  "value": "Hello, Sidney!"
+                }
+              ],
+              "scenarioSequence": [
+                "greet-by-name"
+              ],
+              "terminalScenarioId": "greet-by-name"
+            },
+            "fixtureId": "constructs-greeting-for-sidney",
+            "input": {
+              "contractId": "personal-greeting-request.v1",
+              "payload": {
+                "name": "Sidney"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/greet-by-name/fixtures.authority.json",
+          "entryDigest": "sha256:a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451",
+          "snapshot": "data/capsule-evidence/entries/a1264446e9aeabf02fadc28aa93282cd2f0f5383996f7b04b5558554b769c451-cd71723cce9742ba.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "expected": {
+              "disposition": "terminated",
+              "outcomeAssertions": [
+                {
+                  "conditionId": "exact-contract",
+                  "operator": "equals",
+                  "path": "contractId",
+                  "value": "personal-greeting.v1"
+                },
+                {
+                  "conditionId": "exact-message",
+                  "operator": "equals",
+                  "path": "payload.message",
+                  "value": "Hello, Zoë!"
+                }
+              ],
+              "scenarioSequence": [
+                "greet-by-name"
+              ],
+              "terminalScenarioId": "greet-by-name"
+            },
+            "fixtureId": "preserves-multibyte-name",
+            "input": {
+              "contractId": "personal-greeting-request.v1",
+              "payload": {
+                "name": "Zoë"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:greet-by-name-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "altitude": "CAPABILITY",
+          "cell": {
+            "energized": {
+              "authority": {
+                "authorityId": "greet-by-name.v1",
+                "digest": "sha256:fbabd8af1d50b6aad34477e9fb7ebb295e6836f7c283e2d13e5294a0b9a8c222"
+              },
+              "identity": "greet-by-name"
+            },
+            "first": {
+              "contract": {
+                "authorityId": "personal-greeting-request.v1",
+                "digest": "sha256:bd40abcedc238e30316c51e59dd6d1cdecc6661d0385dc07ab8f6a6ad97695d5"
+              },
+              "identity": "personal-greeting-request"
+            },
+            "result": {
+              "contract": {
+                "authorityId": "personal-greeting.v1",
+                "digest": "sha256:5419cde6e99c1d8f54632a249905eb3e3cb64c9ab0156c6763efbcab5284a3df"
+              },
+              "identity": "personal-greeting"
+            }
+          },
+          "kind": "responsibility",
+          "nodeId": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "authorizedDimensions": [
+              "execution-id",
+              "route-id",
+              "terminal-disposition"
+            ],
+            "causalAddress": "greet-by-name/greet-by-name",
+            "checkpoints": [
+              "greet-by-name-admit-input",
+              "greet-by-name-emit-outcome"
+            ],
+            "evidenceDestination": "greet-by-name-evidence-ledger",
+            "measurements": [
+              {
+                "measurementId": "greet-by-name-completion",
+                "unit": "count"
+              }
+            ],
+            "sampling": {
+              "strategy": "ALWAYS"
+            },
+            "semanticAddress": "sidefx://capability/greet-by-name/node/greet-by-name"
+          },
+          "projectionOrdinal": 0
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/2"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "edgeId": "greet-by-name-descends-to-construct-personal-greeting",
+          "from": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-descends-to-construct-personal-greeting-traversed"
+            ]
+          },
+          "projectionOrdinal": 2,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "DESCENDS",
+          "to": "greet-by-name-construct-personal-greeting-operation",
+          "topology": "ALTITUDE_DESCENT"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/3"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "boundedReturn": {
+            "authority": {
+              "authorityId": "greet-by-name.v1",
+              "digest": "sha256:fbabd8af1d50b6aad34477e9fb7ebb295e6836f7c283e2d13e5294a0b9a8c222"
+            },
+            "bound": 1,
+            "kind": "RESUMPTION"
+          },
+          "edgeId": "greet-by-name-construct-personal-greeting-resumption-returns-to-greet-by-name",
+          "from": "greet-by-name-construct-personal-greeting-resumption",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-construct-personal-greeting-resumption-returns-to-greet-by-name-traversed"
+            ]
+          },
+          "projectionOrdinal": 3,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "BOUNDED_RETURN",
+          "to": "greet-by-name",
+          "topology": "BOUNDED_RETURN"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/greet-by-name/blueprint.authority.json",
+          "entryDigest": "sha256:5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1",
+          "snapshot": "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json",
+          "pointer": "/edges/4"
+        },
+        "value": {
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "edgeId": "greet-by-name-establishes-greet-by-name-complete",
+          "from": "greet-by-name",
+          "observability": {
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            },
+            "checkpoints": [
+              "greet-by-name-establishes-greet-by-name-complete-traversed"
+            ]
+          },
+          "projectionOrdinal": 4,
+          "semanticPrecedence": "REQUIRED",
+          "semanticProgress": "TERMINATES",
+          "to": "greet-by-name-complete",
+          "topology": "TRANSITION"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "greet-by-name",
+        "scenario": {
+          "scenarioId": "greet-by-name",
+          "input": {
+            "inputId": "personal-greeting-request",
+            "contract": {
+              "contractId": "personal-greeting-request.v1"
+            }
+          },
+          "event": {
+            "eventId": "greet-by-name",
+            "executionAuthorityId": "greet-by-name.v1"
+          },
+          "outcome": {
+            "outcomeId": "personal-greeting",
+            "contract": {
+              "contractId": "personal-greeting.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "greet-by-name.operation.1",
+            "mechanicBindingId": "port:greet-by-name-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/greet-by-name/execution-plan.node.json",
+          "entryDigest": "sha256:c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c",
+          "snapshot": "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

@@ -1,0 +1,4947 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "project-presentation-hosting::project-presentation-hosting",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:dc9d86731ef41ab3d8d4b5808cc54a4ad049afdae4b3612f1cd242352152992f"
+  },
+  "scenarioSurface": {
+    "key": "project-presentation-hosting::project-presentation-hosting",
+    "capabilityId": "project-presentation-hosting",
+    "capabilityName": "Project presentation hosting",
+    "scenarioId": "project-presentation-hosting",
+    "scenarioName": "Preserve declared host requirements for projection",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "admitted host identity, root views, startup, lifecycle, size, resources, accessibility, and packaging requirements",
+        "line": 23
+      }
+    ],
+    "event": [
+      {
+        "text": "presentation hosting is projected",
+        "line": 24
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every host fact and lineage reference is preserved without invented shell content or target-owned application behavior",
+        "line": 25
+      }
+    ],
+    "products": [
+      "presentation-hosting-projection-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "presentation projection compiler"
+    ],
+    "altitude": null,
+    "notes": "\n  A presentation host declares root views, title and identity facts, startup\n  view, lifecycle relationships, sizing constraints, resource references,\n  accessibility context, and packaging requirements. Projection must not add\n  shell content, navigation, chrome, or behavior absent from authority.",
+    "source": {
+      "capsuleFile": "project-presentation-hosting.sfxcap",
+      "capsuleDigest": "sha256:dc9d86731ef41ab3d8d4b5808cc54a4ad049afdae4b3612f1cd242352152992f",
+      "featureEntry": "features/project-presentation-hosting.feature",
+      "featureDigest": "sha256:c5833a4baecc0f1f7af022183b8ad152a76ca431e9ee2af71d47106ca2da6378",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/project-presentation-hosting.feature",
+      "scenarioLine": 22
+    },
+    "tags": [
+      "@capability:project-presentation-hosting",
+      "@root-scenario:project-presentation-hosting",
+      "@scenario:project-presentation-hosting",
+      "@input:presentation-hosting-facts",
+      "@input-contract:project-presentation-hosting-input.v1",
+      "@event:presentation-hosting-projection-requested",
+      "@event-authority:presentation-hosting-projection.v1",
+      "@outcome:presentation-hosting-projection-known",
+      "@outcome-contract:presentation-hosting-projection-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "project-presentation-hosting",
+          "scenario": {
+            "scenarioId": "project-presentation-hosting",
+            "input": {
+              "inputId": "presentation-hosting-facts",
+              "contract": {
+                "contractId": "project-presentation-hosting-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "presentation-hosting-projection-requested",
+              "executionAuthorityId": "presentation-hosting-projection.v1"
+            },
+            "outcome": {
+              "outcomeId": "presentation-hosting-projection-known",
+              "contract": {
+                "contractId": "presentation-hosting-projection-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "project-presentation-hosting.operation.1",
+              "mechanicBindingId": "port:project-presentation-hosting-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "project-presentation-hosting-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "05e0b3b6ac4ce67208c92ed67f6b34f940182166c0fdfc0ec1c78de1443dfa94",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "project-presentation-hosting-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "hostIdentity",
+                          "rootViews",
+                          "startupView",
+                          "lifecycle",
+                          "sizingConstraints",
+                          "resourceReferences",
+                          "accessibility",
+                          "packaging"
+                        ],
+                        "properties": {
+                          "hostIdentity": {
+                            "type": "object",
+                            "required": [
+                              "hostId",
+                              "title",
+                              "targetPlatform"
+                            ],
+                            "properties": {
+                              "hostId": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "targetPlatform": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "rootViews": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "viewId",
+                                "kind",
+                                "regions"
+                              ],
+                              "properties": {
+                                "viewId": {
+                                  "type": "string"
+                                },
+                                "kind": {
+                                  "type": "string"
+                                },
+                                "regions": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "startupView": {
+                            "type": "object",
+                            "required": [
+                              "viewId",
+                              "mode"
+                            ],
+                            "properties": {
+                              "viewId": {
+                                "type": "string"
+                              },
+                              "mode": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "lifecycle": {
+                            "type": "object",
+                            "required": [
+                              "shutdownMode",
+                              "startupHook"
+                            ],
+                            "properties": {
+                              "shutdownMode": {
+                                "type": "string"
+                              },
+                              "startupHook": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "sizingConstraints": {
+                            "type": "object",
+                            "required": [
+                              "width",
+                              "height",
+                              "minWidth",
+                              "minHeight",
+                              "resizable"
+                            ],
+                            "properties": {
+                              "width": {
+                                "type": "number"
+                              },
+                              "height": {
+                                "type": "number"
+                              },
+                              "minWidth": {
+                                "type": "number"
+                              },
+                              "minHeight": {
+                                "type": "number"
+                              },
+                              "resizable": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "resourceReferences": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "accessibility": {
+                            "type": "object",
+                            "required": [
+                              "accessibleName",
+                              "role",
+                              "liveRegion"
+                            ],
+                            "properties": {
+                              "accessibleName": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              },
+                              "liveRegion": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "packaging": {
+                            "type": "object",
+                            "required": [
+                              "targetFramework",
+                              "entryPoint"
+                            ],
+                            "properties": {
+                              "targetFramework": {
+                                "type": "string"
+                              },
+                              "entryPoint": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "presentation-hosting-projection-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "ce95b7255423ec70e83dfca8898ab130d22dec14636d1a2d549b4de50d5a9f72",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "hostIdentity",
+                      "rootViews",
+                      "startupView",
+                      "lifecycle",
+                      "sizingConstraints",
+                      "resourceReferences",
+                      "accessibility",
+                      "packaging",
+                      "uninventedShellVerified",
+                      "status"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "presentation-hosting-projection-evidence.v1"
+                      },
+                      "hostIdentity": {
+                        "type": "object",
+                        "required": [
+                          "hostId",
+                          "title",
+                          "targetPlatform"
+                        ],
+                        "properties": {
+                          "hostId": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "targetPlatform": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "rootViews": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "viewId",
+                            "kind",
+                            "regions"
+                          ],
+                          "properties": {
+                            "viewId": {
+                              "type": "string"
+                            },
+                            "kind": {
+                              "type": "string"
+                            },
+                            "regions": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "startupView": {
+                        "type": "object",
+                        "required": [
+                          "viewId",
+                          "mode"
+                        ],
+                        "properties": {
+                          "viewId": {
+                            "type": "string"
+                          },
+                          "mode": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "lifecycle": {
+                        "type": "object",
+                        "required": [
+                          "shutdownMode",
+                          "startupHook"
+                        ],
+                        "properties": {
+                          "shutdownMode": {
+                            "type": "string"
+                          },
+                          "startupHook": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "sizingConstraints": {
+                        "type": "object",
+                        "required": [
+                          "width",
+                          "height",
+                          "minWidth",
+                          "minHeight",
+                          "resizable"
+                        ],
+                        "properties": {
+                          "width": {
+                            "type": "number"
+                          },
+                          "height": {
+                            "type": "number"
+                          },
+                          "minWidth": {
+                            "type": "number"
+                          },
+                          "minHeight": {
+                            "type": "number"
+                          },
+                          "resizable": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "resourceReferences": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "accessibility": {
+                        "type": "object",
+                        "required": [
+                          "accessibleName",
+                          "role",
+                          "liveRegion"
+                        ],
+                        "properties": {
+                          "accessibleName": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "liveRegion": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "packaging": {
+                        "type": "object",
+                        "required": [
+                          "targetFramework",
+                          "entryPoint"
+                        ],
+                        "properties": {
+                          "targetFramework": {
+                            "type": "string"
+                          },
+                          "entryPoint": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "uninventedShellVerified": {
+                        "type": "boolean"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-presentation-hosting-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "presentation-hosting-projection-evidence.v1"
+                },
+                "hostIdentity": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.hostIdentity"
+                },
+                "rootViews": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.rootViews"
+                },
+                "startupView": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.startupView"
+                },
+                "lifecycle": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.lifecycle"
+                },
+                "sizingConstraints": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.sizingConstraints"
+                },
+                "resourceReferences": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.resourceReferences"
+                },
+                "accessibility": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.accessibility"
+                },
+                "packaging": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.packaging"
+                },
+                "uninventedShellVerified": {
+                  "op": "literal",
+                  "value": true
+                },
+                "status": {
+                  "op": "literal",
+                  "value": "projected"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-presentation-hosting-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-presentation-hosting/contracts/input.schema.json",
+          "entryDigest": "sha256:05e0b3b6ac4ce67208c92ed67f6b34f940182166c0fdfc0ec1c78de1443dfa94",
+          "snapshot": "data/capsule-evidence/entries/05e0b3b6ac4ce67208c92ed67f6b34f940182166c0fdfc0ec1c78de1443dfa94-297312f6bfc430ed.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "project-presentation-hosting-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "hostIdentity",
+                "rootViews",
+                "startupView",
+                "lifecycle",
+                "sizingConstraints",
+                "resourceReferences",
+                "accessibility",
+                "packaging"
+              ],
+              "properties": {
+                "hostIdentity": {
+                  "type": "object",
+                  "required": [
+                    "hostId",
+                    "title",
+                    "targetPlatform"
+                  ],
+                  "properties": {
+                    "hostId": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "targetPlatform": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rootViews": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "viewId",
+                      "kind",
+                      "regions"
+                    ],
+                    "properties": {
+                      "viewId": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "type": "string"
+                      },
+                      "regions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "startupView": {
+                  "type": "object",
+                  "required": [
+                    "viewId",
+                    "mode"
+                  ],
+                  "properties": {
+                    "viewId": {
+                      "type": "string"
+                    },
+                    "mode": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "lifecycle": {
+                  "type": "object",
+                  "required": [
+                    "shutdownMode",
+                    "startupHook"
+                  ],
+                  "properties": {
+                    "shutdownMode": {
+                      "type": "string"
+                    },
+                    "startupHook": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "sizingConstraints": {
+                  "type": "object",
+                  "required": [
+                    "width",
+                    "height",
+                    "minWidth",
+                    "minHeight",
+                    "resizable"
+                  ],
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    },
+                    "minWidth": {
+                      "type": "number"
+                    },
+                    "minHeight": {
+                      "type": "number"
+                    },
+                    "resizable": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "resourceReferences": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "accessibility": {
+                  "type": "object",
+                  "required": [
+                    "accessibleName",
+                    "role",
+                    "liveRegion"
+                  ],
+                  "properties": {
+                    "accessibleName": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string"
+                    },
+                    "liveRegion": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "packaging": {
+                  "type": "object",
+                  "required": [
+                    "targetFramework",
+                    "entryPoint"
+                  ],
+                  "properties": {
+                    "targetFramework": {
+                      "type": "string"
+                    },
+                    "entryPoint": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/project-presentation-hosting/contracts/outcome.schema.json",
+          "entryDigest": "sha256:ce95b7255423ec70e83dfca8898ab130d22dec14636d1a2d549b4de50d5a9f72",
+          "snapshot": "data/capsule-evidence/entries/ce95b7255423ec70e83dfca8898ab130d22dec14636d1a2d549b4de50d5a9f72-1845abd21c97d765.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "hostIdentity",
+            "rootViews",
+            "startupView",
+            "lifecycle",
+            "sizingConstraints",
+            "resourceReferences",
+            "accessibility",
+            "packaging",
+            "uninventedShellVerified",
+            "status"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "presentation-hosting-projection-evidence.v1"
+            },
+            "hostIdentity": {
+              "type": "object",
+              "required": [
+                "hostId",
+                "title",
+                "targetPlatform"
+              ],
+              "properties": {
+                "hostId": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "targetPlatform": {
+                  "type": "string"
+                }
+              }
+            },
+            "rootViews": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "viewId",
+                  "kind",
+                  "regions"
+                ],
+                "properties": {
+                  "viewId": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string"
+                  },
+                  "regions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "startupView": {
+              "type": "object",
+              "required": [
+                "viewId",
+                "mode"
+              ],
+              "properties": {
+                "viewId": {
+                  "type": "string"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "lifecycle": {
+              "type": "object",
+              "required": [
+                "shutdownMode",
+                "startupHook"
+              ],
+              "properties": {
+                "shutdownMode": {
+                  "type": "string"
+                },
+                "startupHook": {
+                  "type": "string"
+                }
+              }
+            },
+            "sizingConstraints": {
+              "type": "object",
+              "required": [
+                "width",
+                "height",
+                "minWidth",
+                "minHeight",
+                "resizable"
+              ],
+              "properties": {
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                },
+                "minWidth": {
+                  "type": "number"
+                },
+                "minHeight": {
+                  "type": "number"
+                },
+                "resizable": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "resourceReferences": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "accessibility": {
+              "type": "object",
+              "required": [
+                "accessibleName",
+                "role",
+                "liveRegion"
+              ],
+              "properties": {
+                "accessibleName": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "liveRegion": {
+                  "type": "string"
+                }
+              }
+            },
+            "packaging": {
+              "type": "object",
+              "required": [
+                "targetFramework",
+                "entryPoint"
+              ],
+              "properties": {
+                "targetFramework": {
+                  "type": "string"
+                },
+                "entryPoint": {
+                  "type": "string"
+                }
+              }
+            },
+            "uninventedShellVerified": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-336660292364e6e6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-e2051ceac103936a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-cbf69c7303ca6420.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-63c8e6e457e70ad3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "wpf-desktop-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "wpf-app-main",
+                  "title": "Primary Application Window",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "main-window-view",
+                    "kind": "window",
+                    "regions": [
+                      "header-region",
+                      "content-region"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "main-window-view",
+                  "mode": "immediate"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnLastWindowClose",
+                  "startupHook": "initialize-view-model"
+                },
+                "sizingConstraints": {
+                  "width": 1024,
+                  "height": 768,
+                  "minWidth": 800,
+                  "minHeight": 600,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "Assets/Themes/DarkTheme.xaml",
+                  "Assets/Icons/AppIcon.ico"
+                ],
+                "accessibility": {
+                  "accessibleName": "Primary Application Window",
+                  "role": "application",
+                  "liveRegion": "none"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "App.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "wpf-app-main",
+                    "title": "Primary Application Window",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "main-window-view",
+                      "kind": "window",
+                      "regions": [
+                        "header-region",
+                        "content-region"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "main-window-view",
+                    "mode": "immediate"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnLastWindowClose",
+                    "startupHook": "initialize-view-model"
+                  },
+                  "sizingConstraints": {
+                    "width": 1024,
+                    "height": 768,
+                    "minWidth": 800,
+                    "minHeight": 600,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/DarkTheme.xaml",
+                    "Assets/Icons/AppIcon.ico"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Primary Application Window",
+                    "role": "application",
+                    "liveRegion": "none"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "App.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "wpf-app-main"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "main-window-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                },
+                {
+                  "conditionId": "uninvented-shell-verified",
+                  "path": "uninventedShellVerified",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "dialog-hosting-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "confirmation-dialog-host",
+                  "title": "Confirmation Required",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "confirm-dialog-view",
+                    "kind": "dialog",
+                    "regions": [
+                      "dialog-body"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "confirm-dialog-view",
+                  "mode": "modal"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnExplicitClose",
+                  "startupHook": "bind-dialog-context"
+                },
+                "sizingConstraints": {
+                  "width": 400,
+                  "height": 250,
+                  "minWidth": 400,
+                  "minHeight": 250,
+                  "resizable": false
+                },
+                "resourceReferences": [
+                  "Assets/Themes/DialogStyles.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Confirmation Required Dialog",
+                  "role": "dialog",
+                  "liveRegion": "polite"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "ConfirmationDialog.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "confirmation-dialog-host",
+                    "title": "Confirmation Required",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "confirm-dialog-view",
+                      "kind": "dialog",
+                      "regions": [
+                        "dialog-body"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "confirm-dialog-view",
+                    "mode": "modal"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnExplicitClose",
+                    "startupHook": "bind-dialog-context"
+                  },
+                  "sizingConstraints": {
+                    "width": 400,
+                    "height": 250,
+                    "minWidth": 400,
+                    "minHeight": 250,
+                    "resizable": false
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/DialogStyles.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Confirmation Required Dialog",
+                    "role": "dialog",
+                    "liveRegion": "polite"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "ConfirmationDialog.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "confirmation-dialog-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "confirm-dialog-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "web-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "web-spa-host",
+                  "title": "Operations Dashboard",
+                  "targetPlatform": "web"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "spa-root-view",
+                    "kind": "single-page",
+                    "regions": [
+                      "nav",
+                      "workspace",
+                      "alerts"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "spa-root-view",
+                  "mode": "immediate"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnTabClose",
+                  "startupHook": "mount-dom-root"
+                },
+                "sizingConstraints": {
+                  "width": 1920,
+                  "height": 1080,
+                  "minWidth": 320,
+                  "minHeight": 480,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "styles/theme.css",
+                  "styles/components.css"
+                ],
+                "accessibility": {
+                  "accessibleName": "Operations Dashboard Web App",
+                  "role": "main",
+                  "liveRegion": "assertive"
+                },
+                "packaging": {
+                  "targetFramework": "es2022",
+                  "entryPoint": "index.html"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "web-spa-host",
+                    "title": "Operations Dashboard",
+                    "targetPlatform": "web"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "spa-root-view",
+                      "kind": "single-page",
+                      "regions": [
+                        "nav",
+                        "workspace",
+                        "alerts"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "spa-root-view",
+                    "mode": "immediate"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnTabClose",
+                    "startupHook": "mount-dom-root"
+                  },
+                  "sizingConstraints": {
+                    "width": 1920,
+                    "height": 1080,
+                    "minWidth": 320,
+                    "minHeight": 480,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "styles/theme.css",
+                    "styles/components.css"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Operations Dashboard Web App",
+                    "role": "main",
+                    "liveRegion": "assertive"
+                  },
+                  "packaging": {
+                    "targetFramework": "es2022",
+                    "entryPoint": "index.html"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "web-spa-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "spa-root-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multi-window-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "multi-window-desktop",
+                  "title": "Multi-Document Workspace",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "primary-view",
+                    "kind": "window",
+                    "regions": [
+                      "doc-region",
+                      "tool-palette"
+                    ]
+                  },
+                  {
+                    "viewId": "inspector-view",
+                    "kind": "window",
+                    "regions": [
+                      "properties-panel"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "primary-view",
+                  "mode": "immediate"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnMainWindowClose",
+                  "startupHook": "load-workspace-state"
+                },
+                "sizingConstraints": {
+                  "width": 1440,
+                  "height": 900,
+                  "minWidth": 1024,
+                  "minHeight": 700,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "Assets/Themes/StudioTheme.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Multi-Document Workspace Host",
+                  "role": "application",
+                  "liveRegion": "none"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "WorkspaceApp.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "multi-window-desktop",
+                    "title": "Multi-Document Workspace",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "primary-view",
+                      "kind": "window",
+                      "regions": [
+                        "doc-region",
+                        "tool-palette"
+                      ]
+                    },
+                    {
+                      "viewId": "inspector-view",
+                      "kind": "window",
+                      "regions": [
+                        "properties-panel"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "primary-view",
+                    "mode": "immediate"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnMainWindowClose",
+                    "startupHook": "load-workspace-state"
+                  },
+                  "sizingConstraints": {
+                    "width": 1440,
+                    "height": 900,
+                    "minWidth": 1024,
+                    "minHeight": 700,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/StudioTheme.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Multi-Document Workspace Host",
+                    "role": "application",
+                    "liveRegion": "none"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "WorkspaceApp.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "multi-window-desktop"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "primary-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "compact-widget-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "widget-panel-host",
+                  "title": "Status Widget",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "widget-view",
+                    "kind": "panel",
+                    "regions": [
+                      "status-badge"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "widget-view",
+                  "mode": "docked"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnExplicitClose",
+                  "startupHook": "bind-status-stream"
+                },
+                "sizingConstraints": {
+                  "width": 300,
+                  "height": 120,
+                  "minWidth": 200,
+                  "minHeight": 80,
+                  "resizable": false
+                },
+                "resourceReferences": [
+                  "Assets/Themes/WidgetStyles.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Status Widget",
+                  "role": "status",
+                  "liveRegion": "polite"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "WidgetHost.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "widget-panel-host",
+                    "title": "Status Widget",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "widget-view",
+                      "kind": "panel",
+                      "regions": [
+                        "status-badge"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "widget-view",
+                    "mode": "docked"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnExplicitClose",
+                    "startupHook": "bind-status-stream"
+                  },
+                  "sizingConstraints": {
+                    "width": 300,
+                    "height": 120,
+                    "minWidth": 200,
+                    "minHeight": 80,
+                    "resizable": false
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/WidgetStyles.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Status Widget",
+                    "role": "status",
+                    "liveRegion": "polite"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "WidgetHost.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "widget-panel-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "widget-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "embedded-shell-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "embedded-control-host",
+                  "title": "Embedded Analytics Shell",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "embedded-view",
+                    "kind": "control-container",
+                    "regions": [
+                      "chart-region",
+                      "table-region"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "embedded-view",
+                  "mode": "embedded"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnParentClose",
+                  "startupHook": "bind-analytics-pipeline"
+                },
+                "sizingConstraints": {
+                  "width": 800,
+                  "height": 600,
+                  "minWidth": 400,
+                  "minHeight": 300,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "Assets/Themes/AnalyticsTheme.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Embedded Analytics View",
+                  "role": "region",
+                  "liveRegion": "none"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "AnalyticsControl.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "embedded-control-host",
+                    "title": "Embedded Analytics Shell",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "embedded-view",
+                      "kind": "control-container",
+                      "regions": [
+                        "chart-region",
+                        "table-region"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "embedded-view",
+                    "mode": "embedded"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnParentClose",
+                    "startupHook": "bind-analytics-pipeline"
+                  },
+                  "sizingConstraints": {
+                    "width": 800,
+                    "height": 600,
+                    "minWidth": 400,
+                    "minHeight": 300,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/AnalyticsTheme.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Embedded Analytics View",
+                    "role": "region",
+                    "liveRegion": "none"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "AnalyticsControl.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "embedded-control-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "embedded-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-4e77a6e6a9ab7c08.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "admitted host identity, root views, startup, lifecycle, size, resources, accessibility, and packaging requirements",
+        "line": 23
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-presentation-hosting/contracts/input.schema.json",
+          "entryDigest": "sha256:05e0b3b6ac4ce67208c92ed67f6b34f940182166c0fdfc0ec1c78de1443dfa94",
+          "snapshot": "data/capsule-evidence/entries/05e0b3b6ac4ce67208c92ed67f6b34f940182166c0fdfc0ec1c78de1443dfa94-297312f6bfc430ed.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "project-presentation-hosting-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "hostIdentity",
+                "rootViews",
+                "startupView",
+                "lifecycle",
+                "sizingConstraints",
+                "resourceReferences",
+                "accessibility",
+                "packaging"
+              ],
+              "properties": {
+                "hostIdentity": {
+                  "type": "object",
+                  "required": [
+                    "hostId",
+                    "title",
+                    "targetPlatform"
+                  ],
+                  "properties": {
+                    "hostId": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "targetPlatform": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rootViews": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "viewId",
+                      "kind",
+                      "regions"
+                    ],
+                    "properties": {
+                      "viewId": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "type": "string"
+                      },
+                      "regions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "startupView": {
+                  "type": "object",
+                  "required": [
+                    "viewId",
+                    "mode"
+                  ],
+                  "properties": {
+                    "viewId": {
+                      "type": "string"
+                    },
+                    "mode": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "lifecycle": {
+                  "type": "object",
+                  "required": [
+                    "shutdownMode",
+                    "startupHook"
+                  ],
+                  "properties": {
+                    "shutdownMode": {
+                      "type": "string"
+                    },
+                    "startupHook": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "sizingConstraints": {
+                  "type": "object",
+                  "required": [
+                    "width",
+                    "height",
+                    "minWidth",
+                    "minHeight",
+                    "resizable"
+                  ],
+                  "properties": {
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    },
+                    "minWidth": {
+                      "type": "number"
+                    },
+                    "minHeight": {
+                      "type": "number"
+                    },
+                    "resizable": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "resourceReferences": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "accessibility": {
+                  "type": "object",
+                  "required": [
+                    "accessibleName",
+                    "role",
+                    "liveRegion"
+                  ],
+                  "properties": {
+                    "accessibleName": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string"
+                    },
+                    "liveRegion": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "packaging": {
+                  "type": "object",
+                  "required": [
+                    "targetFramework",
+                    "entryPoint"
+                  ],
+                  "properties": {
+                    "targetFramework": {
+                      "type": "string"
+                    },
+                    "entryPoint": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/project-presentation-hosting/contracts/outcome.schema.json",
+          "entryDigest": "sha256:ce95b7255423ec70e83dfca8898ab130d22dec14636d1a2d549b4de50d5a9f72",
+          "snapshot": "data/capsule-evidence/entries/ce95b7255423ec70e83dfca8898ab130d22dec14636d1a2d549b4de50d5a9f72-1845abd21c97d765.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "hostIdentity",
+            "rootViews",
+            "startupView",
+            "lifecycle",
+            "sizingConstraints",
+            "resourceReferences",
+            "accessibility",
+            "packaging",
+            "uninventedShellVerified",
+            "status"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "presentation-hosting-projection-evidence.v1"
+            },
+            "hostIdentity": {
+              "type": "object",
+              "required": [
+                "hostId",
+                "title",
+                "targetPlatform"
+              ],
+              "properties": {
+                "hostId": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "targetPlatform": {
+                  "type": "string"
+                }
+              }
+            },
+            "rootViews": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "viewId",
+                  "kind",
+                  "regions"
+                ],
+                "properties": {
+                  "viewId": {
+                    "type": "string"
+                  },
+                  "kind": {
+                    "type": "string"
+                  },
+                  "regions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "startupView": {
+              "type": "object",
+              "required": [
+                "viewId",
+                "mode"
+              ],
+              "properties": {
+                "viewId": {
+                  "type": "string"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "lifecycle": {
+              "type": "object",
+              "required": [
+                "shutdownMode",
+                "startupHook"
+              ],
+              "properties": {
+                "shutdownMode": {
+                  "type": "string"
+                },
+                "startupHook": {
+                  "type": "string"
+                }
+              }
+            },
+            "sizingConstraints": {
+              "type": "object",
+              "required": [
+                "width",
+                "height",
+                "minWidth",
+                "minHeight",
+                "resizable"
+              ],
+              "properties": {
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                },
+                "minWidth": {
+                  "type": "number"
+                },
+                "minHeight": {
+                  "type": "number"
+                },
+                "resizable": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "resourceReferences": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "accessibility": {
+              "type": "object",
+              "required": [
+                "accessibleName",
+                "role",
+                "liveRegion"
+              ],
+              "properties": {
+                "accessibleName": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "liveRegion": {
+                  "type": "string"
+                }
+              }
+            },
+            "packaging": {
+              "type": "object",
+              "required": [
+                "targetFramework",
+                "entryPoint"
+              ],
+              "properties": {
+                "targetFramework": {
+                  "type": "string"
+                },
+                "entryPoint": {
+                  "type": "string"
+                }
+              }
+            },
+            "uninventedShellVerified": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-336660292364e6e6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-e2051ceac103936a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-cbf69c7303ca6420.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-63c8e6e457e70ad3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "presentation projection compiler"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "project-presentation-hosting",
+          "scenario": {
+            "scenarioId": "project-presentation-hosting",
+            "input": {
+              "inputId": "presentation-hosting-facts",
+              "contract": {
+                "contractId": "project-presentation-hosting-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "presentation-hosting-projection-requested",
+              "executionAuthorityId": "presentation-hosting-projection.v1"
+            },
+            "outcome": {
+              "outcomeId": "presentation-hosting-projection-known",
+              "contract": {
+                "contractId": "presentation-hosting-projection-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "project-presentation-hosting.operation.1",
+              "mechanicBindingId": "port:project-presentation-hosting-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "project-presentation-hosting-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "05e0b3b6ac4ce67208c92ed67f6b34f940182166c0fdfc0ec1c78de1443dfa94",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "project-presentation-hosting-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "hostIdentity",
+                          "rootViews",
+                          "startupView",
+                          "lifecycle",
+                          "sizingConstraints",
+                          "resourceReferences",
+                          "accessibility",
+                          "packaging"
+                        ],
+                        "properties": {
+                          "hostIdentity": {
+                            "type": "object",
+                            "required": [
+                              "hostId",
+                              "title",
+                              "targetPlatform"
+                            ],
+                            "properties": {
+                              "hostId": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "targetPlatform": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "rootViews": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "viewId",
+                                "kind",
+                                "regions"
+                              ],
+                              "properties": {
+                                "viewId": {
+                                  "type": "string"
+                                },
+                                "kind": {
+                                  "type": "string"
+                                },
+                                "regions": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "startupView": {
+                            "type": "object",
+                            "required": [
+                              "viewId",
+                              "mode"
+                            ],
+                            "properties": {
+                              "viewId": {
+                                "type": "string"
+                              },
+                              "mode": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "lifecycle": {
+                            "type": "object",
+                            "required": [
+                              "shutdownMode",
+                              "startupHook"
+                            ],
+                            "properties": {
+                              "shutdownMode": {
+                                "type": "string"
+                              },
+                              "startupHook": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "sizingConstraints": {
+                            "type": "object",
+                            "required": [
+                              "width",
+                              "height",
+                              "minWidth",
+                              "minHeight",
+                              "resizable"
+                            ],
+                            "properties": {
+                              "width": {
+                                "type": "number"
+                              },
+                              "height": {
+                                "type": "number"
+                              },
+                              "minWidth": {
+                                "type": "number"
+                              },
+                              "minHeight": {
+                                "type": "number"
+                              },
+                              "resizable": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "resourceReferences": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "accessibility": {
+                            "type": "object",
+                            "required": [
+                              "accessibleName",
+                              "role",
+                              "liveRegion"
+                            ],
+                            "properties": {
+                              "accessibleName": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              },
+                              "liveRegion": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "packaging": {
+                            "type": "object",
+                            "required": [
+                              "targetFramework",
+                              "entryPoint"
+                            ],
+                            "properties": {
+                              "targetFramework": {
+                                "type": "string"
+                              },
+                              "entryPoint": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "presentation-hosting-projection-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "ce95b7255423ec70e83dfca8898ab130d22dec14636d1a2d549b4de50d5a9f72",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "hostIdentity",
+                      "rootViews",
+                      "startupView",
+                      "lifecycle",
+                      "sizingConstraints",
+                      "resourceReferences",
+                      "accessibility",
+                      "packaging",
+                      "uninventedShellVerified",
+                      "status"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "presentation-hosting-projection-evidence.v1"
+                      },
+                      "hostIdentity": {
+                        "type": "object",
+                        "required": [
+                          "hostId",
+                          "title",
+                          "targetPlatform"
+                        ],
+                        "properties": {
+                          "hostId": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "targetPlatform": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "rootViews": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "viewId",
+                            "kind",
+                            "regions"
+                          ],
+                          "properties": {
+                            "viewId": {
+                              "type": "string"
+                            },
+                            "kind": {
+                              "type": "string"
+                            },
+                            "regions": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "startupView": {
+                        "type": "object",
+                        "required": [
+                          "viewId",
+                          "mode"
+                        ],
+                        "properties": {
+                          "viewId": {
+                            "type": "string"
+                          },
+                          "mode": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "lifecycle": {
+                        "type": "object",
+                        "required": [
+                          "shutdownMode",
+                          "startupHook"
+                        ],
+                        "properties": {
+                          "shutdownMode": {
+                            "type": "string"
+                          },
+                          "startupHook": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "sizingConstraints": {
+                        "type": "object",
+                        "required": [
+                          "width",
+                          "height",
+                          "minWidth",
+                          "minHeight",
+                          "resizable"
+                        ],
+                        "properties": {
+                          "width": {
+                            "type": "number"
+                          },
+                          "height": {
+                            "type": "number"
+                          },
+                          "minWidth": {
+                            "type": "number"
+                          },
+                          "minHeight": {
+                            "type": "number"
+                          },
+                          "resizable": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "resourceReferences": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "accessibility": {
+                        "type": "object",
+                        "required": [
+                          "accessibleName",
+                          "role",
+                          "liveRegion"
+                        ],
+                        "properties": {
+                          "accessibleName": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "liveRegion": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "packaging": {
+                        "type": "object",
+                        "required": [
+                          "targetFramework",
+                          "entryPoint"
+                        ],
+                        "properties": {
+                          "targetFramework": {
+                            "type": "string"
+                          },
+                          "entryPoint": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "uninventedShellVerified": {
+                        "type": "boolean"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-presentation-hosting-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "presentation-hosting-projection-evidence.v1"
+                },
+                "hostIdentity": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.hostIdentity"
+                },
+                "rootViews": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.rootViews"
+                },
+                "startupView": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.startupView"
+                },
+                "lifecycle": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.lifecycle"
+                },
+                "sizingConstraints": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.sizingConstraints"
+                },
+                "resourceReferences": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.resourceReferences"
+                },
+                "accessibility": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.accessibility"
+                },
+                "packaging": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.packaging"
+                },
+                "uninventedShellVerified": {
+                  "op": "literal",
+                  "value": true
+                },
+                "status": {
+                  "op": "literal",
+                  "value": "projected"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-presentation-hosting-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every host fact and lineage reference is preserved without invented shell content or target-owned application behavior",
+        "line": 25
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "wpf-desktop-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "wpf-app-main",
+                  "title": "Primary Application Window",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "main-window-view",
+                    "kind": "window",
+                    "regions": [
+                      "header-region",
+                      "content-region"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "main-window-view",
+                  "mode": "immediate"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnLastWindowClose",
+                  "startupHook": "initialize-view-model"
+                },
+                "sizingConstraints": {
+                  "width": 1024,
+                  "height": 768,
+                  "minWidth": 800,
+                  "minHeight": 600,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "Assets/Themes/DarkTheme.xaml",
+                  "Assets/Icons/AppIcon.ico"
+                ],
+                "accessibility": {
+                  "accessibleName": "Primary Application Window",
+                  "role": "application",
+                  "liveRegion": "none"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "App.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "wpf-app-main",
+                    "title": "Primary Application Window",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "main-window-view",
+                      "kind": "window",
+                      "regions": [
+                        "header-region",
+                        "content-region"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "main-window-view",
+                    "mode": "immediate"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnLastWindowClose",
+                    "startupHook": "initialize-view-model"
+                  },
+                  "sizingConstraints": {
+                    "width": 1024,
+                    "height": 768,
+                    "minWidth": 800,
+                    "minHeight": 600,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/DarkTheme.xaml",
+                    "Assets/Icons/AppIcon.ico"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Primary Application Window",
+                    "role": "application",
+                    "liveRegion": "none"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "App.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "wpf-app-main"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "main-window-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                },
+                {
+                  "conditionId": "uninvented-shell-verified",
+                  "path": "uninventedShellVerified",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "dialog-hosting-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "confirmation-dialog-host",
+                  "title": "Confirmation Required",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "confirm-dialog-view",
+                    "kind": "dialog",
+                    "regions": [
+                      "dialog-body"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "confirm-dialog-view",
+                  "mode": "modal"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnExplicitClose",
+                  "startupHook": "bind-dialog-context"
+                },
+                "sizingConstraints": {
+                  "width": 400,
+                  "height": 250,
+                  "minWidth": 400,
+                  "minHeight": 250,
+                  "resizable": false
+                },
+                "resourceReferences": [
+                  "Assets/Themes/DialogStyles.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Confirmation Required Dialog",
+                  "role": "dialog",
+                  "liveRegion": "polite"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "ConfirmationDialog.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "confirmation-dialog-host",
+                    "title": "Confirmation Required",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "confirm-dialog-view",
+                      "kind": "dialog",
+                      "regions": [
+                        "dialog-body"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "confirm-dialog-view",
+                    "mode": "modal"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnExplicitClose",
+                    "startupHook": "bind-dialog-context"
+                  },
+                  "sizingConstraints": {
+                    "width": 400,
+                    "height": 250,
+                    "minWidth": 400,
+                    "minHeight": 250,
+                    "resizable": false
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/DialogStyles.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Confirmation Required Dialog",
+                    "role": "dialog",
+                    "liveRegion": "polite"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "ConfirmationDialog.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "confirmation-dialog-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "confirm-dialog-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "web-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "web-spa-host",
+                  "title": "Operations Dashboard",
+                  "targetPlatform": "web"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "spa-root-view",
+                    "kind": "single-page",
+                    "regions": [
+                      "nav",
+                      "workspace",
+                      "alerts"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "spa-root-view",
+                  "mode": "immediate"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnTabClose",
+                  "startupHook": "mount-dom-root"
+                },
+                "sizingConstraints": {
+                  "width": 1920,
+                  "height": 1080,
+                  "minWidth": 320,
+                  "minHeight": 480,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "styles/theme.css",
+                  "styles/components.css"
+                ],
+                "accessibility": {
+                  "accessibleName": "Operations Dashboard Web App",
+                  "role": "main",
+                  "liveRegion": "assertive"
+                },
+                "packaging": {
+                  "targetFramework": "es2022",
+                  "entryPoint": "index.html"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "web-spa-host",
+                    "title": "Operations Dashboard",
+                    "targetPlatform": "web"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "spa-root-view",
+                      "kind": "single-page",
+                      "regions": [
+                        "nav",
+                        "workspace",
+                        "alerts"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "spa-root-view",
+                    "mode": "immediate"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnTabClose",
+                    "startupHook": "mount-dom-root"
+                  },
+                  "sizingConstraints": {
+                    "width": 1920,
+                    "height": 1080,
+                    "minWidth": 320,
+                    "minHeight": 480,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "styles/theme.css",
+                    "styles/components.css"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Operations Dashboard Web App",
+                    "role": "main",
+                    "liveRegion": "assertive"
+                  },
+                  "packaging": {
+                    "targetFramework": "es2022",
+                    "entryPoint": "index.html"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "web-spa-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "spa-root-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multi-window-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "multi-window-desktop",
+                  "title": "Multi-Document Workspace",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "primary-view",
+                    "kind": "window",
+                    "regions": [
+                      "doc-region",
+                      "tool-palette"
+                    ]
+                  },
+                  {
+                    "viewId": "inspector-view",
+                    "kind": "window",
+                    "regions": [
+                      "properties-panel"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "primary-view",
+                  "mode": "immediate"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnMainWindowClose",
+                  "startupHook": "load-workspace-state"
+                },
+                "sizingConstraints": {
+                  "width": 1440,
+                  "height": 900,
+                  "minWidth": 1024,
+                  "minHeight": 700,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "Assets/Themes/StudioTheme.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Multi-Document Workspace Host",
+                  "role": "application",
+                  "liveRegion": "none"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "WorkspaceApp.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "multi-window-desktop",
+                    "title": "Multi-Document Workspace",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "primary-view",
+                      "kind": "window",
+                      "regions": [
+                        "doc-region",
+                        "tool-palette"
+                      ]
+                    },
+                    {
+                      "viewId": "inspector-view",
+                      "kind": "window",
+                      "regions": [
+                        "properties-panel"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "primary-view",
+                    "mode": "immediate"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnMainWindowClose",
+                    "startupHook": "load-workspace-state"
+                  },
+                  "sizingConstraints": {
+                    "width": 1440,
+                    "height": 900,
+                    "minWidth": 1024,
+                    "minHeight": 700,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/StudioTheme.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Multi-Document Workspace Host",
+                    "role": "application",
+                    "liveRegion": "none"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "WorkspaceApp.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "multi-window-desktop"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "primary-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "compact-widget-host-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "widget-panel-host",
+                  "title": "Status Widget",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "widget-view",
+                    "kind": "panel",
+                    "regions": [
+                      "status-badge"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "widget-view",
+                  "mode": "docked"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnExplicitClose",
+                  "startupHook": "bind-status-stream"
+                },
+                "sizingConstraints": {
+                  "width": 300,
+                  "height": 120,
+                  "minWidth": 200,
+                  "minHeight": 80,
+                  "resizable": false
+                },
+                "resourceReferences": [
+                  "Assets/Themes/WidgetStyles.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Status Widget",
+                  "role": "status",
+                  "liveRegion": "polite"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "WidgetHost.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "widget-panel-host",
+                    "title": "Status Widget",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "widget-view",
+                      "kind": "panel",
+                      "regions": [
+                        "status-badge"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "widget-view",
+                    "mode": "docked"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnExplicitClose",
+                    "startupHook": "bind-status-stream"
+                  },
+                  "sizingConstraints": {
+                    "width": 300,
+                    "height": 120,
+                    "minWidth": 200,
+                    "minHeight": 80,
+                    "resizable": false
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/WidgetStyles.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Status Widget",
+                    "role": "status",
+                    "liveRegion": "polite"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "WidgetHost.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "widget-panel-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "widget-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-presentation-hosting/fixtures.authority.json",
+          "entryDigest": "sha256:d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a",
+          "snapshot": "data/capsule-evidence/entries/d7c687c4c663f81fd6fdd3ff66828a0f02862f26e64aba573f47dfb09066ca4a-1c8af09ade3674a1.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "embedded-shell-fixture",
+            "input": {
+              "contractId": "project-presentation-hosting-input.v1",
+              "payload": {
+                "hostIdentity": {
+                  "hostId": "embedded-control-host",
+                  "title": "Embedded Analytics Shell",
+                  "targetPlatform": "wpf"
+                },
+                "rootViews": [
+                  {
+                    "viewId": "embedded-view",
+                    "kind": "control-container",
+                    "regions": [
+                      "chart-region",
+                      "table-region"
+                    ]
+                  }
+                ],
+                "startupView": {
+                  "viewId": "embedded-view",
+                  "mode": "embedded"
+                },
+                "lifecycle": {
+                  "shutdownMode": "OnParentClose",
+                  "startupHook": "bind-analytics-pipeline"
+                },
+                "sizingConstraints": {
+                  "width": 800,
+                  "height": 600,
+                  "minWidth": 400,
+                  "minHeight": 300,
+                  "resizable": true
+                },
+                "resourceReferences": [
+                  "Assets/Themes/AnalyticsTheme.xaml"
+                ],
+                "accessibility": {
+                  "accessibleName": "Embedded Analytics View",
+                  "role": "region",
+                  "liveRegion": "none"
+                },
+                "packaging": {
+                  "targetFramework": "net8.0-windows",
+                  "entryPoint": "AnalyticsControl.xaml"
+                }
+              }
+            },
+            "portOutcomes": {
+              "project-presentation-hosting-port": {
+                "output": {
+                  "contractId": "presentation-hosting-projection-evidence.v1",
+                  "hostIdentity": {
+                    "hostId": "embedded-control-host",
+                    "title": "Embedded Analytics Shell",
+                    "targetPlatform": "wpf"
+                  },
+                  "rootViews": [
+                    {
+                      "viewId": "embedded-view",
+                      "kind": "control-container",
+                      "regions": [
+                        "chart-region",
+                        "table-region"
+                      ]
+                    }
+                  ],
+                  "startupView": {
+                    "viewId": "embedded-view",
+                    "mode": "embedded"
+                  },
+                  "lifecycle": {
+                    "shutdownMode": "OnParentClose",
+                    "startupHook": "bind-analytics-pipeline"
+                  },
+                  "sizingConstraints": {
+                    "width": 800,
+                    "height": 600,
+                    "minWidth": 400,
+                    "minHeight": 300,
+                    "resizable": true
+                  },
+                  "resourceReferences": [
+                    "Assets/Themes/AnalyticsTheme.xaml"
+                  ],
+                  "accessibility": {
+                    "accessibleName": "Embedded Analytics View",
+                    "role": "region",
+                    "liveRegion": "none"
+                  },
+                  "packaging": {
+                    "targetFramework": "net8.0-windows",
+                    "entryPoint": "AnalyticsControl.xaml"
+                  },
+                  "uninventedShellVerified": true,
+                  "status": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-presentation-hosting",
+              "scenarioSequence": [
+                "project-presentation-hosting"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "host-identity-preserved",
+                  "path": "hostIdentity.hostId",
+                  "operator": "equals",
+                  "value": "embedded-control-host"
+                },
+                {
+                  "conditionId": "startup-view-preserved",
+                  "path": "startupView.viewId",
+                  "operator": "equals",
+                  "value": "embedded-view"
+                },
+                {
+                  "conditionId": "status-verified",
+                  "path": "status",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-presentation-hosting-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "project-presentation-hosting",
+        "scenario": {
+          "scenarioId": "project-presentation-hosting",
+          "input": {
+            "inputId": "presentation-hosting-facts",
+            "contract": {
+              "contractId": "project-presentation-hosting-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "presentation-hosting-projection-requested",
+            "executionAuthorityId": "presentation-hosting-projection.v1"
+          },
+          "outcome": {
+            "outcomeId": "presentation-hosting-projection-known",
+            "contract": {
+              "contractId": "presentation-hosting-projection-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "project-presentation-hosting.operation.1",
+            "mechanicBindingId": "port:project-presentation-hosting-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-presentation-hosting/execution-plan.node.json",
+          "entryDigest": "sha256:7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba",
+          "snapshot": "data/capsule-evidence/entries/7c4d9f18afb3d5c45a6c37abb485080589795503667614fbceebdb413ee46dba-cac471072d186ccf.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

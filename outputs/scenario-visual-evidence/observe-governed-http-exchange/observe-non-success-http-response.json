@@ -1,0 +1,4048 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "observe-governed-http-exchange::observe-non-success-http-response",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:78cb3350a9171bada77f1df525ce35b8c1fb189ebd4f643400bca5f895afb8ef"
+  },
+  "scenarioSurface": {
+    "key": "observe-governed-http-exchange::observe-non-success-http-response",
+    "capabilityId": "observe-governed-http-exchange",
+    "capabilityName": "Observe governed HTTP exchanges",
+    "scenarioId": "observe-non-success-http-response",
+    "scenarioName": "Retain a complete non-success HTTP response as testimony",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one authorized exchange whose remote endpoint returns a non-success status with bounded response bytes",
+        "line": 48
+      }
+    ],
+    "event": [
+      {
+        "text": "the transport observation is completed",
+        "line": 49
+      }
+    ],
+    "outcome": [
+      {
+        "text": "the exact status, safe headers, bounded bytes, hashes, timing, and lineage are returned without classifying provider meaning, throwing away testimony, retrying, or substituting an endpoint",
+        "line": 50
+      }
+    ],
+    "products": [
+      "non-success-http-response-observation"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "authorized-consumer"
+    ],
+    "altitude": null,
+    "notes": "\n  This capability performs exactly one authorized HTTP exchange from one\n  projected credential-free protocol request with exact canonical UTF-8 body\n  text, endpoint policy, opaque\n  credential binding, timeout, cancellation scope, response bound, and\n  invocation identity. Its objective covers successful and non-success HTTP\n  responses, denied endpoints, invalid credential bindings, timeouts,\n  cancellation, DNS/TLS/socket failures, oversized responses, secret redaction,\n  and the prohibition on retry or provider substitution.\n\n  HTTP observations are untrusted transport testimony. This capability does\n  not interpret model content or map provider dispositions.\n\n  The projected capability binds its root event directly to\n  sda-governed-http-exchange-port.v1. No authority transformation may\n  simulate a response, status, exchange count, timing fact, or transport\n  failure.",
+    "source": {
+      "capsuleFile": "observe-governed-http-exchange.sfxcap",
+      "capsuleDigest": "sha256:78cb3350a9171bada77f1df525ce35b8c1fb189ebd4f643400bca5f895afb8ef",
+      "featureEntry": "features/observe-governed-http-exchange.feature",
+      "featureDigest": "sha256:f30a308118d64682526e79cf4e5d1e77d1ff04d452908df30b5c43427ac133ec",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/observe-governed-http-exchange.feature",
+      "scenarioLine": 47
+    },
+    "tags": [
+      "@capability:observe-governed-http-exchange",
+      "@root-scenario:observe-governed-http-exchange",
+      "@scenario:observe-non-success-http-response",
+      "@input:non-success-governed-http-exchange",
+      "@input-contract:observe-governed-http-exchange-input.v1",
+      "@event:non-success-governed-http-exchange-requested",
+      "@event-authority:observe-non-success-http-response.v1",
+      "@outcome:non-success-http-response-observation",
+      "@outcome-contract:governed-http-exchange-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/nodes/1"
+        },
+        "value": {
+          "nodeId": "observe-non-success-http-response",
+          "scenario": {
+            "scenarioId": "observe-non-success-http-response",
+            "input": {
+              "inputId": "non-success-governed-http-exchange",
+              "contract": {
+                "contractId": "observe-governed-http-exchange-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "non-success-governed-http-exchange-requested",
+              "executionAuthorityId": "observe-non-success-http-response.v1"
+            },
+            "outcome": {
+              "outcomeId": "non-success-http-response-observation",
+              "contract": {
+                "contractId": "governed-http-exchange-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "observe-non-success-http-response.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:preserve-http-exchange-evidence-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "observe-governed-http-exchange-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/observe-governed-http-exchange-input.schema.json",
+                  "schemaDigest": "5b332a232077eb36535e7053b51b552fa0422998159dc8422eb5f0f47cc0f010",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/observe-governed-http-exchange-input.schema.json",
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "contractId",
+                          "payload"
+                        ],
+                        "properties": {
+                          "contractId": {
+                            "const": "observe-governed-http-exchange-input.v1"
+                          },
+                          "payload": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "exchangeKind",
+                              "invocationIdentity",
+                              "endpointAuthorityDigest",
+                              "requestUrl",
+                              "method",
+                              "safeHeaders",
+                              "requestBodyText",
+                              "opaqueCredentialBinding",
+                              "credentialInjectionRuleId",
+                              "timeoutMilliseconds",
+                              "cancellationScopeReference",
+                              "maxResponseBytes",
+                              "redirectPolicy",
+                              "allowedResponseHeaders",
+                              "lineageId"
+                            ],
+                            "properties": {
+                              "exchangeKind": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "invocationIdentity": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "endpointAuthorityDigest": {
+                                "type": "string",
+                                "pattern": "^sha256:[a-f0-9]{64}$"
+                              },
+                              "requestUrl": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "method": {
+                                "const": "POST"
+                              },
+                              "safeHeaders": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              },
+                              "opaqueCredentialBinding": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "bindingId",
+                                  "credentialInjectionRuleId"
+                                ],
+                                "properties": {
+                                  "bindingId": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "credentialInjectionRuleId": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  }
+                                }
+                              },
+                              "credentialInjectionRuleId": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "timeoutMilliseconds": {
+                                "type": "integer",
+                                "minimum": 1
+                              },
+                              "cancellationScopeReference": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "maxResponseBytes": {
+                                "type": "integer",
+                                "minimum": 1
+                              },
+                              "redirectPolicy": {
+                                "const": "manual-no-follow"
+                              },
+                              "allowedResponseHeaders": {
+                                "type": "array",
+                                "uniqueItems": true,
+                                "items": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "lineageId": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "effectLineage": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "requestBodyText": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "contractId",
+                          "disposition",
+                          "exchangeKind",
+                          "exchangeCount",
+                          "redactionVerified"
+                        ],
+                        "properties": {
+                          "contractId": {
+                            "const": "governed-http-exchange-evidence.v1"
+                          },
+                          "disposition": {
+                            "type": "string"
+                          },
+                          "exchangeKind": {
+                            "type": "string"
+                          },
+                          "exchangeCount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "redactionVerified": {
+                            "const": true
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "governed-http-exchange-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/governed-http-exchange-evidence.schema.json",
+                  "schemaDigest": "fd92ed1905e241e59c675d8b4c8491624dcd83fd225f202d21def356b6d245e8",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/governed-http-exchange-evidence.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "disposition",
+                      "exchangeKind",
+                      "transportDisposition",
+                      "httpStatus",
+                      "allowedResponseHeaders",
+                      "boundedBytes",
+                      "requestBodyHash",
+                      "responseBodyHash",
+                      "responseBodyBytes",
+                      "reachedStage",
+                      "exchangeCount",
+                      "timing",
+                      "redactionVerified",
+                      "lineageId",
+                      "effectLineage"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "governed-http-exchange-evidence.v1"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "completed",
+                          "retained-non-success",
+                          "rejected-endpoint",
+                          "rejected-credential",
+                          "timed-out",
+                          "cancelled",
+                          "transport-failed",
+                          "oversized-response-rejected"
+                        ]
+                      },
+                      "exchangeKind": {
+                        "type": "string"
+                      },
+                      "transportDisposition": {
+                        "type": "string"
+                      },
+                      "httpStatus": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 599
+                      },
+                      "allowedResponseHeaders": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "boundedBytes": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "requestBodyHash": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "responseBodyHash": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "responseBodyBytes": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+                      },
+                      "reachedStage": {
+                        "type": "string"
+                      },
+                      "exchangeCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "timing": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "startedAt",
+                          "completedAt",
+                          "durationMilliseconds"
+                        ],
+                        "properties": {
+                          "startedAt": {
+                            "type": "string"
+                          },
+                          "completedAt": {
+                            "type": "string"
+                          },
+                          "durationMilliseconds": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      "redactionVerified": {
+                        "const": true
+                      },
+                      "lineageId": {
+                        "type": "string"
+                      },
+                      "effectLineage": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:preserve-http-exchange-evidence-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "path",
+              "from": "input",
+              "path": ""
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:preserve-http-exchange-evidence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/contracts/input.schema.json",
+          "entryDigest": "sha256:24b86148e6879d73b2440d26492a6f137509b94c35365257ca3416152307e8b5",
+          "snapshot": "data/capsule-evidence/entries/24b86148e6879d73b2440d26492a6f137509b94c35365257ca3416152307e8b5-ffa675c5b8318b0b.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/observe-governed-http-exchange-input.schema.json",
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "payload"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "observe-governed-http-exchange-input.v1"
+                },
+                "payload": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "exchangeKind",
+                    "invocationIdentity",
+                    "endpointAuthorityDigest",
+                    "requestUrl",
+                    "method",
+                    "safeHeaders",
+                    "requestBodyText",
+                    "opaqueCredentialBinding",
+                    "credentialInjectionRuleId",
+                    "timeoutMilliseconds",
+                    "cancellationScopeReference",
+                    "maxResponseBytes",
+                    "redirectPolicy",
+                    "allowedResponseHeaders",
+                    "lineageId"
+                  ],
+                  "properties": {
+                    "exchangeKind": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "invocationIdentity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "endpointAuthorityDigest": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "requestUrl": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "safeHeaders": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "opaqueCredentialBinding": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "bindingId",
+                        "credentialInjectionRuleId"
+                      ],
+                      "properties": {
+                        "bindingId": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "credentialInjectionRuleId": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    },
+                    "credentialInjectionRuleId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "timeoutMilliseconds": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "cancellationScopeReference": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "maxResponseBytes": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "redirectPolicy": {
+                      "const": "manual-no-follow"
+                    },
+                    "allowedResponseHeaders": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "lineageId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "effectLineage": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "requestBodyText": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": [
+                "contractId",
+                "disposition",
+                "exchangeKind",
+                "exchangeCount",
+                "redactionVerified"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "governed-http-exchange-evidence.v1"
+                },
+                "disposition": {
+                  "type": "string"
+                },
+                "exchangeKind": {
+                  "type": "string"
+                },
+                "exchangeCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "redactionVerified": {
+                  "const": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/contracts/outcome.schema.json",
+          "entryDigest": "sha256:c099926c2e7a2b9207f67e652f68b4f3705a5ec998c11f38f11d67a051cd0445",
+          "snapshot": "data/capsule-evidence/entries/c099926c2e7a2b9207f67e652f68b4f3705a5ec998c11f38f11d67a051cd0445-a52f0f7913f7cbe4.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/governed-http-exchange-evidence.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "disposition",
+            "exchangeKind",
+            "transportDisposition",
+            "httpStatus",
+            "allowedResponseHeaders",
+            "boundedBytes",
+            "requestBodyHash",
+            "responseBodyHash",
+            "responseBodyBytes",
+            "reachedStage",
+            "exchangeCount",
+            "timing",
+            "redactionVerified",
+            "lineageId",
+            "effectLineage"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "governed-http-exchange-evidence.v1"
+            },
+            "disposition": {
+              "enum": [
+                "completed",
+                "retained-non-success",
+                "rejected-endpoint",
+                "rejected-credential",
+                "timed-out",
+                "cancelled",
+                "transport-failed",
+                "oversized-response-rejected"
+              ]
+            },
+            "exchangeKind": {
+              "type": "string"
+            },
+            "transportDisposition": {
+              "type": "string"
+            },
+            "httpStatus": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 599
+            },
+            "allowedResponseHeaders": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "boundedBytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "requestBodyHash": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "responseBodyHash": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "responseBodyBytes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+            },
+            "reachedStage": {
+              "type": "string"
+            },
+            "exchangeCount": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "timing": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "startedAt",
+                "completedAt",
+                "durationMilliseconds"
+              ],
+              "properties": {
+                "startedAt": {
+                  "type": "string"
+                },
+                "completedAt": {
+                  "type": "string"
+                },
+                "durationMilliseconds": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "redactionVerified": {
+              "const": true
+            },
+            "lineageId": {
+              "type": "string"
+            },
+            "effectLineage": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-39cd1bdef68f7d02.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-4f5ff2d32ecd76c8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-0a9f175b1fe2bdfd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-5d950e23ba142c60.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "observe-completed-exchange",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "success",
+                "invocationIdentity": "invocation-001",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-001",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-001",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-001",
+                "effectLineage": [
+                  "fixture"
+                ],
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "completed",
+                  "exchangeKind": "success",
+                  "transportDisposition": "completed",
+                  "httpStatus": 200,
+                  "allowedResponseHeaders": {
+                    "content-type": "application/json"
+                  },
+                  "boundedBytes": 2,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyBytes": "e30=",
+                  "reachedStage": "response-complete",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-001",
+                  "effectLineage": [
+                    "fixture",
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "completed",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "completed"
+                },
+                {
+                  "conditionId": "single-exchange",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "redacted",
+                  "path": "redactionVerified",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "retain-non-success-response",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "non-success",
+                "invocationIdentity": "invocation-002",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-002",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-002",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-002",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "retained-non-success",
+                  "exchangeKind": "non-success",
+                  "transportDisposition": "completed",
+                  "httpStatus": 429,
+                  "allowedResponseHeaders": {
+                    "content-type": "application/json"
+                  },
+                  "boundedBytes": 2,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyBytes": "e30=",
+                  "reachedStage": "response-complete",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-002",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "retained",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "retained-non-success"
+                },
+                {
+                  "conditionId": "status-preserved",
+                  "path": "httpStatus",
+                  "operator": "equals",
+                  "value": 429
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-endpoint-before-exchange",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "endpoint-rejection",
+                "invocationIdentity": "invocation-003",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://unadmitted.invalid/v1/models/test:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-003",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-003",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-003",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "rejected-endpoint",
+                  "exchangeKind": "endpoint-rejection",
+                  "transportDisposition": "denied",
+                  "httpStatus": 0,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 0,
+                  "requestBodyHash": null,
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "endpoint-admission",
+                  "exchangeCount": 0,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.000Z",
+                    "durationMilliseconds": 0
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-003",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "endpoint-rejected",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "rejected-endpoint"
+                },
+                {
+                  "conditionId": "no-exchange",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "retain-timeout",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "timeout",
+                "invocationIdentity": "invocation-004",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-004",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 1,
+                "cancellationScopeReference": "invocation-004",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-004",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "timed-out",
+                  "exchangeKind": "timeout",
+                  "transportDisposition": "timed-out",
+                  "httpStatus": 0,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 0,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "reading-response",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-004",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "timeout-retained",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "timed-out"
+                },
+                {
+                  "conditionId": "single-exchange",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "retain-cancellation",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "cancellation",
+                "invocationIdentity": "invocation-005",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-005",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-005",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-005",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "cancelled",
+                  "exchangeKind": "cancellation",
+                  "transportDisposition": "cancelled",
+                  "httpStatus": 0,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 0,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "pre-exchange-cancellation",
+                  "exchangeCount": 0,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.000Z",
+                    "durationMilliseconds": 0
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-005",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "cancelled",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "cancelled"
+                },
+                {
+                  "conditionId": "bounded",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-oversized-response",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "oversized-response",
+                "invocationIdentity": "invocation-006",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-006",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-006",
+                "maxResponseBytes": 2,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-006",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "oversized-response-rejected",
+                  "exchangeKind": "oversized-response",
+                  "transportDisposition": "oversized",
+                  "httpStatus": 200,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 2,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "response-bound",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-006",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "oversized-rejected",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "oversized-response-rejected"
+                },
+                {
+                  "conditionId": "bounded",
+                  "path": "boundedBytes",
+                  "operator": "equals",
+                  "value": 2
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-950e7b656b5cb2b6.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one authorized exchange whose remote endpoint returns a non-success status with bounded response bytes",
+        "line": 48
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/contracts/input.schema.json",
+          "entryDigest": "sha256:24b86148e6879d73b2440d26492a6f137509b94c35365257ca3416152307e8b5",
+          "snapshot": "data/capsule-evidence/entries/24b86148e6879d73b2440d26492a6f137509b94c35365257ca3416152307e8b5-ffa675c5b8318b0b.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/observe-governed-http-exchange-input.schema.json",
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contractId",
+                "payload"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "observe-governed-http-exchange-input.v1"
+                },
+                "payload": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "exchangeKind",
+                    "invocationIdentity",
+                    "endpointAuthorityDigest",
+                    "requestUrl",
+                    "method",
+                    "safeHeaders",
+                    "requestBodyText",
+                    "opaqueCredentialBinding",
+                    "credentialInjectionRuleId",
+                    "timeoutMilliseconds",
+                    "cancellationScopeReference",
+                    "maxResponseBytes",
+                    "redirectPolicy",
+                    "allowedResponseHeaders",
+                    "lineageId"
+                  ],
+                  "properties": {
+                    "exchangeKind": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "invocationIdentity": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "endpointAuthorityDigest": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "requestUrl": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "method": {
+                      "const": "POST"
+                    },
+                    "safeHeaders": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "opaqueCredentialBinding": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "bindingId",
+                        "credentialInjectionRuleId"
+                      ],
+                      "properties": {
+                        "bindingId": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "credentialInjectionRuleId": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    },
+                    "credentialInjectionRuleId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "timeoutMilliseconds": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "cancellationScopeReference": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "maxResponseBytes": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "redirectPolicy": {
+                      "const": "manual-no-follow"
+                    },
+                    "allowedResponseHeaders": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "lineageId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "effectLineage": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "requestBodyText": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": [
+                "contractId",
+                "disposition",
+                "exchangeKind",
+                "exchangeCount",
+                "redactionVerified"
+              ],
+              "properties": {
+                "contractId": {
+                  "const": "governed-http-exchange-evidence.v1"
+                },
+                "disposition": {
+                  "type": "string"
+                },
+                "exchangeKind": {
+                  "type": "string"
+                },
+                "exchangeCount": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "redactionVerified": {
+                  "const": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/contracts/outcome.schema.json",
+          "entryDigest": "sha256:c099926c2e7a2b9207f67e652f68b4f3705a5ec998c11f38f11d67a051cd0445",
+          "snapshot": "data/capsule-evidence/entries/c099926c2e7a2b9207f67e652f68b4f3705a5ec998c11f38f11d67a051cd0445-a52f0f7913f7cbe4.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/governed-http-exchange-evidence.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "disposition",
+            "exchangeKind",
+            "transportDisposition",
+            "httpStatus",
+            "allowedResponseHeaders",
+            "boundedBytes",
+            "requestBodyHash",
+            "responseBodyHash",
+            "responseBodyBytes",
+            "reachedStage",
+            "exchangeCount",
+            "timing",
+            "redactionVerified",
+            "lineageId",
+            "effectLineage"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "governed-http-exchange-evidence.v1"
+            },
+            "disposition": {
+              "enum": [
+                "completed",
+                "retained-non-success",
+                "rejected-endpoint",
+                "rejected-credential",
+                "timed-out",
+                "cancelled",
+                "transport-failed",
+                "oversized-response-rejected"
+              ]
+            },
+            "exchangeKind": {
+              "type": "string"
+            },
+            "transportDisposition": {
+              "type": "string"
+            },
+            "httpStatus": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 599
+            },
+            "allowedResponseHeaders": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "boundedBytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "requestBodyHash": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "responseBodyHash": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "responseBodyBytes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+            },
+            "reachedStage": {
+              "type": "string"
+            },
+            "exchangeCount": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "timing": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "startedAt",
+                "completedAt",
+                "durationMilliseconds"
+              ],
+              "properties": {
+                "startedAt": {
+                  "type": "string"
+                },
+                "completedAt": {
+                  "type": "string"
+                },
+                "durationMilliseconds": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "redactionVerified": {
+              "const": true
+            },
+            "lineageId": {
+              "type": "string"
+            },
+            "effectLineage": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-39cd1bdef68f7d02.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-4f5ff2d32ecd76c8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-0a9f175b1fe2bdfd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-5d950e23ba142c60.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "authorized-consumer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/nodes/1"
+        },
+        "value": {
+          "nodeId": "observe-non-success-http-response",
+          "scenario": {
+            "scenarioId": "observe-non-success-http-response",
+            "input": {
+              "inputId": "non-success-governed-http-exchange",
+              "contract": {
+                "contractId": "observe-governed-http-exchange-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "non-success-governed-http-exchange-requested",
+              "executionAuthorityId": "observe-non-success-http-response.v1"
+            },
+            "outcome": {
+              "outcomeId": "non-success-http-response-observation",
+              "contract": {
+                "contractId": "governed-http-exchange-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "observe-non-success-http-response.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:preserve-http-exchange-evidence-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "observe-governed-http-exchange-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/observe-governed-http-exchange-input.schema.json",
+                  "schemaDigest": "5b332a232077eb36535e7053b51b552fa0422998159dc8422eb5f0f47cc0f010",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/observe-governed-http-exchange-input.schema.json",
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "contractId",
+                          "payload"
+                        ],
+                        "properties": {
+                          "contractId": {
+                            "const": "observe-governed-http-exchange-input.v1"
+                          },
+                          "payload": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                              "exchangeKind",
+                              "invocationIdentity",
+                              "endpointAuthorityDigest",
+                              "requestUrl",
+                              "method",
+                              "safeHeaders",
+                              "requestBodyText",
+                              "opaqueCredentialBinding",
+                              "credentialInjectionRuleId",
+                              "timeoutMilliseconds",
+                              "cancellationScopeReference",
+                              "maxResponseBytes",
+                              "redirectPolicy",
+                              "allowedResponseHeaders",
+                              "lineageId"
+                            ],
+                            "properties": {
+                              "exchangeKind": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "invocationIdentity": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "endpointAuthorityDigest": {
+                                "type": "string",
+                                "pattern": "^sha256:[a-f0-9]{64}$"
+                              },
+                              "requestUrl": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "method": {
+                                "const": "POST"
+                              },
+                              "safeHeaders": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              },
+                              "opaqueCredentialBinding": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "bindingId",
+                                  "credentialInjectionRuleId"
+                                ],
+                                "properties": {
+                                  "bindingId": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "credentialInjectionRuleId": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  }
+                                }
+                              },
+                              "credentialInjectionRuleId": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "timeoutMilliseconds": {
+                                "type": "integer",
+                                "minimum": 1
+                              },
+                              "cancellationScopeReference": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "maxResponseBytes": {
+                                "type": "integer",
+                                "minimum": 1
+                              },
+                              "redirectPolicy": {
+                                "const": "manual-no-follow"
+                              },
+                              "allowedResponseHeaders": {
+                                "type": "array",
+                                "uniqueItems": true,
+                                "items": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "lineageId": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "effectLineage": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "requestBodyText": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "contractId",
+                          "disposition",
+                          "exchangeKind",
+                          "exchangeCount",
+                          "redactionVerified"
+                        ],
+                        "properties": {
+                          "contractId": {
+                            "const": "governed-http-exchange-evidence.v1"
+                          },
+                          "disposition": {
+                            "type": "string"
+                          },
+                          "exchangeKind": {
+                            "type": "string"
+                          },
+                          "exchangeCount": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "redactionVerified": {
+                            "const": true
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                "governed-http-exchange-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/governed-http-exchange-evidence.schema.json",
+                  "schemaDigest": "fd92ed1905e241e59c675d8b4c8491624dcd83fd225f202d21def356b6d245e8",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/governed-http-exchange-evidence.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "disposition",
+                      "exchangeKind",
+                      "transportDisposition",
+                      "httpStatus",
+                      "allowedResponseHeaders",
+                      "boundedBytes",
+                      "requestBodyHash",
+                      "responseBodyHash",
+                      "responseBodyBytes",
+                      "reachedStage",
+                      "exchangeCount",
+                      "timing",
+                      "redactionVerified",
+                      "lineageId",
+                      "effectLineage"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "governed-http-exchange-evidence.v1"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "completed",
+                          "retained-non-success",
+                          "rejected-endpoint",
+                          "rejected-credential",
+                          "timed-out",
+                          "cancelled",
+                          "transport-failed",
+                          "oversized-response-rejected"
+                        ]
+                      },
+                      "exchangeKind": {
+                        "type": "string"
+                      },
+                      "transportDisposition": {
+                        "type": "string"
+                      },
+                      "httpStatus": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 599
+                      },
+                      "allowedResponseHeaders": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "boundedBytes": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "requestBodyHash": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "responseBodyHash": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "responseBodyBytes": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+                      },
+                      "reachedStage": {
+                        "type": "string"
+                      },
+                      "exchangeCount": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "timing": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "startedAt",
+                          "completedAt",
+                          "durationMilliseconds"
+                        ],
+                        "properties": {
+                          "startedAt": {
+                            "type": "string"
+                          },
+                          "completedAt": {
+                            "type": "string"
+                          },
+                          "durationMilliseconds": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      "redactionVerified": {
+                        "const": true
+                      },
+                      "lineageId": {
+                        "type": "string"
+                      },
+                      "effectLineage": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:preserve-http-exchange-evidence-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "path",
+              "from": "input",
+              "path": ""
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:preserve-http-exchange-evidence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "the exact status, safe headers, bounded bytes, hashes, timing, and lineage are returned without classifying provider meaning, throwing away testimony, retrying, or substituting an endpoint",
+        "line": 50
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "observe-completed-exchange",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "success",
+                "invocationIdentity": "invocation-001",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-001",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-001",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-001",
+                "effectLineage": [
+                  "fixture"
+                ],
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "completed",
+                  "exchangeKind": "success",
+                  "transportDisposition": "completed",
+                  "httpStatus": 200,
+                  "allowedResponseHeaders": {
+                    "content-type": "application/json"
+                  },
+                  "boundedBytes": 2,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyBytes": "e30=",
+                  "reachedStage": "response-complete",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-001",
+                  "effectLineage": [
+                    "fixture",
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "completed",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "completed"
+                },
+                {
+                  "conditionId": "single-exchange",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "redacted",
+                  "path": "redactionVerified",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "retain-non-success-response",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "non-success",
+                "invocationIdentity": "invocation-002",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-002",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-002",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-002",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "retained-non-success",
+                  "exchangeKind": "non-success",
+                  "transportDisposition": "completed",
+                  "httpStatus": 429,
+                  "allowedResponseHeaders": {
+                    "content-type": "application/json"
+                  },
+                  "boundedBytes": 2,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyBytes": "e30=",
+                  "reachedStage": "response-complete",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-002",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "retained",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "retained-non-success"
+                },
+                {
+                  "conditionId": "status-preserved",
+                  "path": "httpStatus",
+                  "operator": "equals",
+                  "value": 429
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-endpoint-before-exchange",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "endpoint-rejection",
+                "invocationIdentity": "invocation-003",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://unadmitted.invalid/v1/models/test:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-003",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-003",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-003",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "rejected-endpoint",
+                  "exchangeKind": "endpoint-rejection",
+                  "transportDisposition": "denied",
+                  "httpStatus": 0,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 0,
+                  "requestBodyHash": null,
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "endpoint-admission",
+                  "exchangeCount": 0,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.000Z",
+                    "durationMilliseconds": 0
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-003",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "endpoint-rejected",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "rejected-endpoint"
+                },
+                {
+                  "conditionId": "no-exchange",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "retain-timeout",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "timeout",
+                "invocationIdentity": "invocation-004",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-004",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 1,
+                "cancellationScopeReference": "invocation-004",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-004",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "timed-out",
+                  "exchangeKind": "timeout",
+                  "transportDisposition": "timed-out",
+                  "httpStatus": 0,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 0,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "reading-response",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-004",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "timeout-retained",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "timed-out"
+                },
+                {
+                  "conditionId": "single-exchange",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "retain-cancellation",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "cancellation",
+                "invocationIdentity": "invocation-005",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-005",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-005",
+                "maxResponseBytes": 1048576,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-005",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "cancelled",
+                  "exchangeKind": "cancellation",
+                  "transportDisposition": "cancelled",
+                  "httpStatus": 0,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 0,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "pre-exchange-cancellation",
+                  "exchangeCount": 0,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.000Z",
+                    "durationMilliseconds": 0
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-005",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "cancelled",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "cancelled"
+                },
+                {
+                  "conditionId": "bounded",
+                  "path": "exchangeCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-governed-http-exchange/fixtures.authority.json",
+          "entryDigest": "sha256:7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4",
+          "snapshot": "data/capsule-evidence/entries/7e628f2f202bd0ead09125a4202bdc49808b3fbf47c780a8016c810bd22386a4-394899b3abff73cf.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-oversized-response",
+            "input": {
+              "contractId": "observe-governed-http-exchange-input.v1",
+              "payload": {
+                "exchangeKind": "oversized-response",
+                "invocationIdentity": "invocation-006",
+                "endpointAuthorityDigest": "sha256:57ab352b0978dca5e5ce33a28ccd7027c20df96da4138dbc7e8088f7c8fb0c04",
+                "requestUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+                "method": "POST",
+                "safeHeaders": {
+                  "content-type": "application/json"
+                },
+                "opaqueCredentialBinding": {
+                  "bindingId": "opaque-fixture-006",
+                  "credentialInjectionRuleId": "gemini-x-goog-api-key.v1"
+                },
+                "credentialInjectionRuleId": "gemini-x-goog-api-key.v1",
+                "timeoutMilliseconds": 120000,
+                "cancellationScopeReference": "invocation-006",
+                "maxResponseBytes": 2,
+                "redirectPolicy": "manual-no-follow",
+                "allowedResponseHeaders": [
+                  "content-type"
+                ],
+                "lineageId": "lineage-006",
+                "requestBodyText": "{}"
+              }
+            },
+            "portOutcomes": {
+              "observe-governed-http-exchange-port": {
+                "output": {
+                  "contractId": "governed-http-exchange-evidence.v1",
+                  "disposition": "oversized-response-rejected",
+                  "exchangeKind": "oversized-response",
+                  "transportDisposition": "oversized",
+                  "httpStatus": 200,
+                  "allowedResponseHeaders": {},
+                  "boundedBytes": 2,
+                  "requestBodyHash": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+                  "responseBodyHash": null,
+                  "responseBodyBytes": null,
+                  "reachedStage": "response-bound",
+                  "exchangeCount": 1,
+                  "timing": {
+                    "startedAt": "2026-08-14T00:00:00.000Z",
+                    "completedAt": "2026-08-14T00:00:00.001Z",
+                    "durationMilliseconds": 1
+                  },
+                  "redactionVerified": true,
+                  "lineageId": "lineage-006",
+                  "effectLineage": [
+                    "execution"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-governed-http-exchange",
+              "scenarioSequence": [
+                "observe-governed-http-exchange"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "oversized-rejected",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "oversized-response-rejected"
+                },
+                {
+                  "conditionId": "bounded",
+                  "path": "boundedBytes",
+                  "operator": "equals",
+                  "value": 2
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:preserve-http-exchange-evidence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "observe-non-success-http-response",
+        "scenario": {
+          "scenarioId": "observe-non-success-http-response",
+          "input": {
+            "inputId": "non-success-governed-http-exchange",
+            "contract": {
+              "contractId": "observe-governed-http-exchange-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "non-success-governed-http-exchange-requested",
+            "executionAuthorityId": "observe-non-success-http-response.v1"
+          },
+          "outcome": {
+            "outcomeId": "non-success-http-response-observation",
+            "contract": {
+              "contractId": "governed-http-exchange-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "observe-non-success-http-response.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:preserve-http-exchange-evidence-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-governed-http-exchange/execution-plan.node.json",
+          "entryDigest": "sha256:a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9",
+          "snapshot": "data/capsule-evidence/entries/a70a22e8ef9e2692342d1021e18168a3fee4e723c082eda3660e6b7b277529c9-532d5d580b202bd6.json",
+          "pointer": "/nodes/1"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

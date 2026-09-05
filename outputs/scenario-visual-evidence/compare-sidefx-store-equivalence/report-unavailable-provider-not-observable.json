@@ -1,0 +1,2870 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "compare-sidefx-store-equivalence::report-unavailable-provider-not-observable",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:0e29a9a7a63303a739f3b83ae4754966f40499be6241af411c6303387f01e01c"
+  },
+  "scenarioSurface": {
+    "key": "compare-sidefx-store-equivalence::report-unavailable-provider-not-observable",
+    "capabilityId": "compare-sidefx-store-equivalence",
+    "capabilityName": "Compare SideFX store equivalence across providers",
+    "scenarioId": "report-unavailable-provider-not-observable",
+    "scenarioName": "Report an unavailable provider as not observable without weakening equivalence",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "a declared provider that cannot be observed during the comparison",
+        "line": 48
+      }
+    ],
+    "event": [
+      {
+        "text": "equivalence is evaluated",
+        "line": 49
+      }
+    ],
+    "outcome": [
+      {
+        "text": "the partition is NOT_OBSERVABLE and the other provider's results are never treated as equivalent evidence",
+        "line": 50
+      }
+    ],
+    "products": [
+      "sidefx-store-equivalence-comparison-record"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "role"
+    ],
+    "altitude": null,
+    "notes": "  The same pinned snapshot must produce byte-identical semantic results and\n  semantic receipts whether the store behind the port is artifact-backed or\n  database-backed. Store realization testimony differs by design, is\n  retained in full, is bound to the receipt through the ledger REALIZED_BY\n  edge, and is compared for integrity — never for equality. Disabling one\n  provider must leave deterministic results unchanged. Every scenario\n  admits and emits one shared equivalence comparison record.",
+    "source": {
+      "capsuleFile": "compare-sidefx-store-equivalence.sfxcap",
+      "capsuleDigest": "sha256:0e29a9a7a63303a739f3b83ae4754966f40499be6241af411c6303387f01e01c",
+      "featureEntry": "features/compare-sidefx-store-equivalence.feature",
+      "featureDigest": "sha256:b48220b923697cc3d7c1f301a14685d4649fa310fda491447a1a73fb1a956418",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/compare-sidefx-store-equivalence.feature",
+      "scenarioLine": 47
+    },
+    "tags": [
+      "@capability:compare-sidefx-store-equivalence",
+      "@root-scenario:compare-sidefx-store-equivalence",
+      "@scenario:report-unavailable-provider-not-observable",
+      "@input:sidefx-store-equivalence-comparison-record",
+      "@input-contract:sidefx-store-equivalence-comparison-record.v1",
+      "@event:sidefx-store-provider-unavailability-observed",
+      "@event-authority:report-sidefx-store-provider-unavailability.v1",
+      "@outcome:sidefx-store-equivalence-comparison-record",
+      "@outcome-contract:sidefx-store-equivalence-comparison-record.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/nodes/2"
+        },
+        "value": {
+          "nodeId": "report-unavailable-provider-not-observable",
+          "scenario": {
+            "scenarioId": "report-unavailable-provider-not-observable",
+            "input": {
+              "inputId": "sidefx-store-equivalence-comparison-record",
+              "contract": {
+                "contractId": "sidefx-store-equivalence-comparison-record.v1"
+              }
+            },
+            "event": {
+              "eventId": "sidefx-store-provider-unavailability-observed",
+              "executionAuthorityId": "report-sidefx-store-provider-unavailability.v1"
+            },
+            "outcome": {
+              "outcomeId": "sidefx-store-equivalence-comparison-record",
+              "contract": {
+                "contractId": "sidefx-store-equivalence-comparison-record.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "report-unavailable-provider-not-observable.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:report-unavailable-provider-not-observable-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "sidefx-store-equivalence-comparison-record.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/compare-sidefx-store-equivalence/record.schema.json",
+                  "schemaDigest": "75c02f912daa39aeb52b6b046805c857337f67f1b1792a26abea9f66a0121427",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/compare-sidefx-store-equivalence/record.schema.json",
+                    "title": "SideFX store equivalence comparison record v1",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "scope",
+                      "pinnedSnapshot",
+                      "queryPartition",
+                      "providers"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "sidefx-store-equivalence-comparison-record.v1"
+                      },
+                      "scope": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "estateId",
+                          "environmentId",
+                          "corpusId"
+                        ],
+                        "properties": {
+                          "estateId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "environmentId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "corpusId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          }
+                        }
+                      },
+                      "pinnedSnapshot": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "queryPartition": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "providers": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9-]+$"
+                        }
+                      },
+                      "comparisonDisposition": {
+                        "enum": [
+                          "EQUIVALENT",
+                          "DIVERGENT",
+                          "NOT_OBSERVABLE",
+                          "REJECTED"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "semanticReceiptsByteIdentical": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "storeTestimonyRetained": {
+                        "type": "boolean"
+                      },
+                      "authorityClaims": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "equivalence",
+                          "admission",
+                          "grounding"
+                        ],
+                        "properties": {
+                          "equivalence": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "admission": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "grounding": {
+                            "const": "NOT_CLAIMED"
+                          }
+                        }
+                      },
+                      "credentialMaterialPresent": {
+                        "const": false
+                      },
+                      "testimonyObservation": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "retained",
+                          "outsideSemanticBasis"
+                        ],
+                        "properties": {
+                          "retained": {
+                            "const": true
+                          },
+                          "outsideSemanticBasis": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "unavailabilityObservation": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "disposition",
+                          "findingCodes"
+                        ],
+                        "properties": {
+                          "disposition": {
+                            "const": "NOT_OBSERVABLE"
+                          },
+                          "findingCodes": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:report-unavailable-provider-not-observable-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input",
+                  "path": ""
+                },
+                {
+                  "op": "object",
+                  "fields": {
+                    "unavailabilityObservation": {
+                      "op": "object",
+                      "fields": {
+                        "disposition": {
+                          "op": "literal",
+                          "value": "NOT_OBSERVABLE"
+                        },
+                        "findingCodes": {
+                          "op": "literal",
+                          "value": [
+                            "STORE_PROVIDERS_UNAVAILABLE"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:report-unavailable-provider-not-observable-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/contracts/input.schema.json",
+          "entryDigest": "sha256:f89cb8260e3d01e565547b2a0ad0c885b362b5052a28b3ba9b1183ead146523c",
+          "snapshot": "data/capsule-evidence/entries/f89cb8260e3d01e565547b2a0ad0c885b362b5052a28b3ba9b1183ead146523c-f5db0005319df12a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/compare-sidefx-store-equivalence/record.schema.json",
+          "title": "SideFX store equivalence comparison record v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "scope",
+            "pinnedSnapshot",
+            "queryPartition",
+            "providers"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "sidefx-store-equivalence-comparison-record.v1"
+            },
+            "scope": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "estateId",
+                "environmentId",
+                "corpusId"
+              ],
+              "properties": {
+                "estateId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "environmentId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "corpusId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                }
+              }
+            },
+            "pinnedSnapshot": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "queryPartition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providers": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9-]+$"
+              }
+            },
+            "comparisonDisposition": {
+              "enum": [
+                "EQUIVALENT",
+                "DIVERGENT",
+                "NOT_OBSERVABLE",
+                "REJECTED"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "semanticReceiptsByteIdentical": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "storeTestimonyRetained": {
+              "type": "boolean"
+            },
+            "authorityClaims": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "equivalence",
+                "admission",
+                "grounding"
+              ],
+              "properties": {
+                "equivalence": {
+                  "const": "NOT_CLAIMED"
+                },
+                "admission": {
+                  "const": "NOT_CLAIMED"
+                },
+                "grounding": {
+                  "const": "NOT_CLAIMED"
+                }
+              }
+            },
+            "credentialMaterialPresent": {
+              "const": false
+            },
+            "testimonyObservation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "retained",
+                "outsideSemanticBasis"
+              ],
+              "properties": {
+                "retained": {
+                  "const": true
+                },
+                "outsideSemanticBasis": {
+                  "const": true
+                }
+              }
+            },
+            "unavailabilityObservation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "findingCodes"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "NOT_OBSERVABLE"
+                },
+                "findingCodes": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:2e3df9057a0637648c9d111bfd7c8ac20f92ce7f88b5a1ccb189d229a36c295b",
+          "snapshot": "data/capsule-evidence/entries/2e3df9057a0637648c9d111bfd7c8ac20f92ce7f88b5a1ccb189d229a36c295b-3ad02c83851054ea.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/sidefx-store-equivalence-comparison-record.v1.json",
+          "type": "object",
+          "required": [
+            "resultsEquivalent",
+            "providerTestimonies",
+            "unavailableProviders"
+          ],
+          "properties": {
+            "resultsEquivalent": {
+              "type": "boolean"
+            },
+            "providerTestimonies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "providerId": {
+                    "type": "string"
+                  },
+                  "testimony": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "unavailableProviders": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-28a2bce94e7558a2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-4e7a3daf0c5870d6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-c8d79990847c5b24.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-91f7bee562bee934.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d",
+          "snapshot": "data/capsule-evidence/entries/5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d-d22ec7356c9b01f9.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "comparison-holds-not-observable-without-store-providers",
+            "input": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "pinnedSnapshot": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "queryPartition": "wave2-retrieval-partitions",
+              "providers": [
+                "artifact-backed",
+                "sql-backed"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "compare-sidefx-store-equivalence",
+              "scenarioSequence": [
+                "compare-sidefx-store-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "honest-not-observable",
+                  "path": "comparisonDisposition",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "missing-providers-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORE_PROVIDERS_UNAVAILABLE"
+                },
+                {
+                  "conditionId": "no-equivalence-claimed",
+                  "path": "semanticReceiptsByteIdentical",
+                  "operator": "equals",
+                  "value": null
+                },
+                {
+                  "conditionId": "testimony-retained-invariant",
+                  "path": "storeTestimonyRetained",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "no-equivalence-authority",
+                  "path": "authorityClaims.equivalence",
+                  "operator": "equals",
+                  "value": "NOT_CLAIMED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d",
+          "snapshot": "data/capsule-evidence/entries/5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d-d22ec7356c9b01f9.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unavailable-provider-partition-not-observable",
+            "input": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "pinnedSnapshot": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "queryPartition": "wave2-retrieval-partitions",
+              "providers": [
+                "artifact-backed",
+                "sql-backed"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "compare-sidefx-store-equivalence",
+              "scenarioSequence": [
+                "compare-sidefx-store-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "not-observable-partition",
+                  "path": "comparisonDisposition",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "missing-providers-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORE_PROVIDERS_UNAVAILABLE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d",
+          "snapshot": "data/capsule-evidence/entries/5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d-d22ec7356c9b01f9.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "testimony-retention-invariant-holds",
+            "input": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "pinnedSnapshot": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "queryPartition": "wave2-retrieval-partitions",
+              "providers": [
+                "artifact-backed",
+                "sql-backed"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "compare-sidefx-store-equivalence",
+              "scenarioSequence": [
+                "compare-sidefx-store-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "testimony-retained",
+                  "path": "storeTestimonyRetained",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "not-observable-partition",
+                  "path": "comparisonDisposition",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "missing-providers-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORE_PROVIDERS_UNAVAILABLE"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-2c0f1eb556464f4d.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "a declared provider that cannot be observed during the comparison",
+        "line": 48
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/contracts/input.schema.json",
+          "entryDigest": "sha256:f89cb8260e3d01e565547b2a0ad0c885b362b5052a28b3ba9b1183ead146523c",
+          "snapshot": "data/capsule-evidence/entries/f89cb8260e3d01e565547b2a0ad0c885b362b5052a28b3ba9b1183ead146523c-f5db0005319df12a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/compare-sidefx-store-equivalence/record.schema.json",
+          "title": "SideFX store equivalence comparison record v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "scope",
+            "pinnedSnapshot",
+            "queryPartition",
+            "providers"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "sidefx-store-equivalence-comparison-record.v1"
+            },
+            "scope": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "estateId",
+                "environmentId",
+                "corpusId"
+              ],
+              "properties": {
+                "estateId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "environmentId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "corpusId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                }
+              }
+            },
+            "pinnedSnapshot": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "queryPartition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providers": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9-]+$"
+              }
+            },
+            "comparisonDisposition": {
+              "enum": [
+                "EQUIVALENT",
+                "DIVERGENT",
+                "NOT_OBSERVABLE",
+                "REJECTED"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "semanticReceiptsByteIdentical": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "storeTestimonyRetained": {
+              "type": "boolean"
+            },
+            "authorityClaims": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "equivalence",
+                "admission",
+                "grounding"
+              ],
+              "properties": {
+                "equivalence": {
+                  "const": "NOT_CLAIMED"
+                },
+                "admission": {
+                  "const": "NOT_CLAIMED"
+                },
+                "grounding": {
+                  "const": "NOT_CLAIMED"
+                }
+              }
+            },
+            "credentialMaterialPresent": {
+              "const": false
+            },
+            "testimonyObservation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "retained",
+                "outsideSemanticBasis"
+              ],
+              "properties": {
+                "retained": {
+                  "const": true
+                },
+                "outsideSemanticBasis": {
+                  "const": true
+                }
+              }
+            },
+            "unavailabilityObservation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "findingCodes"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "NOT_OBSERVABLE"
+                },
+                "findingCodes": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:2e3df9057a0637648c9d111bfd7c8ac20f92ce7f88b5a1ccb189d229a36c295b",
+          "snapshot": "data/capsule-evidence/entries/2e3df9057a0637648c9d111bfd7c8ac20f92ce7f88b5a1ccb189d229a36c295b-3ad02c83851054ea.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/sidefx-store-equivalence-comparison-record.v1.json",
+          "type": "object",
+          "required": [
+            "resultsEquivalent",
+            "providerTestimonies",
+            "unavailableProviders"
+          ],
+          "properties": {
+            "resultsEquivalent": {
+              "type": "boolean"
+            },
+            "providerTestimonies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "providerId": {
+                    "type": "string"
+                  },
+                  "testimony": {
+                    "type": "object"
+                  }
+                }
+              }
+            },
+            "unavailableProviders": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-28a2bce94e7558a2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-4e7a3daf0c5870d6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-c8d79990847c5b24.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-91f7bee562bee934.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "role"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/nodes/2"
+        },
+        "value": {
+          "nodeId": "report-unavailable-provider-not-observable",
+          "scenario": {
+            "scenarioId": "report-unavailable-provider-not-observable",
+            "input": {
+              "inputId": "sidefx-store-equivalence-comparison-record",
+              "contract": {
+                "contractId": "sidefx-store-equivalence-comparison-record.v1"
+              }
+            },
+            "event": {
+              "eventId": "sidefx-store-provider-unavailability-observed",
+              "executionAuthorityId": "report-sidefx-store-provider-unavailability.v1"
+            },
+            "outcome": {
+              "outcomeId": "sidefx-store-equivalence-comparison-record",
+              "contract": {
+                "contractId": "sidefx-store-equivalence-comparison-record.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "report-unavailable-provider-not-observable.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:report-unavailable-provider-not-observable-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "sidefx-store-equivalence-comparison-record.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/compare-sidefx-store-equivalence/record.schema.json",
+                  "schemaDigest": "75c02f912daa39aeb52b6b046805c857337f67f1b1792a26abea9f66a0121427",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/compare-sidefx-store-equivalence/record.schema.json",
+                    "title": "SideFX store equivalence comparison record v1",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "scope",
+                      "pinnedSnapshot",
+                      "queryPartition",
+                      "providers"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "sidefx-store-equivalence-comparison-record.v1"
+                      },
+                      "scope": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "estateId",
+                          "environmentId",
+                          "corpusId"
+                        ],
+                        "properties": {
+                          "estateId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "environmentId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "corpusId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          }
+                        }
+                      },
+                      "pinnedSnapshot": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "queryPartition": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "providers": {
+                        "type": "array",
+                        "minItems": 1,
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[A-Za-z0-9-]+$"
+                        }
+                      },
+                      "comparisonDisposition": {
+                        "enum": [
+                          "EQUIVALENT",
+                          "DIVERGENT",
+                          "NOT_OBSERVABLE",
+                          "REJECTED"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "semanticReceiptsByteIdentical": {
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      },
+                      "storeTestimonyRetained": {
+                        "type": "boolean"
+                      },
+                      "authorityClaims": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "equivalence",
+                          "admission",
+                          "grounding"
+                        ],
+                        "properties": {
+                          "equivalence": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "admission": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "grounding": {
+                            "const": "NOT_CLAIMED"
+                          }
+                        }
+                      },
+                      "credentialMaterialPresent": {
+                        "const": false
+                      },
+                      "testimonyObservation": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "retained",
+                          "outsideSemanticBasis"
+                        ],
+                        "properties": {
+                          "retained": {
+                            "const": true
+                          },
+                          "outsideSemanticBasis": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "unavailabilityObservation": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "disposition",
+                          "findingCodes"
+                        ],
+                        "properties": {
+                          "disposition": {
+                            "const": "NOT_OBSERVABLE"
+                          },
+                          "findingCodes": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:report-unavailable-provider-not-observable-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input",
+                  "path": ""
+                },
+                {
+                  "op": "object",
+                  "fields": {
+                    "unavailabilityObservation": {
+                      "op": "object",
+                      "fields": {
+                        "disposition": {
+                          "op": "literal",
+                          "value": "NOT_OBSERVABLE"
+                        },
+                        "findingCodes": {
+                          "op": "literal",
+                          "value": [
+                            "STORE_PROVIDERS_UNAVAILABLE"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:report-unavailable-provider-not-observable-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "the partition is NOT_OBSERVABLE and the other provider's results are never treated as equivalent evidence",
+        "line": 50
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d",
+          "snapshot": "data/capsule-evidence/entries/5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d-d22ec7356c9b01f9.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "comparison-holds-not-observable-without-store-providers",
+            "input": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "pinnedSnapshot": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "queryPartition": "wave2-retrieval-partitions",
+              "providers": [
+                "artifact-backed",
+                "sql-backed"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "compare-sidefx-store-equivalence",
+              "scenarioSequence": [
+                "compare-sidefx-store-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "honest-not-observable",
+                  "path": "comparisonDisposition",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "missing-providers-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORE_PROVIDERS_UNAVAILABLE"
+                },
+                {
+                  "conditionId": "no-equivalence-claimed",
+                  "path": "semanticReceiptsByteIdentical",
+                  "operator": "equals",
+                  "value": null
+                },
+                {
+                  "conditionId": "testimony-retained-invariant",
+                  "path": "storeTestimonyRetained",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "no-equivalence-authority",
+                  "path": "authorityClaims.equivalence",
+                  "operator": "equals",
+                  "value": "NOT_CLAIMED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d",
+          "snapshot": "data/capsule-evidence/entries/5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d-d22ec7356c9b01f9.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unavailable-provider-partition-not-observable",
+            "input": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "pinnedSnapshot": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "queryPartition": "wave2-retrieval-partitions",
+              "providers": [
+                "artifact-backed",
+                "sql-backed"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "compare-sidefx-store-equivalence",
+              "scenarioSequence": [
+                "compare-sidefx-store-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "not-observable-partition",
+                  "path": "comparisonDisposition",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "missing-providers-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORE_PROVIDERS_UNAVAILABLE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/compare-sidefx-store-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d",
+          "snapshot": "data/capsule-evidence/entries/5f96654d201c580a9e1a7bfe40b4406e107e0797c950a7cd2a6b6ea4d94fe37d-d22ec7356c9b01f9.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "testimony-retention-invariant-holds",
+            "input": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "pinnedSnapshot": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "queryPartition": "wave2-retrieval-partitions",
+              "providers": [
+                "artifact-backed",
+                "sql-backed"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "compare-sidefx-store-equivalence",
+              "scenarioSequence": [
+                "compare-sidefx-store-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "testimony-retained",
+                  "path": "storeTestimonyRetained",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "not-observable-partition",
+                  "path": "comparisonDisposition",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "missing-providers-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORE_PROVIDERS_UNAVAILABLE"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:report-unavailable-provider-not-observable-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "report-unavailable-provider-not-observable",
+        "scenario": {
+          "scenarioId": "report-unavailable-provider-not-observable",
+          "input": {
+            "inputId": "sidefx-store-equivalence-comparison-record",
+            "contract": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1"
+            }
+          },
+          "event": {
+            "eventId": "sidefx-store-provider-unavailability-observed",
+            "executionAuthorityId": "report-sidefx-store-provider-unavailability.v1"
+          },
+          "outcome": {
+            "outcomeId": "sidefx-store-equivalence-comparison-record",
+            "contract": {
+              "contractId": "sidefx-store-equivalence-comparison-record.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "report-unavailable-provider-not-observable.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:report-unavailable-provider-not-observable-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/compare-sidefx-store-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd",
+          "snapshot": "data/capsule-evidence/entries/fb1667d09f087eef493dbbe86b15d1d798d80ebf3b5c45b89aa8e4cddb2139fd-04f7b5fca42248e8.json",
+          "pointer": "/nodes/2"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

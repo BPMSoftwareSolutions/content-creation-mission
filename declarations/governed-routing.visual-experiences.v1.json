@@ -1,0 +1,112 @@
+{
+  "documentType": "editorial-visual-experience-collection.v1",
+  "status": "EDITORIAL_CANDIDATE",
+  "capabilityId": "resolve-governed-scenario-route",
+  "source": {
+    "path": "C:/lab/repos/agentic-harness/features/resolve-governed-scenario-route.feature",
+    "sha256": "366499adf79d6da446ad18895f3e63339f0f953d49efb1db75b330f639240123",
+    "readMethod": "DIRECT_DOCUMENT_READ",
+    "managedRetrievalReceipt": null,
+    "scope": "One source feature document; not an estate inventory or an admitted projection"
+  },
+  "taxonomyVersion": "experience-taxonomy.editorial.v1",
+  "visualProfile": {
+    "status": "PROPOSED_ART_DIRECTION",
+    "officialBrandProfile": false,
+    "environment": "abstract tabletop of documents, route lines and evidence tiles",
+    "colors": {"authority": "indigo", "authorized": "teal", "pending": "amber", "rejected": "coral"},
+    "accessibility": "Pair every color with text and shape; never encode disposition by color alone.",
+    "continuity": "Use the same three-panel Input, Event and Outcome framing in every scenario.",
+    "globalConstraints": [
+      "A highlighted route represents authorization, not execution.",
+      "No running worker, successful downstream effect or advancing execution token.",
+      "Source snapshots remain visibly immutable.",
+      "Alternative outcomes occupy separate panels or cuts, never consecutive runtime steps.",
+      "Concrete tile counts, shapes and camera motion are illustrative, not source facts."
+    ]
+  },
+  "experiences": [
+    {
+      "scenarioId": "resolve-governed-scenario-route",
+      "sourceLocator": "@scenario:resolve-governed-scenario-route",
+      "classification": {"primary": "resolution", "secondary": ["routing"], "rationale": "Establishes only the continuation allowed by declared route authority."},
+      "inputExperience": {"sourceStep": "Given", "state": "An admitted scenario outcome, its declared route authority and current route state are supplied.", "visibleInformation": ["outcome document", "declared routes", "route-state snapshot"]},
+      "eventExperience": {"sourceStep": "When", "action": "Resolve the governed scenario route.", "visualInterpretation": "Compare the outcome against the supplied route map and snapshot; outline eligible continuation evidence."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["Exactly one authorized continuation or exact rejection evidence is established.", "No scenario is invoked.", "Route state is unchanged."], "visualInterpretation": "Show an AUTHORIZED continuation card or a separate REJECTED evidence card; keep every route token stationary."},
+      "sceneRequirements": ["Keep outcome, authority and state independently visible.", "Do not equate authorized with executed."],
+      "unresolved": ["Concrete scenario outcome and route-map instance are not supplied by this feature."]
+    },
+    {
+      "scenarioId": "resolve-selected-outcome-variant",
+      "sourceLocator": "@scenario:resolve-selected-outcome-variant",
+      "classification": {"primary": "resolution", "secondary": ["rejection"], "rationale": "Matches an outcome to a declared variant and rejects an undeclared selection."},
+      "inputExperience": {"sourceStep": "Given", "state": "An admitted outcome and the variants declared by its node are supplied.", "visibleInformation": ["selected outcome", "declared variant cards"]},
+      "eventExperience": {"sourceStep": "When", "action": "Resolve the selected variant.", "visualInterpretation": "Align the outcome identifier against the labeled variant cards."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["One declared variant is resolved.", "An undeclared selection produces exact rejection evidence instead of a default."], "visualInterpretation": "In separate alternatives, outline the matching card or show VARIANT_UNDECLARED without selecting any substitute."},
+      "sceneRequirements": ["No nearest-match selection or default arrow.", "Show alternatives independently."],
+      "unresolved": ["Variant names and count require a concrete source instance."]
+    },
+    {
+      "scenarioId": "resolve-declared-outgoing-routes",
+      "sourceLocator": "@scenario:resolve-declared-outgoing-routes",
+      "classification": {"primary": "routing", "secondary": ["resolution", "rejection"], "rationale": "Determines declared outgoing routes while preserving missing-route and ambiguity outcomes."},
+      "inputExperience": {"sourceStep": "Given", "state": "A selected outcome variant carries its node's declared route authority.", "visibleInformation": ["selected variant", "attached route authority"]},
+      "eventExperience": {"sourceStep": "When", "action": "Resolve outgoing routes for that exact variant.", "visualInterpretation": "Illuminate only the route definitions within the attached authority document."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["Only declared routes for the exact variant enter the route set.", "No declared route yields rejection evidence.", "Two selectable routes yield ambiguity rather than an ordering decision.", "Ambient blueprint context is not consulted."], "visualInterpretation": "Separate ROUTES_RESOLVED, NO_ROUTE_DECLARED and AMBIGUOUS_ROUTE outcome cards; ambiguous lines remain equally emphasized."},
+      "sceneRequirements": ["Do not break ties by position, length or brightness.", "Do not animate a route being traversed."],
+      "unresolved": ["A concrete route set is not supplied."]
+    },
+    {
+      "scenarioId": "admit-current-route-state",
+      "sourceLocator": "@scenario:admit-current-route-state",
+      "classification": {"primary": "admission", "secondary": ["validation"], "rationale": "Establishes an immutable supplied state snapshot bound to the governing blueprint identity."},
+      "inputExperience": {"sourceStep": "Given", "state": "The request supplies route-state source and governing blueprint identity.", "visibleInformation": ["request envelope", "state source", "blueprint identity"]},
+      "eventExperience": {"sourceStep": "When", "action": "Admit current route state.", "visualInterpretation": "Frame the supplied state with an immutable snapshot border and matching identity labels."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["The snapshot carries established convergence products, completed fan-out members and iterations already taken.", "The snapshot binds the same blueprint identity.", "Absent request state produces rejection rather than a retained-context lookup."], "visualInterpretation": "Show the three labeled sections inside one immutable snapshot; a separate missing-input example ends in evidence of rejection."},
+      "sceneRequirements": ["No memory drawer or ambient state fetch.", "No counter increment during admission."],
+      "unresolved": ["Specific products, member identities and iteration counts require a supplied instance."]
+    },
+    {
+      "scenarioId": "resolve-fan-out-membership",
+      "sourceLocator": "@scenario:resolve-fan-out-membership",
+      "classification": {"primary": "composition", "secondary": ["validation"], "rationale": "A declared fan-out requires its entire member set together."},
+      "inputExperience": {"sourceStep": "Given", "state": "The route evaluation context supplies a declared route view.", "visibleInformation": ["declared fan-out member set", "evaluated route set"]},
+      "eventExperience": {"sourceStep": "When", "action": "Resolve fan-out membership using only the declared route view.", "visualInterpretation": "Compare the evaluated set to an outline containing all declared member slots."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["Every declared fan-out member is jointly required.", "An incomplete member set produces rejection evidence.", "No fan-out is reported plainly instead of fabricating a single-member set."], "visualInterpretation": "Use separate complete-set, missing-member and NO FAN-OUT cards; leave required empty slots visible."},
+      "sceneRequirements": ["Do not depict members as either/or options.", "Do not depict any member executing."],
+      "unresolved": ["Member count is unspecified; any demonstration count must be labeled illustrative."]
+    },
+    {
+      "scenarioId": "resolve-convergence-readiness",
+      "sourceLocator": "@scenario:resolve-convergence-readiness",
+      "classification": {"primary": "convergence", "secondary": ["validation"], "rationale": "Readiness requires every declared product under the same governing identity."},
+      "inputExperience": {"sourceStep": "Given", "state": "The declared route view and admitted state snapshot are supplied.", "visibleInformation": ["required product slots", "products present in snapshot", "governing identity"]},
+      "eventExperience": {"sourceStep": "When", "action": "Resolve convergence readiness.", "visualInterpretation": "Compare each required slot with evidence already present; keep identity labels in view."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["All required products under the same identity establish readiness.", "Any missing product leaves convergence pending.", "A route without convergence reports that plainly."], "visualInterpretation": "Show independent READY, PENDING and NO CONVERGENCE outcomes; pending retains an unfilled slot and a stationary gate."},
+      "sceneRequirements": ["Never invent or deliver a missing product during the resolution.", "Readiness must not depict subsequent execution."],
+      "unresolved": ["Product identities and cardinality require a concrete instance."]
+    },
+    {
+      "scenarioId": "resolve-bounded-return-authority",
+      "sourceLocator": "@scenario:resolve-bounded-return-authority",
+      "classification": {"primary": "validation", "secondary": ["routing", "rejection"], "rationale": "Checks a return against the declared iteration bound."},
+      "inputExperience": {"sourceStep": "Given", "state": "The admitted route-state snapshot carries iterations already taken on the route.", "visibleInformation": ["declared bound", "observed iterations", "return route"]},
+      "eventExperience": {"sourceStep": "When", "action": "Resolve bounded return authority.", "visualInterpretation": "Compare the unchanged observed iteration record with the declared bound."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["A return is authorized only within its declared iteration authority.", "Exhaustion produces rejection evidence.", "No bounded return is reported plainly."], "visualInterpretation": "Separate AUTHORIZED, BOUND EXHAUSTED and NO BOUNDED RETURN cards; the loop arrow remains a diagram, not a traveled path."},
+      "sceneRequirements": ["No counter increment or automatic retry.", "Do not invent a numeric threshold or comparison operator absent concrete authority."],
+      "unresolved": ["The numeric bound and its precise comparison semantics are not supplied here."]
+    },
+    {
+      "scenarioId": "establish-authorized-continuation",
+      "sourceLocator": "@scenario:establish-authorized-continuation",
+      "classification": {"primary": "resolution", "secondary": ["composition", "routing"], "rationale": "Establishes one continuation from resolved evidence and retains the authorization lineage."},
+      "inputExperience": {"sourceStep": "Given", "state": "Fan-out membership, convergence readiness and bounded return authority are resolved against the same route set.", "visibleInformation": ["membership evidence", "readiness evidence", "return authority", "common route identity"]},
+      "eventExperience": {"sourceStep": "When", "action": "Establish the authorized continuation.", "visualInterpretation": "Bring the evidence cards into one decision frame and reveal one continuation record."},
+      "outcomeExperience": {"sourceStep": "Then", "observableState": ["Exactly one declared continuation is established.", "The record preserves authorization kind, selected invocation set, source routes, blueprint digest and route-state digest.", "Only declared permitted invocations are named."], "alternatives": ["NEXT_SCENARIO_AUTHORIZED", "FAN_OUT_AUTHORIZED", "BOUNDED_RETURN_AUTHORIZED", "CONVERGENCE_PENDING", "TERMINAL_REACHED", "ROUTE_REJECTED"], "visualInterpretation": "Select one of six independent labeled cards and retain its lineage strip; no downstream action begins."},
+      "sceneRequirements": ["Never combine all six outcomes into one execution sequence.", "Pending and rejected outcomes are meaningful final resolution results."],
+      "unresolved": ["No concrete input instance chooses one alternative for this collection."]
+    }
+  ],
+  "coverage": {"scope": "All scenario tags in the cited feature document", "sourceScenarioCount": 8, "declarationCount": 8, "missingScenarioIds": [], "duplicateScenarioIds": [], "estateCoverageClaim": false},
+  "composition": {"kind": "EDITORIAL_CHAPTERS", "runtimeSequenceClaim": false, "explanation": "Chapter order explains concepts. It does not assert blueprint transitions or one successful execution."}
+}

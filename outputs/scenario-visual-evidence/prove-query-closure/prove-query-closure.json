@@ -1,0 +1,3035 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "prove-query-closure::prove-query-closure",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:74b6b1e715658769fc2cafd4f502c0d8f4d1f81129a23682a35a1968f305f596"
+  },
+  "scenarioSurface": {
+    "key": "prove-query-closure::prove-query-closure",
+    "capabilityId": "prove-query-closure",
+    "capabilityName": "Prove query closure",
+    "scenarioId": "prove-query-closure",
+    "scenarioName": "Evaluate implemented consumer queries against fixture observations",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "consumer query observation facts collected from fixtures",
+        "line": 25
+      }
+    ],
+    "event": [
+      {
+        "text": "implemented queries are evaluated against fixture observations",
+        "line": 26
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every implemented query is observed with a satisfying fixture result, or is explicitly unproven",
+        "line": 27
+      }
+    ],
+    "products": [
+      "query-closure-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "consumer"
+    ],
+    "altitude": null,
+    "notes": "  A consumer needs to know that every promised inspectable question a\n  capability claims to answer is actually answerable from observed\n  behavior. The capability evaluates implemented queries against fixture\n  observations.\n\n  Every implemented query is observed with a satisfying fixture result, or\n  is explicitly unproven. The capability does not implement or run the\n  queries itself — it only evaluates whether already-implemented queries\n  are backed by observation.",
+    "source": {
+      "capsuleFile": "prove-query-closure.sfxcap",
+      "capsuleDigest": "sha256:74b6b1e715658769fc2cafd4f502c0d8f4d1f81129a23682a35a1968f305f596",
+      "featureEntry": "features/prove-query-closure.feature",
+      "featureDigest": "sha256:7aba301976ddddca35686003b61ec228d9ca2a3a0383a218d7a39429431e6c12",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/prove-query-closure.feature",
+      "scenarioLine": 24
+    },
+    "tags": [
+      "@capability:prove-query-closure",
+      "@root-scenario:prove-query-closure",
+      "@scenario:prove-query-closure",
+      "@input:consumer-query-observation-facts",
+      "@input-contract:prove-query-closure-input.v1",
+      "@event:query-closure-proof-requested",
+      "@event-authority:consumer-query-closure-proof.v1",
+      "@outcome:query-closure-known",
+      "@outcome-contract:query-closure-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "prove-query-closure",
+          "scenario": {
+            "scenarioId": "prove-query-closure",
+            "input": {
+              "inputId": "consumer-query-observation-facts",
+              "contract": {
+                "contractId": "prove-query-closure-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "query-closure-proof-requested",
+              "executionAuthorityId": "consumer-query-closure-proof.v1"
+            },
+            "outcome": {
+              "outcomeId": "query-closure-known",
+              "contract": {
+                "contractId": "query-closure-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "prove-query-closure.operation.1",
+              "mechanicBindingId": "port:prove-query-closure-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "prove-query-closure-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "4e1e14160fcdb753fc89d0a8b678776c0c22ef73105f53f4386c1ba1a65a15e7",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "prove-query-closure-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "capabilityId",
+                          "totalQueries",
+                          "unprovenQueryCount",
+                          "provenQueries",
+                          "unprovenQueries",
+                          "summary"
+                        ],
+                        "properties": {
+                          "capabilityId": {
+                            "type": "string"
+                          },
+                          "totalQueries": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "unprovenQueryCount": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "provenQueries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "unprovenQueries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "summary": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "query-closure-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "fbaf56471f1037b5e40c953e91a709593bfeb1d4538675b1a2fcc0beee1b6f73",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "capabilityId",
+                      "closureStatus",
+                      "totalQueries",
+                      "provenQueries",
+                      "unprovenQueries",
+                      "evidenceSummary"
+                    ],
+                    "properties": {
+                      "capabilityId": {
+                        "type": "string"
+                      },
+                      "closureStatus": {
+                        "type": "string",
+                        "enum": [
+                          "fully-proven",
+                          "partially-unproven"
+                        ]
+                      },
+                      "totalQueries": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "provenQueries": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "unprovenQueries": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "evidenceSummary": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-query-closure-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "capabilityId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.capabilityId"
+                },
+                "closureStatus": {
+                  "op": "if",
+                  "then": {
+                    "op": "literal",
+                    "value": "fully-proven"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "partially-unproven"
+                  },
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.unprovenQueryCount"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": 0
+                    }
+                  }
+                },
+                "totalQueries": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.totalQueries"
+                },
+                "provenQueries": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.provenQueries"
+                },
+                "unprovenQueries": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.unprovenQueries"
+                },
+                "evidenceSummary": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.summary"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-query-closure-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/prove-query-closure/contracts/input.schema.json",
+          "entryDigest": "sha256:4e1e14160fcdb753fc89d0a8b678776c0c22ef73105f53f4386c1ba1a65a15e7",
+          "snapshot": "data/capsule-evidence/entries/4e1e14160fcdb753fc89d0a8b678776c0c22ef73105f53f4386c1ba1a65a15e7-a702b436f302971e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "prove-query-closure-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "capabilityId",
+                "totalQueries",
+                "unprovenQueryCount",
+                "provenQueries",
+                "unprovenQueries",
+                "summary"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "type": "string"
+                },
+                "totalQueries": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "unprovenQueryCount": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "provenQueries": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "unprovenQueries": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "summary": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/prove-query-closure/contracts/outcome.schema.json",
+          "entryDigest": "sha256:fbaf56471f1037b5e40c953e91a709593bfeb1d4538675b1a2fcc0beee1b6f73",
+          "snapshot": "data/capsule-evidence/entries/fbaf56471f1037b5e40c953e91a709593bfeb1d4538675b1a2fcc0beee1b6f73-11f8eda82a6911b1.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "capabilityId",
+            "closureStatus",
+            "totalQueries",
+            "provenQueries",
+            "unprovenQueries",
+            "evidenceSummary"
+          ],
+          "properties": {
+            "capabilityId": {
+              "type": "string"
+            },
+            "closureStatus": {
+              "type": "string",
+              "enum": [
+                "fully-proven",
+                "partially-unproven"
+              ]
+            },
+            "totalQueries": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "provenQueries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unprovenQueries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "evidenceSummary": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-9144b26cb577517c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-b17bf263a31489bf.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-41379bfeb3117ec4.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-3e2a4767e1e23dc9.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-queries-satisfied",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "order-processing",
+                "totalQueries": 3,
+                "unprovenQueryCount": 0,
+                "provenQueries": [
+                  "query-order-status",
+                  "query-order-items",
+                  "query-payment-status"
+                ],
+                "unprovenQueries": [],
+                "summary": "All implemented queries verified against fixture observations."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "order-processing",
+                  "closureStatus": "fully-proven",
+                  "totalQueries": 3,
+                  "provenQueries": [
+                    "query-order-status",
+                    "query-order-items",
+                    "query-payment-status"
+                  ],
+                  "unprovenQueries": [],
+                  "evidenceSummary": "All implemented queries verified against fixture observations."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-fully-proven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "fully-proven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "order-processing"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-unproven-query",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "inventory-management",
+                "totalQueries": 2,
+                "unprovenQueryCount": 1,
+                "provenQueries": [
+                  "query-stock-level"
+                ],
+                "unprovenQueries": [
+                  "query-warehouse-locations"
+                ],
+                "summary": "Warehouse query lacks observed fixture satisfaction."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "inventory-management",
+                  "closureStatus": "partially-unproven",
+                  "totalQueries": 2,
+                  "provenQueries": [
+                    "query-stock-level"
+                  ],
+                  "unprovenQueries": [
+                    "query-warehouse-locations"
+                  ],
+                  "evidenceSummary": "Warehouse query lacks observed fixture satisfaction."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-unproven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "partially-unproven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "inventory-management"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-query-set",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "pure-transformation-utility",
+                "totalQueries": 0,
+                "unprovenQueryCount": 0,
+                "provenQueries": [],
+                "unprovenQueries": [],
+                "summary": "No queries declared or required for capability."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "pure-transformation-utility",
+                  "closureStatus": "fully-proven",
+                  "totalQueries": 0,
+                  "provenQueries": [],
+                  "unprovenQueries": [],
+                  "evidenceSummary": "No queries declared or required for capability."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-fully-proven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "fully-proven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "pure-transformation-utility"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-queries-unproven",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "user-auth",
+                "totalQueries": 2,
+                "unprovenQueryCount": 2,
+                "provenQueries": [],
+                "unprovenQueries": [
+                  "query-session-validity",
+                  "query-role-permissions"
+                ],
+                "summary": "No observations available for user authentication queries."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "user-auth",
+                  "closureStatus": "partially-unproven",
+                  "totalQueries": 2,
+                  "provenQueries": [],
+                  "unprovenQueries": [
+                    "query-session-validity",
+                    "query-role-permissions"
+                  ],
+                  "evidenceSummary": "No observations available for user authentication queries."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-unproven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "partially-unproven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "user-auth"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "complex-proven-queries",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "billing-engine",
+                "totalQueries": 4,
+                "unprovenQueryCount": 0,
+                "provenQueries": [
+                  "query-invoice-history",
+                  "query-subscription-tier",
+                  "query-payment-methods",
+                  "query-tax-exemption"
+                ],
+                "unprovenQueries": [],
+                "summary": "Comprehensive fixture run satisfies all four billing queries."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "billing-engine",
+                  "closureStatus": "fully-proven",
+                  "totalQueries": 4,
+                  "provenQueries": [
+                    "query-invoice-history",
+                    "query-subscription-tier",
+                    "query-payment-methods",
+                    "query-tax-exemption"
+                  ],
+                  "unprovenQueries": [],
+                  "evidenceSummary": "Comprehensive fixture run satisfies all four billing queries."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-fully-proven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "fully-proven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "billing-engine"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "mixed-evaluation-closure",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "notification-router",
+                "totalQueries": 3,
+                "unprovenQueryCount": 1,
+                "provenQueries": [
+                  "query-channel-state",
+                  "query-template-registry"
+                ],
+                "unprovenQueries": [
+                  "query-dispatch-rate"
+                ],
+                "summary": "Dispatch rate query remains unobserved."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "notification-router",
+                  "closureStatus": "partially-unproven",
+                  "totalQueries": 3,
+                  "provenQueries": [
+                    "query-channel-state",
+                    "query-template-registry"
+                  ],
+                  "unprovenQueries": [
+                    "query-dispatch-rate"
+                  ],
+                  "evidenceSummary": "Dispatch rate query remains unobserved."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-unproven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "partially-unproven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "notification-router"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/prove-query-closure/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-100924f2427d6341.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "consumer query observation facts collected from fixtures",
+        "line": 25
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/prove-query-closure/contracts/input.schema.json",
+          "entryDigest": "sha256:4e1e14160fcdb753fc89d0a8b678776c0c22ef73105f53f4386c1ba1a65a15e7",
+          "snapshot": "data/capsule-evidence/entries/4e1e14160fcdb753fc89d0a8b678776c0c22ef73105f53f4386c1ba1a65a15e7-a702b436f302971e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "prove-query-closure-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "capabilityId",
+                "totalQueries",
+                "unprovenQueryCount",
+                "provenQueries",
+                "unprovenQueries",
+                "summary"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "type": "string"
+                },
+                "totalQueries": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "unprovenQueryCount": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "provenQueries": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "unprovenQueries": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "summary": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/prove-query-closure/contracts/outcome.schema.json",
+          "entryDigest": "sha256:fbaf56471f1037b5e40c953e91a709593bfeb1d4538675b1a2fcc0beee1b6f73",
+          "snapshot": "data/capsule-evidence/entries/fbaf56471f1037b5e40c953e91a709593bfeb1d4538675b1a2fcc0beee1b6f73-11f8eda82a6911b1.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "capabilityId",
+            "closureStatus",
+            "totalQueries",
+            "provenQueries",
+            "unprovenQueries",
+            "evidenceSummary"
+          ],
+          "properties": {
+            "capabilityId": {
+              "type": "string"
+            },
+            "closureStatus": {
+              "type": "string",
+              "enum": [
+                "fully-proven",
+                "partially-unproven"
+              ]
+            },
+            "totalQueries": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "provenQueries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unprovenQueries": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "evidenceSummary": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-9144b26cb577517c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-b17bf263a31489bf.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-41379bfeb3117ec4.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-3e2a4767e1e23dc9.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "consumer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "prove-query-closure",
+          "scenario": {
+            "scenarioId": "prove-query-closure",
+            "input": {
+              "inputId": "consumer-query-observation-facts",
+              "contract": {
+                "contractId": "prove-query-closure-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "query-closure-proof-requested",
+              "executionAuthorityId": "consumer-query-closure-proof.v1"
+            },
+            "outcome": {
+              "outcomeId": "query-closure-known",
+              "contract": {
+                "contractId": "query-closure-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "prove-query-closure.operation.1",
+              "mechanicBindingId": "port:prove-query-closure-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "prove-query-closure-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "4e1e14160fcdb753fc89d0a8b678776c0c22ef73105f53f4386c1ba1a65a15e7",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "prove-query-closure-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "capabilityId",
+                          "totalQueries",
+                          "unprovenQueryCount",
+                          "provenQueries",
+                          "unprovenQueries",
+                          "summary"
+                        ],
+                        "properties": {
+                          "capabilityId": {
+                            "type": "string"
+                          },
+                          "totalQueries": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "unprovenQueryCount": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "provenQueries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "unprovenQueries": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "summary": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "query-closure-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "fbaf56471f1037b5e40c953e91a709593bfeb1d4538675b1a2fcc0beee1b6f73",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "capabilityId",
+                      "closureStatus",
+                      "totalQueries",
+                      "provenQueries",
+                      "unprovenQueries",
+                      "evidenceSummary"
+                    ],
+                    "properties": {
+                      "capabilityId": {
+                        "type": "string"
+                      },
+                      "closureStatus": {
+                        "type": "string",
+                        "enum": [
+                          "fully-proven",
+                          "partially-unproven"
+                        ]
+                      },
+                      "totalQueries": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "provenQueries": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "unprovenQueries": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "evidenceSummary": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-query-closure-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "capabilityId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.capabilityId"
+                },
+                "closureStatus": {
+                  "op": "if",
+                  "then": {
+                    "op": "literal",
+                    "value": "fully-proven"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "partially-unproven"
+                  },
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.unprovenQueryCount"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": 0
+                    }
+                  }
+                },
+                "totalQueries": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.totalQueries"
+                },
+                "provenQueries": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.provenQueries"
+                },
+                "unprovenQueries": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.unprovenQueries"
+                },
+                "evidenceSummary": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.summary"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-query-closure-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every implemented query is observed with a satisfying fixture result, or is explicitly unproven",
+        "line": 27
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-queries-satisfied",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "order-processing",
+                "totalQueries": 3,
+                "unprovenQueryCount": 0,
+                "provenQueries": [
+                  "query-order-status",
+                  "query-order-items",
+                  "query-payment-status"
+                ],
+                "unprovenQueries": [],
+                "summary": "All implemented queries verified against fixture observations."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "order-processing",
+                  "closureStatus": "fully-proven",
+                  "totalQueries": 3,
+                  "provenQueries": [
+                    "query-order-status",
+                    "query-order-items",
+                    "query-payment-status"
+                  ],
+                  "unprovenQueries": [],
+                  "evidenceSummary": "All implemented queries verified against fixture observations."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-fully-proven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "fully-proven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "order-processing"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-unproven-query",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "inventory-management",
+                "totalQueries": 2,
+                "unprovenQueryCount": 1,
+                "provenQueries": [
+                  "query-stock-level"
+                ],
+                "unprovenQueries": [
+                  "query-warehouse-locations"
+                ],
+                "summary": "Warehouse query lacks observed fixture satisfaction."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "inventory-management",
+                  "closureStatus": "partially-unproven",
+                  "totalQueries": 2,
+                  "provenQueries": [
+                    "query-stock-level"
+                  ],
+                  "unprovenQueries": [
+                    "query-warehouse-locations"
+                  ],
+                  "evidenceSummary": "Warehouse query lacks observed fixture satisfaction."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-unproven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "partially-unproven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "inventory-management"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-query-set",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "pure-transformation-utility",
+                "totalQueries": 0,
+                "unprovenQueryCount": 0,
+                "provenQueries": [],
+                "unprovenQueries": [],
+                "summary": "No queries declared or required for capability."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "pure-transformation-utility",
+                  "closureStatus": "fully-proven",
+                  "totalQueries": 0,
+                  "provenQueries": [],
+                  "unprovenQueries": [],
+                  "evidenceSummary": "No queries declared or required for capability."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-fully-proven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "fully-proven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "pure-transformation-utility"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-queries-unproven",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "user-auth",
+                "totalQueries": 2,
+                "unprovenQueryCount": 2,
+                "provenQueries": [],
+                "unprovenQueries": [
+                  "query-session-validity",
+                  "query-role-permissions"
+                ],
+                "summary": "No observations available for user authentication queries."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "user-auth",
+                  "closureStatus": "partially-unproven",
+                  "totalQueries": 2,
+                  "provenQueries": [],
+                  "unprovenQueries": [
+                    "query-session-validity",
+                    "query-role-permissions"
+                  ],
+                  "evidenceSummary": "No observations available for user authentication queries."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-unproven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "partially-unproven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "user-auth"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "complex-proven-queries",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "billing-engine",
+                "totalQueries": 4,
+                "unprovenQueryCount": 0,
+                "provenQueries": [
+                  "query-invoice-history",
+                  "query-subscription-tier",
+                  "query-payment-methods",
+                  "query-tax-exemption"
+                ],
+                "unprovenQueries": [],
+                "summary": "Comprehensive fixture run satisfies all four billing queries."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "billing-engine",
+                  "closureStatus": "fully-proven",
+                  "totalQueries": 4,
+                  "provenQueries": [
+                    "query-invoice-history",
+                    "query-subscription-tier",
+                    "query-payment-methods",
+                    "query-tax-exemption"
+                  ],
+                  "unprovenQueries": [],
+                  "evidenceSummary": "Comprehensive fixture run satisfies all four billing queries."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-fully-proven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "fully-proven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "billing-engine"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-query-closure/fixtures.authority.json",
+          "entryDigest": "sha256:424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851",
+          "snapshot": "data/capsule-evidence/entries/424d1ad7323c615329d3fb5ce4a8e9bfaff2c65ccbad6dd49da95ec688ea1851-3efbc2ed0799b041.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "mixed-evaluation-closure",
+            "input": {
+              "contractId": "prove-query-closure-input.v1",
+              "payload": {
+                "capabilityId": "notification-router",
+                "totalQueries": 3,
+                "unprovenQueryCount": 1,
+                "provenQueries": [
+                  "query-channel-state",
+                  "query-template-registry"
+                ],
+                "unprovenQueries": [
+                  "query-dispatch-rate"
+                ],
+                "summary": "Dispatch rate query remains unobserved."
+              }
+            },
+            "portOutcomes": {
+              "prove-query-closure-port": {
+                "output": {
+                  "capabilityId": "notification-router",
+                  "closureStatus": "partially-unproven",
+                  "totalQueries": 3,
+                  "provenQueries": [
+                    "query-channel-state",
+                    "query-template-registry"
+                  ],
+                  "unprovenQueries": [
+                    "query-dispatch-rate"
+                  ],
+                  "evidenceSummary": "Dispatch rate query remains unobserved."
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-query-closure",
+              "scenarioSequence": [
+                "prove-query-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "status-unproven",
+                  "path": "closureStatus",
+                  "operator": "equals",
+                  "value": "partially-unproven"
+                },
+                {
+                  "conditionId": "capability-matches",
+                  "path": "capabilityId",
+                  "operator": "equals",
+                  "value": "notification-router"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-query-closure-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "prove-query-closure",
+        "scenario": {
+          "scenarioId": "prove-query-closure",
+          "input": {
+            "inputId": "consumer-query-observation-facts",
+            "contract": {
+              "contractId": "prove-query-closure-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "query-closure-proof-requested",
+            "executionAuthorityId": "consumer-query-closure-proof.v1"
+          },
+          "outcome": {
+            "outcomeId": "query-closure-known",
+            "contract": {
+              "contractId": "query-closure-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "prove-query-closure.operation.1",
+            "mechanicBindingId": "port:prove-query-closure-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-query-closure/execution-plan.node.json",
+          "entryDigest": "sha256:8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab",
+          "snapshot": "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

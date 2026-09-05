@@ -1,0 +1,3565 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "project-operation-binding::project-operation-binding",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:5a259d1b76955a43f54b9af8671f6ac78ec697465fc12c373f95ef5abf9c8ce6"
+  },
+  "scenarioSurface": {
+    "key": "project-operation-binding::project-operation-binding",
+    "capabilityId": "project-operation-binding",
+    "capabilityName": "Project declared operation binding",
+    "scenarioId": "project-operation-binding",
+    "scenarioName": "Bind a semantic event to an admitted operation port",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one admitted semantic event, operation declaration, argument bindings, result bindings, and effect-port identity",
+        "line": 23
+      }
+    ],
+    "event": [
+      {
+        "text": "the declared operation binding is projected",
+        "line": 24
+      }
+    ],
+    "outcome": [
+      {
+        "text": "request, arguments, results, cancellation relationship, port, and lineage are preserved without performing the effect or inventing an execution path",
+        "line": 25
+      }
+    ],
+    "products": [
+      "declared-operation-binding-projection-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "presentation-layer"
+    ],
+    "altitude": null,
+    "notes": "\n  Presentation may declare that a semantic event requests an admitted operation\n  such as capability execution, query execution, source resolution, fixture\n  selection, or cancellation. Projection must bind the request and its arguments\n  to an admitted effect port without implementing the effect inside presentation.",
+    "source": {
+      "capsuleFile": "project-operation-binding.sfxcap",
+      "capsuleDigest": "sha256:5a259d1b76955a43f54b9af8671f6ac78ec697465fc12c373f95ef5abf9c8ce6",
+      "featureEntry": "features/project-operation-binding.feature",
+      "featureDigest": "sha256:cc8d34740fad07002e2321692d52ae388a303c68418c226dd3e0a87b1f8cbde8",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/project-operation-binding.feature",
+      "scenarioLine": 22
+    },
+    "tags": [
+      "@capability:project-operation-binding",
+      "@root-scenario:project-operation-binding",
+      "@scenario:project-operation-binding",
+      "@input:declared-operation-binding-facts",
+      "@input-contract:project-operation-binding-input.v1",
+      "@event:declared-operation-binding-projection-requested",
+      "@event-authority:declared-operation-binding-projection.v1",
+      "@outcome:declared-operation-binding-projection-known",
+      "@outcome-contract:declared-operation-binding-projection-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "project-operation-binding",
+          "scenario": {
+            "scenarioId": "project-operation-binding",
+            "input": {
+              "inputId": "declared-operation-binding-facts",
+              "contract": {
+                "contractId": "project-operation-binding-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "declared-operation-binding-projection-requested",
+              "executionAuthorityId": "declared-operation-binding-projection.v1"
+            },
+            "outcome": {
+              "outcomeId": "declared-operation-binding-projection-known",
+              "contract": {
+                "contractId": "declared-operation-binding-projection-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "project-operation-binding.operation.1",
+              "mechanicBindingId": "port:project-operation-binding-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "project-operation-binding-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "9d791489c5218362e12093fc24aa94f210d092fa052f7a5e9eb1499f098013fd",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "project-operation-binding-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "semanticEventId",
+                          "operationKind",
+                          "targetPortId",
+                          "argumentBindings",
+                          "resultBindings",
+                          "lineageId"
+                        ],
+                        "properties": {
+                          "semanticEventId": {
+                            "type": "string"
+                          },
+                          "operationKind": {
+                            "type": "string"
+                          },
+                          "targetPortId": {
+                            "type": "string"
+                          },
+                          "argumentBindings": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "argumentName",
+                                "sourcePath"
+                              ],
+                              "properties": {
+                                "argumentName": {
+                                  "type": "string"
+                                },
+                                "sourcePath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "resultBindings": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "targetProperty",
+                                "resultPath"
+                              ],
+                              "properties": {
+                                "targetProperty": {
+                                  "type": "string"
+                                },
+                                "resultPath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "cancellationTokenSource": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "lineageId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "declared-operation-binding-projection-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "682000b15405d5fc88bd39394f408367efe2431054c12b2b75671ef788d5b54c",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "semanticEventId",
+                      "operationKind",
+                      "targetPortId",
+                      "argumentBindings",
+                      "resultBindings",
+                      "lineageId",
+                      "projectionStatus"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "declared-operation-binding-projection-evidence.v1"
+                      },
+                      "semanticEventId": {
+                        "type": "string"
+                      },
+                      "operationKind": {
+                        "type": "string"
+                      },
+                      "targetPortId": {
+                        "type": "string"
+                      },
+                      "argumentBindings": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "argumentName",
+                            "sourcePath"
+                          ],
+                          "properties": {
+                            "argumentName": {
+                              "type": "string"
+                            },
+                            "sourcePath": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "resultBindings": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "targetProperty",
+                            "resultPath"
+                          ],
+                          "properties": {
+                            "targetProperty": {
+                              "type": "string"
+                            },
+                            "resultPath": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "cancellationTokenSource": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "lineageId": {
+                        "type": "string"
+                      },
+                      "projectionStatus": {
+                        "type": "string",
+                        "const": "projected"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-operation-binding-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "declared-operation-binding-projection-evidence.v1"
+                },
+                "semanticEventId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.semanticEventId"
+                },
+                "operationKind": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.operationKind"
+                },
+                "targetPortId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.targetPortId"
+                },
+                "argumentBindings": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.argumentBindings"
+                },
+                "resultBindings": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.resultBindings"
+                },
+                "cancellationTokenSource": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.cancellationTokenSource"
+                },
+                "lineageId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.lineageId"
+                },
+                "projectionStatus": {
+                  "op": "literal",
+                  "value": "projected"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-operation-binding-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-operation-binding/contracts/input.schema.json",
+          "entryDigest": "sha256:9d791489c5218362e12093fc24aa94f210d092fa052f7a5e9eb1499f098013fd",
+          "snapshot": "data/capsule-evidence/entries/9d791489c5218362e12093fc24aa94f210d092fa052f7a5e9eb1499f098013fd-af71eebcf099b402.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "project-operation-binding-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "semanticEventId",
+                "operationKind",
+                "targetPortId",
+                "argumentBindings",
+                "resultBindings",
+                "lineageId"
+              ],
+              "properties": {
+                "semanticEventId": {
+                  "type": "string"
+                },
+                "operationKind": {
+                  "type": "string"
+                },
+                "targetPortId": {
+                  "type": "string"
+                },
+                "argumentBindings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "argumentName",
+                      "sourcePath"
+                    ],
+                    "properties": {
+                      "argumentName": {
+                        "type": "string"
+                      },
+                      "sourcePath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "resultBindings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "targetProperty",
+                      "resultPath"
+                    ],
+                    "properties": {
+                      "targetProperty": {
+                        "type": "string"
+                      },
+                      "resultPath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "cancellationTokenSource": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "lineageId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/project-operation-binding/contracts/outcome.schema.json",
+          "entryDigest": "sha256:682000b15405d5fc88bd39394f408367efe2431054c12b2b75671ef788d5b54c",
+          "snapshot": "data/capsule-evidence/entries/682000b15405d5fc88bd39394f408367efe2431054c12b2b75671ef788d5b54c-f55fb7d1976f9b8a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "semanticEventId",
+            "operationKind",
+            "targetPortId",
+            "argumentBindings",
+            "resultBindings",
+            "lineageId",
+            "projectionStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "declared-operation-binding-projection-evidence.v1"
+            },
+            "semanticEventId": {
+              "type": "string"
+            },
+            "operationKind": {
+              "type": "string"
+            },
+            "targetPortId": {
+              "type": "string"
+            },
+            "argumentBindings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "argumentName",
+                  "sourcePath"
+                ],
+                "properties": {
+                  "argumentName": {
+                    "type": "string"
+                  },
+                  "sourcePath": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "resultBindings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "targetProperty",
+                  "resultPath"
+                ],
+                "properties": {
+                  "targetProperty": {
+                    "type": "string"
+                  },
+                  "resultPath": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "cancellationTokenSource": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "lineageId": {
+              "type": "string"
+            },
+            "projectionStatus": {
+              "type": "string",
+              "const": "projected"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-e7d1a94dd0e386e2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-86f89cd3802e8658.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-75cff4500108644e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-0cc106d1bade67e7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-capability-execution",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-run-capability",
+                "operationKind": "capability-execution",
+                "targetPortId": "execute-capability-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "capabilityId",
+                    "sourcePath": "event.payload.capabilityId"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "executionResult",
+                    "resultPath": "output.result"
+                  }
+                ],
+                "cancellationTokenSource": "cts-01",
+                "lineageId": "lin-001"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-run-capability",
+                  "operationKind": "capability-execution",
+                  "targetPortId": "execute-capability-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "capabilityId",
+                      "sourcePath": "event.payload.capabilityId"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "executionResult",
+                      "resultPath": "output.result"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-01",
+                  "lineageId": "lin-001",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "capability-execution"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "execute-capability-port"
+                },
+                {
+                  "conditionId": "projection-status-is-projected",
+                  "path": "projectionStatus",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-query-execution",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-execute-query",
+                "operationKind": "query-execution",
+                "targetPortId": "query-dispatch-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "queryExpression",
+                    "sourcePath": "event.payload.query"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "matchedRecords",
+                    "resultPath": "output.records"
+                  }
+                ],
+                "cancellationTokenSource": "cts-02",
+                "lineageId": "lin-002"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-execute-query",
+                  "operationKind": "query-execution",
+                  "targetPortId": "query-dispatch-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "queryExpression",
+                      "sourcePath": "event.payload.query"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "matchedRecords",
+                      "resultPath": "output.records"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-02",
+                  "lineageId": "lin-002",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "query-execution"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "query-dispatch-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-002"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-source-resolution",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-resolve-source",
+                "operationKind": "source-resolution",
+                "targetPortId": "source-resolver-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "sourceUri",
+                    "sourcePath": "event.payload.uri"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "resolvedDocument",
+                    "resultPath": "output.document"
+                  }
+                ],
+                "cancellationTokenSource": "cts-03",
+                "lineageId": "lin-003"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-resolve-source",
+                  "operationKind": "source-resolution",
+                  "targetPortId": "source-resolver-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "sourceUri",
+                      "sourcePath": "event.payload.uri"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "resolvedDocument",
+                      "resultPath": "output.document"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-03",
+                  "lineageId": "lin-003",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "source-resolution"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "source-resolver-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-003"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-fixture-selection",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-select-fixture",
+                "operationKind": "fixture-selection",
+                "targetPortId": "fixture-selection-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "fixtureId",
+                    "sourcePath": "event.payload.selectedFixtureId"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "activeFixture",
+                    "resultPath": "output.fixture"
+                  }
+                ],
+                "cancellationTokenSource": "cts-04",
+                "lineageId": "lin-004"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-select-fixture",
+                  "operationKind": "fixture-selection",
+                  "targetPortId": "fixture-selection-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "fixtureId",
+                      "sourcePath": "event.payload.selectedFixtureId"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "activeFixture",
+                      "resultPath": "output.fixture"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-04",
+                  "lineageId": "lin-004",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "fixture-selection"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "fixture-selection-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-004"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-cancellation",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-cancel-operation",
+                "operationKind": "cancellation",
+                "targetPortId": "cancellation-signal-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "tokenHandle",
+                    "sourcePath": "event.payload.tokenHandle"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "isCancelled",
+                    "resultPath": "output.cancelled"
+                  }
+                ],
+                "cancellationTokenSource": "cts-05",
+                "lineageId": "lin-005"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-cancel-operation",
+                  "operationKind": "cancellation",
+                  "targetPortId": "cancellation-signal-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "tokenHandle",
+                      "sourcePath": "event.payload.tokenHandle"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "isCancelled",
+                      "resultPath": "output.cancelled"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-05",
+                  "lineageId": "lin-005",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "cancellation"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "cancellation-signal-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-005"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-custom-operation",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-custom-action",
+                "operationKind": "custom-invocation",
+                "targetPortId": "custom-action-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "actionName",
+                    "sourcePath": "event.payload.name"
+                  },
+                  {
+                    "argumentName": "payloadData",
+                    "sourcePath": "event.payload.data"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "actionOutcome",
+                    "resultPath": "output.outcome"
+                  }
+                ],
+                "cancellationTokenSource": "cts-06",
+                "lineageId": "lin-006"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-custom-action",
+                  "operationKind": "custom-invocation",
+                  "targetPortId": "custom-action-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "actionName",
+                      "sourcePath": "event.payload.name"
+                    },
+                    {
+                      "argumentName": "payloadData",
+                      "sourcePath": "event.payload.data"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "actionOutcome",
+                      "resultPath": "output.outcome"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-06",
+                  "lineageId": "lin-006",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "custom-invocation"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "custom-action-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-006"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/project-operation-binding/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-81b4bd974cdd83ab.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one admitted semantic event, operation declaration, argument bindings, result bindings, and effect-port identity",
+        "line": 23
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/project-operation-binding/contracts/input.schema.json",
+          "entryDigest": "sha256:9d791489c5218362e12093fc24aa94f210d092fa052f7a5e9eb1499f098013fd",
+          "snapshot": "data/capsule-evidence/entries/9d791489c5218362e12093fc24aa94f210d092fa052f7a5e9eb1499f098013fd-af71eebcf099b402.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "project-operation-binding-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "semanticEventId",
+                "operationKind",
+                "targetPortId",
+                "argumentBindings",
+                "resultBindings",
+                "lineageId"
+              ],
+              "properties": {
+                "semanticEventId": {
+                  "type": "string"
+                },
+                "operationKind": {
+                  "type": "string"
+                },
+                "targetPortId": {
+                  "type": "string"
+                },
+                "argumentBindings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "argumentName",
+                      "sourcePath"
+                    ],
+                    "properties": {
+                      "argumentName": {
+                        "type": "string"
+                      },
+                      "sourcePath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "resultBindings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "targetProperty",
+                      "resultPath"
+                    ],
+                    "properties": {
+                      "targetProperty": {
+                        "type": "string"
+                      },
+                      "resultPath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "cancellationTokenSource": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "lineageId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/project-operation-binding/contracts/outcome.schema.json",
+          "entryDigest": "sha256:682000b15405d5fc88bd39394f408367efe2431054c12b2b75671ef788d5b54c",
+          "snapshot": "data/capsule-evidence/entries/682000b15405d5fc88bd39394f408367efe2431054c12b2b75671ef788d5b54c-f55fb7d1976f9b8a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "semanticEventId",
+            "operationKind",
+            "targetPortId",
+            "argumentBindings",
+            "resultBindings",
+            "lineageId",
+            "projectionStatus"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "declared-operation-binding-projection-evidence.v1"
+            },
+            "semanticEventId": {
+              "type": "string"
+            },
+            "operationKind": {
+              "type": "string"
+            },
+            "targetPortId": {
+              "type": "string"
+            },
+            "argumentBindings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "argumentName",
+                  "sourcePath"
+                ],
+                "properties": {
+                  "argumentName": {
+                    "type": "string"
+                  },
+                  "sourcePath": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "resultBindings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "targetProperty",
+                  "resultPath"
+                ],
+                "properties": {
+                  "targetProperty": {
+                    "type": "string"
+                  },
+                  "resultPath": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "cancellationTokenSource": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "lineageId": {
+              "type": "string"
+            },
+            "projectionStatus": {
+              "type": "string",
+              "const": "projected"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-e7d1a94dd0e386e2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-86f89cd3802e8658.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-75cff4500108644e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-0cc106d1bade67e7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "presentation-layer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "project-operation-binding",
+          "scenario": {
+            "scenarioId": "project-operation-binding",
+            "input": {
+              "inputId": "declared-operation-binding-facts",
+              "contract": {
+                "contractId": "project-operation-binding-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "declared-operation-binding-projection-requested",
+              "executionAuthorityId": "declared-operation-binding-projection.v1"
+            },
+            "outcome": {
+              "outcomeId": "declared-operation-binding-projection-known",
+              "contract": {
+                "contractId": "declared-operation-binding-projection-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "project-operation-binding.operation.1",
+              "mechanicBindingId": "port:project-operation-binding-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "project-operation-binding-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "9d791489c5218362e12093fc24aa94f210d092fa052f7a5e9eb1499f098013fd",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "project-operation-binding-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "semanticEventId",
+                          "operationKind",
+                          "targetPortId",
+                          "argumentBindings",
+                          "resultBindings",
+                          "lineageId"
+                        ],
+                        "properties": {
+                          "semanticEventId": {
+                            "type": "string"
+                          },
+                          "operationKind": {
+                            "type": "string"
+                          },
+                          "targetPortId": {
+                            "type": "string"
+                          },
+                          "argumentBindings": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "argumentName",
+                                "sourcePath"
+                              ],
+                              "properties": {
+                                "argumentName": {
+                                  "type": "string"
+                                },
+                                "sourcePath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "resultBindings": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "targetProperty",
+                                "resultPath"
+                              ],
+                              "properties": {
+                                "targetProperty": {
+                                  "type": "string"
+                                },
+                                "resultPath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "cancellationTokenSource": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "lineageId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "declared-operation-binding-projection-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "682000b15405d5fc88bd39394f408367efe2431054c12b2b75671ef788d5b54c",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "semanticEventId",
+                      "operationKind",
+                      "targetPortId",
+                      "argumentBindings",
+                      "resultBindings",
+                      "lineageId",
+                      "projectionStatus"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "declared-operation-binding-projection-evidence.v1"
+                      },
+                      "semanticEventId": {
+                        "type": "string"
+                      },
+                      "operationKind": {
+                        "type": "string"
+                      },
+                      "targetPortId": {
+                        "type": "string"
+                      },
+                      "argumentBindings": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "argumentName",
+                            "sourcePath"
+                          ],
+                          "properties": {
+                            "argumentName": {
+                              "type": "string"
+                            },
+                            "sourcePath": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "resultBindings": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "targetProperty",
+                            "resultPath"
+                          ],
+                          "properties": {
+                            "targetProperty": {
+                              "type": "string"
+                            },
+                            "resultPath": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "cancellationTokenSource": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "lineageId": {
+                        "type": "string"
+                      },
+                      "projectionStatus": {
+                        "type": "string",
+                        "const": "projected"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-operation-binding-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "declared-operation-binding-projection-evidence.v1"
+                },
+                "semanticEventId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.semanticEventId"
+                },
+                "operationKind": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.operationKind"
+                },
+                "targetPortId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.targetPortId"
+                },
+                "argumentBindings": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.argumentBindings"
+                },
+                "resultBindings": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.resultBindings"
+                },
+                "cancellationTokenSource": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.cancellationTokenSource"
+                },
+                "lineageId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.lineageId"
+                },
+                "projectionStatus": {
+                  "op": "literal",
+                  "value": "projected"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-operation-binding-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "request, arguments, results, cancellation relationship, port, and lineage are preserved without performing the effect or inventing an execution path",
+        "line": 25
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-capability-execution",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-run-capability",
+                "operationKind": "capability-execution",
+                "targetPortId": "execute-capability-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "capabilityId",
+                    "sourcePath": "event.payload.capabilityId"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "executionResult",
+                    "resultPath": "output.result"
+                  }
+                ],
+                "cancellationTokenSource": "cts-01",
+                "lineageId": "lin-001"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-run-capability",
+                  "operationKind": "capability-execution",
+                  "targetPortId": "execute-capability-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "capabilityId",
+                      "sourcePath": "event.payload.capabilityId"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "executionResult",
+                      "resultPath": "output.result"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-01",
+                  "lineageId": "lin-001",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "capability-execution"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "execute-capability-port"
+                },
+                {
+                  "conditionId": "projection-status-is-projected",
+                  "path": "projectionStatus",
+                  "operator": "equals",
+                  "value": "projected"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-query-execution",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-execute-query",
+                "operationKind": "query-execution",
+                "targetPortId": "query-dispatch-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "queryExpression",
+                    "sourcePath": "event.payload.query"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "matchedRecords",
+                    "resultPath": "output.records"
+                  }
+                ],
+                "cancellationTokenSource": "cts-02",
+                "lineageId": "lin-002"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-execute-query",
+                  "operationKind": "query-execution",
+                  "targetPortId": "query-dispatch-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "queryExpression",
+                      "sourcePath": "event.payload.query"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "matchedRecords",
+                      "resultPath": "output.records"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-02",
+                  "lineageId": "lin-002",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "query-execution"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "query-dispatch-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-002"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-source-resolution",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-resolve-source",
+                "operationKind": "source-resolution",
+                "targetPortId": "source-resolver-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "sourceUri",
+                    "sourcePath": "event.payload.uri"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "resolvedDocument",
+                    "resultPath": "output.document"
+                  }
+                ],
+                "cancellationTokenSource": "cts-03",
+                "lineageId": "lin-003"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-resolve-source",
+                  "operationKind": "source-resolution",
+                  "targetPortId": "source-resolver-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "sourceUri",
+                      "sourcePath": "event.payload.uri"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "resolvedDocument",
+                      "resultPath": "output.document"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-03",
+                  "lineageId": "lin-003",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "source-resolution"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "source-resolver-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-003"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-fixture-selection",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-select-fixture",
+                "operationKind": "fixture-selection",
+                "targetPortId": "fixture-selection-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "fixtureId",
+                    "sourcePath": "event.payload.selectedFixtureId"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "activeFixture",
+                    "resultPath": "output.fixture"
+                  }
+                ],
+                "cancellationTokenSource": "cts-04",
+                "lineageId": "lin-004"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-select-fixture",
+                  "operationKind": "fixture-selection",
+                  "targetPortId": "fixture-selection-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "fixtureId",
+                      "sourcePath": "event.payload.selectedFixtureId"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "activeFixture",
+                      "resultPath": "output.fixture"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-04",
+                  "lineageId": "lin-004",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "fixture-selection"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "fixture-selection-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-004"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-cancellation",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-cancel-operation",
+                "operationKind": "cancellation",
+                "targetPortId": "cancellation-signal-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "tokenHandle",
+                    "sourcePath": "event.payload.tokenHandle"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "isCancelled",
+                    "resultPath": "output.cancelled"
+                  }
+                ],
+                "cancellationTokenSource": "cts-05",
+                "lineageId": "lin-005"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-cancel-operation",
+                  "operationKind": "cancellation",
+                  "targetPortId": "cancellation-signal-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "tokenHandle",
+                      "sourcePath": "event.payload.tokenHandle"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "isCancelled",
+                      "resultPath": "output.cancelled"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-05",
+                  "lineageId": "lin-005",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "cancellation"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "cancellation-signal-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-005"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/project-operation-binding/fixtures.authority.json",
+          "entryDigest": "sha256:f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601",
+          "snapshot": "data/capsule-evidence/entries/f31b211009c639c7ff814c7caddc2ec07734a4be664ce69e7b42f86c4f807601-304488f2dc6b4cc4.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-custom-operation",
+            "input": {
+              "contractId": "project-operation-binding-input.v1",
+              "payload": {
+                "semanticEventId": "event-custom-action",
+                "operationKind": "custom-invocation",
+                "targetPortId": "custom-action-port",
+                "argumentBindings": [
+                  {
+                    "argumentName": "actionName",
+                    "sourcePath": "event.payload.name"
+                  },
+                  {
+                    "argumentName": "payloadData",
+                    "sourcePath": "event.payload.data"
+                  }
+                ],
+                "resultBindings": [
+                  {
+                    "targetProperty": "actionOutcome",
+                    "resultPath": "output.outcome"
+                  }
+                ],
+                "cancellationTokenSource": "cts-06",
+                "lineageId": "lin-006"
+              }
+            },
+            "portOutcomes": {
+              "project-operation-binding-port": {
+                "output": {
+                  "contractId": "declared-operation-binding-projection-evidence.v1",
+                  "semanticEventId": "event-custom-action",
+                  "operationKind": "custom-invocation",
+                  "targetPortId": "custom-action-port",
+                  "argumentBindings": [
+                    {
+                      "argumentName": "actionName",
+                      "sourcePath": "event.payload.name"
+                    },
+                    {
+                      "argumentName": "payloadData",
+                      "sourcePath": "event.payload.data"
+                    }
+                  ],
+                  "resultBindings": [
+                    {
+                      "targetProperty": "actionOutcome",
+                      "resultPath": "output.outcome"
+                    }
+                  ],
+                  "cancellationTokenSource": "cts-06",
+                  "lineageId": "lin-006",
+                  "projectionStatus": "projected"
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "project-operation-binding",
+              "scenarioSequence": [
+                "project-operation-binding"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "operation-kind-preserved",
+                  "path": "operationKind",
+                  "operator": "equals",
+                  "value": "custom-invocation"
+                },
+                {
+                  "conditionId": "target-port-preserved",
+                  "path": "targetPortId",
+                  "operator": "equals",
+                  "value": "custom-action-port"
+                },
+                {
+                  "conditionId": "lineage-preserved",
+                  "path": "lineageId",
+                  "operator": "equals",
+                  "value": "lin-006"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:project-operation-binding-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "project-operation-binding",
+        "scenario": {
+          "scenarioId": "project-operation-binding",
+          "input": {
+            "inputId": "declared-operation-binding-facts",
+            "contract": {
+              "contractId": "project-operation-binding-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "declared-operation-binding-projection-requested",
+            "executionAuthorityId": "declared-operation-binding-projection.v1"
+          },
+          "outcome": {
+            "outcomeId": "declared-operation-binding-projection-known",
+            "contract": {
+              "contractId": "declared-operation-binding-projection-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "project-operation-binding.operation.1",
+            "mechanicBindingId": "port:project-operation-binding-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/project-operation-binding/execution-plan.node.json",
+          "entryDigest": "sha256:822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f",
+          "snapshot": "data/capsule-evidence/entries/822b7a82592197a6c6ec4fcff58fe620e73bd664c6a0d89607ef827c8ce6429f-eed095d7473dc579.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

@@ -1,0 +1,2981 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "bind-model-testimony-evidence::bind-model-testimony-evidence",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:8d17aabe51362cf3491b945a7874a7224f438346a8b7c172b16e5a0211815b1f"
+  },
+  "scenarioSurface": {
+    "key": "bind-model-testimony-evidence::bind-model-testimony-evidence",
+    "capabilityId": "bind-model-testimony-evidence",
+    "capabilityName": "Bind immutable model testimony to deterministic evidence",
+    "scenarioId": "bind-model-testimony-evidence",
+    "scenarioName": "Return digest-bound testimony evidence",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "governed request and response references with exact observed bytes",
+        "line": 35
+      }
+    ],
+    "event": [
+      {
+        "text": "the response structure, Gemini provider identity, and one-attempt proof are validated",
+        "line": 36
+      }
+    ],
+    "outcome": [
+      {
+        "text": "request, response, and structured-candidate hashes plus provider, model, invocation, and attempt lineage are returned, or attributable rejection evidence is returned without accepting the candidate",
+        "line": 37
+      }
+    ],
+    "products": [
+      "model-testimony-binding-evidence"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "downstream consumer"
+    ],
+    "altitude": null,
+    "notes": "  A downstream consumer supplies governed references to one exact model request\n  and one exact model response. The capability observes their bytes through an\n  admitted file-observation port, validates that the response is obtained from\n  Gemini in exactly one attempt and contains one structured candidate object,\n  and returns content digests plus retained provider lineage. It never obtains\n  a new model response, alters testimony, accepts a candidate, or writes code.\n\n  Missing files, malformed JSON, a non-obtained disposition, a non-Gemini\n  provider, an attempt count other than one, or a missing structured value are\n  returned as attributable rejection evidence. Candidate hashing uses the\n  canonical compact JSON serialization of the structured value. Request and\n  response hashing uses the exact observed bytes.\n\n  The execution authority must first transform the input into a bounded\n  `sda-governed-repository-observation-port.v1` request for exactly the two\n  declared resources, then decode each returned `exactBytes` value with the\n  admitted `base64-decode-utf8` transformation, parse the response with\n  `parse-json`, serialize `result.structuredValue` with `json-stringify`, and\n  hash that serialization with `sha256`. A pure transformation port must not\n  stand in for repository observation.",
+    "source": {
+      "capsuleFile": "bind-model-testimony-evidence.sfxcap",
+      "capsuleDigest": "sha256:8d17aabe51362cf3491b945a7874a7224f438346a8b7c172b16e5a0211815b1f",
+      "featureEntry": "features/bind-model-testimony-evidence.feature",
+      "featureDigest": "sha256:7f696f8ff69ca57a3c37caa490e1d3107dca7d5e222f9d3a9365ee309878c0b5",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/bind-model-testimony-evidence.feature",
+      "scenarioLine": 34
+    },
+    "tags": [
+      "@capability:bind-model-testimony-evidence",
+      "@root-scenario:bind-model-testimony-evidence",
+      "@scenario:bind-model-testimony-evidence",
+      "@input:model-testimony-binding-request",
+      "@input-contract:model-testimony-binding-request.v1",
+      "@event:bind-model-testimony-evidence",
+      "@event-authority:bind-model-testimony-evidence.v1",
+      "@outcome:model-testimony-binding-evidence",
+      "@outcome-contract:model-testimony-binding-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "bind-model-testimony-evidence",
+          "scenario": {
+            "scenarioId": "bind-model-testimony-evidence",
+            "input": {
+              "inputId": "model-testimony-binding-request",
+              "contract": {
+                "contractId": "model-testimony-binding-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "bind-model-testimony-evidence",
+              "executionAuthorityId": "bind-model-testimony-evidence.v1"
+            },
+            "outcome": {
+              "outcomeId": "model-testimony-binding-evidence",
+              "contract": {
+                "contractId": "model-testimony-binding-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "bind-model-testimony-evidence.operation.1",
+              "mechanicBindingId": "port:prepare-testimony-observation"
+            },
+            {
+              "operationId": "bind-model-testimony-evidence.operation.2",
+              "mechanicBindingId": "port:observe-testimony-files"
+            },
+            {
+              "operationId": "bind-model-testimony-evidence.operation.3",
+              "mechanicBindingId": "port:bind-testimony-evidence"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "model-testimony-binding-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/input.schema.json",
+                  "schemaDigest": "b975b9eb0dcc54199deffeed6438d28faaf43bae8b279efa7bd1a6da19a3971e",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/input.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "carrierType",
+                      "admittedRoot",
+                      "requestRelativePath",
+                      "responseRelativePath",
+                      "requestLineage"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "model-testimony-binding-request.v1"
+                      },
+                      "admittedRoot": {
+                        "const": "agentic-harness"
+                      },
+                      "requestRelativePath": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "responseRelativePath": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "requestLineage": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "model-testimony-binding-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/outcome.schema.json",
+                  "schemaDigest": "c0e7fda0440d65efecfff3497ee0da611bf9928160fec214a497bc98ce412e71",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/outcome.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "carrierType",
+                      "disposition",
+                      "sourceDisposition",
+                      "requestFileHash",
+                      "responseFileHash",
+                      "candidateHash",
+                      "providerKind",
+                      "resolvedModel",
+                      "invocationId",
+                      "attemptCount",
+                      "structuredCandidate",
+                      "effectLineage"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "model-testimony-binding-evidence.v1"
+                      },
+                      "disposition": {
+                        "const": "BOUND"
+                      },
+                      "sourceDisposition": {
+                        "const": "MODEL_RESPONSE_OBTAINED"
+                      },
+                      "requestFileHash": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "responseFileHash": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "candidateHash": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "providerKind": {
+                        "const": "gemini"
+                      },
+                      "resolvedModel": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "invocationId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "attemptCount": {
+                        "const": 1
+                      },
+                      "structuredCandidate": {
+                        "type": "object"
+                      },
+                      "effectLineage": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-testimony-evidence",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "let",
+              "bindings": {
+                "requestFact": {
+                  "op": "find",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "observedFacts"
+                  },
+                  "as": "fact",
+                  "where": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "fact",
+                      "path": "semanticIdentity"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": "request"
+                    }
+                  }
+                },
+                "responseFact": {
+                  "op": "find",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "observedFacts"
+                  },
+                  "as": "fact",
+                  "where": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "fact",
+                      "path": "semanticIdentity"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": "response"
+                    }
+                  }
+                },
+                "response": {
+                  "op": "parse-json",
+                  "value": {
+                    "op": "base64-decode-utf8",
+                    "value": {
+                      "op": "path",
+                      "from": "responseFact",
+                      "path": "exactBytes"
+                    }
+                  }
+                }
+              },
+              "value": {
+                "op": "object",
+                "fields": {
+                  "carrierType": {
+                    "op": "literal",
+                    "value": "model-testimony-binding-evidence.v1"
+                  },
+                  "disposition": {
+                    "op": "literal",
+                    "value": "BOUND"
+                  },
+                  "sourceDisposition": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "disposition"
+                  },
+                  "requestFileHash": {
+                    "op": "path",
+                    "from": "requestFact",
+                    "path": "sha256"
+                  },
+                  "responseFileHash": {
+                    "op": "path",
+                    "from": "responseFact",
+                    "path": "sha256"
+                  },
+                  "candidateHash": {
+                    "op": "format",
+                    "template": "sha256:{digest}",
+                    "values": {
+                      "digest": {
+                        "op": "sha256",
+                        "value": {
+                          "op": "json-stringify",
+                          "value": {
+                            "op": "path",
+                            "from": "response",
+                            "path": "result.structuredValue"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "providerKind": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "resolvedAuthority.providerKind"
+                  },
+                  "resolvedModel": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "resolvedAuthority.resolvedModel"
+                  },
+                  "invocationId": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "invocationId"
+                  },
+                  "attemptCount": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "proof.attemptCount"
+                  },
+                  "structuredCandidate": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "result.structuredValue"
+                  },
+                  "effectLineage": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "effectLineage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:observe-testimony-files",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-governed-repository-observation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Observation.GovernedRepository",
+          "implementationRef": "languages/typescript/runtimes/node/governed-repository-observation-provider.mjs",
+          "configuration": {
+            "observationAuthorityRef": "interfaces.authority.json#/portBindings/1/configuration/observationAuthority",
+            "observationAuthority": {
+              "authorityType": "governed-repository-observation-authority.v1",
+              "roots": [
+                {
+                  "rootId": "agentic-harness",
+                  "relativePath": "../../.."
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:prepare-testimony-observation",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "carrierType": {
+                  "op": "literal",
+                  "value": "bounded-governed-repository-observation-context.v1"
+                },
+                "admittedRoot": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "admittedRoot"
+                },
+                "observationAuthorityRef": {
+                  "op": "literal",
+                  "value": "interfaces.authority.json#/portBindings/1/configuration/observationAuthority"
+                },
+                "declaredResources": {
+                  "op": "array",
+                  "items": [
+                    {
+                      "op": "object",
+                      "fields": {
+                        "semanticIdentity": {
+                          "op": "literal",
+                          "value": "request"
+                        },
+                        "relativePath": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "requestRelativePath"
+                        },
+                        "requestedFactForms": {
+                          "op": "array",
+                          "items": [
+                            {
+                              "op": "literal",
+                              "value": "presence"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "bytes"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "digest"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "op": "object",
+                      "fields": {
+                        "semanticIdentity": {
+                          "op": "literal",
+                          "value": "response"
+                        },
+                        "relativePath": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "responseRelativePath"
+                        },
+                        "requestedFactForms": {
+                          "op": "array",
+                          "items": [
+                            {
+                              "op": "literal",
+                              "value": "presence"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "bytes"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "digest"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "requestedFactForms": {
+                  "op": "array",
+                  "items": [
+                    {
+                      "op": "literal",
+                      "value": "presence"
+                    },
+                    {
+                      "op": "literal",
+                      "value": "bytes"
+                    },
+                    {
+                      "op": "literal",
+                      "value": "digest"
+                    }
+                  ]
+                },
+                "stableIdentityOrder": {
+                  "op": "array",
+                  "items": [
+                    {
+                      "op": "literal",
+                      "value": "request"
+                    },
+                    {
+                      "op": "literal",
+                      "value": "response"
+                    }
+                  ]
+                },
+                "requestLineage": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "requestLineage"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-testimony-evidence",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:observe-testimony-files",
+          "providerCapabilityId": "sda-governed-repository-observation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Observation.GovernedRepository",
+          "implementationRef": "languages/typescript/runtimes/node/governed-repository-observation-provider.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:prepare-testimony-observation",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/bind-model-testimony-evidence/contracts/input.schema.json",
+          "entryDigest": "sha256:94b9415076c03d5dabdf1eb1c623aee4116bc892174ce8eca439067766fa33ea",
+          "snapshot": "data/capsule-evidence/entries/94b9415076c03d5dabdf1eb1c623aee4116bc892174ce8eca439067766fa33ea-302742fe5b1daa4e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/input.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "carrierType",
+            "admittedRoot",
+            "requestRelativePath",
+            "responseRelativePath",
+            "requestLineage"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "model-testimony-binding-request.v1"
+            },
+            "admittedRoot": {
+              "const": "agentic-harness"
+            },
+            "requestRelativePath": {
+              "type": "string",
+              "minLength": 1
+            },
+            "responseRelativePath": {
+              "type": "string",
+              "minLength": 1
+            },
+            "requestLineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/bind-model-testimony-evidence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:189053b7ae63d64d9c7dfd4a1049b16419adbaca054a8bd054f9c025cc5f051c",
+          "snapshot": "data/capsule-evidence/entries/189053b7ae63d64d9c7dfd4a1049b16419adbaca054a8bd054f9c025cc5f051c-b3f8a5a937fb1f8e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/outcome.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "carrierType",
+            "disposition",
+            "sourceDisposition",
+            "requestFileHash",
+            "responseFileHash",
+            "candidateHash",
+            "providerKind",
+            "resolvedModel",
+            "invocationId",
+            "attemptCount",
+            "structuredCandidate",
+            "effectLineage"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "model-testimony-binding-evidence.v1"
+            },
+            "disposition": {
+              "const": "BOUND"
+            },
+            "sourceDisposition": {
+              "const": "MODEL_RESPONSE_OBTAINED"
+            },
+            "requestFileHash": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "responseFileHash": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "candidateHash": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "providerKind": {
+              "const": "gemini"
+            },
+            "resolvedModel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "invocationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attemptCount": {
+              "const": 1
+            },
+            "structuredCandidate": {
+              "type": "object"
+            },
+            "effectLineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-dc150c2375243599.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-e39f3d404015f078.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-c78aed5957cf5172.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-a5126fd1a82f5d57.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/bind-model-testimony-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:8960d8c7e2d0cdc92ba2901c4b3f3936f66f994b232d80336bd27db4c8db4799",
+          "snapshot": "data/capsule-evidence/entries/8960d8c7e2d0cdc92ba2901c4b3f3936f66f994b232d80336bd27db4c8db4799-93b2ecd5d5f0881a.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-gemini-testimony-is-bound",
+            "input": {
+              "carrierType": "model-testimony-binding-request.v1",
+              "admittedRoot": "agentic-harness",
+              "requestRelativePath": "live/project-semantic-element-realization-006/model-request.json",
+              "responseRelativePath": "artifacts/live/project-semantic-element-realization-006/model-response.json",
+              "requestLineage": [
+                "projected-fixture",
+                "real-gemini-testimony"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "bind-model-testimony-evidence",
+              "scenarioSequence": [
+                "bind-model-testimony-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "testimony-bound",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BOUND"
+                },
+                {
+                  "conditionId": "provider-is-gemini",
+                  "path": "providerKind",
+                  "operator": "equals",
+                  "value": "gemini"
+                },
+                {
+                  "conditionId": "single-attempt",
+                  "path": "attemptCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-21b57162803d829f.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "governed request and response references with exact observed bytes",
+        "line": 35
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/bind-model-testimony-evidence/contracts/input.schema.json",
+          "entryDigest": "sha256:94b9415076c03d5dabdf1eb1c623aee4116bc892174ce8eca439067766fa33ea",
+          "snapshot": "data/capsule-evidence/entries/94b9415076c03d5dabdf1eb1c623aee4116bc892174ce8eca439067766fa33ea-302742fe5b1daa4e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/input.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "carrierType",
+            "admittedRoot",
+            "requestRelativePath",
+            "responseRelativePath",
+            "requestLineage"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "model-testimony-binding-request.v1"
+            },
+            "admittedRoot": {
+              "const": "agentic-harness"
+            },
+            "requestRelativePath": {
+              "type": "string",
+              "minLength": 1
+            },
+            "responseRelativePath": {
+              "type": "string",
+              "minLength": 1
+            },
+            "requestLineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/bind-model-testimony-evidence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:189053b7ae63d64d9c7dfd4a1049b16419adbaca054a8bd054f9c025cc5f051c",
+          "snapshot": "data/capsule-evidence/entries/189053b7ae63d64d9c7dfd4a1049b16419adbaca054a8bd054f9c025cc5f051c-b3f8a5a937fb1f8e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/outcome.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "carrierType",
+            "disposition",
+            "sourceDisposition",
+            "requestFileHash",
+            "responseFileHash",
+            "candidateHash",
+            "providerKind",
+            "resolvedModel",
+            "invocationId",
+            "attemptCount",
+            "structuredCandidate",
+            "effectLineage"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "model-testimony-binding-evidence.v1"
+            },
+            "disposition": {
+              "const": "BOUND"
+            },
+            "sourceDisposition": {
+              "const": "MODEL_RESPONSE_OBTAINED"
+            },
+            "requestFileHash": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "responseFileHash": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "candidateHash": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "providerKind": {
+              "const": "gemini"
+            },
+            "resolvedModel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "invocationId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attemptCount": {
+              "const": 1
+            },
+            "structuredCandidate": {
+              "type": "object"
+            },
+            "effectLineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-dc150c2375243599.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-e39f3d404015f078.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-c78aed5957cf5172.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-a5126fd1a82f5d57.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "downstream consumer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "bind-model-testimony-evidence",
+          "scenario": {
+            "scenarioId": "bind-model-testimony-evidence",
+            "input": {
+              "inputId": "model-testimony-binding-request",
+              "contract": {
+                "contractId": "model-testimony-binding-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "bind-model-testimony-evidence",
+              "executionAuthorityId": "bind-model-testimony-evidence.v1"
+            },
+            "outcome": {
+              "outcomeId": "model-testimony-binding-evidence",
+              "contract": {
+                "contractId": "model-testimony-binding-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "bind-model-testimony-evidence.operation.1",
+              "mechanicBindingId": "port:prepare-testimony-observation"
+            },
+            {
+              "operationId": "bind-model-testimony-evidence.operation.2",
+              "mechanicBindingId": "port:observe-testimony-files"
+            },
+            {
+              "operationId": "bind-model-testimony-evidence.operation.3",
+              "mechanicBindingId": "port:bind-testimony-evidence"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "model-testimony-binding-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/input.schema.json",
+                  "schemaDigest": "b975b9eb0dcc54199deffeed6438d28faaf43bae8b279efa7bd1a6da19a3971e",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/input.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "carrierType",
+                      "admittedRoot",
+                      "requestRelativePath",
+                      "responseRelativePath",
+                      "requestLineage"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "model-testimony-binding-request.v1"
+                      },
+                      "admittedRoot": {
+                        "const": "agentic-harness"
+                      },
+                      "requestRelativePath": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "responseRelativePath": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "requestLineage": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "model-testimony-binding-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/outcome.schema.json",
+                  "schemaDigest": "c0e7fda0440d65efecfff3497ee0da611bf9928160fec214a497bc98ce412e71",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/bind-model-testimony-evidence/outcome.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "carrierType",
+                      "disposition",
+                      "sourceDisposition",
+                      "requestFileHash",
+                      "responseFileHash",
+                      "candidateHash",
+                      "providerKind",
+                      "resolvedModel",
+                      "invocationId",
+                      "attemptCount",
+                      "structuredCandidate",
+                      "effectLineage"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "model-testimony-binding-evidence.v1"
+                      },
+                      "disposition": {
+                        "const": "BOUND"
+                      },
+                      "sourceDisposition": {
+                        "const": "MODEL_RESPONSE_OBTAINED"
+                      },
+                      "requestFileHash": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "responseFileHash": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "candidateHash": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "providerKind": {
+                        "const": "gemini"
+                      },
+                      "resolvedModel": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "invocationId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "attemptCount": {
+                        "const": 1
+                      },
+                      "structuredCandidate": {
+                        "type": "object"
+                      },
+                      "effectLineage": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-testimony-evidence",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "let",
+              "bindings": {
+                "requestFact": {
+                  "op": "find",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "observedFacts"
+                  },
+                  "as": "fact",
+                  "where": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "fact",
+                      "path": "semanticIdentity"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": "request"
+                    }
+                  }
+                },
+                "responseFact": {
+                  "op": "find",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "observedFacts"
+                  },
+                  "as": "fact",
+                  "where": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "fact",
+                      "path": "semanticIdentity"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": "response"
+                    }
+                  }
+                },
+                "response": {
+                  "op": "parse-json",
+                  "value": {
+                    "op": "base64-decode-utf8",
+                    "value": {
+                      "op": "path",
+                      "from": "responseFact",
+                      "path": "exactBytes"
+                    }
+                  }
+                }
+              },
+              "value": {
+                "op": "object",
+                "fields": {
+                  "carrierType": {
+                    "op": "literal",
+                    "value": "model-testimony-binding-evidence.v1"
+                  },
+                  "disposition": {
+                    "op": "literal",
+                    "value": "BOUND"
+                  },
+                  "sourceDisposition": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "disposition"
+                  },
+                  "requestFileHash": {
+                    "op": "path",
+                    "from": "requestFact",
+                    "path": "sha256"
+                  },
+                  "responseFileHash": {
+                    "op": "path",
+                    "from": "responseFact",
+                    "path": "sha256"
+                  },
+                  "candidateHash": {
+                    "op": "format",
+                    "template": "sha256:{digest}",
+                    "values": {
+                      "digest": {
+                        "op": "sha256",
+                        "value": {
+                          "op": "json-stringify",
+                          "value": {
+                            "op": "path",
+                            "from": "response",
+                            "path": "result.structuredValue"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "providerKind": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "resolvedAuthority.providerKind"
+                  },
+                  "resolvedModel": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "resolvedAuthority.resolvedModel"
+                  },
+                  "invocationId": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "invocationId"
+                  },
+                  "attemptCount": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "proof.attemptCount"
+                  },
+                  "structuredCandidate": {
+                    "op": "path",
+                    "from": "response",
+                    "path": "result.structuredValue"
+                  },
+                  "effectLineage": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "effectLineage"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:observe-testimony-files",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-governed-repository-observation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Observation.GovernedRepository",
+          "implementationRef": "languages/typescript/runtimes/node/governed-repository-observation-provider.mjs",
+          "configuration": {
+            "observationAuthorityRef": "interfaces.authority.json#/portBindings/1/configuration/observationAuthority",
+            "observationAuthority": {
+              "authorityType": "governed-repository-observation-authority.v1",
+              "roots": [
+                {
+                  "rootId": "agentic-harness",
+                  "relativePath": "../../.."
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:prepare-testimony-observation",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "carrierType": {
+                  "op": "literal",
+                  "value": "bounded-governed-repository-observation-context.v1"
+                },
+                "admittedRoot": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "admittedRoot"
+                },
+                "observationAuthorityRef": {
+                  "op": "literal",
+                  "value": "interfaces.authority.json#/portBindings/1/configuration/observationAuthority"
+                },
+                "declaredResources": {
+                  "op": "array",
+                  "items": [
+                    {
+                      "op": "object",
+                      "fields": {
+                        "semanticIdentity": {
+                          "op": "literal",
+                          "value": "request"
+                        },
+                        "relativePath": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "requestRelativePath"
+                        },
+                        "requestedFactForms": {
+                          "op": "array",
+                          "items": [
+                            {
+                              "op": "literal",
+                              "value": "presence"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "bytes"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "digest"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "op": "object",
+                      "fields": {
+                        "semanticIdentity": {
+                          "op": "literal",
+                          "value": "response"
+                        },
+                        "relativePath": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "responseRelativePath"
+                        },
+                        "requestedFactForms": {
+                          "op": "array",
+                          "items": [
+                            {
+                              "op": "literal",
+                              "value": "presence"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "bytes"
+                            },
+                            {
+                              "op": "literal",
+                              "value": "digest"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "requestedFactForms": {
+                  "op": "array",
+                  "items": [
+                    {
+                      "op": "literal",
+                      "value": "presence"
+                    },
+                    {
+                      "op": "literal",
+                      "value": "bytes"
+                    },
+                    {
+                      "op": "literal",
+                      "value": "digest"
+                    }
+                  ]
+                },
+                "stableIdentityOrder": {
+                  "op": "array",
+                  "items": [
+                    {
+                      "op": "literal",
+                      "value": "request"
+                    },
+                    {
+                      "op": "literal",
+                      "value": "response"
+                    }
+                  ]
+                },
+                "requestLineage": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "requestLineage"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-testimony-evidence",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:observe-testimony-files",
+          "providerCapabilityId": "sda-governed-repository-observation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Observation.GovernedRepository",
+          "implementationRef": "languages/typescript/runtimes/node/governed-repository-observation-provider.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:prepare-testimony-observation",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "request, response, and structured-candidate hashes plus provider, model, invocation, and attempt lineage are returned, or attributable rejection evidence is returned without accepting the candidate",
+        "line": 37
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/bind-model-testimony-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:8960d8c7e2d0cdc92ba2901c4b3f3936f66f994b232d80336bd27db4c8db4799",
+          "snapshot": "data/capsule-evidence/entries/8960d8c7e2d0cdc92ba2901c4b3f3936f66f994b232d80336bd27db4c8db4799-93b2ecd5d5f0881a.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "real-gemini-testimony-is-bound",
+            "input": {
+              "carrierType": "model-testimony-binding-request.v1",
+              "admittedRoot": "agentic-harness",
+              "requestRelativePath": "live/project-semantic-element-realization-006/model-request.json",
+              "responseRelativePath": "artifacts/live/project-semantic-element-realization-006/model-response.json",
+              "requestLineage": [
+                "projected-fixture",
+                "real-gemini-testimony"
+              ]
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "bind-model-testimony-evidence",
+              "scenarioSequence": [
+                "bind-model-testimony-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "testimony-bound",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BOUND"
+                },
+                {
+                  "conditionId": "provider-is-gemini",
+                  "path": "providerKind",
+                  "operator": "equals",
+                  "value": "gemini"
+                },
+                {
+                  "conditionId": "single-attempt",
+                  "path": "attemptCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-testimony-evidence",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/2"
+        },
+        "value": {
+          "bindingId": "port:observe-testimony-files",
+          "providerCapabilityId": "sda-governed-repository-observation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Observation.GovernedRepository",
+          "implementationRef": "languages/typescript/runtimes/node/governed-repository-observation-provider.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/mechanicBindings/3"
+        },
+        "value": {
+          "bindingId": "port:prepare-testimony-observation",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "bind-model-testimony-evidence",
+        "scenario": {
+          "scenarioId": "bind-model-testimony-evidence",
+          "input": {
+            "inputId": "model-testimony-binding-request",
+            "contract": {
+              "contractId": "model-testimony-binding-request.v1"
+            }
+          },
+          "event": {
+            "eventId": "bind-model-testimony-evidence",
+            "executionAuthorityId": "bind-model-testimony-evidence.v1"
+          },
+          "outcome": {
+            "outcomeId": "model-testimony-binding-evidence",
+            "contract": {
+              "contractId": "model-testimony-binding-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "bind-model-testimony-evidence.operation.1",
+            "mechanicBindingId": "port:prepare-testimony-observation"
+          },
+          {
+            "operationId": "bind-model-testimony-evidence.operation.2",
+            "mechanicBindingId": "port:observe-testimony-files"
+          },
+          {
+            "operationId": "bind-model-testimony-evidence.operation.3",
+            "mechanicBindingId": "port:bind-testimony-evidence"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/bind-model-testimony-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457",
+          "snapshot": "data/capsule-evidence/entries/0016d32133834d5aaea524265f876120169ad8a5ef3947fc6d7befa9c3667457-7dcd9a13ec9c4abb.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

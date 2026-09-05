@@ -1,0 +1,4408 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "evaluate-scenario-solution-candidate::admit-solution-evaluation-boundary",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:832df8f7e82affd28a8542a2ed0eda684b99f1c824265d64dc1b6c85ba8e4ec8"
+  },
+  "scenarioSurface": {
+    "key": "evaluate-scenario-solution-candidate::admit-solution-evaluation-boundary",
+    "capabilityId": "evaluate-scenario-solution-candidate",
+    "capabilityName": "Evaluate one scenario solution candidate",
+    "scenarioId": "admit-solution-evaluation-boundary",
+    "scenarioName": "Admit the candidate and the authority it is evaluated against",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one scenario solution candidate, one scenario candidate, and one authoring profile",
+        "line": 39
+      }
+    ],
+    "event": [
+      {
+        "text": "the candidate, the scenario it claims, and the governing profile are observed without model, network, or clock access",
+        "line": 40
+      }
+    ],
+    "outcome": [
+      {
+        "text": "one immutable evaluation boundary fixes what is being evaluated and what it is evaluated against, or the boundary is held with exact findings",
+        "line": 41
+      }
+    ],
+    "products": [
+      "admitted-solution-evaluation-boundary"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "governed authoring conveyor"
+    ],
+    "altitude": null,
+    "notes": "  A scenario solution candidate is untrusted testimony. It becomes a scenario\n  solution only when every part of it is shown to close the scenario it claims\n  to close, using only admitted meaning.\n\n  This capability evaluates one candidate against the scenario it serves and the\n  rules that governed its authoring.\n\n  The resulting ScenarioSolution becomes input to composition.\n\n  A candidate that names an identity, mechanic, or capability the authority does\n  not admit is held with exact findings rather than repaired.",
+    "source": {
+      "capsuleFile": "evaluate-scenario-solution-candidate.sfxcap",
+      "capsuleDigest": "sha256:832df8f7e82affd28a8542a2ed0eda684b99f1c824265d64dc1b6c85ba8e4ec8",
+      "featureEntry": "features/evaluate-scenario-solution-candidate.feature",
+      "featureDigest": "sha256:5d0843ba6ad5193f2515d00e14ca423e6edff78ee30e4b33bdb6b7dd088138ab",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/evaluate-scenario-solution-candidate.feature",
+      "scenarioLine": 38
+    },
+    "tags": [
+      "@capability:evaluate-scenario-solution-candidate",
+      "@root-scenario:evaluate-scenario-solution-candidate",
+      "@scenario:admit-solution-evaluation-boundary",
+      "@input:scenario-solution-candidate-evaluation-request",
+      "@input-contract:scenario-solution-candidate-evaluation-request.v1",
+      "@event:admit-solution-evaluation-boundary",
+      "@event-authority:admit-solution-evaluation-boundary.v1",
+      "@outcome:admitted-solution-evaluation-boundary",
+      "@outcome-contract:admitted-solution-evaluation-boundary.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/nodes/1"
+        },
+        "value": {
+          "nodeId": "admit-solution-evaluation-boundary",
+          "scenario": {
+            "scenarioId": "admit-solution-evaluation-boundary",
+            "input": {
+              "inputId": "scenario-solution-candidate-evaluation-request",
+              "contract": {
+                "contractId": "scenario-solution-candidate-evaluation-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "admit-solution-evaluation-boundary",
+              "executionAuthorityId": "admit-solution-evaluation-boundary.v1"
+            },
+            "outcome": {
+              "outcomeId": "admitted-solution-evaluation-boundary",
+              "contract": {
+                "contractId": "admitted-solution-evaluation-boundary.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "admit-solution-evaluation-boundary.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:admit-solution-evaluation-boundary"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "scenario-solution-candidate-evaluation-request.v1": {
+                  "schemaRef": "scenario-solution-candidate-evaluation-request.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/scenario-solution-candidate-evaluation-request.v1.schema.json",
+                  "schemaDigest": "0727b7b5ac078442c0aae81a53721199f525254fcf0a330816e9dc18bf03e5bc",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/scenario-solution-candidate-evaluation-request.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "solutionCandidate",
+                      "scenarioCandidate",
+                      "authoringProfile"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "scenario-solution-candidate-evaluation-request.v1"
+                      },
+                      "solutionCandidate": {
+                        "type": "object",
+                        "required": [
+                          "scenarioId"
+                        ],
+                        "properties": {
+                          "scenarioId": {
+                            "type": "string"
+                          },
+                          "proposedScenarioId": {
+                            "type": "string"
+                          },
+                          "executionAuthorityId": {
+                            "type": "string"
+                          },
+                          "operations": {
+                            "type": "array"
+                          },
+                          "transformations": {
+                            "type": "array"
+                          },
+                          "portRequirements": {
+                            "type": "array"
+                          },
+                          "unestablishedOutcome": {
+                            "type": "string"
+                          },
+                          "authoringEvidence": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "scenarioCandidate": {
+                        "type": "object",
+                        "required": [
+                          "scenarioId"
+                        ],
+                        "properties": {
+                          "scenarioId": {
+                            "type": "string"
+                          },
+                          "outcomeMeaning": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "authoringProfile": {
+                        "type": "object",
+                        "required": [
+                          "permittedPlatformCapabilityIds",
+                          "mechanicForms"
+                        ],
+                        "properties": {
+                          "permittedPlatformCapabilityIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "mechanicForms": {
+                            "type": "array"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "admitted-solution-evaluation-boundary.v1": {
+                  "schemaRef": "admitted-solution-evaluation-boundary.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/admitted-solution-evaluation-boundary.v1.schema.json",
+                  "schemaDigest": "eca93f7c2d8886221091bccb9b6581f464e361f8ed047f340cc3894a23c00e18",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/admitted-solution-evaluation-boundary.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "declaredScenarioId",
+                      "permittedPlatformCapabilityIds",
+                      "permittedMechanicIds",
+                      "boundaryDisposition"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "admitted-solution-evaluation-boundary.v1"
+                      },
+                      "declaredScenarioId": {
+                        "type": "string"
+                      },
+                      "declaredOutcomeMeaning": {
+                        "type": "string"
+                      },
+                      "candidateScenarioId": {
+                        "type": "string"
+                      },
+                      "proposedScenarioId": {
+                        "type": "string"
+                      },
+                      "executionAuthorityId": {
+                        "type": "string"
+                      },
+                      "operations": {
+                        "type": "array"
+                      },
+                      "transformations": {
+                        "type": "array"
+                      },
+                      "portRequirements": {
+                        "type": "array"
+                      },
+                      "unestablishedOutcome": {
+                        "type": "string"
+                      },
+                      "authoringEvidence": {
+                        "type": "object"
+                      },
+                      "permittedPlatformCapabilityIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "permittedMechanicIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "boundaryDisposition": {
+                        "enum": [
+                          "EVALUATION_BOUNDARY_ADMITTED",
+                          "EVALUATION_BOUNDARY_HELD"
+                        ]
+                      },
+                      "acceptanceClaimed": {
+                        "const": false
+                      }
+                    }
+                  }
+                },
+                "evaluated-solution-identities.v1": {
+                  "schemaRef": "evaluated-solution-identities.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/evaluated-solution-identities.v1.schema.json",
+                  "schemaDigest": "127bf972902a3f8155a1b318968a29f01937c8c1e82b96f6d135e621ca730fc6",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/evaluated-solution-identities.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "unknownPlatformCapabilityIds",
+                      "unknownMechanicIds",
+                      "identityPreserved"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "evaluated-solution-identities.v1"
+                      },
+                      "unknownPlatformCapabilityIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "unknownMechanicIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "identityPreserved": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                },
+                "evaluated-scenario-solution.v1": {
+                  "schemaRef": "evaluated-scenario-solution.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/evaluated-scenario-solution.v1.schema.json",
+                  "schemaDigest": "33da361ec26bb2a06a7868aa6a9c4500668c42ccb225381f7b1a4a79b0e5ac47",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/evaluated-scenario-solution.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "scenarioId",
+                      "targetAltitude",
+                      "findings",
+                      "admissionDisposition",
+                      "acceptanceClaimed"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "evaluated-scenario-solution.v1"
+                      },
+                      "scenarioId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "targetAltitude": {
+                        "const": "execution"
+                      },
+                      "executionAuthorityId": {
+                        "type": "string"
+                      },
+                      "operations": {
+                        "type": "array"
+                      },
+                      "transformations": {
+                        "type": "array"
+                      },
+                      "portRequirements": {
+                        "type": "array"
+                      },
+                      "authoringEvidence": {
+                        "type": "object"
+                      },
+                      "findings": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "admissionDisposition": {
+                        "enum": [
+                          "SCENARIO_SOLUTION_ADMITTED",
+                          "SCENARIO_SOLUTION_HELD"
+                        ]
+                      },
+                      "acceptanceClaimed": {
+                        "const": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-solution-evaluation-boundary",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "carrierType": {
+                  "op": "literal",
+                  "value": "admitted-solution-evaluation-boundary.v1"
+                },
+                "declaredScenarioId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "scenarioCandidate.scenarioId"
+                },
+                "declaredOutcomeMeaning": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "scenarioCandidate.outcomeMeaning"
+                },
+                "candidateScenarioId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.scenarioId"
+                },
+                "proposedScenarioId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.proposedScenarioId"
+                },
+                "executionAuthorityId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.executionAuthorityId"
+                },
+                "operations": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.operations"
+                },
+                "transformations": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.transformations"
+                },
+                "portRequirements": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.portRequirements"
+                },
+                "unestablishedOutcome": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.unestablishedOutcome"
+                },
+                "authoringEvidence": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.authoringEvidence"
+                },
+                "permittedPlatformCapabilityIds": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "authoringProfile.permittedPlatformCapabilityIds"
+                },
+                "permittedMechanicIds": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "authoringProfile.mechanicForms"
+                  },
+                  "as": "form",
+                  "value": {
+                    "op": "path",
+                    "from": "form",
+                    "path": "mechanicId"
+                  }
+                },
+                "boundaryDisposition": {
+                  "op": "if",
+                  "when": {
+                    "op": "every",
+                    "from": {
+                      "op": "array",
+                      "items": [
+                        {
+                          "op": "path",
+                          "from": "input",
+                          "path": "scenarioCandidate.scenarioId"
+                        },
+                        {
+                          "op": "path",
+                          "from": "input",
+                          "path": "solutionCandidate.scenarioId"
+                        },
+                        {
+                          "op": "path",
+                          "from": "input",
+                          "path": "authoringProfile.permittedPlatformCapabilityIds"
+                        }
+                      ]
+                    },
+                    "as": "required",
+                    "where": {
+                      "op": "length",
+                      "value": {
+                        "op": "path",
+                        "from": "required",
+                        "path": ""
+                      }
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": "EVALUATION_BOUNDARY_ADMITTED"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "EVALUATION_BOUNDARY_HELD"
+                  }
+                },
+                "acceptanceClaimed": {
+                  "op": "literal",
+                  "value": false
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-solution-evaluation-boundary",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/admitted-solution-evaluation-boundary.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/admitted-solution-evaluation-boundary.schema.json",
+          "entryDigest": "sha256:609e197fc817eb8aafe5a7b39753ebfd54f70b89cc14cf4a28fbd51e354a27ec",
+          "snapshot": "data/capsule-evidence/entries/609e197fc817eb8aafe5a7b39753ebfd54f70b89cc14cf4a28fbd51e354a27ec-d513d7418094734e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/admitted-solution-evaluation-boundary.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "declaredScenarioId",
+            "permittedPlatformCapabilityIds",
+            "permittedMechanicIds",
+            "boundaryDisposition"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "admitted-solution-evaluation-boundary.v1"
+            },
+            "declaredScenarioId": {
+              "type": "string"
+            },
+            "declaredOutcomeMeaning": {
+              "type": "string"
+            },
+            "candidateScenarioId": {
+              "type": "string"
+            },
+            "proposedScenarioId": {
+              "type": "string"
+            },
+            "executionAuthorityId": {
+              "type": "string"
+            },
+            "operations": {
+              "type": "array"
+            },
+            "transformations": {
+              "type": "array"
+            },
+            "portRequirements": {
+              "type": "array"
+            },
+            "unestablishedOutcome": {
+              "type": "string"
+            },
+            "authoringEvidence": {
+              "type": "object"
+            },
+            "permittedPlatformCapabilityIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "permittedMechanicIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "boundaryDisposition": {
+              "enum": [
+                "EVALUATION_BOUNDARY_ADMITTED",
+                "EVALUATION_BOUNDARY_HELD"
+              ]
+            },
+            "acceptanceClaimed": {
+              "const": false
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/evaluated-scenario-solution.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/evaluated-scenario-solution.schema.json",
+          "entryDigest": "sha256:2675ea2f5c0944c6526a04035ea5e9bd2a8d2bb1da0466f83d8313503e05d20b",
+          "snapshot": "data/capsule-evidence/entries/2675ea2f5c0944c6526a04035ea5e9bd2a8d2bb1da0466f83d8313503e05d20b-52f410f02b76054d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/evaluated-scenario-solution.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "scenarioId",
+            "targetAltitude",
+            "findings",
+            "admissionDisposition",
+            "acceptanceClaimed"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "evaluated-scenario-solution.v1"
+            },
+            "scenarioId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "targetAltitude": {
+              "const": "execution"
+            },
+            "executionAuthorityId": {
+              "type": "string"
+            },
+            "operations": {
+              "type": "array"
+            },
+            "transformations": {
+              "type": "array"
+            },
+            "portRequirements": {
+              "type": "array"
+            },
+            "authoringEvidence": {
+              "type": "object"
+            },
+            "findings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "admissionDisposition": {
+              "enum": [
+                "SCENARIO_SOLUTION_ADMITTED",
+                "SCENARIO_SOLUTION_HELD"
+              ]
+            },
+            "acceptanceClaimed": {
+              "const": false
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/evaluated-solution-identities.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/evaluated-solution-identities.schema.json",
+          "entryDigest": "sha256:5d85fff81f8ce339aecacb8e51e9748a23eec28818964d1e94cf1b33285998ad",
+          "snapshot": "data/capsule-evidence/entries/5d85fff81f8ce339aecacb8e51e9748a23eec28818964d1e94cf1b33285998ad-bd1d68b6783d05f1.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/evaluated-solution-identities.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "unknownPlatformCapabilityIds",
+            "unknownMechanicIds",
+            "identityPreserved"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "evaluated-solution-identities.v1"
+            },
+            "unknownPlatformCapabilityIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unknownMechanicIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "identityPreserved": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/scenario-solution-candidate-evaluation-request.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/scenario-solution-candidate-evaluation-request.schema.json",
+          "entryDigest": "sha256:74ff7969830e1f636915e36b6678403e0b8ff190982d1e5d83bccc15da18f57e",
+          "snapshot": "data/capsule-evidence/entries/74ff7969830e1f636915e36b6678403e0b8ff190982d1e5d83bccc15da18f57e-f878cbc0c6b6d8ea.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/scenario-solution-candidate-evaluation-request.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "solutionCandidate",
+            "scenarioCandidate",
+            "authoringProfile"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "scenario-solution-candidate-evaluation-request.v1"
+            },
+            "solutionCandidate": {
+              "type": "object",
+              "required": [
+                "scenarioId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string"
+                },
+                "proposedScenarioId": {
+                  "type": "string"
+                },
+                "executionAuthorityId": {
+                  "type": "string"
+                },
+                "operations": {
+                  "type": "array"
+                },
+                "transformations": {
+                  "type": "array"
+                },
+                "portRequirements": {
+                  "type": "array"
+                },
+                "unestablishedOutcome": {
+                  "type": "string"
+                },
+                "authoringEvidence": {
+                  "type": "object"
+                }
+              }
+            },
+            "scenarioCandidate": {
+              "type": "object",
+              "required": [
+                "scenarioId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string"
+                },
+                "outcomeMeaning": {
+                  "type": "string"
+                }
+              }
+            },
+            "authoringProfile": {
+              "type": "object",
+              "required": [
+                "permittedPlatformCapabilityIds",
+                "mechanicForms"
+              ],
+              "properties": {
+                "permittedPlatformCapabilityIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "mechanicForms": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-6257c7dbb0e77acc.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-7296fb4810cfcdcb.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-4b36ce2008ff53d8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-1c603bef026c5b97.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "sound-candidate-is-admitted",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "sound-candidate-becomes-a-scenario-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_ADMITTED"
+                },
+                {
+                  "conditionId": "no-findings-are-reported",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "declared-scenario-identity-is-carried",
+                  "path": "scenarioId",
+                  "operator": "equals",
+                  "value": "admit-report-source-snapshot"
+                },
+                {
+                  "conditionId": "evaluation-claims-no-acceptance",
+                  "path": "acceptanceClaimed",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "invented-platform-capability-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "p",
+                    "platformCapabilityId": "cap-report-source-adjudication"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "unadmitted-platform-identity-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-invented-identity-is-named-exactly",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "UNKNOWN_PLATFORM_CAPABILITY:cap-report-source-adjudication"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unknown-mechanic-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "t",
+                    "expression": {
+                      "op": "regex-replace"
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "unadmitted-mechanic-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-unknown-mechanic-is-named-exactly",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "UNKNOWN_MECHANIC:regex-replace"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "scenario-identity-drift-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "some-other-scenario",
+                "proposedScenarioId": "some-other-scenario",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "identity-drift-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-drifted-identity-is-named",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "SCENARIO_IDENTITY_DRIFT:some-other-scenario"
+                  ]
+                },
+                {
+                  "conditionId": "declared-identity-is-not-replaced",
+                  "path": "scenarioId",
+                  "operator": "equals",
+                  "value": "admit-report-source-snapshot"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "incomplete-solution-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "absent-operations-hold-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "incompleteness-is-reported",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "SOLUTION_INCOMPLETE"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unestablished-outcome-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "no admitted mechanic establishes byte-level closure",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "unestablished-outcome-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-unestablished-outcome-is-reported",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "OUTCOME_NOT_ESTABLISHED"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-9452871ae68c4e85.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one scenario solution candidate, one scenario candidate, and one authoring profile",
+        "line": 39
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/admitted-solution-evaluation-boundary.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/admitted-solution-evaluation-boundary.schema.json",
+          "entryDigest": "sha256:609e197fc817eb8aafe5a7b39753ebfd54f70b89cc14cf4a28fbd51e354a27ec",
+          "snapshot": "data/capsule-evidence/entries/609e197fc817eb8aafe5a7b39753ebfd54f70b89cc14cf4a28fbd51e354a27ec-d513d7418094734e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/admitted-solution-evaluation-boundary.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "declaredScenarioId",
+            "permittedPlatformCapabilityIds",
+            "permittedMechanicIds",
+            "boundaryDisposition"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "admitted-solution-evaluation-boundary.v1"
+            },
+            "declaredScenarioId": {
+              "type": "string"
+            },
+            "declaredOutcomeMeaning": {
+              "type": "string"
+            },
+            "candidateScenarioId": {
+              "type": "string"
+            },
+            "proposedScenarioId": {
+              "type": "string"
+            },
+            "executionAuthorityId": {
+              "type": "string"
+            },
+            "operations": {
+              "type": "array"
+            },
+            "transformations": {
+              "type": "array"
+            },
+            "portRequirements": {
+              "type": "array"
+            },
+            "unestablishedOutcome": {
+              "type": "string"
+            },
+            "authoringEvidence": {
+              "type": "object"
+            },
+            "permittedPlatformCapabilityIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "permittedMechanicIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "boundaryDisposition": {
+              "enum": [
+                "EVALUATION_BOUNDARY_ADMITTED",
+                "EVALUATION_BOUNDARY_HELD"
+              ]
+            },
+            "acceptanceClaimed": {
+              "const": false
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/evaluated-scenario-solution.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/evaluated-scenario-solution.schema.json",
+          "entryDigest": "sha256:2675ea2f5c0944c6526a04035ea5e9bd2a8d2bb1da0466f83d8313503e05d20b",
+          "snapshot": "data/capsule-evidence/entries/2675ea2f5c0944c6526a04035ea5e9bd2a8d2bb1da0466f83d8313503e05d20b-52f410f02b76054d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/evaluated-scenario-solution.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "scenarioId",
+            "targetAltitude",
+            "findings",
+            "admissionDisposition",
+            "acceptanceClaimed"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "evaluated-scenario-solution.v1"
+            },
+            "scenarioId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "targetAltitude": {
+              "const": "execution"
+            },
+            "executionAuthorityId": {
+              "type": "string"
+            },
+            "operations": {
+              "type": "array"
+            },
+            "transformations": {
+              "type": "array"
+            },
+            "portRequirements": {
+              "type": "array"
+            },
+            "authoringEvidence": {
+              "type": "object"
+            },
+            "findings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "admissionDisposition": {
+              "enum": [
+                "SCENARIO_SOLUTION_ADMITTED",
+                "SCENARIO_SOLUTION_HELD"
+              ]
+            },
+            "acceptanceClaimed": {
+              "const": false
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/evaluated-solution-identities.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/evaluated-solution-identities.schema.json",
+          "entryDigest": "sha256:5d85fff81f8ce339aecacb8e51e9748a23eec28818964d1e94cf1b33285998ad",
+          "snapshot": "data/capsule-evidence/entries/5d85fff81f8ce339aecacb8e51e9748a23eec28818964d1e94cf1b33285998ad-bd1d68b6783d05f1.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/evaluated-solution-identities.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "unknownPlatformCapabilityIds",
+            "unknownMechanicIds",
+            "identityPreserved"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "evaluated-solution-identities.v1"
+            },
+            "unknownPlatformCapabilityIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unknownMechanicIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "identityPreserved": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/scenario-solution-candidate-evaluation-request.schema.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/contracts/scenario-solution-candidate-evaluation-request.schema.json",
+          "entryDigest": "sha256:74ff7969830e1f636915e36b6678403e0b8ff190982d1e5d83bccc15da18f57e",
+          "snapshot": "data/capsule-evidence/entries/74ff7969830e1f636915e36b6678403e0b8ff190982d1e5d83bccc15da18f57e-f878cbc0c6b6d8ea.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/scenario-solution-candidate-evaluation-request.v1.schema.json",
+          "type": "object",
+          "required": [
+            "carrierType",
+            "solutionCandidate",
+            "scenarioCandidate",
+            "authoringProfile"
+          ],
+          "properties": {
+            "carrierType": {
+              "const": "scenario-solution-candidate-evaluation-request.v1"
+            },
+            "solutionCandidate": {
+              "type": "object",
+              "required": [
+                "scenarioId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string"
+                },
+                "proposedScenarioId": {
+                  "type": "string"
+                },
+                "executionAuthorityId": {
+                  "type": "string"
+                },
+                "operations": {
+                  "type": "array"
+                },
+                "transformations": {
+                  "type": "array"
+                },
+                "portRequirements": {
+                  "type": "array"
+                },
+                "unestablishedOutcome": {
+                  "type": "string"
+                },
+                "authoringEvidence": {
+                  "type": "object"
+                }
+              }
+            },
+            "scenarioCandidate": {
+              "type": "object",
+              "required": [
+                "scenarioId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string"
+                },
+                "outcomeMeaning": {
+                  "type": "string"
+                }
+              }
+            },
+            "authoringProfile": {
+              "type": "object",
+              "required": [
+                "permittedPlatformCapabilityIds",
+                "mechanicForms"
+              ],
+              "properties": {
+                "permittedPlatformCapabilityIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "mechanicForms": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-6257c7dbb0e77acc.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-7296fb4810cfcdcb.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-4b36ce2008ff53d8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-1c603bef026c5b97.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "governed authoring conveyor"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/nodes/1"
+        },
+        "value": {
+          "nodeId": "admit-solution-evaluation-boundary",
+          "scenario": {
+            "scenarioId": "admit-solution-evaluation-boundary",
+            "input": {
+              "inputId": "scenario-solution-candidate-evaluation-request",
+              "contract": {
+                "contractId": "scenario-solution-candidate-evaluation-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "admit-solution-evaluation-boundary",
+              "executionAuthorityId": "admit-solution-evaluation-boundary.v1"
+            },
+            "outcome": {
+              "outcomeId": "admitted-solution-evaluation-boundary",
+              "contract": {
+                "contractId": "admitted-solution-evaluation-boundary.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "admit-solution-evaluation-boundary.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:admit-solution-evaluation-boundary"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "scenario-solution-candidate-evaluation-request.v1": {
+                  "schemaRef": "scenario-solution-candidate-evaluation-request.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/scenario-solution-candidate-evaluation-request.v1.schema.json",
+                  "schemaDigest": "0727b7b5ac078442c0aae81a53721199f525254fcf0a330816e9dc18bf03e5bc",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/scenario-solution-candidate-evaluation-request.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "solutionCandidate",
+                      "scenarioCandidate",
+                      "authoringProfile"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "scenario-solution-candidate-evaluation-request.v1"
+                      },
+                      "solutionCandidate": {
+                        "type": "object",
+                        "required": [
+                          "scenarioId"
+                        ],
+                        "properties": {
+                          "scenarioId": {
+                            "type": "string"
+                          },
+                          "proposedScenarioId": {
+                            "type": "string"
+                          },
+                          "executionAuthorityId": {
+                            "type": "string"
+                          },
+                          "operations": {
+                            "type": "array"
+                          },
+                          "transformations": {
+                            "type": "array"
+                          },
+                          "portRequirements": {
+                            "type": "array"
+                          },
+                          "unestablishedOutcome": {
+                            "type": "string"
+                          },
+                          "authoringEvidence": {
+                            "type": "object"
+                          }
+                        }
+                      },
+                      "scenarioCandidate": {
+                        "type": "object",
+                        "required": [
+                          "scenarioId"
+                        ],
+                        "properties": {
+                          "scenarioId": {
+                            "type": "string"
+                          },
+                          "outcomeMeaning": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "authoringProfile": {
+                        "type": "object",
+                        "required": [
+                          "permittedPlatformCapabilityIds",
+                          "mechanicForms"
+                        ],
+                        "properties": {
+                          "permittedPlatformCapabilityIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "mechanicForms": {
+                            "type": "array"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "admitted-solution-evaluation-boundary.v1": {
+                  "schemaRef": "admitted-solution-evaluation-boundary.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/admitted-solution-evaluation-boundary.v1.schema.json",
+                  "schemaDigest": "eca93f7c2d8886221091bccb9b6581f464e361f8ed047f340cc3894a23c00e18",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/admitted-solution-evaluation-boundary.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "declaredScenarioId",
+                      "permittedPlatformCapabilityIds",
+                      "permittedMechanicIds",
+                      "boundaryDisposition"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "admitted-solution-evaluation-boundary.v1"
+                      },
+                      "declaredScenarioId": {
+                        "type": "string"
+                      },
+                      "declaredOutcomeMeaning": {
+                        "type": "string"
+                      },
+                      "candidateScenarioId": {
+                        "type": "string"
+                      },
+                      "proposedScenarioId": {
+                        "type": "string"
+                      },
+                      "executionAuthorityId": {
+                        "type": "string"
+                      },
+                      "operations": {
+                        "type": "array"
+                      },
+                      "transformations": {
+                        "type": "array"
+                      },
+                      "portRequirements": {
+                        "type": "array"
+                      },
+                      "unestablishedOutcome": {
+                        "type": "string"
+                      },
+                      "authoringEvidence": {
+                        "type": "object"
+                      },
+                      "permittedPlatformCapabilityIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "permittedMechanicIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "boundaryDisposition": {
+                        "enum": [
+                          "EVALUATION_BOUNDARY_ADMITTED",
+                          "EVALUATION_BOUNDARY_HELD"
+                        ]
+                      },
+                      "acceptanceClaimed": {
+                        "const": false
+                      }
+                    }
+                  }
+                },
+                "evaluated-solution-identities.v1": {
+                  "schemaRef": "evaluated-solution-identities.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/evaluated-solution-identities.v1.schema.json",
+                  "schemaDigest": "127bf972902a3f8155a1b318968a29f01937c8c1e82b96f6d135e621ca730fc6",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/evaluated-solution-identities.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "unknownPlatformCapabilityIds",
+                      "unknownMechanicIds",
+                      "identityPreserved"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "evaluated-solution-identities.v1"
+                      },
+                      "unknownPlatformCapabilityIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "unknownMechanicIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "identityPreserved": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                },
+                "evaluated-scenario-solution.v1": {
+                  "schemaRef": "evaluated-scenario-solution.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/evaluated-scenario-solution.v1.schema.json",
+                  "schemaDigest": "33da361ec26bb2a06a7868aa6a9c4500668c42ccb225381f7b1a4a79b0e5ac47",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/evaluated-scenario-solution.v1.schema.json",
+                    "type": "object",
+                    "required": [
+                      "carrierType",
+                      "scenarioId",
+                      "targetAltitude",
+                      "findings",
+                      "admissionDisposition",
+                      "acceptanceClaimed"
+                    ],
+                    "properties": {
+                      "carrierType": {
+                        "const": "evaluated-scenario-solution.v1"
+                      },
+                      "scenarioId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "targetAltitude": {
+                        "const": "execution"
+                      },
+                      "executionAuthorityId": {
+                        "type": "string"
+                      },
+                      "operations": {
+                        "type": "array"
+                      },
+                      "transformations": {
+                        "type": "array"
+                      },
+                      "portRequirements": {
+                        "type": "array"
+                      },
+                      "authoringEvidence": {
+                        "type": "object"
+                      },
+                      "findings": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "admissionDisposition": {
+                        "enum": [
+                          "SCENARIO_SOLUTION_ADMITTED",
+                          "SCENARIO_SOLUTION_HELD"
+                        ]
+                      },
+                      "acceptanceClaimed": {
+                        "const": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-solution-evaluation-boundary",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "carrierType": {
+                  "op": "literal",
+                  "value": "admitted-solution-evaluation-boundary.v1"
+                },
+                "declaredScenarioId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "scenarioCandidate.scenarioId"
+                },
+                "declaredOutcomeMeaning": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "scenarioCandidate.outcomeMeaning"
+                },
+                "candidateScenarioId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.scenarioId"
+                },
+                "proposedScenarioId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.proposedScenarioId"
+                },
+                "executionAuthorityId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.executionAuthorityId"
+                },
+                "operations": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.operations"
+                },
+                "transformations": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.transformations"
+                },
+                "portRequirements": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.portRequirements"
+                },
+                "unestablishedOutcome": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.unestablishedOutcome"
+                },
+                "authoringEvidence": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "solutionCandidate.authoringEvidence"
+                },
+                "permittedPlatformCapabilityIds": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "authoringProfile.permittedPlatformCapabilityIds"
+                },
+                "permittedMechanicIds": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "authoringProfile.mechanicForms"
+                  },
+                  "as": "form",
+                  "value": {
+                    "op": "path",
+                    "from": "form",
+                    "path": "mechanicId"
+                  }
+                },
+                "boundaryDisposition": {
+                  "op": "if",
+                  "when": {
+                    "op": "every",
+                    "from": {
+                      "op": "array",
+                      "items": [
+                        {
+                          "op": "path",
+                          "from": "input",
+                          "path": "scenarioCandidate.scenarioId"
+                        },
+                        {
+                          "op": "path",
+                          "from": "input",
+                          "path": "solutionCandidate.scenarioId"
+                        },
+                        {
+                          "op": "path",
+                          "from": "input",
+                          "path": "authoringProfile.permittedPlatformCapabilityIds"
+                        }
+                      ]
+                    },
+                    "as": "required",
+                    "where": {
+                      "op": "length",
+                      "value": {
+                        "op": "path",
+                        "from": "required",
+                        "path": ""
+                      }
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": "EVALUATION_BOUNDARY_ADMITTED"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "EVALUATION_BOUNDARY_HELD"
+                  }
+                },
+                "acceptanceClaimed": {
+                  "op": "literal",
+                  "value": false
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-solution-evaluation-boundary",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "one immutable evaluation boundary fixes what is being evaluated and what it is evaluated against, or the boundary is held with exact findings",
+        "line": 41
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "sound-candidate-is-admitted",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "sound-candidate-becomes-a-scenario-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_ADMITTED"
+                },
+                {
+                  "conditionId": "no-findings-are-reported",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "declared-scenario-identity-is-carried",
+                  "path": "scenarioId",
+                  "operator": "equals",
+                  "value": "admit-report-source-snapshot"
+                },
+                {
+                  "conditionId": "evaluation-claims-no-acceptance",
+                  "path": "acceptanceClaimed",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "invented-platform-capability-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "p",
+                    "platformCapabilityId": "cap-report-source-adjudication"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "unadmitted-platform-identity-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-invented-identity-is-named-exactly",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "UNKNOWN_PLATFORM_CAPABILITY:cap-report-source-adjudication"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unknown-mechanic-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "t",
+                    "expression": {
+                      "op": "regex-replace"
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "unadmitted-mechanic-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-unknown-mechanic-is-named-exactly",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "UNKNOWN_MECHANIC:regex-replace"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "scenario-identity-drift-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "some-other-scenario",
+                "proposedScenarioId": "some-other-scenario",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "identity-drift-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-drifted-identity-is-named",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "SCENARIO_IDENTITY_DRIFT:some-other-scenario"
+                  ]
+                },
+                {
+                  "conditionId": "declared-identity-is-not-replaced",
+                  "path": "scenarioId",
+                  "operator": "equals",
+                  "value": "admit-report-source-snapshot"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "incomplete-solution-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "absent-operations-hold-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "incompleteness-is-reported",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "SOLUTION_INCOMPLETE"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/evaluate-scenario-solution-candidate/fixtures.authority.json",
+          "entryDigest": "sha256:aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a",
+          "snapshot": "data/capsule-evidence/entries/aa740608915b5e1fcbcc35435fe8960b03cdb802311046acb398f8b25703120a-09075417e793755c.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unestablished-outcome-holds-the-candidate",
+            "input": {
+              "carrierType": "scenario-solution-candidate-evaluation-request.v1",
+              "solutionCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "proposedScenarioId": "admit-report-source-snapshot",
+                "executionAuthorityId": "admit-report-source-snapshot.v1",
+                "operations": [
+                  {
+                    "kind": "invoke-port",
+                    "portId": "admit-report-source-snapshot"
+                  }
+                ],
+                "transformations": [
+                  {
+                    "id": "admit-report-source-snapshot.v1",
+                    "expression": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                ],
+                "portRequirements": [
+                  {
+                    "portId": "admit-report-source-snapshot",
+                    "platformCapabilityId": "sda-authority-transformation-port.v1"
+                  }
+                ],
+                "unestablishedOutcome": "no admitted mechanic establishes byte-level closure",
+                "authoringEvidence": {
+                  "testimonyDisposition": "TESTIMONY_ESTABLISHED",
+                  "resolvedModel": "gemini-flash-latest",
+                  "providerAuthorityId": "",
+                  "requestHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "responseHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              },
+              "scenarioCandidate": {
+                "scenarioId": "admit-report-source-snapshot",
+                "outcomeMeaning": "the source snapshot is admitted, or it is held with exact ordered findings"
+              },
+              "authoringProfile": {
+                "permittedPlatformCapabilityIds": [
+                  "sda-authority-transformation-port.v1",
+                  "sda-json-cli.v1"
+                ],
+                "mechanicForms": [
+                  {
+                    "mechanicId": "object",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "path",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "literal",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "if",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  },
+                  {
+                    "mechanicId": "equals",
+                    "formDisposition": "MECHANIC_AUTHORING_FORM_RESOLVED"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "evaluate-scenario-solution-candidate",
+              "scenarioSequence": [
+                "evaluate-scenario-solution-candidate"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "unestablished-outcome-holds-the-solution",
+                  "path": "admissionDisposition",
+                  "operator": "equals",
+                  "value": "SCENARIO_SOLUTION_HELD"
+                },
+                {
+                  "conditionId": "the-unestablished-outcome-is-reported",
+                  "path": "findings",
+                  "operator": "equals",
+                  "value": [
+                    "OUTCOME_NOT_ESTABLISHED"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-solution-evaluation-boundary",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "admit-solution-evaluation-boundary",
+        "scenario": {
+          "scenarioId": "admit-solution-evaluation-boundary",
+          "input": {
+            "inputId": "scenario-solution-candidate-evaluation-request",
+            "contract": {
+              "contractId": "scenario-solution-candidate-evaluation-request.v1"
+            }
+          },
+          "event": {
+            "eventId": "admit-solution-evaluation-boundary",
+            "executionAuthorityId": "admit-solution-evaluation-boundary.v1"
+          },
+          "outcome": {
+            "outcomeId": "admitted-solution-evaluation-boundary",
+            "contract": {
+              "contractId": "admitted-solution-evaluation-boundary.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "admit-solution-evaluation-boundary.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:admit-solution-evaluation-boundary"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/evaluate-scenario-solution-candidate/execution-plan.node.json",
+          "entryDigest": "sha256:7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97",
+          "snapshot": "data/capsule-evidence/entries/7281430a26aa257d10eca7529799f7cf50016dffcff35461567122d73bd38d97-157740b50e786503.json",
+          "pointer": "/nodes/1"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

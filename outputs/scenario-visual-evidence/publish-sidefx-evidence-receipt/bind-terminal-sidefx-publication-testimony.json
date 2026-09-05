@@ -1,0 +1,3446 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "publish-sidefx-evidence-receipt::bind-terminal-sidefx-publication-testimony",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:2e159832b55f103ee31b9aafb91b6ebb057ffb5a467ba0afe86870e906de36a2"
+  },
+  "scenarioSurface": {
+    "key": "publish-sidefx-evidence-receipt::bind-terminal-sidefx-publication-testimony",
+    "capabilityId": "publish-sidefx-evidence-receipt",
+    "capabilityName": "Publish one admitted SideFX evidence receipt to the durable store",
+    "scenarioId": "bind-terminal-sidefx-publication-testimony",
+    "scenarioName": "Bind terminal publication testimony outside the receipt digest basis",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one successful publication",
+        "line": 62
+      }
+    ],
+    "event": [
+      {
+        "text": "publication testimony is bound through the ledger relation",
+        "line": 63
+      }
+    ],
+    "outcome": [
+      {
+        "text": "the testimony is terminal, declares recursivePublicationRequired false, and never enters the semantic receipt digest basis",
+        "line": 64
+      }
+    ],
+    "products": [
+      "sidefx-evidence-receipt-publication-record"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "role"
+    ],
+    "altitude": null,
+    "notes": "  An admitted evidence receipt is published to the content-addressed durable\n  store by exact digest. Publication verifies the digest before any write,\n  republishing the exact bytes is idempotent and reports ALREADY_PRESENT, an\n  occupied address with different bytes is REJECTED without overwrite, and\n  publication binds terminal publication testimony that never requires its\n  own publication. Every scenario admits and emits one shared publication\n  record, so the circuit passes the record through unchanged except for the\n  evidence fields each scenario is responsible for.",
+    "source": {
+      "capsuleFile": "publish-sidefx-evidence-receipt.sfxcap",
+      "capsuleDigest": "sha256:2e159832b55f103ee31b9aafb91b6ebb057ffb5a467ba0afe86870e906de36a2",
+      "featureEntry": "features/publish-sidefx-evidence-receipt.feature",
+      "featureDigest": "sha256:2f46a9c43da8e387d7c283f8770a7b28791246fc12d2c666ef75f6518e8c788d",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/publish-sidefx-evidence-receipt.feature",
+      "scenarioLine": 61
+    },
+    "tags": [
+      "@capability:publish-sidefx-evidence-receipt",
+      "@root-scenario:publish-sidefx-evidence-receipt",
+      "@scenario:bind-terminal-sidefx-publication-testimony",
+      "@input:sidefx-evidence-receipt-publication-record",
+      "@input-contract:sidefx-evidence-receipt-publication-record.v1",
+      "@event:sidefx-publication-testimony-binding-requested",
+      "@event-authority:bind-sidefx-publication-testimony.v1",
+      "@outcome:sidefx-evidence-receipt-publication-record",
+      "@outcome-contract:sidefx-evidence-receipt-publication-record.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/nodes/3"
+        },
+        "value": {
+          "nodeId": "bind-terminal-sidefx-publication-testimony",
+          "scenario": {
+            "scenarioId": "bind-terminal-sidefx-publication-testimony",
+            "input": {
+              "inputId": "sidefx-evidence-receipt-publication-record",
+              "contract": {
+                "contractId": "sidefx-evidence-receipt-publication-record.v1"
+              }
+            },
+            "event": {
+              "eventId": "sidefx-publication-testimony-binding-requested",
+              "executionAuthorityId": "bind-sidefx-publication-testimony.v1"
+            },
+            "outcome": {
+              "outcomeId": "sidefx-evidence-receipt-publication-record",
+              "contract": {
+                "contractId": "sidefx-evidence-receipt-publication-record.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "bind-terminal-sidefx-publication-testimony.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:bind-terminal-sidefx-publication-testimony-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "sidefx-evidence-receipt-publication-record.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/record.schema.json",
+                  "schemaDigest": "bfaede5d5e0a0798e5d7852b47648b244101c84c74d8954b28d52b31b0b47d37",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/record.schema.json",
+                    "title": "SideFX evidence receipt publication record v1",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "scope",
+                      "artifactKind",
+                      "receiptBytesBase64",
+                      "expectedDigest",
+                      "requiredGrantId"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "sidefx-evidence-receipt-publication-record.v1"
+                      },
+                      "scope": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "estateId",
+                          "environmentId",
+                          "corpusId"
+                        ],
+                        "properties": {
+                          "estateId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "environmentId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "corpusId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          }
+                        }
+                      },
+                      "artifactKind": {
+                        "enum": [
+                          "QUERY_RECEIPT",
+                          "AUTHORING_RECEIPT",
+                          "CLOSURE_RECEIPT",
+                          "PUBLICATION_RECEIPT"
+                        ]
+                      },
+                      "receiptBytesBase64": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9+/=]+$"
+                      },
+                      "expectedDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "requiredGrantId": {
+                        "const": "harness-local-publish"
+                      },
+                      "recomputedDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "PUBLISHED",
+                          "ALREADY_PRESENT",
+                          "REJECTED"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "publicationTestimony": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "publicationDisposition",
+                          "recursivePublicationRequired",
+                          "terminal",
+                          "insideSemanticReceiptDigestBasis"
+                        ],
+                        "properties": {
+                          "publicationDisposition": {
+                            "enum": [
+                              "PUBLISHED",
+                              "ALREADY_PRESENT",
+                              "REJECTED"
+                            ]
+                          },
+                          "recursivePublicationRequired": {
+                            "const": false
+                          },
+                          "terminal": {
+                            "const": true
+                          },
+                          "insideSemanticReceiptDigestBasis": {
+                            "const": false
+                          }
+                        }
+                      },
+                      "authorityClaims": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "publication",
+                          "admission",
+                          "grounding",
+                          "pointerUpdate"
+                        ],
+                        "properties": {
+                          "publication": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "admission": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "grounding": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "pointerUpdate": {
+                            "const": "NOT_CLAIMED"
+                          }
+                        }
+                      },
+                      "credentialMaterialPresent": {
+                        "const": false
+                      },
+                      "republishDisposition": {
+                        "enum": [
+                          "PUBLISHED",
+                          "ALREADY_PRESENT",
+                          "REJECTED"
+                        ]
+                      },
+                      "republishFindingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "conflictDisposition": {
+                        "enum": [
+                          "PUBLISHED",
+                          "ALREADY_PRESENT",
+                          "REJECTED"
+                        ]
+                      },
+                      "conflictFindingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "testimonyBinding": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "publicationDisposition",
+                          "recursivePublicationRequired",
+                          "terminal",
+                          "insideSemanticReceiptDigestBasis"
+                        ],
+                        "properties": {
+                          "publicationDisposition": {
+                            "enum": [
+                              "PUBLISHED",
+                              "ALREADY_PRESENT",
+                              "REJECTED"
+                            ]
+                          },
+                          "recursivePublicationRequired": {
+                            "const": false
+                          },
+                          "terminal": {
+                            "const": true
+                          },
+                          "insideSemanticReceiptDigestBasis": {
+                            "const": false
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-terminal-sidefx-publication-testimony-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input",
+                  "path": ""
+                },
+                {
+                  "op": "object",
+                  "fields": {
+                    "testimonyBinding": {
+                      "op": "object",
+                      "fields": {
+                        "publicationDisposition": {
+                          "op": "literal",
+                          "value": "REJECTED"
+                        },
+                        "recursivePublicationRequired": {
+                          "op": "literal",
+                          "value": false
+                        },
+                        "terminal": {
+                          "op": "literal",
+                          "value": true
+                        },
+                        "insideSemanticReceiptDigestBasis": {
+                          "op": "literal",
+                          "value": false
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-terminal-sidefx-publication-testimony-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/contracts/input.schema.json",
+          "entryDigest": "sha256:6c82f0631637e28e92c311efef2e6dd28d2da18957596ef1aa0ab0721336b68c",
+          "snapshot": "data/capsule-evidence/entries/6c82f0631637e28e92c311efef2e6dd28d2da18957596ef1aa0ab0721336b68c-190bb2b17ac83b84.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/record.schema.json",
+          "title": "SideFX evidence receipt publication record v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "scope",
+            "artifactKind",
+            "receiptBytesBase64",
+            "expectedDigest",
+            "requiredGrantId"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "sidefx-evidence-receipt-publication-record.v1"
+            },
+            "scope": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "estateId",
+                "environmentId",
+                "corpusId"
+              ],
+              "properties": {
+                "estateId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "environmentId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "corpusId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                }
+              }
+            },
+            "artifactKind": {
+              "enum": [
+                "QUERY_RECEIPT",
+                "AUTHORING_RECEIPT",
+                "CLOSURE_RECEIPT",
+                "PUBLICATION_RECEIPT"
+              ]
+            },
+            "receiptBytesBase64": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9+/=]+$"
+            },
+            "expectedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "requiredGrantId": {
+              "const": "harness-local-publish"
+            },
+            "recomputedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "disposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "publicationTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publicationDisposition",
+                "recursivePublicationRequired",
+                "terminal",
+                "insideSemanticReceiptDigestBasis"
+              ],
+              "properties": {
+                "publicationDisposition": {
+                  "enum": [
+                    "PUBLISHED",
+                    "ALREADY_PRESENT",
+                    "REJECTED"
+                  ]
+                },
+                "recursivePublicationRequired": {
+                  "const": false
+                },
+                "terminal": {
+                  "const": true
+                },
+                "insideSemanticReceiptDigestBasis": {
+                  "const": false
+                }
+              }
+            },
+            "authorityClaims": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publication",
+                "admission",
+                "grounding",
+                "pointerUpdate"
+              ],
+              "properties": {
+                "publication": {
+                  "const": "NOT_CLAIMED"
+                },
+                "admission": {
+                  "const": "NOT_CLAIMED"
+                },
+                "grounding": {
+                  "const": "NOT_CLAIMED"
+                },
+                "pointerUpdate": {
+                  "const": "NOT_CLAIMED"
+                }
+              }
+            },
+            "credentialMaterialPresent": {
+              "const": false
+            },
+            "republishDisposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "republishFindingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "conflictDisposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "conflictFindingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "testimonyBinding": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publicationDisposition",
+                "recursivePublicationRequired",
+                "terminal",
+                "insideSemanticReceiptDigestBasis"
+              ],
+              "properties": {
+                "publicationDisposition": {
+                  "enum": [
+                    "PUBLISHED",
+                    "ALREADY_PRESENT",
+                    "REJECTED"
+                  ]
+                },
+                "recursivePublicationRequired": {
+                  "const": false
+                },
+                "terminal": {
+                  "const": true
+                },
+                "insideSemanticReceiptDigestBasis": {
+                  "const": false
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/contracts/outcome.schema.json",
+          "entryDigest": "sha256:31d9c5181fd812dd0a2534cd514ec6d565df9a2336cf32f455758536770b50e1",
+          "snapshot": "data/capsule-evidence/entries/31d9c5181fd812dd0a2534cd514ec6d565df9a2336cf32f455758536770b50e1-17566ce9748c2473.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/outcome.schema.json",
+          "title": "SideFX evidence receipt publication evidence v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "disposition",
+            "artifactKind",
+            "expectedDigest",
+            "recomputedDigest",
+            "findingCodes",
+            "publicationTestimony",
+            "authorityClaims",
+            "credentialMaterialPresent"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "sidefx-evidence-receipt-publication-evidence.v1"
+            },
+            "disposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "artifactKind": {
+              "enum": [
+                "QUERY_RECEIPT",
+                "AUTHORING_RECEIPT",
+                "CLOSURE_RECEIPT",
+                "PUBLICATION_RECEIPT"
+              ]
+            },
+            "expectedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "recomputedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "publicationTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publicationDisposition",
+                "recursivePublicationRequired",
+                "terminal",
+                "insideSemanticReceiptDigestBasis"
+              ],
+              "properties": {
+                "publicationDisposition": {
+                  "enum": [
+                    "PUBLISHED",
+                    "ALREADY_PRESENT",
+                    "REJECTED"
+                  ]
+                },
+                "recursivePublicationRequired": {
+                  "const": false
+                },
+                "terminal": {
+                  "const": true
+                },
+                "insideSemanticReceiptDigestBasis": {
+                  "const": false
+                }
+              }
+            },
+            "authorityClaims": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publication",
+                "admission",
+                "grounding",
+                "pointerUpdate"
+              ],
+              "properties": {
+                "publication": {
+                  "const": "NOT_CLAIMED"
+                },
+                "admission": {
+                  "const": "NOT_CLAIMED"
+                },
+                "grounding": {
+                  "const": "NOT_CLAIMED"
+                },
+                "pointerUpdate": {
+                  "const": "NOT_CLAIMED"
+                }
+              }
+            },
+            "credentialMaterialPresent": {
+              "const": false
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-cf6fa05bbda7a469.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-9013f600a1fb66fa.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-8f3309569eac3e97.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-62d91921b75581ce.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-canonical-receipt-holds-on-missing-store-port",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "honest-hold-on-store-port",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "missing-port-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORAGE_EFFECT_PORT_UNAVAILABLE"
+                },
+                {
+                  "conditionId": "digest-recomputes",
+                  "path": "recomputedDigest",
+                  "operator": "equals",
+                  "value": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304"
+                },
+                {
+                  "conditionId": "testimony-terminal",
+                  "path": "publicationTestimony.terminal",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "testimony-outside-basis",
+                  "path": "publicationTestimony.insideSemanticReceiptDigestBasis",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "no-publication-claimed",
+                  "path": "authorityClaims.publication",
+                  "operator": "equals",
+                  "value": "NOT_CLAIMED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-digest-mismatch-before-write",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mismatch-rejected",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "mismatch-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "ARTIFACT_DIGEST_MISMATCH"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-undeclared-scope",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "other-estate",
+                "environmentId": "prod",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "scope-refused",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "scope-finding-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "SCOPE_NOT_DECLARED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "republish-holds-idempotently-on-missing-store-port",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "republish-holds",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "missing-port-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORAGE_EFFECT_PORT_UNAVAILABLE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-terminal-testimony-without-publication-holds",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "testimony-terminal-invariant",
+                  "path": "publicationTestimony.terminal",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "recursion-forbidden",
+                  "path": "publicationTestimony.recursivePublicationRequired",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "testimony-outside-basis",
+                  "path": "publicationTestimony.insideSemanticReceiptDigestBasis",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-7d45d5288355fd3d.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one successful publication",
+        "line": 62
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/contracts/input.schema.json",
+          "entryDigest": "sha256:6c82f0631637e28e92c311efef2e6dd28d2da18957596ef1aa0ab0721336b68c",
+          "snapshot": "data/capsule-evidence/entries/6c82f0631637e28e92c311efef2e6dd28d2da18957596ef1aa0ab0721336b68c-190bb2b17ac83b84.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/record.schema.json",
+          "title": "SideFX evidence receipt publication record v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "scope",
+            "artifactKind",
+            "receiptBytesBase64",
+            "expectedDigest",
+            "requiredGrantId"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "sidefx-evidence-receipt-publication-record.v1"
+            },
+            "scope": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "estateId",
+                "environmentId",
+                "corpusId"
+              ],
+              "properties": {
+                "estateId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "environmentId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                },
+                "corpusId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                }
+              }
+            },
+            "artifactKind": {
+              "enum": [
+                "QUERY_RECEIPT",
+                "AUTHORING_RECEIPT",
+                "CLOSURE_RECEIPT",
+                "PUBLICATION_RECEIPT"
+              ]
+            },
+            "receiptBytesBase64": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9+/=]+$"
+            },
+            "expectedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "requiredGrantId": {
+              "const": "harness-local-publish"
+            },
+            "recomputedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "disposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "publicationTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publicationDisposition",
+                "recursivePublicationRequired",
+                "terminal",
+                "insideSemanticReceiptDigestBasis"
+              ],
+              "properties": {
+                "publicationDisposition": {
+                  "enum": [
+                    "PUBLISHED",
+                    "ALREADY_PRESENT",
+                    "REJECTED"
+                  ]
+                },
+                "recursivePublicationRequired": {
+                  "const": false
+                },
+                "terminal": {
+                  "const": true
+                },
+                "insideSemanticReceiptDigestBasis": {
+                  "const": false
+                }
+              }
+            },
+            "authorityClaims": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publication",
+                "admission",
+                "grounding",
+                "pointerUpdate"
+              ],
+              "properties": {
+                "publication": {
+                  "const": "NOT_CLAIMED"
+                },
+                "admission": {
+                  "const": "NOT_CLAIMED"
+                },
+                "grounding": {
+                  "const": "NOT_CLAIMED"
+                },
+                "pointerUpdate": {
+                  "const": "NOT_CLAIMED"
+                }
+              }
+            },
+            "credentialMaterialPresent": {
+              "const": false
+            },
+            "republishDisposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "republishFindingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "conflictDisposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "conflictFindingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "testimonyBinding": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publicationDisposition",
+                "recursivePublicationRequired",
+                "terminal",
+                "insideSemanticReceiptDigestBasis"
+              ],
+              "properties": {
+                "publicationDisposition": {
+                  "enum": [
+                    "PUBLISHED",
+                    "ALREADY_PRESENT",
+                    "REJECTED"
+                  ]
+                },
+                "recursivePublicationRequired": {
+                  "const": false
+                },
+                "terminal": {
+                  "const": true
+                },
+                "insideSemanticReceiptDigestBasis": {
+                  "const": false
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/contracts/outcome.schema.json",
+          "entryDigest": "sha256:31d9c5181fd812dd0a2534cd514ec6d565df9a2336cf32f455758536770b50e1",
+          "snapshot": "data/capsule-evidence/entries/31d9c5181fd812dd0a2534cd514ec6d565df9a2336cf32f455758536770b50e1-17566ce9748c2473.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/outcome.schema.json",
+          "title": "SideFX evidence receipt publication evidence v1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "disposition",
+            "artifactKind",
+            "expectedDigest",
+            "recomputedDigest",
+            "findingCodes",
+            "publicationTestimony",
+            "authorityClaims",
+            "credentialMaterialPresent"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "sidefx-evidence-receipt-publication-evidence.v1"
+            },
+            "disposition": {
+              "enum": [
+                "PUBLISHED",
+                "ALREADY_PRESENT",
+                "REJECTED"
+              ]
+            },
+            "artifactKind": {
+              "enum": [
+                "QUERY_RECEIPT",
+                "AUTHORING_RECEIPT",
+                "CLOSURE_RECEIPT",
+                "PUBLICATION_RECEIPT"
+              ]
+            },
+            "expectedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "recomputedDigest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "findingCodes": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "publicationTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publicationDisposition",
+                "recursivePublicationRequired",
+                "terminal",
+                "insideSemanticReceiptDigestBasis"
+              ],
+              "properties": {
+                "publicationDisposition": {
+                  "enum": [
+                    "PUBLISHED",
+                    "ALREADY_PRESENT",
+                    "REJECTED"
+                  ]
+                },
+                "recursivePublicationRequired": {
+                  "const": false
+                },
+                "terminal": {
+                  "const": true
+                },
+                "insideSemanticReceiptDigestBasis": {
+                  "const": false
+                }
+              }
+            },
+            "authorityClaims": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "publication",
+                "admission",
+                "grounding",
+                "pointerUpdate"
+              ],
+              "properties": {
+                "publication": {
+                  "const": "NOT_CLAIMED"
+                },
+                "admission": {
+                  "const": "NOT_CLAIMED"
+                },
+                "grounding": {
+                  "const": "NOT_CLAIMED"
+                },
+                "pointerUpdate": {
+                  "const": "NOT_CLAIMED"
+                }
+              }
+            },
+            "credentialMaterialPresent": {
+              "const": false
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-cf6fa05bbda7a469.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-9013f600a1fb66fa.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-8f3309569eac3e97.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-62d91921b75581ce.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "role"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/nodes/3"
+        },
+        "value": {
+          "nodeId": "bind-terminal-sidefx-publication-testimony",
+          "scenario": {
+            "scenarioId": "bind-terminal-sidefx-publication-testimony",
+            "input": {
+              "inputId": "sidefx-evidence-receipt-publication-record",
+              "contract": {
+                "contractId": "sidefx-evidence-receipt-publication-record.v1"
+              }
+            },
+            "event": {
+              "eventId": "sidefx-publication-testimony-binding-requested",
+              "executionAuthorityId": "bind-sidefx-publication-testimony.v1"
+            },
+            "outcome": {
+              "outcomeId": "sidefx-evidence-receipt-publication-record",
+              "contract": {
+                "contractId": "sidefx-evidence-receipt-publication-record.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "bind-terminal-sidefx-publication-testimony.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:bind-terminal-sidefx-publication-testimony-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "sidefx-evidence-receipt-publication-record.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/record.schema.json",
+                  "schemaDigest": "bfaede5d5e0a0798e5d7852b47648b244101c84c74d8954b28d52b31b0b47d37",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/publish-sidefx-evidence-receipt/record.schema.json",
+                    "title": "SideFX evidence receipt publication record v1",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "scope",
+                      "artifactKind",
+                      "receiptBytesBase64",
+                      "expectedDigest",
+                      "requiredGrantId"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "sidefx-evidence-receipt-publication-record.v1"
+                      },
+                      "scope": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "estateId",
+                          "environmentId",
+                          "corpusId"
+                        ],
+                        "properties": {
+                          "estateId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "environmentId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          },
+                          "corpusId": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]+$"
+                          }
+                        }
+                      },
+                      "artifactKind": {
+                        "enum": [
+                          "QUERY_RECEIPT",
+                          "AUTHORING_RECEIPT",
+                          "CLOSURE_RECEIPT",
+                          "PUBLICATION_RECEIPT"
+                        ]
+                      },
+                      "receiptBytesBase64": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9+/=]+$"
+                      },
+                      "expectedDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "requiredGrantId": {
+                        "const": "harness-local-publish"
+                      },
+                      "recomputedDigest": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "PUBLISHED",
+                          "ALREADY_PRESENT",
+                          "REJECTED"
+                        ]
+                      },
+                      "findingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "publicationTestimony": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "publicationDisposition",
+                          "recursivePublicationRequired",
+                          "terminal",
+                          "insideSemanticReceiptDigestBasis"
+                        ],
+                        "properties": {
+                          "publicationDisposition": {
+                            "enum": [
+                              "PUBLISHED",
+                              "ALREADY_PRESENT",
+                              "REJECTED"
+                            ]
+                          },
+                          "recursivePublicationRequired": {
+                            "const": false
+                          },
+                          "terminal": {
+                            "const": true
+                          },
+                          "insideSemanticReceiptDigestBasis": {
+                            "const": false
+                          }
+                        }
+                      },
+                      "authorityClaims": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "publication",
+                          "admission",
+                          "grounding",
+                          "pointerUpdate"
+                        ],
+                        "properties": {
+                          "publication": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "admission": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "grounding": {
+                            "const": "NOT_CLAIMED"
+                          },
+                          "pointerUpdate": {
+                            "const": "NOT_CLAIMED"
+                          }
+                        }
+                      },
+                      "credentialMaterialPresent": {
+                        "const": false
+                      },
+                      "republishDisposition": {
+                        "enum": [
+                          "PUBLISHED",
+                          "ALREADY_PRESENT",
+                          "REJECTED"
+                        ]
+                      },
+                      "republishFindingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "conflictDisposition": {
+                        "enum": [
+                          "PUBLISHED",
+                          "ALREADY_PRESENT",
+                          "REJECTED"
+                        ]
+                      },
+                      "conflictFindingCodes": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "testimonyBinding": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "publicationDisposition",
+                          "recursivePublicationRequired",
+                          "terminal",
+                          "insideSemanticReceiptDigestBasis"
+                        ],
+                        "properties": {
+                          "publicationDisposition": {
+                            "enum": [
+                              "PUBLISHED",
+                              "ALREADY_PRESENT",
+                              "REJECTED"
+                            ]
+                          },
+                          "recursivePublicationRequired": {
+                            "const": false
+                          },
+                          "terminal": {
+                            "const": true
+                          },
+                          "insideSemanticReceiptDigestBasis": {
+                            "const": false
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-terminal-sidefx-publication-testimony-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input",
+                  "path": ""
+                },
+                {
+                  "op": "object",
+                  "fields": {
+                    "testimonyBinding": {
+                      "op": "object",
+                      "fields": {
+                        "publicationDisposition": {
+                          "op": "literal",
+                          "value": "REJECTED"
+                        },
+                        "recursivePublicationRequired": {
+                          "op": "literal",
+                          "value": false
+                        },
+                        "terminal": {
+                          "op": "literal",
+                          "value": true
+                        },
+                        "insideSemanticReceiptDigestBasis": {
+                          "op": "literal",
+                          "value": false
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-terminal-sidefx-publication-testimony-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "the testimony is terminal, declares recursivePublicationRequired false, and never enters the semantic receipt digest basis",
+        "line": 64
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-canonical-receipt-holds-on-missing-store-port",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "honest-hold-on-store-port",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "missing-port-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORAGE_EFFECT_PORT_UNAVAILABLE"
+                },
+                {
+                  "conditionId": "digest-recomputes",
+                  "path": "recomputedDigest",
+                  "operator": "equals",
+                  "value": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304"
+                },
+                {
+                  "conditionId": "testimony-terminal",
+                  "path": "publicationTestimony.terminal",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "testimony-outside-basis",
+                  "path": "publicationTestimony.insideSemanticReceiptDigestBasis",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "no-publication-claimed",
+                  "path": "authorityClaims.publication",
+                  "operator": "equals",
+                  "value": "NOT_CLAIMED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-digest-mismatch-before-write",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "mismatch-rejected",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "mismatch-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "ARTIFACT_DIGEST_MISMATCH"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-undeclared-scope",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "other-estate",
+                "environmentId": "prod",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "scope-refused",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "scope-finding-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "SCOPE_NOT_DECLARED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "republish-holds-idempotently-on-missing-store-port",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "republish-holds",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "REJECTED"
+                },
+                {
+                  "conditionId": "missing-port-named",
+                  "path": "findingCodes.0",
+                  "operator": "equals",
+                  "value": "STORAGE_EFFECT_PORT_UNAVAILABLE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-sidefx-evidence-receipt/fixtures.authority.json",
+          "entryDigest": "sha256:19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527",
+          "snapshot": "data/capsule-evidence/entries/19419329594a8cf79696a5a11801ad1f108358256832f69f477fe7615c307527-90cd8217a5303e22.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "bind-terminal-testimony-without-publication-holds",
+            "input": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1",
+              "scope": {
+                "estateId": "agentic-harness",
+                "environmentId": "local",
+                "corpusId": "sidefx-semantic-corpus"
+              },
+              "artifactKind": "QUERY_RECEIPT",
+              "receiptBytesBase64": "eyJyZWNlaXB0VHlwZSI6InNpZGVmeC1zZW1hbnRpYy1xdWVyeS1yZWNlaXB0LnYxIiwiZGlzcG9zaXRpb24iOiJHUk9VTkRFRF9SRVNVTFQifQ==",
+              "expectedDigest": "sha256:336c590e8b1523e55dcd0941d5f195d2509bbead8ecd3d7f8e48013bc4013304",
+              "requiredGrantId": "harness-local-publish"
+            },
+            "portOutcomes": {
+              "authority-driven-composition": {
+                "authority": "interfaces.authority.json"
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-sidefx-evidence-receipt",
+              "scenarioSequence": [
+                "publish-sidefx-evidence-receipt"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "testimony-terminal-invariant",
+                  "path": "publicationTestimony.terminal",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "recursion-forbidden",
+                  "path": "publicationTestimony.recursivePublicationRequired",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "testimony-outside-basis",
+                  "path": "publicationTestimony.insideSemanticReceiptDigestBasis",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:bind-terminal-sidefx-publication-testimony-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "bind-terminal-sidefx-publication-testimony",
+        "scenario": {
+          "scenarioId": "bind-terminal-sidefx-publication-testimony",
+          "input": {
+            "inputId": "sidefx-evidence-receipt-publication-record",
+            "contract": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1"
+            }
+          },
+          "event": {
+            "eventId": "sidefx-publication-testimony-binding-requested",
+            "executionAuthorityId": "bind-sidefx-publication-testimony.v1"
+          },
+          "outcome": {
+            "outcomeId": "sidefx-evidence-receipt-publication-record",
+            "contract": {
+              "contractId": "sidefx-evidence-receipt-publication-record.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "bind-terminal-sidefx-publication-testimony.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:bind-terminal-sidefx-publication-testimony-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-sidefx-evidence-receipt/execution-plan.node.json",
+          "entryDigest": "sha256:1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f",
+          "snapshot": "data/capsule-evidence/entries/1582dfb88c335de9318959c74479303463f11183ba98679146eaf0b6e0b25a6f-578e765062d1f14d.json",
+          "pointer": "/nodes/3"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

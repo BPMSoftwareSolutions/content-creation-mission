@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["packageVersion", "key", "source", "scenarioSurface", "inputReality", "eventExecutionReality", "outcomeReality", "visualDirection", "animationBeats", "evidence", "disposition", "findings"],
+  "properties": {
+    "packageVersion": {"const": "scenario-visual-evidence.v1"},
+    "key": {"type": "string", "minLength": 1},
+    "source": {"type": "object", "required": ["estateManifestDigest", "capsuleDigest"]},
+    "scenarioSurface": {"type": "object"},
+    "inputReality": {"type": "object"},
+    "eventExecutionReality": {"type": "object"},
+    "outcomeReality": {"type": "object"},
+    "visualDirection": {"type": "object"},
+    "animationBeats": {"type": "array", "items": {"type": "object", "required": ["ordinal", "sourceRefs", "visibleChange"]}},
+    "evidence": {
+      "type": "object", "required": ["execution", "mechanics", "providers", "contracts", "topology", "fixtures", "receipts"],
+      "additionalProperties": {"type": "array", "items": {"type": "object", "required": ["source", "value"], "properties": {
+        "source": {"type": "object", "required": ["entryId", "entryRef", "entryDigest", "snapshot", "pointer"]}
+      }}}
+    },
+    "disposition": {"enum": ["MECHANICS_UNRESOLVED", "MECHANICS_EXTRACTED_REQUIRES_DIRECTION", "MECHANICS_DIRECTION_REVIEWED"]},
+    "findings": {"type": "array"}
+  }
+}

@@ -1,0 +1,3151 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "resolve-estate-dependency-closure::close-execution-resolvability",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:baeceeaaba119deefc0bd2b0d2b9e3cb71cfdc6fd342f8b24f870de15ffa86ba"
+  },
+  "scenarioSurface": {
+    "key": "resolve-estate-dependency-closure::close-execution-resolvability",
+    "capabilityId": "resolve-estate-dependency-closure",
+    "capabilityName": "Resolve whether every admitted capability in the estate can still be executed",
+    "scenarioId": "close-execution-resolvability",
+    "scenarioName": "Close over the whole graph rather than each capsule alone",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one dependency graph and the divergences found within it",
+        "line": 96
+      }
+    ],
+    "event": [
+      {
+        "text": "execution resolvability is closed",
+        "line": 97
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every capsule reachable from a divergent binding is reported as unexecutable, not only the capsule that changed",
+        "line": 98
+      },
+      {
+        "text": "an estate presenting no capsules returns ESTATE_INVENTORY_ABSENT rather than an empty closure reported as RESOLVED",
+        "line": 99
+      }
+    ],
+    "products": [
+      "resolvability"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [],
+    "altitude": null,
+    "notes": "  An estate can verify clean, pass its entire test suite, and be unable to execute\n  a single capability. That is not hypothetical. It happened here: repairing one\n  capability changed its application binding, every capsule that pinned the old\n  binding digest became unresolvable, and nothing in the repository noticed.\n  Capsule verification confirmed that each capsule matched its own recorded bytes,\n  which was true and irrelevant. The tests exercised transformations directly and\n  never resolved the estate. Both gates were green over a broken estate.\n\n  The missing gate is closure. A capability is executable only if every dependency\n  it declares resolves to an admitted capsule whose application binding still\n  canonicalizes to the digest the dependent pinned, and whose capability authority\n  still matches the digest its execution plan recorded. Each capsule being\n  internally consistent proves nothing about whether the graph they form holds.\n\n  Closure is computed, never assumed. Every declared dependency is resolved to a\n  target, every target binding is recanonicalized and rehashed, and every pin is\n  compared against what was recomputed. A pin that matches by name and diverges by\n  digest is exactly the failure that hid here, so name agreement is never accepted\n  as resolution.\n\n  Resolution is pure. It consumes the estate inventory it is given: capsules,\n  their declared dependencies, their application bindings and their recorded\n  digests. It reads no filesystem and admits nothing. What it returns is the\n  disposition the estate is actually in.\n\n  Absence is never normalized. An estate presenting no capsules has not thereby\n  achieved closure; it has failed to present an estate, and that is a finding.\n  Closure reports RESOLVED only when every declared dependency of every presented\n  capsule resolved and matched.",
+    "source": {
+      "capsuleFile": "resolve-estate-dependency-closure.sfxcap",
+      "capsuleDigest": "sha256:baeceeaaba119deefc0bd2b0d2b9e3cb71cfdc6fd342f8b24f870de15ffa86ba",
+      "featureEntry": "features/resolve-estate-dependency-closure.feature",
+      "featureDigest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/resolve-estate-dependency-closure.feature",
+      "scenarioLine": 95
+    },
+    "tags": [
+      "@capability:resolve-estate-dependency-closure",
+      "@root-scenario:resolve-estate-dependency-closure",
+      "@scenario:close-execution-resolvability",
+      "@input:closure-inputs",
+      "@input-contract:estate-closure-carrier.v1",
+      "@event:close-execution-resolvability",
+      "@event-authority:close-execution-resolvability.v1",
+      "@outcome:resolvability",
+      "@outcome-contract:estate-closure-carrier.v1"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/nodes/4"
+        },
+        "value": {
+          "nodeId": "close-execution-resolvability",
+          "scenario": {
+            "scenarioId": "close-execution-resolvability",
+            "input": {
+              "inputId": "closure-inputs",
+              "contract": {
+                "contractId": "estate-closure-carrier.v1"
+              }
+            },
+            "event": {
+              "eventId": "close-execution-resolvability",
+              "executionAuthorityId": "close-execution-resolvability.v1"
+            },
+            "outcome": {
+              "outcomeId": "resolvability",
+              "contract": {
+                "contractId": "estate-closure-carrier.v1"
+              },
+              "terminal": false
+            }
+          },
+          "operations": [
+            {
+              "operationId": "close-execution-resolvability.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:close-execution-resolvability-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "estate-dependency-closure-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "5c00df8deb4c9f27987b9eb07bce005038ec30b285eba55ef18db64ebbda8582",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "contractId",
+                          "payload"
+                        ],
+                        "description": "One presented estate inventory. Extraction of capsules from durable storage is an effect boundary this capability does not own; it resolves the closure of whatever inventory it is given.",
+                        "properties": {
+                          "contractId": {
+                            "const": "estate-dependency-closure-request.v1"
+                          },
+                          "payload": {
+                            "type": "object",
+                            "required": [
+                              "estateInventory"
+                            ],
+                            "properties": {
+                              "estateInventory": {
+                                "type": "object",
+                                "required": [
+                                  "supplied",
+                                  "capsules"
+                                ],
+                                "properties": {
+                                  "supplied": {
+                                    "type": "boolean"
+                                  },
+                                  "capsules": {
+                                    "type": "array",
+                                    "description": "Every admitted capsule the estate presents. An empty array is a failure to present an estate, never an estate that has achieved closure.",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "capabilityId"
+                                      ],
+                                      "properties": {
+                                        "capabilityId": {
+                                          "type": "string",
+                                          "minLength": 1
+                                        },
+                                        "applicationBinding": {
+                                          "type": "object",
+                                          "description": "The target's runtime application binding, recanonicalized and rehashed on every resolution rather than trusted from its recorded digest."
+                                        },
+                                        "capabilityAuthorityDigest": {
+                                          "$ref": "#/$defs/digest"
+                                        },
+                                        "declaredDependencies": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "required": [
+                                              "bindingRef",
+                                              "pinnedBindingDigest",
+                                              "pinnedAuthorityDigest"
+                                            ],
+                                            "properties": {
+                                              "bindingRef": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "description": "The admitted capability this dependency resolves to. Name agreement alone is never accepted as resolution."
+                                              },
+                                              "pinnedBindingDigest": {
+                                                "$ref": "#/$defs/digest"
+                                              },
+                                              "pinnedAuthorityDigest": {
+                                                "$ref": "#/$defs/digest"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "contractId",
+                          "disposition"
+                        ],
+                        "description": "The closure admitted at each downstream scenario boundary, where the carrier is the previously admitted outcome.",
+                        "properties": {
+                          "contractId": {
+                            "enum": [
+                              "estate-dependency-closure.v1",
+                              "estate-closure-carrier.v1"
+                            ]
+                          },
+                          "disposition": {
+                            "enum": [
+                              "RESOLVED",
+                              "BROKEN"
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$defs": {
+                      "digest": {
+                        "type": "string",
+                        "pattern": "^sha256:[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                },
+                "estate-closure-carrier.v1": {
+                  "schemaRef": "carrier.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/carrier.schema.json",
+                  "schemaDigest": "495904f80ff0fedc7abc7ac1813e13c8041a1d2071fd1900b692fd5caafc4a4d",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/carrier.schema.json",
+                    "title": "estate-closure-carrier",
+                    "description": "The carrier admitted at each resolution boundary. Each step observes the accumulated closure and preserves it; no step upgrades a resolution another step withheld.",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "disposition",
+                      "findings"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "capabilityCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencyCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencies": {
+                        "type": "array"
+                      },
+                      "unresolvedDependencies": {
+                        "type": "array"
+                      },
+                      "stalePins": {
+                        "type": "array"
+                      },
+                      "unexecutableCapabilityIds": {
+                        "type": "array"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "RESOLVED",
+                          "BROKEN"
+                        ]
+                      },
+                      "findings": {
+                        "type": "array"
+                      }
+                    },
+                    "$defs": {
+                      "digest": {
+                        "type": "string",
+                        "pattern": "^sha256:[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                },
+                "estate-dependency-closure.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "2db8adcc8e8ce5c9172cb35bdf114d49a1c7d557b4f32803071f76ad5c7fb494",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "capabilityCount",
+                      "dependencyCount",
+                      "dependencies",
+                      "unresolvedDependencies",
+                      "stalePins",
+                      "unexecutableCapabilityIds",
+                      "disposition",
+                      "findings"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "estate-dependency-closure.v1"
+                      },
+                      "capabilityCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencyCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencies": {
+                        "type": "array",
+                        "description": "Every declared dependency, its resolution, and both digests compared.",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "dependentId",
+                            "bindingRef",
+                            "resolved",
+                            "pinnedBindingDigest",
+                            "recomputedBindingDigest",
+                            "pinnedAuthorityDigest",
+                            "recomputedAuthorityDigest",
+                            "bindingDigestMatches",
+                            "authorityDigestMatches"
+                          ],
+                          "properties": {
+                            "dependentId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "bindingRef": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "resolved": {
+                              "type": "boolean"
+                            },
+                            "pinnedBindingDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "recomputedBindingDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "pinnedAuthorityDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "recomputedAuthorityDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "bindingDigestMatches": {
+                              "type": "boolean"
+                            },
+                            "authorityDigestMatches": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "unresolvedDependencies": {
+                        "type": "array",
+                        "description": "Declared dependencies naming no admitted capsule in the presented estate."
+                      },
+                      "stalePins": {
+                        "type": "array",
+                        "description": "Dependencies that resolved by name while diverging by digest. This is the failure that green capsule verification and a green test suite cannot see."
+                      },
+                      "unexecutableCapabilityIds": {
+                        "type": "array",
+                        "description": "Every capsule reachable from a divergent binding, not only the capsule whose binding changed.",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "disposition": {
+                        "enum": [
+                          "RESOLVED",
+                          "BROKEN"
+                        ],
+                        "description": "RESOLVED only when every declared dependency of every presented capsule resolved and matched."
+                      },
+                      "findings": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "code"
+                          ],
+                          "properties": {
+                            "code": {
+                              "enum": [
+                                "ESTATE_INVENTORY_ABSENT",
+                                "TARGET_BINDING_ABSENT",
+                                "DEPENDENCY_TARGET_UNRESOLVED",
+                                "DEPENDENCY_PIN_STALE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "$defs": {
+                      "digest": {
+                        "type": "string",
+                        "pattern": "^sha256:[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:close-execution-resolvability-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "path",
+              "from": "input",
+              "path": ""
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:close-execution-resolvability-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/carrier.schema.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/contracts/carrier.schema.json",
+          "entryDigest": "sha256:64eeae4763e7cb371cc563eaf817fa06caf4364002ef52b303c65d44cfe90c5a",
+          "snapshot": "data/capsule-evidence/entries/64eeae4763e7cb371cc563eaf817fa06caf4364002ef52b303c65d44cfe90c5a-b71dc2691e57c6cb.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/carrier.schema.json",
+          "title": "estate-closure-carrier",
+          "description": "The carrier admitted at each resolution boundary. Each step observes the accumulated closure and preserves it; no step upgrades a resolution another step withheld.",
+          "type": "object",
+          "required": [
+            "contractId",
+            "disposition",
+            "findings"
+          ],
+          "properties": {
+            "contractId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "capabilityCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencyCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencies": {
+              "type": "array"
+            },
+            "unresolvedDependencies": {
+              "type": "array"
+            },
+            "stalePins": {
+              "type": "array"
+            },
+            "unexecutableCapabilityIds": {
+              "type": "array"
+            },
+            "disposition": {
+              "enum": [
+                "RESOLVED",
+                "BROKEN"
+              ]
+            },
+            "findings": {
+              "type": "array"
+            }
+          },
+          "$defs": {
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/contracts/input.schema.json",
+          "entryDigest": "sha256:b0ce53989bb565e65ce47caf076affae601c6b22d17a7774b982ff16b2c246e6",
+          "snapshot": "data/capsule-evidence/entries/b0ce53989bb565e65ce47caf076affae601c6b22d17a7774b982ff16b2c246e6-3880878017c0bc9f.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "contractId",
+                "payload"
+              ],
+              "description": "One presented estate inventory. Extraction of capsules from durable storage is an effect boundary this capability does not own; it resolves the closure of whatever inventory it is given.",
+              "properties": {
+                "contractId": {
+                  "const": "estate-dependency-closure-request.v1"
+                },
+                "payload": {
+                  "type": "object",
+                  "required": [
+                    "estateInventory"
+                  ],
+                  "properties": {
+                    "estateInventory": {
+                      "type": "object",
+                      "required": [
+                        "supplied",
+                        "capsules"
+                      ],
+                      "properties": {
+                        "supplied": {
+                          "type": "boolean"
+                        },
+                        "capsules": {
+                          "type": "array",
+                          "description": "Every admitted capsule the estate presents. An empty array is a failure to present an estate, never an estate that has achieved closure.",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "capabilityId"
+                            ],
+                            "properties": {
+                              "capabilityId": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "applicationBinding": {
+                                "type": "object",
+                                "description": "The target's runtime application binding, recanonicalized and rehashed on every resolution rather than trusted from its recorded digest."
+                              },
+                              "capabilityAuthorityDigest": {
+                                "$ref": "#/$defs/digest"
+                              },
+                              "declaredDependencies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "bindingRef",
+                                    "pinnedBindingDigest",
+                                    "pinnedAuthorityDigest"
+                                  ],
+                                  "properties": {
+                                    "bindingRef": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "description": "The admitted capability this dependency resolves to. Name agreement alone is never accepted as resolution."
+                                    },
+                                    "pinnedBindingDigest": {
+                                      "$ref": "#/$defs/digest"
+                                    },
+                                    "pinnedAuthorityDigest": {
+                                      "$ref": "#/$defs/digest"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": [
+                "contractId",
+                "disposition"
+              ],
+              "description": "The closure admitted at each downstream scenario boundary, where the carrier is the previously admitted outcome.",
+              "properties": {
+                "contractId": {
+                  "enum": [
+                    "estate-dependency-closure.v1",
+                    "estate-closure-carrier.v1"
+                  ]
+                },
+                "disposition": {
+                  "enum": [
+                    "RESOLVED",
+                    "BROKEN"
+                  ]
+                }
+              }
+            }
+          ],
+          "$defs": {
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/contracts/outcome.schema.json",
+          "entryDigest": "sha256:2db91e93a7429f3718e1306fbda0840d5e51fa8d88f6edb8b964e1d7d3f76037",
+          "snapshot": "data/capsule-evidence/entries/2db91e93a7429f3718e1306fbda0840d5e51fa8d88f6edb8b964e1d7d3f76037-0198b3f5daa1ad6c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "capabilityCount",
+            "dependencyCount",
+            "dependencies",
+            "unresolvedDependencies",
+            "stalePins",
+            "unexecutableCapabilityIds",
+            "disposition",
+            "findings"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "estate-dependency-closure.v1"
+            },
+            "capabilityCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencyCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencies": {
+              "type": "array",
+              "description": "Every declared dependency, its resolution, and both digests compared.",
+              "items": {
+                "type": "object",
+                "required": [
+                  "dependentId",
+                  "bindingRef",
+                  "resolved",
+                  "pinnedBindingDigest",
+                  "recomputedBindingDigest",
+                  "pinnedAuthorityDigest",
+                  "recomputedAuthorityDigest",
+                  "bindingDigestMatches",
+                  "authorityDigestMatches"
+                ],
+                "properties": {
+                  "dependentId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "bindingRef": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "resolved": {
+                    "type": "boolean"
+                  },
+                  "pinnedBindingDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "recomputedBindingDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "pinnedAuthorityDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "recomputedAuthorityDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "bindingDigestMatches": {
+                    "type": "boolean"
+                  },
+                  "authorityDigestMatches": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "unresolvedDependencies": {
+              "type": "array",
+              "description": "Declared dependencies naming no admitted capsule in the presented estate."
+            },
+            "stalePins": {
+              "type": "array",
+              "description": "Dependencies that resolved by name while diverging by digest. This is the failure that green capsule verification and a green test suite cannot see."
+            },
+            "unexecutableCapabilityIds": {
+              "type": "array",
+              "description": "Every capsule reachable from a divergent binding, not only the capsule whose binding changed.",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "disposition": {
+              "enum": [
+                "RESOLVED",
+                "BROKEN"
+              ],
+              "description": "RESOLVED only when every declared dependency of every presented capsule resolved and matched."
+            },
+            "findings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "code"
+                ],
+                "properties": {
+                  "code": {
+                    "enum": [
+                      "ESTATE_INVENTORY_ABSENT",
+                      "TARGET_BINDING_ABSENT",
+                      "DEPENDENCY_TARGET_UNRESOLVED",
+                      "DEPENDENCY_PIN_STALE"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "$defs": {
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/nodes/4"
+        },
+        "value": {
+          "nodeId": "close-execution-resolvability",
+          "kind": "responsibility",
+          "altitude": "CAPABILITY",
+          "projectionOrdinal": 4,
+          "cell": {
+            "first": {
+              "identity": "closure-inputs",
+              "contract": {
+                "authorityId": "estate-closure-carrier.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            },
+            "energized": {
+              "identity": "close-execution-resolvability",
+              "authority": {
+                "authorityId": "close-execution-resolvability.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            },
+            "result": {
+              "identity": "resolvability",
+              "contract": {
+                "authorityId": "estate-closure-carrier.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/edges/3"
+        },
+        "value": {
+          "edgeId": "detect-stale-pins-to-close-execution-resolvability",
+          "from": "detect-stale-pins",
+          "to": "close-execution-resolvability",
+          "topology": "TRANSITION",
+          "semanticProgress": "NARROWS",
+          "semanticPrecedence": "REQUIRED"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/edges/4"
+        },
+        "value": {
+          "edgeId": "to-junction",
+          "from": "close-execution-resolvability",
+          "to": "bind-closure-disposition",
+          "topology": "TRANSITION",
+          "semanticProgress": "NARROWS",
+          "semanticPrecedence": "REQUIRED"
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "resolve-a-clean-estate",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    },
+                    {
+                      "capabilityId": "gamma",
+                      "applicationBinding": {
+                        "bindingId": "gamma",
+                        "runtime": "node",
+                        "entry": "gamma/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:8b92c9f763c7e8f77cc3593f2cde2d2bd35455c1e3eb157ae0ee4f59dbc6acda",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        },
+                        {
+                          "bindingRef": "beta",
+                          "pinnedBindingDigest": "sha256:8d3d8203b24b040594aca12dab227b166d3fd2d7be2003dbf0510bd1838b55f4",
+                          "pinnedAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-resolved",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "RESOLVED"
+                },
+                {
+                  "conditionId": "every-capsule-is-counted",
+                  "path": "capabilityCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "every-declared-dependency-is-counted",
+                  "path": "dependencyCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "no-dependency-is-unresolved",
+                  "path": "unresolvedDependencies.length",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "no-pin-is-stale",
+                  "path": "stalePins.length",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "nothing-is-unexecutable",
+                  "path": "unexecutableCapabilityIds",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "no-finding-is-raised",
+                  "path": "findings.length",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "detect-a-stale-binding-pin",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    },
+                    {
+                      "capabilityId": "gamma",
+                      "applicationBinding": {
+                        "bindingId": "gamma",
+                        "runtime": "node",
+                        "entry": "gamma/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:8b92c9f763c7e8f77cc3593f2cde2d2bd35455c1e3eb157ae0ee4f59dbc6acda",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "exactly-one-pin-is-stale",
+                  "path": "stalePins.length",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "the-stale-pin-names-its-dependent",
+                  "path": "stalePins.0.dependentId",
+                  "operator": "equals",
+                  "value": "beta"
+                },
+                {
+                  "conditionId": "the-stale-pin-resolved-by-name",
+                  "path": "stalePins.0.resolved",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "the-stale-pin-diverged-by-digest",
+                  "path": "stalePins.0.bindingDigestMatches",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "the-dependent-is-unexecutable",
+                  "path": "unexecutableCapabilityIds",
+                  "operator": "equals",
+                  "value": [
+                    "beta"
+                  ]
+                },
+                {
+                  "conditionId": "one-finding-is-raised",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "DEPENDENCY_PIN_STALE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "report-every-capsule-reachable-from-a-divergent-binding",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    },
+                    {
+                      "capabilityId": "gamma",
+                      "applicationBinding": {
+                        "bindingId": "gamma",
+                        "runtime": "node",
+                        "entry": "gamma/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:8b92c9f763c7e8f77cc3593f2cde2d2bd35455c1e3eb157ae0ee4f59dbc6acda",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "beta",
+                          "pinnedBindingDigest": "sha256:8d3d8203b24b040594aca12dab227b166d3fd2d7be2003dbf0510bd1838b55f4",
+                          "pinnedAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "only-one-pin-is-stale",
+                  "path": "stalePins.length",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "the-transitive-dependent-is-reported-too",
+                  "path": "unexecutableCapabilityIds",
+                  "operator": "equals",
+                  "value": [
+                    "beta",
+                    "gamma"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "detect-an-unresolved-dependency-target",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "nowhere",
+                          "pinnedBindingDigest": "sha256:8715f8a279780e708f294b8093bca9e02b400d65e16f780168ec1550ebafc1e9",
+                          "pinnedAuthorityDigest": "sha256:7faf67ccc982f669f4cbcd828a078efaee061560e5df9f74a808513d9536fa6e"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "exactly-one-dependency-is-unresolved",
+                  "path": "unresolvedDependencies.length",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "the-unresolved-target-is-named",
+                  "path": "unresolvedDependencies.0.bindingRef",
+                  "operator": "equals",
+                  "value": "nowhere"
+                },
+                {
+                  "conditionId": "the-finding-is-exact",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "DEPENDENCY_TARGET_UNRESOLVED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "hold-when-a-target-presents-no-application-binding",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "the-absent-binding-is-a-finding",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "TARGET_BINDING_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "refuse-to-report-an-empty-estate-as-resolved",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "no-capsule-was-presented",
+                  "path": "capabilityCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "absence-is-not-normalized",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "ESTATE_INVENTORY_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-3edc707a0706cadc.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one dependency graph and the divergences found within it",
+        "line": 96
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/carrier.schema.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/contracts/carrier.schema.json",
+          "entryDigest": "sha256:64eeae4763e7cb371cc563eaf817fa06caf4364002ef52b303c65d44cfe90c5a",
+          "snapshot": "data/capsule-evidence/entries/64eeae4763e7cb371cc563eaf817fa06caf4364002ef52b303c65d44cfe90c5a-b71dc2691e57c6cb.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/carrier.schema.json",
+          "title": "estate-closure-carrier",
+          "description": "The carrier admitted at each resolution boundary. Each step observes the accumulated closure and preserves it; no step upgrades a resolution another step withheld.",
+          "type": "object",
+          "required": [
+            "contractId",
+            "disposition",
+            "findings"
+          ],
+          "properties": {
+            "contractId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "capabilityCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencyCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencies": {
+              "type": "array"
+            },
+            "unresolvedDependencies": {
+              "type": "array"
+            },
+            "stalePins": {
+              "type": "array"
+            },
+            "unexecutableCapabilityIds": {
+              "type": "array"
+            },
+            "disposition": {
+              "enum": [
+                "RESOLVED",
+                "BROKEN"
+              ]
+            },
+            "findings": {
+              "type": "array"
+            }
+          },
+          "$defs": {
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/contracts/input.schema.json",
+          "entryDigest": "sha256:b0ce53989bb565e65ce47caf076affae601c6b22d17a7774b982ff16b2c246e6",
+          "snapshot": "data/capsule-evidence/entries/b0ce53989bb565e65ce47caf076affae601c6b22d17a7774b982ff16b2c246e6-3880878017c0bc9f.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "contractId",
+                "payload"
+              ],
+              "description": "One presented estate inventory. Extraction of capsules from durable storage is an effect boundary this capability does not own; it resolves the closure of whatever inventory it is given.",
+              "properties": {
+                "contractId": {
+                  "const": "estate-dependency-closure-request.v1"
+                },
+                "payload": {
+                  "type": "object",
+                  "required": [
+                    "estateInventory"
+                  ],
+                  "properties": {
+                    "estateInventory": {
+                      "type": "object",
+                      "required": [
+                        "supplied",
+                        "capsules"
+                      ],
+                      "properties": {
+                        "supplied": {
+                          "type": "boolean"
+                        },
+                        "capsules": {
+                          "type": "array",
+                          "description": "Every admitted capsule the estate presents. An empty array is a failure to present an estate, never an estate that has achieved closure.",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "capabilityId"
+                            ],
+                            "properties": {
+                              "capabilityId": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "applicationBinding": {
+                                "type": "object",
+                                "description": "The target's runtime application binding, recanonicalized and rehashed on every resolution rather than trusted from its recorded digest."
+                              },
+                              "capabilityAuthorityDigest": {
+                                "$ref": "#/$defs/digest"
+                              },
+                              "declaredDependencies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "bindingRef",
+                                    "pinnedBindingDigest",
+                                    "pinnedAuthorityDigest"
+                                  ],
+                                  "properties": {
+                                    "bindingRef": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "description": "The admitted capability this dependency resolves to. Name agreement alone is never accepted as resolution."
+                                    },
+                                    "pinnedBindingDigest": {
+                                      "$ref": "#/$defs/digest"
+                                    },
+                                    "pinnedAuthorityDigest": {
+                                      "$ref": "#/$defs/digest"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "required": [
+                "contractId",
+                "disposition"
+              ],
+              "description": "The closure admitted at each downstream scenario boundary, where the carrier is the previously admitted outcome.",
+              "properties": {
+                "contractId": {
+                  "enum": [
+                    "estate-dependency-closure.v1",
+                    "estate-closure-carrier.v1"
+                  ]
+                },
+                "disposition": {
+                  "enum": [
+                    "RESOLVED",
+                    "BROKEN"
+                  ]
+                }
+              }
+            }
+          ],
+          "$defs": {
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/contracts/outcome.schema.json",
+          "entryDigest": "sha256:2db91e93a7429f3718e1306fbda0840d5e51fa8d88f6edb8b964e1d7d3f76037",
+          "snapshot": "data/capsule-evidence/entries/2db91e93a7429f3718e1306fbda0840d5e51fa8d88f6edb8b964e1d7d3f76037-0198b3f5daa1ad6c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "capabilityCount",
+            "dependencyCount",
+            "dependencies",
+            "unresolvedDependencies",
+            "stalePins",
+            "unexecutableCapabilityIds",
+            "disposition",
+            "findings"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "estate-dependency-closure.v1"
+            },
+            "capabilityCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencyCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dependencies": {
+              "type": "array",
+              "description": "Every declared dependency, its resolution, and both digests compared.",
+              "items": {
+                "type": "object",
+                "required": [
+                  "dependentId",
+                  "bindingRef",
+                  "resolved",
+                  "pinnedBindingDigest",
+                  "recomputedBindingDigest",
+                  "pinnedAuthorityDigest",
+                  "recomputedAuthorityDigest",
+                  "bindingDigestMatches",
+                  "authorityDigestMatches"
+                ],
+                "properties": {
+                  "dependentId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "bindingRef": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "resolved": {
+                    "type": "boolean"
+                  },
+                  "pinnedBindingDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "recomputedBindingDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "pinnedAuthorityDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "recomputedAuthorityDigest": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "bindingDigestMatches": {
+                    "type": "boolean"
+                  },
+                  "authorityDigestMatches": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "unresolvedDependencies": {
+              "type": "array",
+              "description": "Declared dependencies naming no admitted capsule in the presented estate."
+            },
+            "stalePins": {
+              "type": "array",
+              "description": "Dependencies that resolved by name while diverging by digest. This is the failure that green capsule verification and a green test suite cannot see."
+            },
+            "unexecutableCapabilityIds": {
+              "type": "array",
+              "description": "Every capsule reachable from a divergent binding, not only the capsule whose binding changed.",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "disposition": {
+              "enum": [
+                "RESOLVED",
+                "BROKEN"
+              ],
+              "description": "RESOLVED only when every declared dependency of every presented capsule resolved and matched."
+            },
+            "findings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "code"
+                ],
+                "properties": {
+                  "code": {
+                    "enum": [
+                      "ESTATE_INVENTORY_ABSENT",
+                      "TARGET_BINDING_ABSENT",
+                      "DEPENDENCY_TARGET_UNRESOLVED",
+                      "DEPENDENCY_PIN_STALE"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "$defs": {
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    ],
+    "actors": [],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/nodes/4"
+        },
+        "value": {
+          "nodeId": "close-execution-resolvability",
+          "scenario": {
+            "scenarioId": "close-execution-resolvability",
+            "input": {
+              "inputId": "closure-inputs",
+              "contract": {
+                "contractId": "estate-closure-carrier.v1"
+              }
+            },
+            "event": {
+              "eventId": "close-execution-resolvability",
+              "executionAuthorityId": "close-execution-resolvability.v1"
+            },
+            "outcome": {
+              "outcomeId": "resolvability",
+              "contract": {
+                "contractId": "estate-closure-carrier.v1"
+              },
+              "terminal": false
+            }
+          },
+          "operations": [
+            {
+              "operationId": "close-execution-resolvability.operation.1",
+              "kind": "invoke-port",
+              "mechanicBindingId": "port:close-execution-resolvability-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "estate-dependency-closure-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "5c00df8deb4c9f27987b9eb07bce005038ec30b285eba55ef18db64ebbda8582",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "contractId",
+                          "payload"
+                        ],
+                        "description": "One presented estate inventory. Extraction of capsules from durable storage is an effect boundary this capability does not own; it resolves the closure of whatever inventory it is given.",
+                        "properties": {
+                          "contractId": {
+                            "const": "estate-dependency-closure-request.v1"
+                          },
+                          "payload": {
+                            "type": "object",
+                            "required": [
+                              "estateInventory"
+                            ],
+                            "properties": {
+                              "estateInventory": {
+                                "type": "object",
+                                "required": [
+                                  "supplied",
+                                  "capsules"
+                                ],
+                                "properties": {
+                                  "supplied": {
+                                    "type": "boolean"
+                                  },
+                                  "capsules": {
+                                    "type": "array",
+                                    "description": "Every admitted capsule the estate presents. An empty array is a failure to present an estate, never an estate that has achieved closure.",
+                                    "items": {
+                                      "type": "object",
+                                      "required": [
+                                        "capabilityId"
+                                      ],
+                                      "properties": {
+                                        "capabilityId": {
+                                          "type": "string",
+                                          "minLength": 1
+                                        },
+                                        "applicationBinding": {
+                                          "type": "object",
+                                          "description": "The target's runtime application binding, recanonicalized and rehashed on every resolution rather than trusted from its recorded digest."
+                                        },
+                                        "capabilityAuthorityDigest": {
+                                          "$ref": "#/$defs/digest"
+                                        },
+                                        "declaredDependencies": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "required": [
+                                              "bindingRef",
+                                              "pinnedBindingDigest",
+                                              "pinnedAuthorityDigest"
+                                            ],
+                                            "properties": {
+                                              "bindingRef": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "description": "The admitted capability this dependency resolves to. Name agreement alone is never accepted as resolution."
+                                              },
+                                              "pinnedBindingDigest": {
+                                                "$ref": "#/$defs/digest"
+                                              },
+                                              "pinnedAuthorityDigest": {
+                                                "$ref": "#/$defs/digest"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "contractId",
+                          "disposition"
+                        ],
+                        "description": "The closure admitted at each downstream scenario boundary, where the carrier is the previously admitted outcome.",
+                        "properties": {
+                          "contractId": {
+                            "enum": [
+                              "estate-dependency-closure.v1",
+                              "estate-closure-carrier.v1"
+                            ]
+                          },
+                          "disposition": {
+                            "enum": [
+                              "RESOLVED",
+                              "BROKEN"
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "$defs": {
+                      "digest": {
+                        "type": "string",
+                        "pattern": "^sha256:[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                },
+                "estate-closure-carrier.v1": {
+                  "schemaRef": "carrier.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/carrier.schema.json",
+                  "schemaDigest": "495904f80ff0fedc7abc7ac1813e13c8041a1d2071fd1900b692fd5caafc4a4d",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/carrier.schema.json",
+                    "title": "estate-closure-carrier",
+                    "description": "The carrier admitted at each resolution boundary. Each step observes the accumulated closure and preserves it; no step upgrades a resolution another step withheld.",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "disposition",
+                      "findings"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "capabilityCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencyCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencies": {
+                        "type": "array"
+                      },
+                      "unresolvedDependencies": {
+                        "type": "array"
+                      },
+                      "stalePins": {
+                        "type": "array"
+                      },
+                      "unexecutableCapabilityIds": {
+                        "type": "array"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "RESOLVED",
+                          "BROKEN"
+                        ]
+                      },
+                      "findings": {
+                        "type": "array"
+                      }
+                    },
+                    "$defs": {
+                      "digest": {
+                        "type": "string",
+                        "pattern": "^sha256:[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                },
+                "estate-dependency-closure.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "2db8adcc8e8ce5c9172cb35bdf114d49a1c7d557b4f32803071f76ad5c7fb494",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "capabilityCount",
+                      "dependencyCount",
+                      "dependencies",
+                      "unresolvedDependencies",
+                      "stalePins",
+                      "unexecutableCapabilityIds",
+                      "disposition",
+                      "findings"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "estate-dependency-closure.v1"
+                      },
+                      "capabilityCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencyCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "dependencies": {
+                        "type": "array",
+                        "description": "Every declared dependency, its resolution, and both digests compared.",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "dependentId",
+                            "bindingRef",
+                            "resolved",
+                            "pinnedBindingDigest",
+                            "recomputedBindingDigest",
+                            "pinnedAuthorityDigest",
+                            "recomputedAuthorityDigest",
+                            "bindingDigestMatches",
+                            "authorityDigestMatches"
+                          ],
+                          "properties": {
+                            "dependentId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "bindingRef": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "resolved": {
+                              "type": "boolean"
+                            },
+                            "pinnedBindingDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "recomputedBindingDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "pinnedAuthorityDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "recomputedAuthorityDigest": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "bindingDigestMatches": {
+                              "type": "boolean"
+                            },
+                            "authorityDigestMatches": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      },
+                      "unresolvedDependencies": {
+                        "type": "array",
+                        "description": "Declared dependencies naming no admitted capsule in the presented estate."
+                      },
+                      "stalePins": {
+                        "type": "array",
+                        "description": "Dependencies that resolved by name while diverging by digest. This is the failure that green capsule verification and a green test suite cannot see."
+                      },
+                      "unexecutableCapabilityIds": {
+                        "type": "array",
+                        "description": "Every capsule reachable from a divergent binding, not only the capsule whose binding changed.",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "disposition": {
+                        "enum": [
+                          "RESOLVED",
+                          "BROKEN"
+                        ],
+                        "description": "RESOLVED only when every declared dependency of every presented capsule resolved and matched."
+                      },
+                      "findings": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "code"
+                          ],
+                          "properties": {
+                            "code": {
+                              "enum": [
+                                "ESTATE_INVENTORY_ABSENT",
+                                "TARGET_BINDING_ABSENT",
+                                "DEPENDENCY_TARGET_UNRESOLVED",
+                                "DEPENDENCY_PIN_STALE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "$defs": {
+                      "digest": {
+                        "type": "string",
+                        "pattern": "^sha256:[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:close-execution-resolvability-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "path",
+              "from": "input",
+              "path": ""
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:close-execution-resolvability-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/nodes/4"
+        },
+        "value": {
+          "nodeId": "close-execution-resolvability",
+          "kind": "responsibility",
+          "altitude": "CAPABILITY",
+          "projectionOrdinal": 4,
+          "cell": {
+            "first": {
+              "identity": "closure-inputs",
+              "contract": {
+                "authorityId": "estate-closure-carrier.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            },
+            "energized": {
+              "identity": "close-execution-resolvability",
+              "authority": {
+                "authorityId": "close-execution-resolvability.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            },
+            "result": {
+              "identity": "resolvability",
+              "contract": {
+                "authorityId": "estate-closure-carrier.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/edges/3"
+        },
+        "value": {
+          "edgeId": "detect-stale-pins-to-close-execution-resolvability",
+          "from": "detect-stale-pins",
+          "to": "close-execution-resolvability",
+          "topology": "TRANSITION",
+          "semanticProgress": "NARROWS",
+          "semanticPrecedence": "REQUIRED"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/edges/4"
+        },
+        "value": {
+          "edgeId": "to-junction",
+          "from": "close-execution-resolvability",
+          "to": "bind-closure-disposition",
+          "topology": "TRANSITION",
+          "semanticProgress": "NARROWS",
+          "semanticPrecedence": "REQUIRED"
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every capsule reachable from a divergent binding is reported as unexecutable, not only the capsule that changed",
+        "line": 98
+      },
+      {
+        "text": "an estate presenting no capsules returns ESTATE_INVENTORY_ABSENT rather than an empty closure reported as RESOLVED",
+        "line": 99
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "resolve-a-clean-estate",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    },
+                    {
+                      "capabilityId": "gamma",
+                      "applicationBinding": {
+                        "bindingId": "gamma",
+                        "runtime": "node",
+                        "entry": "gamma/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:8b92c9f763c7e8f77cc3593f2cde2d2bd35455c1e3eb157ae0ee4f59dbc6acda",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        },
+                        {
+                          "bindingRef": "beta",
+                          "pinnedBindingDigest": "sha256:8d3d8203b24b040594aca12dab227b166d3fd2d7be2003dbf0510bd1838b55f4",
+                          "pinnedAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-resolved",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "RESOLVED"
+                },
+                {
+                  "conditionId": "every-capsule-is-counted",
+                  "path": "capabilityCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "every-declared-dependency-is-counted",
+                  "path": "dependencyCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "no-dependency-is-unresolved",
+                  "path": "unresolvedDependencies.length",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "no-pin-is-stale",
+                  "path": "stalePins.length",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "nothing-is-unexecutable",
+                  "path": "unexecutableCapabilityIds",
+                  "operator": "equals",
+                  "value": []
+                },
+                {
+                  "conditionId": "no-finding-is-raised",
+                  "path": "findings.length",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "detect-a-stale-binding-pin",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    },
+                    {
+                      "capabilityId": "gamma",
+                      "applicationBinding": {
+                        "bindingId": "gamma",
+                        "runtime": "node",
+                        "entry": "gamma/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:8b92c9f763c7e8f77cc3593f2cde2d2bd35455c1e3eb157ae0ee4f59dbc6acda",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "exactly-one-pin-is-stale",
+                  "path": "stalePins.length",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "the-stale-pin-names-its-dependent",
+                  "path": "stalePins.0.dependentId",
+                  "operator": "equals",
+                  "value": "beta"
+                },
+                {
+                  "conditionId": "the-stale-pin-resolved-by-name",
+                  "path": "stalePins.0.resolved",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "the-stale-pin-diverged-by-digest",
+                  "path": "stalePins.0.bindingDigestMatches",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "the-dependent-is-unexecutable",
+                  "path": "unexecutableCapabilityIds",
+                  "operator": "equals",
+                  "value": [
+                    "beta"
+                  ]
+                },
+                {
+                  "conditionId": "one-finding-is-raised",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "DEPENDENCY_PIN_STALE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "report-every-capsule-reachable-from-a-divergent-binding",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    },
+                    {
+                      "capabilityId": "gamma",
+                      "applicationBinding": {
+                        "bindingId": "gamma",
+                        "runtime": "node",
+                        "entry": "gamma/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:8b92c9f763c7e8f77cc3593f2cde2d2bd35455c1e3eb157ae0ee4f59dbc6acda",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "beta",
+                          "pinnedBindingDigest": "sha256:8d3d8203b24b040594aca12dab227b166d3fd2d7be2003dbf0510bd1838b55f4",
+                          "pinnedAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "only-one-pin-is-stale",
+                  "path": "stalePins.length",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "the-transitive-dependent-is-reported-too",
+                  "path": "unexecutableCapabilityIds",
+                  "operator": "equals",
+                  "value": [
+                    "beta",
+                    "gamma"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "detect-an-unresolved-dependency-target",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "applicationBinding": {
+                        "bindingId": "alpha",
+                        "runtime": "node",
+                        "entry": "alpha/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "nowhere",
+                          "pinnedBindingDigest": "sha256:8715f8a279780e708f294b8093bca9e02b400d65e16f780168ec1550ebafc1e9",
+                          "pinnedAuthorityDigest": "sha256:7faf67ccc982f669f4cbcd828a078efaee061560e5df9f74a808513d9536fa6e"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "exactly-one-dependency-is-unresolved",
+                  "path": "unresolvedDependencies.length",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "the-unresolved-target-is-named",
+                  "path": "unresolvedDependencies.0.bindingRef",
+                  "operator": "equals",
+                  "value": "nowhere"
+                },
+                {
+                  "conditionId": "the-finding-is-exact",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "DEPENDENCY_TARGET_UNRESOLVED"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "hold-when-a-target-presents-no-application-binding",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": [
+                    {
+                      "capabilityId": "alpha",
+                      "capabilityAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109",
+                      "declaredDependencies": []
+                    },
+                    {
+                      "capabilityId": "beta",
+                      "applicationBinding": {
+                        "bindingId": "beta",
+                        "runtime": "node",
+                        "entry": "beta/index.mjs"
+                      },
+                      "capabilityAuthorityDigest": "sha256:a50a46e47e02fcf5dfed9641f73531ddcd6549c2518f0d25f853d4b9eacb5390",
+                      "declaredDependencies": [
+                        {
+                          "bindingRef": "alpha",
+                          "pinnedBindingDigest": "sha256:4959f2aa05c0bb65081b2bf00bab9d98cc0807994fa19590c26496cb7094e5e9",
+                          "pinnedAuthorityDigest": "sha256:005f02fef782d465c40249d8d716190b378a1d18694d5f269c35e6e81a298109"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "the-absent-binding-is-a-finding",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "TARGET_BINDING_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/fixtures.authority.json",
+          "entryDigest": "sha256:d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834",
+          "snapshot": "data/capsule-evidence/entries/d6f9002a98227aaf2c7d5b92aa1753599fd29b03007e0fae04815473a8c5a834-13e9d177500589f1.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "refuse-to-report-an-empty-estate-as-resolved",
+            "input": {
+              "contractId": "estate-dependency-closure-request.v1",
+              "payload": {
+                "estateInventory": {
+                  "supplied": true,
+                  "capsules": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "resolve-estate-dependency-closure",
+              "scenarioSequence": [
+                "resolve-estate-dependency-closure"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "closure-is-broken",
+                  "path": "disposition",
+                  "operator": "equals",
+                  "value": "BROKEN"
+                },
+                {
+                  "conditionId": "no-capsule-was-presented",
+                  "path": "capabilityCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "absence-is-not-normalized",
+                  "path": "findings.0.code",
+                  "operator": "equals",
+                  "value": "ESTATE_INVENTORY_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:close-execution-resolvability-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/compositionPolicy"
+        },
+        "value": {
+          "carrierMode": "previous-admitted-outcome",
+          "contractAdmissionMode": "each-scenario-boundary",
+          "lineageMode": "retain-root-and-parent-execution",
+          "failureMode": "stop-at-first-non-success",
+          "cycleMode": "reject-recursive-invocation"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/nodes/4"
+        },
+        "value": {
+          "nodeId": "close-execution-resolvability",
+          "kind": "responsibility",
+          "altitude": "CAPABILITY",
+          "projectionOrdinal": 4,
+          "cell": {
+            "first": {
+              "identity": "closure-inputs",
+              "contract": {
+                "authorityId": "estate-closure-carrier.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            },
+            "energized": {
+              "identity": "close-execution-resolvability",
+              "authority": {
+                "authorityId": "close-execution-resolvability.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            },
+            "result": {
+              "identity": "resolvability",
+              "contract": {
+                "authorityId": "estate-closure-carrier.v1",
+                "digest": "sha256:9cc791b0dac36d1abc361928c3b45bea5651bba02cd324e622f307347cafc794"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/edges/3"
+        },
+        "value": {
+          "edgeId": "detect-stale-pins-to-close-execution-resolvability",
+          "from": "detect-stale-pins",
+          "to": "close-execution-resolvability",
+          "topology": "TRANSITION",
+          "semanticProgress": "NARROWS",
+          "semanticPrecedence": "REQUIRED"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/resolve-estate-dependency-closure/blueprint.authority.json",
+          "entryDigest": "sha256:55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79",
+          "snapshot": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+          "pointer": "/edges/4"
+        },
+        "value": {
+          "edgeId": "to-junction",
+          "from": "close-execution-resolvability",
+          "to": "bind-closure-disposition",
+          "topology": "TRANSITION",
+          "semanticProgress": "NARROWS",
+          "semanticPrecedence": "REQUIRED"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "close-execution-resolvability",
+        "scenario": {
+          "scenarioId": "close-execution-resolvability",
+          "input": {
+            "inputId": "closure-inputs",
+            "contract": {
+              "contractId": "estate-closure-carrier.v1"
+            }
+          },
+          "event": {
+            "eventId": "close-execution-resolvability",
+            "executionAuthorityId": "close-execution-resolvability.v1"
+          },
+          "outcome": {
+            "outcomeId": "resolvability",
+            "contract": {
+              "contractId": "estate-closure-carrier.v1"
+            },
+            "terminal": false
+          }
+        },
+        "operations": [
+          {
+            "operationId": "close-execution-resolvability.operation.1",
+            "kind": "invoke-port",
+            "mechanicBindingId": "port:close-execution-resolvability-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/resolve-estate-dependency-closure/execution-plan.node.json",
+          "entryDigest": "sha256:70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8",
+          "snapshot": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+          "pointer": "/nodes/4"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

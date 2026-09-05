@@ -1,0 +1,3149 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "discover-language-bindings::discover-language-bindings",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:1dace4a044d0868681e745cae551b764b7fde8afa38545785ddaec0793dd03f5"
+  },
+  "scenarioSurface": {
+    "key": "discover-language-bindings::discover-language-bindings",
+    "capabilityId": "discover-language-bindings",
+    "capabilityName": "Discover language bindings",
+    "scenarioId": "discover-language-bindings",
+    "scenarioName": "Enumerate every declared language binding manifest in the workspace",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one workspace containing declared language binding manifests",
+        "line": 25
+      }
+    ],
+    "event": [
+      {
+        "text": "every declared language binding manifest in the workspace is enumerated",
+        "line": 26
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every discoverable manifest is represented exactly once with its language and source lineage, without evaluating its obligation or conformance",
+        "line": 27
+      }
+    ],
+    "products": [
+      "language-binding-inventory-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "SDA maintainer"
+    ],
+    "altitude": null,
+    "notes": "  An SDA maintainer needs one authoritative inventory of every language\n  binding manifest declared in the workspace before any obligation or\n  conformance question can be asked about them. The capability enumerates\n  every declared language binding manifest in the workspace.\n\n  Every discoverable manifest is represented exactly once, with its language\n  and source path. The capability does not classify a binding's obligation\n  or evaluate its conformance — it only establishes the complete inventory\n  those later steps depend on.",
+    "source": {
+      "capsuleFile": "discover-language-bindings.sfxcap",
+      "capsuleDigest": "sha256:1dace4a044d0868681e745cae551b764b7fde8afa38545785ddaec0793dd03f5",
+      "featureEntry": "features/discover-language-bindings.feature",
+      "featureDigest": "sha256:55abebc832923f7c9972c0c111ecc2b7bde82034f3d2250fe3aacea4b0dcb820",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/discover-language-bindings.feature",
+      "scenarioLine": 24
+    },
+    "tags": [
+      "@capability:discover-language-bindings",
+      "@root-scenario:discover-language-bindings",
+      "@scenario:discover-language-bindings",
+      "@input:language-binding-discovery-input",
+      "@input-contract:language-binding-discovery-input.v1",
+      "@event:language-binding-discovery-requested",
+      "@event-authority:language-binding-discovery.v1",
+      "@outcome:language-binding-inventory-known",
+      "@outcome-contract:language-binding-discovery-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "discover-language-bindings",
+          "scenario": {
+            "scenarioId": "discover-language-bindings",
+            "input": {
+              "inputId": "language-binding-discovery-input",
+              "contract": {
+                "contractId": "language-binding-discovery-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "language-binding-discovery-requested",
+              "executionAuthorityId": "language-binding-discovery.v1"
+            },
+            "outcome": {
+              "outcomeId": "language-binding-inventory-known",
+              "contract": {
+                "contractId": "language-binding-discovery-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "discover-language-bindings.operation.1",
+              "mechanicBindingId": "port:discover-language-bindings-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "language-binding-discovery-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "932ecd2e4ec751ce6b1e211499e7f4937651ffc7fbb3eb3138c3c86366c4673a",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-binding-discovery-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "workspaceRoot",
+                          "manifests"
+                        ],
+                        "properties": {
+                          "workspaceRoot": {
+                            "type": "string"
+                          },
+                          "manifests": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "bindingId",
+                                "language",
+                                "manifestPath"
+                              ],
+                              "properties": {
+                                "bindingId": {
+                                  "type": "string"
+                                },
+                                "language": {
+                                  "type": "string"
+                                },
+                                "manifestPath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "language-binding-discovery-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "eb36dfe4155efedd9543a07998823964683e4fe92c74833338652629869ef825",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-binding-discovery-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "workspaceRoot",
+                          "manifests",
+                          "manifestCount",
+                          "status"
+                        ],
+                        "properties": {
+                          "workspaceRoot": {
+                            "type": "string"
+                          },
+                          "manifests": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "bindingId",
+                                "language",
+                                "manifestPath"
+                              ],
+                              "properties": {
+                                "bindingId": {
+                                  "type": "string"
+                                },
+                                "language": {
+                                  "type": "string"
+                                },
+                                "manifestPath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "manifestCount": {
+                            "type": "integer"
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:discover-language-bindings-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "language-binding-discovery-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "workspaceRoot": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.workspaceRoot"
+                    },
+                    "manifests": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.manifests"
+                    },
+                    "manifestCount": {
+                      "op": "length",
+                      "value": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.manifests"
+                      }
+                    },
+                    "status": {
+                      "op": "literal",
+                      "value": "inventory-established"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:discover-language-bindings-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/discover-language-bindings/contracts/input.schema.json",
+          "entryDigest": "sha256:932ecd2e4ec751ce6b1e211499e7f4937651ffc7fbb3eb3138c3c86366c4673a",
+          "snapshot": "data/capsule-evidence/entries/932ecd2e4ec751ce6b1e211499e7f4937651ffc7fbb3eb3138c3c86366c4673a-248a28239099ded0.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-binding-discovery-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "workspaceRoot",
+                "manifests"
+              ],
+              "properties": {
+                "workspaceRoot": {
+                  "type": "string"
+                },
+                "manifests": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "bindingId",
+                      "language",
+                      "manifestPath"
+                    ],
+                    "properties": {
+                      "bindingId": {
+                        "type": "string"
+                      },
+                      "language": {
+                        "type": "string"
+                      },
+                      "manifestPath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/discover-language-bindings/contracts/outcome.schema.json",
+          "entryDigest": "sha256:eb36dfe4155efedd9543a07998823964683e4fe92c74833338652629869ef825",
+          "snapshot": "data/capsule-evidence/entries/eb36dfe4155efedd9543a07998823964683e4fe92c74833338652629869ef825-7886cfd2bb249664.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-binding-discovery-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "workspaceRoot",
+                "manifests",
+                "manifestCount",
+                "status"
+              ],
+              "properties": {
+                "workspaceRoot": {
+                  "type": "string"
+                },
+                "manifests": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "bindingId",
+                      "language",
+                      "manifestPath"
+                    ],
+                    "properties": {
+                      "bindingId": {
+                        "type": "string"
+                      },
+                      "language": {
+                        "type": "string"
+                      },
+                      "manifestPath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "manifestCount": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-868283e5f138e2d3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-b4646016ae4fdedd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-4b0ebb3a33deaa29.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-c2f315b6de18d9c5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-typescript-manifest",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "ts-node-binding",
+                    "language": "typescript",
+                    "manifestPath": "packages/node/binding.manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "ts-node-binding",
+                        "language": "typescript",
+                        "manifestPath": "packages/node/binding.manifest.json"
+                      }
+                    ],
+                    "manifestCount": 1,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-one",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "dual-language-manifests",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "ts-binding",
+                    "language": "typescript",
+                    "manifestPath": "bindings/ts/manifest.json"
+                  },
+                  {
+                    "bindingId": "py-binding",
+                    "language": "python",
+                    "manifestPath": "bindings/python/manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "ts-binding",
+                        "language": "typescript",
+                        "manifestPath": "bindings/ts/manifest.json"
+                      },
+                      {
+                        "bindingId": "py-binding",
+                        "language": "python",
+                        "manifestPath": "bindings/python/manifest.json"
+                      }
+                    ],
+                    "manifestCount": 2,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-two",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 2
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-workspace-manifests",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": []
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [],
+                    "manifestCount": 0,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-zero",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "polyglot-three-manifests",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "rust-binding",
+                    "language": "rust",
+                    "manifestPath": "bindings/rust/manifest.json"
+                  },
+                  {
+                    "bindingId": "go-binding",
+                    "language": "go",
+                    "manifestPath": "bindings/go/manifest.json"
+                  },
+                  {
+                    "bindingId": "java-binding",
+                    "language": "java",
+                    "manifestPath": "bindings/java/manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "rust-binding",
+                        "language": "rust",
+                        "manifestPath": "bindings/rust/manifest.json"
+                      },
+                      {
+                        "bindingId": "go-binding",
+                        "language": "go",
+                        "manifestPath": "bindings/go/manifest.json"
+                      },
+                      {
+                        "bindingId": "java-binding",
+                        "language": "java",
+                        "manifestPath": "bindings/java/manifest.json"
+                      }
+                    ],
+                    "manifestCount": 3,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-three",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "nested-binding-paths",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace/sda-root",
+                "manifests": [
+                  {
+                    "bindingId": "csharp-binding",
+                    "language": "csharp",
+                    "manifestPath": "src/adapters/dotnet/binding.manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace/sda-root",
+                    "manifests": [
+                      {
+                        "bindingId": "csharp-binding",
+                        "language": "csharp",
+                        "manifestPath": "src/adapters/dotnet/binding.manifest.json"
+                      }
+                    ],
+                    "manifestCount": 1,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-one",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "four-manifests-inventory",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "b1",
+                    "language": "typescript",
+                    "manifestPath": "b1/manifest.json"
+                  },
+                  {
+                    "bindingId": "b2",
+                    "language": "python",
+                    "manifestPath": "b2/manifest.json"
+                  },
+                  {
+                    "bindingId": "b3",
+                    "language": "ruby",
+                    "manifestPath": "b3/manifest.json"
+                  },
+                  {
+                    "bindingId": "b4",
+                    "language": "kotlin",
+                    "manifestPath": "b4/manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "b1",
+                        "language": "typescript",
+                        "manifestPath": "b1/manifest.json"
+                      },
+                      {
+                        "bindingId": "b2",
+                        "language": "python",
+                        "manifestPath": "b2/manifest.json"
+                      },
+                      {
+                        "bindingId": "b3",
+                        "language": "ruby",
+                        "manifestPath": "b3/manifest.json"
+                      },
+                      {
+                        "bindingId": "b4",
+                        "language": "kotlin",
+                        "manifestPath": "b4/manifest.json"
+                      }
+                    ],
+                    "manifestCount": 4,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-four",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 4
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-87016367562afd22.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one workspace containing declared language binding manifests",
+        "line": 25
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/discover-language-bindings/contracts/input.schema.json",
+          "entryDigest": "sha256:932ecd2e4ec751ce6b1e211499e7f4937651ffc7fbb3eb3138c3c86366c4673a",
+          "snapshot": "data/capsule-evidence/entries/932ecd2e4ec751ce6b1e211499e7f4937651ffc7fbb3eb3138c3c86366c4673a-248a28239099ded0.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-binding-discovery-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "workspaceRoot",
+                "manifests"
+              ],
+              "properties": {
+                "workspaceRoot": {
+                  "type": "string"
+                },
+                "manifests": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "bindingId",
+                      "language",
+                      "manifestPath"
+                    ],
+                    "properties": {
+                      "bindingId": {
+                        "type": "string"
+                      },
+                      "language": {
+                        "type": "string"
+                      },
+                      "manifestPath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/discover-language-bindings/contracts/outcome.schema.json",
+          "entryDigest": "sha256:eb36dfe4155efedd9543a07998823964683e4fe92c74833338652629869ef825",
+          "snapshot": "data/capsule-evidence/entries/eb36dfe4155efedd9543a07998823964683e4fe92c74833338652629869ef825-7886cfd2bb249664.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-binding-discovery-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "workspaceRoot",
+                "manifests",
+                "manifestCount",
+                "status"
+              ],
+              "properties": {
+                "workspaceRoot": {
+                  "type": "string"
+                },
+                "manifests": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "bindingId",
+                      "language",
+                      "manifestPath"
+                    ],
+                    "properties": {
+                      "bindingId": {
+                        "type": "string"
+                      },
+                      "language": {
+                        "type": "string"
+                      },
+                      "manifestPath": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "manifestCount": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-868283e5f138e2d3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-b4646016ae4fdedd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-4b0ebb3a33deaa29.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-c2f315b6de18d9c5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "SDA maintainer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "discover-language-bindings",
+          "scenario": {
+            "scenarioId": "discover-language-bindings",
+            "input": {
+              "inputId": "language-binding-discovery-input",
+              "contract": {
+                "contractId": "language-binding-discovery-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "language-binding-discovery-requested",
+              "executionAuthorityId": "language-binding-discovery.v1"
+            },
+            "outcome": {
+              "outcomeId": "language-binding-inventory-known",
+              "contract": {
+                "contractId": "language-binding-discovery-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "discover-language-bindings.operation.1",
+              "mechanicBindingId": "port:discover-language-bindings-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "language-binding-discovery-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "932ecd2e4ec751ce6b1e211499e7f4937651ffc7fbb3eb3138c3c86366c4673a",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-binding-discovery-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "workspaceRoot",
+                          "manifests"
+                        ],
+                        "properties": {
+                          "workspaceRoot": {
+                            "type": "string"
+                          },
+                          "manifests": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "bindingId",
+                                "language",
+                                "manifestPath"
+                              ],
+                              "properties": {
+                                "bindingId": {
+                                  "type": "string"
+                                },
+                                "language": {
+                                  "type": "string"
+                                },
+                                "manifestPath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "language-binding-discovery-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "eb36dfe4155efedd9543a07998823964683e4fe92c74833338652629869ef825",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-binding-discovery-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "workspaceRoot",
+                          "manifests",
+                          "manifestCount",
+                          "status"
+                        ],
+                        "properties": {
+                          "workspaceRoot": {
+                            "type": "string"
+                          },
+                          "manifests": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "bindingId",
+                                "language",
+                                "manifestPath"
+                              ],
+                              "properties": {
+                                "bindingId": {
+                                  "type": "string"
+                                },
+                                "language": {
+                                  "type": "string"
+                                },
+                                "manifestPath": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "manifestCount": {
+                            "type": "integer"
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:discover-language-bindings-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "language-binding-discovery-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "workspaceRoot": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.workspaceRoot"
+                    },
+                    "manifests": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.manifests"
+                    },
+                    "manifestCount": {
+                      "op": "length",
+                      "value": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.manifests"
+                      }
+                    },
+                    "status": {
+                      "op": "literal",
+                      "value": "inventory-established"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:discover-language-bindings-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every discoverable manifest is represented exactly once with its language and source lineage, without evaluating its obligation or conformance",
+        "line": 27
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-typescript-manifest",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "ts-node-binding",
+                    "language": "typescript",
+                    "manifestPath": "packages/node/binding.manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "ts-node-binding",
+                        "language": "typescript",
+                        "manifestPath": "packages/node/binding.manifest.json"
+                      }
+                    ],
+                    "manifestCount": 1,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-one",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "dual-language-manifests",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "ts-binding",
+                    "language": "typescript",
+                    "manifestPath": "bindings/ts/manifest.json"
+                  },
+                  {
+                    "bindingId": "py-binding",
+                    "language": "python",
+                    "manifestPath": "bindings/python/manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "ts-binding",
+                        "language": "typescript",
+                        "manifestPath": "bindings/ts/manifest.json"
+                      },
+                      {
+                        "bindingId": "py-binding",
+                        "language": "python",
+                        "manifestPath": "bindings/python/manifest.json"
+                      }
+                    ],
+                    "manifestCount": 2,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-two",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 2
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-workspace-manifests",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": []
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [],
+                    "manifestCount": 0,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-zero",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "polyglot-three-manifests",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "rust-binding",
+                    "language": "rust",
+                    "manifestPath": "bindings/rust/manifest.json"
+                  },
+                  {
+                    "bindingId": "go-binding",
+                    "language": "go",
+                    "manifestPath": "bindings/go/manifest.json"
+                  },
+                  {
+                    "bindingId": "java-binding",
+                    "language": "java",
+                    "manifestPath": "bindings/java/manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "rust-binding",
+                        "language": "rust",
+                        "manifestPath": "bindings/rust/manifest.json"
+                      },
+                      {
+                        "bindingId": "go-binding",
+                        "language": "go",
+                        "manifestPath": "bindings/go/manifest.json"
+                      },
+                      {
+                        "bindingId": "java-binding",
+                        "language": "java",
+                        "manifestPath": "bindings/java/manifest.json"
+                      }
+                    ],
+                    "manifestCount": 3,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-three",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "nested-binding-paths",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace/sda-root",
+                "manifests": [
+                  {
+                    "bindingId": "csharp-binding",
+                    "language": "csharp",
+                    "manifestPath": "src/adapters/dotnet/binding.manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace/sda-root",
+                    "manifests": [
+                      {
+                        "bindingId": "csharp-binding",
+                        "language": "csharp",
+                        "manifestPath": "src/adapters/dotnet/binding.manifest.json"
+                      }
+                    ],
+                    "manifestCount": 1,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-one",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/discover-language-bindings/fixtures.authority.json",
+          "entryDigest": "sha256:3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf",
+          "snapshot": "data/capsule-evidence/entries/3484c050ad3eddf61b490eddcf49f6270227b2067ed67575c50ea0d9c17af3cf-a97efec73ececa1a.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "four-manifests-inventory",
+            "input": {
+              "contractId": "language-binding-discovery-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspace",
+                "manifests": [
+                  {
+                    "bindingId": "b1",
+                    "language": "typescript",
+                    "manifestPath": "b1/manifest.json"
+                  },
+                  {
+                    "bindingId": "b2",
+                    "language": "python",
+                    "manifestPath": "b2/manifest.json"
+                  },
+                  {
+                    "bindingId": "b3",
+                    "language": "ruby",
+                    "manifestPath": "b3/manifest.json"
+                  },
+                  {
+                    "bindingId": "b4",
+                    "language": "kotlin",
+                    "manifestPath": "b4/manifest.json"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "discover-language-bindings-port": {
+                "output": {
+                  "contractId": "language-binding-discovery-evidence.v1",
+                  "payload": {
+                    "workspaceRoot": "/workspace",
+                    "manifests": [
+                      {
+                        "bindingId": "b1",
+                        "language": "typescript",
+                        "manifestPath": "b1/manifest.json"
+                      },
+                      {
+                        "bindingId": "b2",
+                        "language": "python",
+                        "manifestPath": "b2/manifest.json"
+                      },
+                      {
+                        "bindingId": "b3",
+                        "language": "ruby",
+                        "manifestPath": "b3/manifest.json"
+                      },
+                      {
+                        "bindingId": "b4",
+                        "language": "kotlin",
+                        "manifestPath": "b4/manifest.json"
+                      }
+                    ],
+                    "manifestCount": 4,
+                    "status": "inventory-established"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "discover-language-bindings",
+              "scenarioSequence": [
+                "discover-language-bindings"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "manifest-count-four",
+                  "path": "payload.manifestCount",
+                  "operator": "equals",
+                  "value": 4
+                },
+                {
+                  "conditionId": "status-established",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "inventory-established"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:discover-language-bindings-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "discover-language-bindings",
+        "scenario": {
+          "scenarioId": "discover-language-bindings",
+          "input": {
+            "inputId": "language-binding-discovery-input",
+            "contract": {
+              "contractId": "language-binding-discovery-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "language-binding-discovery-requested",
+            "executionAuthorityId": "language-binding-discovery.v1"
+          },
+          "outcome": {
+            "outcomeId": "language-binding-inventory-known",
+            "contract": {
+              "contractId": "language-binding-discovery-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "discover-language-bindings.operation.1",
+            "mechanicBindingId": "port:discover-language-bindings-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/discover-language-bindings/execution-plan.node.json",
+          "entryDigest": "sha256:0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb",
+          "snapshot": "data/capsule-evidence/entries/0e967ddd82088823836ed72a4142656d4fc9061c267115a7370502218865befb-281b229ae69d4dfd.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

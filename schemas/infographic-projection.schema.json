@@ -1,0 +1,897 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Aggregation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "altitude": {
+          "enum": [
+            "capability",
+            "estate"
+          ],
+          "title": "Altitude",
+          "type": "string"
+        },
+        "memberIds": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Memberids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "altitude",
+        "memberIds"
+      ],
+      "title": "Aggregation",
+      "type": "object"
+    },
+    "Beat": {
+      "additionalProperties": false,
+      "properties": {
+        "phase": {
+          "enum": [
+            "Establish",
+            "Activate",
+            "Execute",
+            "Resolve",
+            "Prove"
+          ],
+          "title": "Phase",
+          "type": "string"
+        },
+        "caption": {
+          "title": "Caption",
+          "type": "string"
+        },
+        "entityIds": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Entityids",
+          "type": "array"
+        },
+        "edgeIds": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Edgeids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "phase",
+        "caption",
+        "entityIds",
+        "edgeIds"
+      ],
+      "title": "Beat",
+      "type": "object"
+    },
+    "Capability": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "domain": {
+          "title": "Domain",
+          "type": "string"
+        },
+        "scenarioIds": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Scenarioids",
+          "type": "array"
+        },
+        "coverage": {
+          "title": "Coverage",
+          "type": "string"
+        },
+        "sourceRefs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcerefs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "domain",
+        "scenarioIds",
+        "coverage",
+        "sourceRefs"
+      ],
+      "title": "Capability",
+      "type": "object"
+    },
+    "Edge": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "transition",
+            "product-transfer",
+            "provider-binding",
+            "evidence-attachment",
+            "authority",
+            "dependency",
+            "retry"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 100,
+          "title": "Label",
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "DECLARED",
+            "OBSERVED",
+            "TARGET",
+            "GAP",
+            "STAGING"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "sourceRefs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcerefs",
+          "type": "array"
+        },
+        "guard": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Guard"
+        },
+        "productContract": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Productcontract"
+        },
+        "maxAttempts": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maxattempts"
+        },
+        "exitCondition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exitcondition"
+        },
+        "stopTarget": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stoptarget"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "target",
+        "type",
+        "label",
+        "basis",
+        "sourceRefs"
+      ],
+      "title": "Edge",
+      "type": "object"
+    },
+    "Human": {
+      "additionalProperties": false,
+      "properties": {
+        "person": {
+          "title": "Person",
+          "type": "string"
+        },
+        "input": {
+          "title": "Input",
+          "type": "string"
+        },
+        "event": {
+          "title": "Event",
+          "type": "string"
+        },
+        "outcome": {
+          "title": "Outcome",
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "DECLARED",
+            "OBSERVED",
+            "TARGET",
+            "GAP",
+            "STAGING"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "sourceRefs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcerefs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "person",
+        "input",
+        "event",
+        "outcome",
+        "basis",
+        "sourceRefs"
+      ],
+      "title": "Human",
+      "type": "object"
+    },
+    "Junction": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 90,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 160,
+          "title": "Detail",
+          "type": "string"
+        },
+        "capabilityId": {
+          "title": "Capabilityid",
+          "type": "string"
+        },
+        "scenarioId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scenarioid"
+        },
+        "basis": {
+          "enum": [
+            "DECLARED",
+            "OBSERVED",
+            "TARGET",
+            "GAP",
+            "STAGING"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "sourceRefs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcerefs",
+          "type": "array"
+        },
+        "layer": {
+          "default": "mechanic",
+          "enum": [
+            "mechanic",
+            "support"
+          ],
+          "title": "Layer",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "branch",
+            "fan-out",
+            "convergence",
+            "decision",
+            "termination",
+            "rejection"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "rule": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rule"
+        },
+        "join": {
+          "anyOf": [
+            {
+              "enum": [
+                "all",
+                "any",
+                "quorum"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Join"
+        },
+        "quorum": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quorum"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "detail",
+        "capabilityId",
+        "basis",
+        "sourceRefs",
+        "type"
+      ],
+      "title": "Junction",
+      "type": "object"
+    },
+    "Node": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 90,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 160,
+          "title": "Detail",
+          "type": "string"
+        },
+        "capabilityId": {
+          "title": "Capabilityid",
+          "type": "string"
+        },
+        "scenarioId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scenarioid"
+        },
+        "basis": {
+          "enum": [
+            "DECLARED",
+            "OBSERVED",
+            "TARGET",
+            "GAP",
+            "STAGING"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "sourceRefs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcerefs",
+          "type": "array"
+        },
+        "layer": {
+          "default": "mechanic",
+          "enum": [
+            "mechanic",
+            "support"
+          ],
+          "title": "Layer",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "input",
+            "event",
+            "outcome",
+            "provider-port",
+            "provider",
+            "validation",
+            "evidence",
+            "human-approval",
+            "authority"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "productContract": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Productcontract"
+        },
+        "closure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Closure"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "detail",
+        "capabilityId",
+        "basis",
+        "sourceRefs",
+        "type"
+      ],
+      "title": "Node",
+      "type": "object"
+    },
+    "Provider": {
+      "additionalProperties": false,
+      "properties": {
+        "nodeId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Nodeid"
+        },
+        "portIds": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Portids",
+          "type": "array"
+        },
+        "binding": {
+          "enum": [
+            "bound",
+            "candidate",
+            "open"
+          ],
+          "title": "Binding",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "active",
+            "candidate",
+            "simulated",
+            "degraded",
+            "isolated",
+            "unknown"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "nodeId",
+        "portIds",
+        "binding",
+        "state"
+      ],
+      "title": "Provider",
+      "type": "object"
+    },
+    "Relationship": {
+      "additionalProperties": false,
+      "properties": {
+        "sourceScenario": {
+          "title": "Sourcescenario",
+          "type": "string"
+        },
+        "targetScenario": {
+          "title": "Targetscenario",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "invokes",
+            "depends-on"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "sourceRefs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcerefs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "sourceScenario",
+        "targetScenario",
+        "kind",
+        "sourceRefs"
+      ],
+      "title": "Relationship",
+      "type": "object"
+    },
+    "Scenario": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "capabilityId": {
+          "title": "Capabilityid",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "nodeIds": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 3,
+          "title": "Nodeids",
+          "type": "array"
+        },
+        "sourceRefs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Sourcerefs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "capabilityId",
+        "label",
+        "nodeIds",
+        "sourceRefs"
+      ],
+      "title": "Scenario",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "pointer": {
+          "default": "",
+          "title": "Pointer",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "DECLARED",
+            "OBSERVED",
+            "TARGET",
+            "GAP",
+            "STAGING"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "encoding": {
+          "default": "json",
+          "enum": [
+            "json",
+            "capsule-entry"
+          ],
+          "title": "Encoding",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "path",
+        "sha256",
+        "kind",
+        "label"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contractVersion": {
+      "const": "infographic-projection.v1",
+      "title": "Contractversion",
+      "type": "string"
+    },
+    "grammarVersion": {
+      "const": "sidefx-infographic-grammar.v1",
+      "title": "Grammarversion",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "subtitle": {
+      "title": "Subtitle",
+      "type": "string"
+    },
+    "altitude": {
+      "enum": [
+        "scenario",
+        "capability",
+        "estate"
+      ],
+      "title": "Altitude",
+      "type": "string"
+    },
+    "scope": {
+      "title": "Scope",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "minItems": 1,
+      "title": "Sources",
+      "type": "array"
+    },
+    "capabilities": {
+      "items": {
+        "$ref": "#/$defs/Capability"
+      },
+      "minItems": 1,
+      "title": "Capabilities",
+      "type": "array"
+    },
+    "scenarios": {
+      "items": {
+        "$ref": "#/$defs/Scenario"
+      },
+      "minItems": 1,
+      "title": "Scenarios",
+      "type": "array"
+    },
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/Node"
+      },
+      "minItems": 3,
+      "title": "Nodes",
+      "type": "array"
+    },
+    "junctions": {
+      "items": {
+        "$ref": "#/$defs/Junction"
+      },
+      "title": "Junctions",
+      "type": "array"
+    },
+    "edges": {
+      "items": {
+        "$ref": "#/$defs/Edge"
+      },
+      "minItems": 2,
+      "title": "Edges",
+      "type": "array"
+    },
+    "providers": {
+      "items": {
+        "$ref": "#/$defs/Provider"
+      },
+      "title": "Providers",
+      "type": "array"
+    },
+    "humanAnchors": {
+      "items": {
+        "$ref": "#/$defs/Human"
+      },
+      "minItems": 1,
+      "title": "Humananchors",
+      "type": "array"
+    },
+    "visualLayers": {
+      "items": {
+        "enum": [
+          "human",
+          "mechanic",
+          "support"
+        ],
+        "type": "string"
+      },
+      "title": "Visuallayers",
+      "type": "array"
+    },
+    "animationBeats": {
+      "items": {
+        "$ref": "#/$defs/Beat"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "title": "Animationbeats",
+      "type": "array"
+    },
+    "zoomAggregations": {
+      "items": {
+        "$ref": "#/$defs/Aggregation"
+      },
+      "title": "Zoomaggregations",
+      "type": "array"
+    },
+    "scenarioRelationships": {
+      "items": {
+        "$ref": "#/$defs/Relationship"
+      },
+      "title": "Scenariorelationships",
+      "type": "array"
+    }
+  },
+  "required": [
+    "contractVersion",
+    "grammarVersion",
+    "id",
+    "title",
+    "subtitle",
+    "altitude",
+    "scope",
+    "sources",
+    "capabilities",
+    "scenarios",
+    "nodes",
+    "junctions",
+    "edges",
+    "providers",
+    "humanAnchors",
+    "visualLayers",
+    "animationBeats",
+    "zoomAggregations",
+    "scenarioRelationships"
+  ],
+  "title": "Projection",
+  "type": "object"
+}

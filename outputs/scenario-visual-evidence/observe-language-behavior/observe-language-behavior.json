@@ -1,0 +1,3047 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "observe-language-behavior::observe-language-behavior",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:2d2b26a5ed6e090a422ba12dfe903b1e4d6385e731d1d07d9fc8934e9f6ef312"
+  },
+  "scenarioSurface": {
+    "key": "observe-language-behavior::observe-language-behavior",
+    "capabilityId": "observe-language-behavior",
+    "capabilityName": "Observe language behavior",
+    "scenarioId": "observe-language-behavior",
+    "scenarioName": "Invoke the real language suite and capture attributable results",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one targeted language and its real test suite",
+        "line": 27
+      }
+    ],
+    "event": [
+      {
+        "text": "the real language suite is invoked and its results are captured attributably",
+        "line": 28
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every targeted language produces evidence or an explicit NOT_OBSERVABLE reason that distinguishes implementation failure from environment absence",
+        "line": 29
+      }
+    ],
+    "products": [
+      "language-behavior-observation-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "SDA maintainer"
+    ],
+    "altitude": null,
+    "notes": "  An SDA maintainer needs every language's real test suite invoked and its\n  results captured attributably, so a failing implementation can never be\n  confused with a missing toolchain. The capability invokes the real\n  language suite and captures attributable results for each targeted\n  language.\n\n  Every targeted language produces evidence or an explicit NOT_OBSERVABLE\n  reason, and each observation distinguishes implementation failure from\n  environment absence. The capability does not evaluate conformance itself\n  — it only produces the attributable observation later evaluation depends\n  on.",
+    "source": {
+      "capsuleFile": "observe-language-behavior.sfxcap",
+      "capsuleDigest": "sha256:2d2b26a5ed6e090a422ba12dfe903b1e4d6385e731d1d07d9fc8934e9f6ef312",
+      "featureEntry": "features/observe-language-behavior.feature",
+      "featureDigest": "sha256:b518d57f8b52fa1edbf4f3a817668487b206c9878e3aaf0027f216c24f32002d",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/observe-language-behavior.feature",
+      "scenarioLine": 26
+    },
+    "tags": [
+      "@capability:observe-language-behavior",
+      "@root-scenario:observe-language-behavior",
+      "@scenario:observe-language-behavior",
+      "@input:language-behavior-observation-input",
+      "@input-contract:language-behavior-observation-input.v1",
+      "@event:language-behavior-observation-requested",
+      "@event-authority:language-behavior-observation.v1",
+      "@outcome:language-behavior-observation-known",
+      "@outcome-contract:language-behavior-observation-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "observe-language-behavior",
+          "scenario": {
+            "scenarioId": "observe-language-behavior",
+            "input": {
+              "inputId": "language-behavior-observation-input",
+              "contract": {
+                "contractId": "language-behavior-observation-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "language-behavior-observation-requested",
+              "executionAuthorityId": "language-behavior-observation.v1"
+            },
+            "outcome": {
+              "outcomeId": "language-behavior-observation-known",
+              "contract": {
+                "contractId": "language-behavior-observation-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "observe-language-behavior.operation.1",
+              "mechanicBindingId": "port:observe-language-behavior-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "language-behavior-observation-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "bfcdae4149b39e62a41b42cbe26de9c627fe24021df81e1db1a88842604bcca2",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-behavior-observation-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "language",
+                          "suiteTarget",
+                          "toolchainAvailable",
+                          "executionStatus",
+                          "capturedOutput",
+                          "notObservableReason"
+                        ],
+                        "properties": {
+                          "language": {
+                            "type": "string"
+                          },
+                          "suiteTarget": {
+                            "type": "string"
+                          },
+                          "toolchainAvailable": {
+                            "type": "boolean"
+                          },
+                          "executionStatus": {
+                            "type": "string"
+                          },
+                          "capturedOutput": {
+                            "type": "string"
+                          },
+                          "notObservableReason": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "language-behavior-observation-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "bfc3113a23913eb3ad1ff0f4408733fd34c4183aeb39c6b6612f347d71bb3933",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-behavior-observation-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "language",
+                          "suiteTarget",
+                          "observationStatus",
+                          "distinction",
+                          "attributableReason"
+                        ],
+                        "properties": {
+                          "language": {
+                            "type": "string"
+                          },
+                          "suiteTarget": {
+                            "type": "string"
+                          },
+                          "observationStatus": {
+                            "type": "string",
+                            "enum": [
+                              "OBSERVED",
+                              "NOT_OBSERVABLE"
+                            ]
+                          },
+                          "distinction": {
+                            "type": "string",
+                            "enum": [
+                              "IMPLEMENTATION_SUCCESS",
+                              "IMPLEMENTATION_FAILURE",
+                              "ENVIRONMENT_ABSENT"
+                            ]
+                          },
+                          "attributableReason": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:observe-language-behavior-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "language-behavior-observation-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "language": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.language"
+                    },
+                    "suiteTarget": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.suiteTarget"
+                    },
+                    "observationStatus": {
+                      "op": "if",
+                      "then": {
+                        "op": "literal",
+                        "value": "OBSERVED"
+                      },
+                      "else": {
+                        "op": "literal",
+                        "value": "NOT_OBSERVABLE"
+                      },
+                      "when": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.toolchainAvailable"
+                      }
+                    },
+                    "distinction": {
+                      "op": "if",
+                      "then": {
+                        "op": "if",
+                        "then": {
+                          "op": "literal",
+                          "value": "IMPLEMENTATION_SUCCESS"
+                        },
+                        "else": {
+                          "op": "literal",
+                          "value": "IMPLEMENTATION_FAILURE"
+                        },
+                        "when": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "input",
+                            "path": "payload.executionStatus"
+                          },
+                          "right": {
+                            "op": "literal",
+                            "value": "PASSED"
+                          }
+                        }
+                      },
+                      "else": {
+                        "op": "literal",
+                        "value": "ENVIRONMENT_ABSENT"
+                      },
+                      "when": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.toolchainAvailable"
+                      }
+                    },
+                    "attributableReason": {
+                      "op": "if",
+                      "then": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.capturedOutput"
+                      },
+                      "else": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.notObservableReason"
+                      },
+                      "when": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.toolchainAvailable"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:observe-language-behavior-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/observe-language-behavior/contracts/input.schema.json",
+          "entryDigest": "sha256:bfcdae4149b39e62a41b42cbe26de9c627fe24021df81e1db1a88842604bcca2",
+          "snapshot": "data/capsule-evidence/entries/bfcdae4149b39e62a41b42cbe26de9c627fe24021df81e1db1a88842604bcca2-72c5bda8c70e02e8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-behavior-observation-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "language",
+                "suiteTarget",
+                "toolchainAvailable",
+                "executionStatus",
+                "capturedOutput",
+                "notObservableReason"
+              ],
+              "properties": {
+                "language": {
+                  "type": "string"
+                },
+                "suiteTarget": {
+                  "type": "string"
+                },
+                "toolchainAvailable": {
+                  "type": "boolean"
+                },
+                "executionStatus": {
+                  "type": "string"
+                },
+                "capturedOutput": {
+                  "type": "string"
+                },
+                "notObservableReason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/observe-language-behavior/contracts/outcome.schema.json",
+          "entryDigest": "sha256:bfc3113a23913eb3ad1ff0f4408733fd34c4183aeb39c6b6612f347d71bb3933",
+          "snapshot": "data/capsule-evidence/entries/bfc3113a23913eb3ad1ff0f4408733fd34c4183aeb39c6b6612f347d71bb3933-e0b6a42d89bf8da2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-behavior-observation-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "language",
+                "suiteTarget",
+                "observationStatus",
+                "distinction",
+                "attributableReason"
+              ],
+              "properties": {
+                "language": {
+                  "type": "string"
+                },
+                "suiteTarget": {
+                  "type": "string"
+                },
+                "observationStatus": {
+                  "type": "string",
+                  "enum": [
+                    "OBSERVED",
+                    "NOT_OBSERVABLE"
+                  ]
+                },
+                "distinction": {
+                  "type": "string",
+                  "enum": [
+                    "IMPLEMENTATION_SUCCESS",
+                    "IMPLEMENTATION_FAILURE",
+                    "ENVIRONMENT_ABSENT"
+                  ]
+                },
+                "attributableReason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-b5d25ed573171403.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-869346aa2f17a48c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-5c001517728ac9b8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-7fcfee13bd99d6a8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "typescript-suite-passed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "typescript",
+                "suiteTarget": "packages/conformance-ts",
+                "toolchainAvailable": true,
+                "executionStatus": "PASSED",
+                "capturedOutput": "120 tests passed",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "typescript",
+                    "suiteTarget": "packages/conformance-ts",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_SUCCESS",
+                    "attributableReason": "120 tests passed"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "typescript-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "typescript-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_SUCCESS"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "python-suite-failed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "python",
+                "suiteTarget": "packages/conformance-py",
+                "toolchainAvailable": true,
+                "executionStatus": "FAILED",
+                "capturedOutput": "AssertionError in test_schema_conformance",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "python",
+                    "suiteTarget": "packages/conformance-py",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_FAILURE",
+                    "attributableReason": "AssertionError in test_schema_conformance"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "python-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "python-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_FAILURE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "rust-toolchain-missing",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "rust",
+                "suiteTarget": "crates/conformance-rs",
+                "toolchainAvailable": false,
+                "executionStatus": "NOT_RUN",
+                "capturedOutput": "",
+                "notObservableReason": "cargo toolchain not found on host"
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "rust",
+                    "suiteTarget": "crates/conformance-rs",
+                    "observationStatus": "NOT_OBSERVABLE",
+                    "distinction": "ENVIRONMENT_ABSENT",
+                    "attributableReason": "cargo toolchain not found on host"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "rust-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "rust-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "ENVIRONMENT_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "go-suite-passed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "go",
+                "suiteTarget": "internal/conformance-go",
+                "toolchainAvailable": true,
+                "executionStatus": "PASSED",
+                "capturedOutput": "PASS: TestAllConformances (0.42s)",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "go",
+                    "suiteTarget": "internal/conformance-go",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_SUCCESS",
+                    "attributableReason": "PASS: TestAllConformances (0.42s)"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "go-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "go-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_SUCCESS"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "dotnet-toolchain-missing",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "csharp",
+                "suiteTarget": "src/Conformance.Tests",
+                "toolchainAvailable": false,
+                "executionStatus": "NOT_RUN",
+                "capturedOutput": "",
+                "notObservableReason": "dotnet SDK 8.0 not installed"
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "csharp",
+                    "suiteTarget": "src/Conformance.Tests",
+                    "observationStatus": "NOT_OBSERVABLE",
+                    "distinction": "ENVIRONMENT_ABSENT",
+                    "attributableReason": "dotnet SDK 8.0 not installed"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "csharp-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "csharp-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "ENVIRONMENT_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "java-suite-failed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "java",
+                "suiteTarget": "conformance-jvm",
+                "toolchainAvailable": true,
+                "executionStatus": "FAILED",
+                "capturedOutput": "Tests run: 45, Failures: 2, Errors: 0",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "java",
+                    "suiteTarget": "conformance-jvm",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_FAILURE",
+                    "attributableReason": "Tests run: 45, Failures: 2, Errors: 0"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "java-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "java-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_FAILURE"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-63b7c35d0f2850bb.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one targeted language and its real test suite",
+        "line": 27
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/observe-language-behavior/contracts/input.schema.json",
+          "entryDigest": "sha256:bfcdae4149b39e62a41b42cbe26de9c627fe24021df81e1db1a88842604bcca2",
+          "snapshot": "data/capsule-evidence/entries/bfcdae4149b39e62a41b42cbe26de9c627fe24021df81e1db1a88842604bcca2-72c5bda8c70e02e8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-behavior-observation-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "language",
+                "suiteTarget",
+                "toolchainAvailable",
+                "executionStatus",
+                "capturedOutput",
+                "notObservableReason"
+              ],
+              "properties": {
+                "language": {
+                  "type": "string"
+                },
+                "suiteTarget": {
+                  "type": "string"
+                },
+                "toolchainAvailable": {
+                  "type": "boolean"
+                },
+                "executionStatus": {
+                  "type": "string"
+                },
+                "capturedOutput": {
+                  "type": "string"
+                },
+                "notObservableReason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/observe-language-behavior/contracts/outcome.schema.json",
+          "entryDigest": "sha256:bfc3113a23913eb3ad1ff0f4408733fd34c4183aeb39c6b6612f347d71bb3933",
+          "snapshot": "data/capsule-evidence/entries/bfc3113a23913eb3ad1ff0f4408733fd34c4183aeb39c6b6612f347d71bb3933-e0b6a42d89bf8da2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "language-behavior-observation-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "language",
+                "suiteTarget",
+                "observationStatus",
+                "distinction",
+                "attributableReason"
+              ],
+              "properties": {
+                "language": {
+                  "type": "string"
+                },
+                "suiteTarget": {
+                  "type": "string"
+                },
+                "observationStatus": {
+                  "type": "string",
+                  "enum": [
+                    "OBSERVED",
+                    "NOT_OBSERVABLE"
+                  ]
+                },
+                "distinction": {
+                  "type": "string",
+                  "enum": [
+                    "IMPLEMENTATION_SUCCESS",
+                    "IMPLEMENTATION_FAILURE",
+                    "ENVIRONMENT_ABSENT"
+                  ]
+                },
+                "attributableReason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-b5d25ed573171403.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-869346aa2f17a48c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-5c001517728ac9b8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-7fcfee13bd99d6a8.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "SDA maintainer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "observe-language-behavior",
+          "scenario": {
+            "scenarioId": "observe-language-behavior",
+            "input": {
+              "inputId": "language-behavior-observation-input",
+              "contract": {
+                "contractId": "language-behavior-observation-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "language-behavior-observation-requested",
+              "executionAuthorityId": "language-behavior-observation.v1"
+            },
+            "outcome": {
+              "outcomeId": "language-behavior-observation-known",
+              "contract": {
+                "contractId": "language-behavior-observation-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "observe-language-behavior.operation.1",
+              "mechanicBindingId": "port:observe-language-behavior-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "language-behavior-observation-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "bfcdae4149b39e62a41b42cbe26de9c627fe24021df81e1db1a88842604bcca2",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-behavior-observation-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "language",
+                          "suiteTarget",
+                          "toolchainAvailable",
+                          "executionStatus",
+                          "capturedOutput",
+                          "notObservableReason"
+                        ],
+                        "properties": {
+                          "language": {
+                            "type": "string"
+                          },
+                          "suiteTarget": {
+                            "type": "string"
+                          },
+                          "toolchainAvailable": {
+                            "type": "boolean"
+                          },
+                          "executionStatus": {
+                            "type": "string"
+                          },
+                          "capturedOutput": {
+                            "type": "string"
+                          },
+                          "notObservableReason": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "language-behavior-observation-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "bfc3113a23913eb3ad1ff0f4408733fd34c4183aeb39c6b6612f347d71bb3933",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "language-behavior-observation-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "language",
+                          "suiteTarget",
+                          "observationStatus",
+                          "distinction",
+                          "attributableReason"
+                        ],
+                        "properties": {
+                          "language": {
+                            "type": "string"
+                          },
+                          "suiteTarget": {
+                            "type": "string"
+                          },
+                          "observationStatus": {
+                            "type": "string",
+                            "enum": [
+                              "OBSERVED",
+                              "NOT_OBSERVABLE"
+                            ]
+                          },
+                          "distinction": {
+                            "type": "string",
+                            "enum": [
+                              "IMPLEMENTATION_SUCCESS",
+                              "IMPLEMENTATION_FAILURE",
+                              "ENVIRONMENT_ABSENT"
+                            ]
+                          },
+                          "attributableReason": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:observe-language-behavior-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "language-behavior-observation-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "language": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.language"
+                    },
+                    "suiteTarget": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.suiteTarget"
+                    },
+                    "observationStatus": {
+                      "op": "if",
+                      "then": {
+                        "op": "literal",
+                        "value": "OBSERVED"
+                      },
+                      "else": {
+                        "op": "literal",
+                        "value": "NOT_OBSERVABLE"
+                      },
+                      "when": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.toolchainAvailable"
+                      }
+                    },
+                    "distinction": {
+                      "op": "if",
+                      "then": {
+                        "op": "if",
+                        "then": {
+                          "op": "literal",
+                          "value": "IMPLEMENTATION_SUCCESS"
+                        },
+                        "else": {
+                          "op": "literal",
+                          "value": "IMPLEMENTATION_FAILURE"
+                        },
+                        "when": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "input",
+                            "path": "payload.executionStatus"
+                          },
+                          "right": {
+                            "op": "literal",
+                            "value": "PASSED"
+                          }
+                        }
+                      },
+                      "else": {
+                        "op": "literal",
+                        "value": "ENVIRONMENT_ABSENT"
+                      },
+                      "when": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.toolchainAvailable"
+                      }
+                    },
+                    "attributableReason": {
+                      "op": "if",
+                      "then": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.capturedOutput"
+                      },
+                      "else": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.notObservableReason"
+                      },
+                      "when": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "payload.toolchainAvailable"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:observe-language-behavior-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every targeted language produces evidence or an explicit NOT_OBSERVABLE reason that distinguishes implementation failure from environment absence",
+        "line": 29
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "typescript-suite-passed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "typescript",
+                "suiteTarget": "packages/conformance-ts",
+                "toolchainAvailable": true,
+                "executionStatus": "PASSED",
+                "capturedOutput": "120 tests passed",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "typescript",
+                    "suiteTarget": "packages/conformance-ts",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_SUCCESS",
+                    "attributableReason": "120 tests passed"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "typescript-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "typescript-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_SUCCESS"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "python-suite-failed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "python",
+                "suiteTarget": "packages/conformance-py",
+                "toolchainAvailable": true,
+                "executionStatus": "FAILED",
+                "capturedOutput": "AssertionError in test_schema_conformance",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "python",
+                    "suiteTarget": "packages/conformance-py",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_FAILURE",
+                    "attributableReason": "AssertionError in test_schema_conformance"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "python-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "python-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_FAILURE"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "rust-toolchain-missing",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "rust",
+                "suiteTarget": "crates/conformance-rs",
+                "toolchainAvailable": false,
+                "executionStatus": "NOT_RUN",
+                "capturedOutput": "",
+                "notObservableReason": "cargo toolchain not found on host"
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "rust",
+                    "suiteTarget": "crates/conformance-rs",
+                    "observationStatus": "NOT_OBSERVABLE",
+                    "distinction": "ENVIRONMENT_ABSENT",
+                    "attributableReason": "cargo toolchain not found on host"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "rust-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "rust-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "ENVIRONMENT_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "go-suite-passed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "go",
+                "suiteTarget": "internal/conformance-go",
+                "toolchainAvailable": true,
+                "executionStatus": "PASSED",
+                "capturedOutput": "PASS: TestAllConformances (0.42s)",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "go",
+                    "suiteTarget": "internal/conformance-go",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_SUCCESS",
+                    "attributableReason": "PASS: TestAllConformances (0.42s)"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "go-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "go-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_SUCCESS"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "dotnet-toolchain-missing",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "csharp",
+                "suiteTarget": "src/Conformance.Tests",
+                "toolchainAvailable": false,
+                "executionStatus": "NOT_RUN",
+                "capturedOutput": "",
+                "notObservableReason": "dotnet SDK 8.0 not installed"
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "csharp",
+                    "suiteTarget": "src/Conformance.Tests",
+                    "observationStatus": "NOT_OBSERVABLE",
+                    "distinction": "ENVIRONMENT_ABSENT",
+                    "attributableReason": "dotnet SDK 8.0 not installed"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "csharp-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "NOT_OBSERVABLE"
+                },
+                {
+                  "conditionId": "csharp-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "ENVIRONMENT_ABSENT"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/observe-language-behavior/fixtures.authority.json",
+          "entryDigest": "sha256:d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15",
+          "snapshot": "data/capsule-evidence/entries/d4d43a0ded0f7696b01c144c4274b047f16044d2c45fe07cbcdb21eb90964a15-c1a9cf971aedba53.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "java-suite-failed",
+            "input": {
+              "contractId": "language-behavior-observation-input.v1",
+              "payload": {
+                "language": "java",
+                "suiteTarget": "conformance-jvm",
+                "toolchainAvailable": true,
+                "executionStatus": "FAILED",
+                "capturedOutput": "Tests run: 45, Failures: 2, Errors: 0",
+                "notObservableReason": ""
+              }
+            },
+            "portOutcomes": {
+              "observe-language-behavior-port": {
+                "output": {
+                  "contractId": "language-behavior-observation-evidence.v1",
+                  "payload": {
+                    "language": "java",
+                    "suiteTarget": "conformance-jvm",
+                    "observationStatus": "OBSERVED",
+                    "distinction": "IMPLEMENTATION_FAILURE",
+                    "attributableReason": "Tests run: 45, Failures: 2, Errors: 0"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "observe-language-behavior",
+              "scenarioSequence": [
+                "observe-language-behavior"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "java-observation-status",
+                  "path": "payload.observationStatus",
+                  "operator": "equals",
+                  "value": "OBSERVED"
+                },
+                {
+                  "conditionId": "java-distinction",
+                  "path": "payload.distinction",
+                  "operator": "equals",
+                  "value": "IMPLEMENTATION_FAILURE"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:observe-language-behavior-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "observe-language-behavior",
+        "scenario": {
+          "scenarioId": "observe-language-behavior",
+          "input": {
+            "inputId": "language-behavior-observation-input",
+            "contract": {
+              "contractId": "language-behavior-observation-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "language-behavior-observation-requested",
+            "executionAuthorityId": "language-behavior-observation.v1"
+          },
+          "outcome": {
+            "outcomeId": "language-behavior-observation-known",
+            "contract": {
+              "contractId": "language-behavior-observation-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "observe-language-behavior.operation.1",
+            "mechanicBindingId": "port:observe-language-behavior-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/observe-language-behavior/execution-plan.node.json",
+          "entryDigest": "sha256:49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77",
+          "snapshot": "data/capsule-evidence/entries/49abcfee287cc72bd847b4bdddb815ab37984f68bcc2e18d7d579ddb73ba8a77-8fdae64ce178cb8e.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

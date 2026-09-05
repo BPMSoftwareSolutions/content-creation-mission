@@ -1,0 +1,3343 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "prove-projected-sterility-before-publication::prove-projected-sterility-before-publication",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:8690ddf709057d643e433a6664502f7bc935009ed3d1e659a962ad572c2efc3e"
+  },
+  "scenarioSurface": {
+    "key": "prove-projected-sterility-before-publication::prove-projected-sterility-before-publication",
+    "capabilityId": "prove-projected-sterility-before-publication",
+    "capabilityName": "Prove projected sterility before publication",
+    "scenarioId": "prove-projected-sterility-before-publication",
+    "scenarioName": "Prove every planned executable file is mechanically sterile before publication",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one consumer projection plan and the admitted sterility policy",
+        "line": 25
+      }
+    ],
+    "event": [
+      {
+        "text": "every planned executable file is inspected for hidden mechanics before publication",
+        "line": 26
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every planned executable file is mechanical or carries a precise violation, and no file is published or admitted as a side effect of the inspection",
+        "line": 27
+      }
+    ],
+    "products": [
+      "planned-projection-sterility-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "consumer author"
+    ],
+    "altitude": null,
+    "notes": "  A consumer author must never publish a planned executable file that has\n  silently acquired hidden mechanics or domain meaning. The capability\n  inspects every planned executable file against the admitted sterility\n  policy before publication is permitted to proceed.\n\n  Every planned executable file receives an explicit disposition: it is\n  mechanical, or it carries a precise violation naming what was found. The\n  capability does not publish, plan, or resolve anything itself — it only\n  proves whether the plan already constructed is safe to publish.",
+    "source": {
+      "capsuleFile": "prove-projected-sterility-before-publication.sfxcap",
+      "capsuleDigest": "sha256:8690ddf709057d643e433a6664502f7bc935009ed3d1e659a962ad572c2efc3e",
+      "featureEntry": "features/prove-projected-sterility-before-publication.feature",
+      "featureDigest": "sha256:81fcaf17643f34d55f601b7b541c228c422d9f4ddcb8fce26b64cfac38996f9a",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/prove-projected-sterility-before-publication.feature",
+      "scenarioLine": 24
+    },
+    "tags": [
+      "@capability:prove-projected-sterility-before-publication",
+      "@root-scenario:prove-projected-sterility-before-publication",
+      "@scenario:prove-projected-sterility-before-publication",
+      "@input:consumer-plan-and-sterility-policy",
+      "@input-contract:prove-projected-sterility-before-publication-input.v1",
+      "@event:prepublication-sterility-proof-requested",
+      "@event-authority:consumer-prepublication-sterility-proof.v1",
+      "@outcome:planned-projection-sterility-known",
+      "@outcome-contract:prepublication-sterility-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "prove-projected-sterility-before-publication",
+          "scenario": {
+            "scenarioId": "prove-projected-sterility-before-publication",
+            "input": {
+              "inputId": "consumer-plan-and-sterility-policy",
+              "contract": {
+                "contractId": "prove-projected-sterility-before-publication-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "prepublication-sterility-proof-requested",
+              "executionAuthorityId": "consumer-prepublication-sterility-proof.v1"
+            },
+            "outcome": {
+              "outcomeId": "planned-projection-sterility-known",
+              "contract": {
+                "contractId": "prepublication-sterility-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "prove-projected-sterility-before-publication.operation.1",
+              "mechanicBindingId": "port:prove-sterility-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "prove-projected-sterility-before-publication-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "210334e933954502b050ca9a2052d7bebaa881889c6598d665f4236af548ca5d",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "prove-projected-sterility-before-publication-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "planId",
+                          "policyId",
+                          "isSafeToPublish",
+                          "proofVerdict",
+                          "evaluatedFiles",
+                          "violations"
+                        ],
+                        "properties": {
+                          "planId": {
+                            "type": "string"
+                          },
+                          "policyId": {
+                            "type": "string"
+                          },
+                          "isSafeToPublish": {
+                            "type": "boolean"
+                          },
+                          "proofVerdict": {
+                            "type": "string",
+                            "enum": [
+                              "PROVED_STERILE",
+                              "VIOLATIONS_DETECTED"
+                            ]
+                          },
+                          "evaluatedFiles": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "path",
+                                "disposition"
+                              ],
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "disposition": {
+                                  "type": "string",
+                                  "enum": [
+                                    "mechanical",
+                                    "violation"
+                                  ]
+                                },
+                                "violation": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "violations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "prepublication-sterility-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "903321ea4be947fc960b270a6a2b1eda6fe054cc7df8357e5b3c643102898d28",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "planId",
+                      "policyId",
+                      "isSafeToPublish",
+                      "proofVerdict",
+                      "evaluatedFiles",
+                      "violations"
+                    ],
+                    "properties": {
+                      "planId": {
+                        "type": "string"
+                      },
+                      "policyId": {
+                        "type": "string"
+                      },
+                      "isSafeToPublish": {
+                        "type": "boolean"
+                      },
+                      "proofVerdict": {
+                        "type": "string",
+                        "enum": [
+                          "PROVED_STERILE",
+                          "VIOLATIONS_DETECTED"
+                        ]
+                      },
+                      "evaluatedFiles": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "path",
+                            "disposition"
+                          ],
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "disposition": {
+                              "type": "string",
+                              "enum": [
+                                "mechanical",
+                                "violation"
+                              ]
+                            },
+                            "violation": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "violations": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-sterility-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "planId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.planId"
+                },
+                "policyId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.policyId"
+                },
+                "isSafeToPublish": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.isSafeToPublish"
+                },
+                "proofVerdict": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.proofVerdict"
+                },
+                "evaluatedFiles": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.evaluatedFiles"
+                },
+                "violations": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.violations"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-sterility-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/contracts/input.schema.json",
+          "entryDigest": "sha256:210334e933954502b050ca9a2052d7bebaa881889c6598d665f4236af548ca5d",
+          "snapshot": "data/capsule-evidence/entries/210334e933954502b050ca9a2052d7bebaa881889c6598d665f4236af548ca5d-aaaea7e6e783794a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "prove-projected-sterility-before-publication-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "planId",
+                "policyId",
+                "isSafeToPublish",
+                "proofVerdict",
+                "evaluatedFiles",
+                "violations"
+              ],
+              "properties": {
+                "planId": {
+                  "type": "string"
+                },
+                "policyId": {
+                  "type": "string"
+                },
+                "isSafeToPublish": {
+                  "type": "boolean"
+                },
+                "proofVerdict": {
+                  "type": "string",
+                  "enum": [
+                    "PROVED_STERILE",
+                    "VIOLATIONS_DETECTED"
+                  ]
+                },
+                "evaluatedFiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "path",
+                      "disposition"
+                    ],
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "disposition": {
+                        "type": "string",
+                        "enum": [
+                          "mechanical",
+                          "violation"
+                        ]
+                      },
+                      "violation": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "violations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/contracts/outcome.schema.json",
+          "entryDigest": "sha256:903321ea4be947fc960b270a6a2b1eda6fe054cc7df8357e5b3c643102898d28",
+          "snapshot": "data/capsule-evidence/entries/903321ea4be947fc960b270a6a2b1eda6fe054cc7df8357e5b3c643102898d28-fd02c96fa8e6ccde.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "planId",
+            "policyId",
+            "isSafeToPublish",
+            "proofVerdict",
+            "evaluatedFiles",
+            "violations"
+          ],
+          "properties": {
+            "planId": {
+              "type": "string"
+            },
+            "policyId": {
+              "type": "string"
+            },
+            "isSafeToPublish": {
+              "type": "boolean"
+            },
+            "proofVerdict": {
+              "type": "string",
+              "enum": [
+                "PROVED_STERILE",
+                "VIOLATIONS_DETECTED"
+              ]
+            },
+            "evaluatedFiles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "disposition"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "enum": [
+                      "mechanical",
+                      "violation"
+                    ]
+                  },
+                  "violation": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "violations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-0a597d5acdc41311.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-a91b706f9861a10d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-7964e5939faff0f7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-6c049a1942558d6e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-files-sterile-and-safe-to-publish",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-001",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": true,
+                "proofVerdict": "PROVED_STERILE",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/index.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/runtime.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  }
+                ],
+                "violations": []
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-001",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": true,
+                  "proofVerdict": "PROVED_STERILE",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/index.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/runtime.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    }
+                  ],
+                  "violations": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-proved-sterile",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "PROVED_STERILE"
+                },
+                {
+                  "conditionId": "safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-file-with-hidden-mechanics-violation",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-002",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": false,
+                "proofVerdict": "VIOLATIONS_DETECTED",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/handler.js",
+                    "disposition": "violation",
+                    "violation": "Hidden dynamic evaluation construct detected: eval()"
+                  }
+                ],
+                "violations": [
+                  "dist/handler.js: Hidden dynamic evaluation construct detected: eval()"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-002",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": false,
+                  "proofVerdict": "VIOLATIONS_DETECTED",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/handler.js",
+                      "disposition": "violation",
+                      "violation": "Hidden dynamic evaluation construct detected: eval()"
+                    }
+                  ],
+                  "violations": [
+                    "dist/handler.js: Hidden dynamic evaluation construct detected: eval()"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-violations-detected",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "VIOLATIONS_DETECTED"
+                },
+                {
+                  "conditionId": "not-safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multiple-files-with-domain-leakage-violations",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-003",
+                "policyId": "sterility-policy-strict.v1",
+                "isSafeToPublish": false,
+                "proofVerdict": "VIOLATIONS_DETECTED",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/auth.js",
+                    "disposition": "violation",
+                    "violation": "Admitted domain logic found in projected carrier"
+                  },
+                  {
+                    "path": "dist/core.js",
+                    "disposition": "violation",
+                    "violation": "Unsanctioned state mutation detected"
+                  }
+                ],
+                "violations": [
+                  "dist/auth.js: Admitted domain logic found in projected carrier",
+                  "dist/core.js: Unsanctioned state mutation detected"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-003",
+                  "policyId": "sterility-policy-strict.v1",
+                  "isSafeToPublish": false,
+                  "proofVerdict": "VIOLATIONS_DETECTED",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/auth.js",
+                      "disposition": "violation",
+                      "violation": "Admitted domain logic found in projected carrier"
+                    },
+                    {
+                      "path": "dist/core.js",
+                      "disposition": "violation",
+                      "violation": "Unsanctioned state mutation detected"
+                    }
+                  ],
+                  "violations": [
+                    "dist/auth.js: Admitted domain logic found in projected carrier",
+                    "dist/core.js: Unsanctioned state mutation detected"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-violations-detected",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "VIOLATIONS_DETECTED"
+                },
+                {
+                  "conditionId": "not-safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-planned-files-list-evaluated-as-sterile",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-004",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": true,
+                "proofVerdict": "PROVED_STERILE",
+                "evaluatedFiles": [],
+                "violations": []
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-004",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": true,
+                  "proofVerdict": "PROVED_STERILE",
+                  "evaluatedFiles": [],
+                  "violations": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-proved-sterile",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "PROVED_STERILE"
+                },
+                {
+                  "conditionId": "safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "mixed-files-mechanical-and-violation",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-005",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": false,
+                "proofVerdict": "VIOLATIONS_DETECTED",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/clean.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/tainted.js",
+                    "disposition": "violation",
+                    "violation": "Embedded foreign network connector detected"
+                  }
+                ],
+                "violations": [
+                  "dist/tainted.js: Embedded foreign network connector detected"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-005",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": false,
+                  "proofVerdict": "VIOLATIONS_DETECTED",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/clean.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/tainted.js",
+                      "disposition": "violation",
+                      "violation": "Embedded foreign network connector detected"
+                    }
+                  ],
+                  "violations": [
+                    "dist/tainted.js: Embedded foreign network connector detected"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-violations-detected",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "VIOLATIONS_DETECTED"
+                },
+                {
+                  "conditionId": "not-safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "complex-multi-target-plan-proved-sterile",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-006",
+                "policyId": "sterility-policy-multi-target.v1",
+                "isSafeToPublish": true,
+                "proofVerdict": "PROVED_STERILE",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/node/main.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/browser/bundle.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/wasm/carrier.wasm",
+                    "disposition": "mechanical",
+                    "violation": null
+                  }
+                ],
+                "violations": []
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-006",
+                  "policyId": "sterility-policy-multi-target.v1",
+                  "isSafeToPublish": true,
+                  "proofVerdict": "PROVED_STERILE",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/node/main.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/browser/bundle.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/wasm/carrier.wasm",
+                      "disposition": "mechanical",
+                      "violation": null
+                    }
+                  ],
+                  "violations": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-proved-sterile",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "PROVED_STERILE"
+                },
+                {
+                  "conditionId": "safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-37f44e3c88f8b392.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one consumer projection plan and the admitted sterility policy",
+        "line": 25
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/contracts/input.schema.json",
+          "entryDigest": "sha256:210334e933954502b050ca9a2052d7bebaa881889c6598d665f4236af548ca5d",
+          "snapshot": "data/capsule-evidence/entries/210334e933954502b050ca9a2052d7bebaa881889c6598d665f4236af548ca5d-aaaea7e6e783794a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "prove-projected-sterility-before-publication-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "planId",
+                "policyId",
+                "isSafeToPublish",
+                "proofVerdict",
+                "evaluatedFiles",
+                "violations"
+              ],
+              "properties": {
+                "planId": {
+                  "type": "string"
+                },
+                "policyId": {
+                  "type": "string"
+                },
+                "isSafeToPublish": {
+                  "type": "boolean"
+                },
+                "proofVerdict": {
+                  "type": "string",
+                  "enum": [
+                    "PROVED_STERILE",
+                    "VIOLATIONS_DETECTED"
+                  ]
+                },
+                "evaluatedFiles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "path",
+                      "disposition"
+                    ],
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "disposition": {
+                        "type": "string",
+                        "enum": [
+                          "mechanical",
+                          "violation"
+                        ]
+                      },
+                      "violation": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "violations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/contracts/outcome.schema.json",
+          "entryDigest": "sha256:903321ea4be947fc960b270a6a2b1eda6fe054cc7df8357e5b3c643102898d28",
+          "snapshot": "data/capsule-evidence/entries/903321ea4be947fc960b270a6a2b1eda6fe054cc7df8357e5b3c643102898d28-fd02c96fa8e6ccde.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "planId",
+            "policyId",
+            "isSafeToPublish",
+            "proofVerdict",
+            "evaluatedFiles",
+            "violations"
+          ],
+          "properties": {
+            "planId": {
+              "type": "string"
+            },
+            "policyId": {
+              "type": "string"
+            },
+            "isSafeToPublish": {
+              "type": "boolean"
+            },
+            "proofVerdict": {
+              "type": "string",
+              "enum": [
+                "PROVED_STERILE",
+                "VIOLATIONS_DETECTED"
+              ]
+            },
+            "evaluatedFiles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "disposition"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "disposition": {
+                    "type": "string",
+                    "enum": [
+                      "mechanical",
+                      "violation"
+                    ]
+                  },
+                  "violation": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            },
+            "violations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-0a597d5acdc41311.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-a91b706f9861a10d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-7964e5939faff0f7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-6c049a1942558d6e.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "consumer author"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "prove-projected-sterility-before-publication",
+          "scenario": {
+            "scenarioId": "prove-projected-sterility-before-publication",
+            "input": {
+              "inputId": "consumer-plan-and-sterility-policy",
+              "contract": {
+                "contractId": "prove-projected-sterility-before-publication-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "prepublication-sterility-proof-requested",
+              "executionAuthorityId": "consumer-prepublication-sterility-proof.v1"
+            },
+            "outcome": {
+              "outcomeId": "planned-projection-sterility-known",
+              "contract": {
+                "contractId": "prepublication-sterility-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "prove-projected-sterility-before-publication.operation.1",
+              "mechanicBindingId": "port:prove-sterility-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "prove-projected-sterility-before-publication-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "210334e933954502b050ca9a2052d7bebaa881889c6598d665f4236af548ca5d",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "prove-projected-sterility-before-publication-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "planId",
+                          "policyId",
+                          "isSafeToPublish",
+                          "proofVerdict",
+                          "evaluatedFiles",
+                          "violations"
+                        ],
+                        "properties": {
+                          "planId": {
+                            "type": "string"
+                          },
+                          "policyId": {
+                            "type": "string"
+                          },
+                          "isSafeToPublish": {
+                            "type": "boolean"
+                          },
+                          "proofVerdict": {
+                            "type": "string",
+                            "enum": [
+                              "PROVED_STERILE",
+                              "VIOLATIONS_DETECTED"
+                            ]
+                          },
+                          "evaluatedFiles": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "path",
+                                "disposition"
+                              ],
+                              "properties": {
+                                "path": {
+                                  "type": "string"
+                                },
+                                "disposition": {
+                                  "type": "string",
+                                  "enum": [
+                                    "mechanical",
+                                    "violation"
+                                  ]
+                                },
+                                "violation": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "violations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "prepublication-sterility-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "903321ea4be947fc960b270a6a2b1eda6fe054cc7df8357e5b3c643102898d28",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "planId",
+                      "policyId",
+                      "isSafeToPublish",
+                      "proofVerdict",
+                      "evaluatedFiles",
+                      "violations"
+                    ],
+                    "properties": {
+                      "planId": {
+                        "type": "string"
+                      },
+                      "policyId": {
+                        "type": "string"
+                      },
+                      "isSafeToPublish": {
+                        "type": "boolean"
+                      },
+                      "proofVerdict": {
+                        "type": "string",
+                        "enum": [
+                          "PROVED_STERILE",
+                          "VIOLATIONS_DETECTED"
+                        ]
+                      },
+                      "evaluatedFiles": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "path",
+                            "disposition"
+                          ],
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "disposition": {
+                              "type": "string",
+                              "enum": [
+                                "mechanical",
+                                "violation"
+                              ]
+                            },
+                            "violation": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "violations": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-sterility-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "planId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.planId"
+                },
+                "policyId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.policyId"
+                },
+                "isSafeToPublish": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.isSafeToPublish"
+                },
+                "proofVerdict": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.proofVerdict"
+                },
+                "evaluatedFiles": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.evaluatedFiles"
+                },
+                "violations": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.violations"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-sterility-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every planned executable file is mechanical or carries a precise violation, and no file is published or admitted as a side effect of the inspection",
+        "line": 27
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-files-sterile-and-safe-to-publish",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-001",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": true,
+                "proofVerdict": "PROVED_STERILE",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/index.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/runtime.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  }
+                ],
+                "violations": []
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-001",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": true,
+                  "proofVerdict": "PROVED_STERILE",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/index.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/runtime.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    }
+                  ],
+                  "violations": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-proved-sterile",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "PROVED_STERILE"
+                },
+                {
+                  "conditionId": "safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-file-with-hidden-mechanics-violation",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-002",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": false,
+                "proofVerdict": "VIOLATIONS_DETECTED",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/handler.js",
+                    "disposition": "violation",
+                    "violation": "Hidden dynamic evaluation construct detected: eval()"
+                  }
+                ],
+                "violations": [
+                  "dist/handler.js: Hidden dynamic evaluation construct detected: eval()"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-002",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": false,
+                  "proofVerdict": "VIOLATIONS_DETECTED",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/handler.js",
+                      "disposition": "violation",
+                      "violation": "Hidden dynamic evaluation construct detected: eval()"
+                    }
+                  ],
+                  "violations": [
+                    "dist/handler.js: Hidden dynamic evaluation construct detected: eval()"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-violations-detected",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "VIOLATIONS_DETECTED"
+                },
+                {
+                  "conditionId": "not-safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multiple-files-with-domain-leakage-violations",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-003",
+                "policyId": "sterility-policy-strict.v1",
+                "isSafeToPublish": false,
+                "proofVerdict": "VIOLATIONS_DETECTED",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/auth.js",
+                    "disposition": "violation",
+                    "violation": "Admitted domain logic found in projected carrier"
+                  },
+                  {
+                    "path": "dist/core.js",
+                    "disposition": "violation",
+                    "violation": "Unsanctioned state mutation detected"
+                  }
+                ],
+                "violations": [
+                  "dist/auth.js: Admitted domain logic found in projected carrier",
+                  "dist/core.js: Unsanctioned state mutation detected"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-003",
+                  "policyId": "sterility-policy-strict.v1",
+                  "isSafeToPublish": false,
+                  "proofVerdict": "VIOLATIONS_DETECTED",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/auth.js",
+                      "disposition": "violation",
+                      "violation": "Admitted domain logic found in projected carrier"
+                    },
+                    {
+                      "path": "dist/core.js",
+                      "disposition": "violation",
+                      "violation": "Unsanctioned state mutation detected"
+                    }
+                  ],
+                  "violations": [
+                    "dist/auth.js: Admitted domain logic found in projected carrier",
+                    "dist/core.js: Unsanctioned state mutation detected"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-violations-detected",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "VIOLATIONS_DETECTED"
+                },
+                {
+                  "conditionId": "not-safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-planned-files-list-evaluated-as-sterile",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-004",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": true,
+                "proofVerdict": "PROVED_STERILE",
+                "evaluatedFiles": [],
+                "violations": []
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-004",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": true,
+                  "proofVerdict": "PROVED_STERILE",
+                  "evaluatedFiles": [],
+                  "violations": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-proved-sterile",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "PROVED_STERILE"
+                },
+                {
+                  "conditionId": "safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "mixed-files-mechanical-and-violation",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-005",
+                "policyId": "sterility-policy-standard.v1",
+                "isSafeToPublish": false,
+                "proofVerdict": "VIOLATIONS_DETECTED",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/clean.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/tainted.js",
+                    "disposition": "violation",
+                    "violation": "Embedded foreign network connector detected"
+                  }
+                ],
+                "violations": [
+                  "dist/tainted.js: Embedded foreign network connector detected"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-005",
+                  "policyId": "sterility-policy-standard.v1",
+                  "isSafeToPublish": false,
+                  "proofVerdict": "VIOLATIONS_DETECTED",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/clean.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/tainted.js",
+                      "disposition": "violation",
+                      "violation": "Embedded foreign network connector detected"
+                    }
+                  ],
+                  "violations": [
+                    "dist/tainted.js: Embedded foreign network connector detected"
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-violations-detected",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "VIOLATIONS_DETECTED"
+                },
+                {
+                  "conditionId": "not-safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/prove-projected-sterility-before-publication/fixtures.authority.json",
+          "entryDigest": "sha256:4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df",
+          "snapshot": "data/capsule-evidence/entries/4a0a1ea7e6154fcb0859414803fa884d9c7f80157a49d52fa213675e55c312df-7f713f5cbbd2ce25.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "complex-multi-target-plan-proved-sterile",
+            "input": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1",
+              "payload": {
+                "planId": "plan-consumer-006",
+                "policyId": "sterility-policy-multi-target.v1",
+                "isSafeToPublish": true,
+                "proofVerdict": "PROVED_STERILE",
+                "evaluatedFiles": [
+                  {
+                    "path": "dist/node/main.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/browser/bundle.js",
+                    "disposition": "mechanical",
+                    "violation": null
+                  },
+                  {
+                    "path": "dist/wasm/carrier.wasm",
+                    "disposition": "mechanical",
+                    "violation": null
+                  }
+                ],
+                "violations": []
+              }
+            },
+            "portOutcomes": {
+              "prove-sterility-port": {
+                "output": {
+                  "planId": "plan-consumer-006",
+                  "policyId": "sterility-policy-multi-target.v1",
+                  "isSafeToPublish": true,
+                  "proofVerdict": "PROVED_STERILE",
+                  "evaluatedFiles": [
+                    {
+                      "path": "dist/node/main.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/browser/bundle.js",
+                      "disposition": "mechanical",
+                      "violation": null
+                    },
+                    {
+                      "path": "dist/wasm/carrier.wasm",
+                      "disposition": "mechanical",
+                      "violation": null
+                    }
+                  ],
+                  "violations": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "prove-projected-sterility-before-publication",
+              "scenarioSequence": [
+                "prove-projected-sterility-before-publication"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-proved-sterile",
+                  "path": "proofVerdict",
+                  "operator": "equals",
+                  "value": "PROVED_STERILE"
+                },
+                {
+                  "conditionId": "safe-to-publish",
+                  "path": "isSafeToPublish",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:prove-sterility-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "prove-projected-sterility-before-publication",
+        "scenario": {
+          "scenarioId": "prove-projected-sterility-before-publication",
+          "input": {
+            "inputId": "consumer-plan-and-sterility-policy",
+            "contract": {
+              "contractId": "prove-projected-sterility-before-publication-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "prepublication-sterility-proof-requested",
+            "executionAuthorityId": "consumer-prepublication-sterility-proof.v1"
+          },
+          "outcome": {
+            "outcomeId": "planned-projection-sterility-known",
+            "contract": {
+              "contractId": "prepublication-sterility-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "prove-projected-sterility-before-publication.operation.1",
+            "mechanicBindingId": "port:prove-sterility-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/prove-projected-sterility-before-publication/execution-plan.node.json",
+          "entryDigest": "sha256:c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689",
+          "snapshot": "data/capsule-evidence/entries/c9033e5ca0881ae320095b29a9a3c2bd9ea52005cb886188942470ad0fd36689-d0c0f6d9c3b0e268.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

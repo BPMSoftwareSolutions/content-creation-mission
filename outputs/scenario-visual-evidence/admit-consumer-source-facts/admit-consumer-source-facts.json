@@ -1,0 +1,3485 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "admit-consumer-source-facts::admit-consumer-source-facts",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:3f04ebb42bb91c6962b29f515ff336277c33d9302989993267e9d78741e24f33"
+  },
+  "scenarioSurface": {
+    "key": "admit-consumer-source-facts::admit-consumer-source-facts",
+    "capabilityId": "admit-consumer-source-facts",
+    "capabilityName": "Admit consumer source facts",
+    "scenarioId": "admit-consumer-source-facts",
+    "scenarioName": "Admit every declared consumer source with exact provenance",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one declared consumer workspace and its set of source facts",
+        "line": 26
+      }
+    ],
+    "event": [
+      {
+        "text": "every declared consumer authority document is loaded, validated, digested, and related",
+        "line": 27
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every required source is admitted with its exact source reference and content digest, or is explicitly rejected, without composing the scenario graph or resolving platform responsibilities",
+        "line": 28
+      }
+    ],
+    "products": [
+      "consumer-source-admission-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "consumer author"
+    ],
+    "altitude": null,
+    "notes": "  A consumer author needs every declared consumer authority document loaded,\n  validated, digested, and related exactly once before compilation proceeds.\n  The capability admits the declared workspace source facts and establishes\n  their provenance so downstream compilation never operates on unverified or\n  undated input.\n\n  Every required source is admitted with an exact content digest and source\n  reference, or is explicitly rejected. The capability does not compose the\n  scenario graph, resolve platform responsibilities, or make any compilation\n  decision beyond admitting the declared sources.",
+    "source": {
+      "capsuleFile": "admit-consumer-source-facts.sfxcap",
+      "capsuleDigest": "sha256:3f04ebb42bb91c6962b29f515ff336277c33d9302989993267e9d78741e24f33",
+      "featureEntry": "features/admit-consumer-source-facts.feature",
+      "featureDigest": "sha256:74b7c4325cac8f67e6f23998a8b2522433376b6f32f39bb150e4038f940b0031",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/admit-consumer-source-facts.feature",
+      "scenarioLine": 25
+    },
+    "tags": [
+      "@capability:admit-consumer-source-facts",
+      "@root-scenario:admit-consumer-source-facts",
+      "@scenario:admit-consumer-source-facts",
+      "@input:consumer-workspace-source-facts",
+      "@input-contract:admit-consumer-source-facts-input.v1",
+      "@event:consumer-source-admission-requested",
+      "@event-authority:consumer-source-admission.v1",
+      "@outcome:consumer-source-admission-known",
+      "@outcome-contract:consumer-source-admission-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "admit-consumer-source-facts",
+          "scenario": {
+            "scenarioId": "admit-consumer-source-facts",
+            "input": {
+              "inputId": "consumer-workspace-source-facts",
+              "contract": {
+                "contractId": "admit-consumer-source-facts-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "consumer-source-admission-requested",
+              "executionAuthorityId": "consumer-source-admission.v1"
+            },
+            "outcome": {
+              "outcomeId": "consumer-source-admission-known",
+              "contract": {
+                "contractId": "consumer-source-admission-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "admit-consumer-source-facts.operation.1",
+              "mechanicBindingId": "port:admit-consumer-source-facts-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "admit-consumer-source-facts-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "cac9635063207f9c146cfc8ae4b524bc9e2676fe52931121023e44dcd6d9a42a",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "admit-consumer-source-facts-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "workspaceRoot",
+                          "sources"
+                        ],
+                        "properties": {
+                          "workspaceRoot": {
+                            "type": "string"
+                          },
+                          "sources": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "sourceId",
+                                "path",
+                                "contentDigest",
+                                "status"
+                              ],
+                              "properties": {
+                                "sourceId": {
+                                  "type": "string"
+                                },
+                                "path": {
+                                  "type": "string"
+                                },
+                                "contentDigest": {
+                                  "type": "string"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "valid",
+                                    "invalid"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "consumer-source-admission-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "faa7e717fb61daa40a9eb4eb7a369c4b56078efa7b4d7b77303c1000006a888b",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "admissionStatus",
+                      "workspaceRoot",
+                      "admittedCount",
+                      "rejectedCount",
+                      "sources"
+                    ],
+                    "properties": {
+                      "admissionStatus": {
+                        "type": "string",
+                        "enum": [
+                          "admitted",
+                          "rejected"
+                        ]
+                      },
+                      "workspaceRoot": {
+                        "type": "string"
+                      },
+                      "admittedCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "rejectedCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "sources": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "sourceId",
+                            "path",
+                            "contentDigest",
+                            "status",
+                            "admitted"
+                          ],
+                          "properties": {
+                            "sourceId": {
+                              "type": "string"
+                            },
+                            "path": {
+                              "type": "string"
+                            },
+                            "contentDigest": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "admitted": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-consumer-source-facts-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "admissionStatus": {
+                  "op": "if",
+                  "then": {
+                    "op": "literal",
+                    "value": "admitted"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "rejected"
+                  },
+                  "when": {
+                    "op": "every",
+                    "from": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.sources"
+                    },
+                    "where": {
+                      "op": "equals",
+                      "left": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "right": {
+                        "op": "literal",
+                        "value": "valid"
+                      }
+                    }
+                  }
+                },
+                "workspaceRoot": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.workspaceRoot"
+                },
+                "admittedCount": {
+                  "op": "length",
+                  "value": {
+                    "op": "filter",
+                    "from": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.sources"
+                    },
+                    "where": {
+                      "op": "equals",
+                      "left": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "right": {
+                        "op": "literal",
+                        "value": "valid"
+                      }
+                    }
+                  }
+                },
+                "rejectedCount": {
+                  "op": "length",
+                  "value": {
+                    "op": "filter",
+                    "from": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.sources"
+                    },
+                    "where": {
+                      "op": "equals",
+                      "left": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "right": {
+                        "op": "literal",
+                        "value": "invalid"
+                      }
+                    }
+                  }
+                },
+                "sources": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "payload.sources"
+                  },
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "sourceId": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "sourceId"
+                      },
+                      "path": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "path"
+                      },
+                      "contentDigest": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "contentDigest"
+                      },
+                      "status": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "admitted": {
+                        "op": "equals",
+                        "left": {
+                          "op": "path",
+                          "from": "item",
+                          "path": "status"
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": "valid"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-consumer-source-facts-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/contracts/input.schema.json",
+          "entryDigest": "sha256:cac9635063207f9c146cfc8ae4b524bc9e2676fe52931121023e44dcd6d9a42a",
+          "snapshot": "data/capsule-evidence/entries/cac9635063207f9c146cfc8ae4b524bc9e2676fe52931121023e44dcd6d9a42a-1fe184048c244b7f.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "admit-consumer-source-facts-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "workspaceRoot",
+                "sources"
+              ],
+              "properties": {
+                "workspaceRoot": {
+                  "type": "string"
+                },
+                "sources": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "sourceId",
+                      "path",
+                      "contentDigest",
+                      "status"
+                    ],
+                    "properties": {
+                      "sourceId": {
+                        "type": "string"
+                      },
+                      "path": {
+                        "type": "string"
+                      },
+                      "contentDigest": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "valid",
+                          "invalid"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/contracts/outcome.schema.json",
+          "entryDigest": "sha256:faa7e717fb61daa40a9eb4eb7a369c4b56078efa7b4d7b77303c1000006a888b",
+          "snapshot": "data/capsule-evidence/entries/faa7e717fb61daa40a9eb4eb7a369c4b56078efa7b4d7b77303c1000006a888b-0f75365cecf19aa9.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "admissionStatus",
+            "workspaceRoot",
+            "admittedCount",
+            "rejectedCount",
+            "sources"
+          ],
+          "properties": {
+            "admissionStatus": {
+              "type": "string",
+              "enum": [
+                "admitted",
+                "rejected"
+              ]
+            },
+            "workspaceRoot": {
+              "type": "string"
+            },
+            "admittedCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rejectedCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "sourceId",
+                  "path",
+                  "contentDigest",
+                  "status",
+                  "admitted"
+                ],
+                "properties": {
+                  "sourceId": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "contentDigest": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "admitted": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-2095825f79309ff5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-0668b353a1f8b47a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-8d970beccaee06b6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-c3de3268e4683797.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-all-valid-sources",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-a",
+                "sources": [
+                  {
+                    "sourceId": "src-1",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-2",
+                    "path": "semantic-graph.authority.json",
+                    "contentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+                    "status": "valid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-a",
+                  "admittedCount": 2,
+                  "rejectedCount": 0,
+                  "sources": [
+                    {
+                      "sourceId": "src-1",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-2",
+                      "path": "semantic-graph.authority.json",
+                      "contentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+                      "status": "valid",
+                      "admitted": true
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-two",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 2
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-on-invalid-source",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-b",
+                "sources": [
+                  {
+                    "sourceId": "src-1",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-2",
+                    "path": "interfaces.authority.json",
+                    "contentDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+                    "status": "invalid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "rejected",
+                  "workspaceRoot": "/workspaces/consumer-b",
+                  "admittedCount": 1,
+                  "rejectedCount": 1,
+                  "sources": [
+                    {
+                      "sourceId": "src-1",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-2",
+                      "path": "interfaces.authority.json",
+                      "contentDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+                      "status": "invalid",
+                      "admitted": false
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-rejected",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-count-is-one",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "rejected-count-is-one",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-single-authority-document",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-c",
+                "sources": [
+                  {
+                    "sourceId": "src-root",
+                    "path": "consumer-workspace.authority.json",
+                    "contentDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+                    "status": "valid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-c",
+                  "admittedCount": 1,
+                  "rejectedCount": 0,
+                  "sources": [
+                    {
+                      "sourceId": "src-root",
+                      "path": "consumer-workspace.authority.json",
+                      "contentDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+                      "status": "valid",
+                      "admitted": true
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-one",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-all-invalid-sources",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-d",
+                "sources": [
+                  {
+                    "sourceId": "src-1",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+                    "status": "invalid"
+                  },
+                  {
+                    "sourceId": "src-2",
+                    "path": "semantic-graph.authority.json",
+                    "contentDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+                    "status": "invalid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "rejected",
+                  "workspaceRoot": "/workspaces/consumer-d",
+                  "admittedCount": 0,
+                  "rejectedCount": 2,
+                  "sources": [
+                    {
+                      "sourceId": "src-1",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+                      "status": "invalid",
+                      "admitted": false
+                    },
+                    {
+                      "sourceId": "src-2",
+                      "path": "semantic-graph.authority.json",
+                      "contentDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+                      "status": "invalid",
+                      "admitted": false
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-rejected",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-count-is-zero",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "rejected-count-is-two",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 2
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-three-complete-authority-sources",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-e",
+                "sources": [
+                  {
+                    "sourceId": "src-cap",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-graph",
+                    "path": "semantic-graph.authority.json",
+                    "contentDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-exec",
+                    "path": "execution-authorities.authority.json",
+                    "contentDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "status": "valid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-e",
+                  "admittedCount": 3,
+                  "rejectedCount": 0,
+                  "sources": [
+                    {
+                      "sourceId": "src-cap",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-graph",
+                      "path": "semantic-graph.authority.json",
+                      "contentDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-exec",
+                      "path": "execution-authorities.authority.json",
+                      "contentDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "status": "valid",
+                      "admitted": true
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-three",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-empty-sources-list",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-empty",
+                "sources": []
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-empty",
+                  "admittedCount": 0,
+                  "rejectedCount": 0,
+                  "sources": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-zero",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-d8d48c6de704b092.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one declared consumer workspace and its set of source facts",
+        "line": 26
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/contracts/input.schema.json",
+          "entryDigest": "sha256:cac9635063207f9c146cfc8ae4b524bc9e2676fe52931121023e44dcd6d9a42a",
+          "snapshot": "data/capsule-evidence/entries/cac9635063207f9c146cfc8ae4b524bc9e2676fe52931121023e44dcd6d9a42a-1fe184048c244b7f.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "admit-consumer-source-facts-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "workspaceRoot",
+                "sources"
+              ],
+              "properties": {
+                "workspaceRoot": {
+                  "type": "string"
+                },
+                "sources": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "sourceId",
+                      "path",
+                      "contentDigest",
+                      "status"
+                    ],
+                    "properties": {
+                      "sourceId": {
+                        "type": "string"
+                      },
+                      "path": {
+                        "type": "string"
+                      },
+                      "contentDigest": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "valid",
+                          "invalid"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/contracts/outcome.schema.json",
+          "entryDigest": "sha256:faa7e717fb61daa40a9eb4eb7a369c4b56078efa7b4d7b77303c1000006a888b",
+          "snapshot": "data/capsule-evidence/entries/faa7e717fb61daa40a9eb4eb7a369c4b56078efa7b4d7b77303c1000006a888b-0f75365cecf19aa9.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "admissionStatus",
+            "workspaceRoot",
+            "admittedCount",
+            "rejectedCount",
+            "sources"
+          ],
+          "properties": {
+            "admissionStatus": {
+              "type": "string",
+              "enum": [
+                "admitted",
+                "rejected"
+              ]
+            },
+            "workspaceRoot": {
+              "type": "string"
+            },
+            "admittedCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rejectedCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "sourceId",
+                  "path",
+                  "contentDigest",
+                  "status",
+                  "admitted"
+                ],
+                "properties": {
+                  "sourceId": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string"
+                  },
+                  "contentDigest": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "admitted": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-2095825f79309ff5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-0668b353a1f8b47a.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-8d970beccaee06b6.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-c3de3268e4683797.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "consumer author"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "admit-consumer-source-facts",
+          "scenario": {
+            "scenarioId": "admit-consumer-source-facts",
+            "input": {
+              "inputId": "consumer-workspace-source-facts",
+              "contract": {
+                "contractId": "admit-consumer-source-facts-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "consumer-source-admission-requested",
+              "executionAuthorityId": "consumer-source-admission.v1"
+            },
+            "outcome": {
+              "outcomeId": "consumer-source-admission-known",
+              "contract": {
+                "contractId": "consumer-source-admission-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "admit-consumer-source-facts.operation.1",
+              "mechanicBindingId": "port:admit-consumer-source-facts-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "admit-consumer-source-facts-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "cac9635063207f9c146cfc8ae4b524bc9e2676fe52931121023e44dcd6d9a42a",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "admit-consumer-source-facts-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "workspaceRoot",
+                          "sources"
+                        ],
+                        "properties": {
+                          "workspaceRoot": {
+                            "type": "string"
+                          },
+                          "sources": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "sourceId",
+                                "path",
+                                "contentDigest",
+                                "status"
+                              ],
+                              "properties": {
+                                "sourceId": {
+                                  "type": "string"
+                                },
+                                "path": {
+                                  "type": "string"
+                                },
+                                "contentDigest": {
+                                  "type": "string"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "valid",
+                                    "invalid"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "consumer-source-admission-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "faa7e717fb61daa40a9eb4eb7a369c4b56078efa7b4d7b77303c1000006a888b",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "admissionStatus",
+                      "workspaceRoot",
+                      "admittedCount",
+                      "rejectedCount",
+                      "sources"
+                    ],
+                    "properties": {
+                      "admissionStatus": {
+                        "type": "string",
+                        "enum": [
+                          "admitted",
+                          "rejected"
+                        ]
+                      },
+                      "workspaceRoot": {
+                        "type": "string"
+                      },
+                      "admittedCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "rejectedCount": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "sources": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "sourceId",
+                            "path",
+                            "contentDigest",
+                            "status",
+                            "admitted"
+                          ],
+                          "properties": {
+                            "sourceId": {
+                              "type": "string"
+                            },
+                            "path": {
+                              "type": "string"
+                            },
+                            "contentDigest": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "string"
+                            },
+                            "admitted": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-consumer-source-facts-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "admissionStatus": {
+                  "op": "if",
+                  "then": {
+                    "op": "literal",
+                    "value": "admitted"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "rejected"
+                  },
+                  "when": {
+                    "op": "every",
+                    "from": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.sources"
+                    },
+                    "where": {
+                      "op": "equals",
+                      "left": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "right": {
+                        "op": "literal",
+                        "value": "valid"
+                      }
+                    }
+                  }
+                },
+                "workspaceRoot": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.workspaceRoot"
+                },
+                "admittedCount": {
+                  "op": "length",
+                  "value": {
+                    "op": "filter",
+                    "from": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.sources"
+                    },
+                    "where": {
+                      "op": "equals",
+                      "left": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "right": {
+                        "op": "literal",
+                        "value": "valid"
+                      }
+                    }
+                  }
+                },
+                "rejectedCount": {
+                  "op": "length",
+                  "value": {
+                    "op": "filter",
+                    "from": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.sources"
+                    },
+                    "where": {
+                      "op": "equals",
+                      "left": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "right": {
+                        "op": "literal",
+                        "value": "invalid"
+                      }
+                    }
+                  }
+                },
+                "sources": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "payload.sources"
+                  },
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "sourceId": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "sourceId"
+                      },
+                      "path": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "path"
+                      },
+                      "contentDigest": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "contentDigest"
+                      },
+                      "status": {
+                        "op": "path",
+                        "from": "item",
+                        "path": "status"
+                      },
+                      "admitted": {
+                        "op": "equals",
+                        "left": {
+                          "op": "path",
+                          "from": "item",
+                          "path": "status"
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": "valid"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-consumer-source-facts-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every required source is admitted with its exact source reference and content digest, or is explicitly rejected, without composing the scenario graph or resolving platform responsibilities",
+        "line": 28
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-all-valid-sources",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-a",
+                "sources": [
+                  {
+                    "sourceId": "src-1",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-2",
+                    "path": "semantic-graph.authority.json",
+                    "contentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+                    "status": "valid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-a",
+                  "admittedCount": 2,
+                  "rejectedCount": 0,
+                  "sources": [
+                    {
+                      "sourceId": "src-1",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-2",
+                      "path": "semantic-graph.authority.json",
+                      "contentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+                      "status": "valid",
+                      "admitted": true
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-two",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 2
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-on-invalid-source",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-b",
+                "sources": [
+                  {
+                    "sourceId": "src-1",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-2",
+                    "path": "interfaces.authority.json",
+                    "contentDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+                    "status": "invalid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "rejected",
+                  "workspaceRoot": "/workspaces/consumer-b",
+                  "admittedCount": 1,
+                  "rejectedCount": 1,
+                  "sources": [
+                    {
+                      "sourceId": "src-1",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-2",
+                      "path": "interfaces.authority.json",
+                      "contentDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+                      "status": "invalid",
+                      "admitted": false
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-rejected",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-count-is-one",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "rejected-count-is-one",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-single-authority-document",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-c",
+                "sources": [
+                  {
+                    "sourceId": "src-root",
+                    "path": "consumer-workspace.authority.json",
+                    "contentDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+                    "status": "valid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-c",
+                  "admittedCount": 1,
+                  "rejectedCount": 0,
+                  "sources": [
+                    {
+                      "sourceId": "src-root",
+                      "path": "consumer-workspace.authority.json",
+                      "contentDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+                      "status": "valid",
+                      "admitted": true
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-one",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "reject-all-invalid-sources",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-d",
+                "sources": [
+                  {
+                    "sourceId": "src-1",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+                    "status": "invalid"
+                  },
+                  {
+                    "sourceId": "src-2",
+                    "path": "semantic-graph.authority.json",
+                    "contentDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+                    "status": "invalid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "rejected",
+                  "workspaceRoot": "/workspaces/consumer-d",
+                  "admittedCount": 0,
+                  "rejectedCount": 2,
+                  "sources": [
+                    {
+                      "sourceId": "src-1",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+                      "status": "invalid",
+                      "admitted": false
+                    },
+                    {
+                      "sourceId": "src-2",
+                      "path": "semantic-graph.authority.json",
+                      "contentDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+                      "status": "invalid",
+                      "admitted": false
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-rejected",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-count-is-zero",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "rejected-count-is-two",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 2
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-three-complete-authority-sources",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-e",
+                "sources": [
+                  {
+                    "sourceId": "src-cap",
+                    "path": "capability.authority.json",
+                    "contentDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-graph",
+                    "path": "semantic-graph.authority.json",
+                    "contentDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+                    "status": "valid"
+                  },
+                  {
+                    "sourceId": "src-exec",
+                    "path": "execution-authorities.authority.json",
+                    "contentDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "status": "valid"
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-e",
+                  "admittedCount": 3,
+                  "rejectedCount": 0,
+                  "sources": [
+                    {
+                      "sourceId": "src-cap",
+                      "path": "capability.authority.json",
+                      "contentDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-graph",
+                      "path": "semantic-graph.authority.json",
+                      "contentDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+                      "status": "valid",
+                      "admitted": true
+                    },
+                    {
+                      "sourceId": "src-exec",
+                      "path": "execution-authorities.authority.json",
+                      "contentDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      "status": "valid",
+                      "admitted": true
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-three",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/admit-consumer-source-facts/fixtures.authority.json",
+          "entryDigest": "sha256:a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2",
+          "snapshot": "data/capsule-evidence/entries/a8522f5e270a340b4f544fb70806ab0cc55fc2e46f4dc50820b1dd02ee553ae2-7b196233f747cd2f.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "admit-empty-sources-list",
+            "input": {
+              "contractId": "admit-consumer-source-facts-input.v1",
+              "payload": {
+                "workspaceRoot": "/workspaces/consumer-empty",
+                "sources": []
+              }
+            },
+            "portOutcomes": {
+              "admit-consumer-source-facts-port": {
+                "output": {
+                  "admissionStatus": "admitted",
+                  "workspaceRoot": "/workspaces/consumer-empty",
+                  "admittedCount": 0,
+                  "rejectedCount": 0,
+                  "sources": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "admit-consumer-source-facts",
+              "scenarioSequence": [
+                "admit-consumer-source-facts"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "admission-status-is-admitted",
+                  "path": "admissionStatus",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-count-is-zero",
+                  "path": "admittedCount",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "rejected-count-is-zero",
+                  "path": "rejectedCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:admit-consumer-source-facts-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "admit-consumer-source-facts",
+        "scenario": {
+          "scenarioId": "admit-consumer-source-facts",
+          "input": {
+            "inputId": "consumer-workspace-source-facts",
+            "contract": {
+              "contractId": "admit-consumer-source-facts-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "consumer-source-admission-requested",
+            "executionAuthorityId": "consumer-source-admission.v1"
+          },
+          "outcome": {
+            "outcomeId": "consumer-source-admission-known",
+            "contract": {
+              "contractId": "consumer-source-admission-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "admit-consumer-source-facts.operation.1",
+            "mechanicBindingId": "port:admit-consumer-source-facts-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/admit-consumer-source-facts/execution-plan.node.json",
+          "entryDigest": "sha256:5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a",
+          "snapshot": "data/capsule-evidence/entries/5ec5cdcd8f45c78c15d5a996c770fe8858a1b819711f55daeb96901d73b7488a-b64bee556a7ac4d7.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

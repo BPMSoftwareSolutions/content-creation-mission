@@ -1,0 +1,1165 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "say-hello-world::say-hello-world",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:051a2aa991be769451f5def3cd6f13ddcb856a9d16d483d6dc9c1a9d2333228d"
+  },
+  "scenarioSurface": {
+    "key": "say-hello-world::say-hello-world",
+    "capabilityId": "say-hello-world",
+    "capabilityName": "Say the canonical Hello World greeting",
+    "scenarioId": "say-hello-world",
+    "scenarioName": "Say Hello World without domain input",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "no domain input",
+        "line": 16
+      }
+    ],
+    "event": [
+      {
+        "text": "the canonical Hello World greeting is requested",
+        "line": 17
+      }
+    ],
+    "outcome": [
+      {
+        "text": "the exact greeting is Hello, World!",
+        "line": 18
+      }
+    ],
+    "products": [
+      "hello-world-greeting"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "caller"
+    ],
+    "altitude": null,
+    "notes": "  A caller with no domain input must receive one exact deterministic greeting.",
+    "source": {
+      "capsuleFile": "say-hello-world.sfxcap",
+      "capsuleDigest": "sha256:051a2aa991be769451f5def3cd6f13ddcb856a9d16d483d6dc9c1a9d2333228d",
+      "featureEntry": "features/say-hello-world.feature",
+      "featureDigest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/say-hello-world.feature",
+      "scenarioLine": 15
+    },
+    "tags": [
+      "@capability:say-hello-world",
+      "@root-scenario:say-hello-world",
+      "@scenario:say-hello-world",
+      "@input:hello-world-request",
+      "@input-contract:hello-world-request.v1",
+      "@event:say-hello-world",
+      "@event-authority:say-hello-world.v1",
+      "@outcome:hello-world-greeting",
+      "@outcome-contract:hello-world-greeting.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "say-hello-world",
+          "scenario": {
+            "scenarioId": "say-hello-world",
+            "input": {
+              "inputId": "hello-world-request",
+              "contract": {
+                "contractId": "hello-world-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "say-hello-world",
+              "executionAuthorityId": "say-hello-world.v1"
+            },
+            "outcome": {
+              "outcomeId": "hello-world-greeting",
+              "contract": {
+                "contractId": "hello-world-greeting.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "say-hello-world.operation.1",
+              "mechanicBindingId": "port:say-hello-world-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "hello-world-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/hello-world-request.v1.schema.json",
+                  "schemaDigest": "82ebed4bb2cb8f9b3e180a62cdeeffdfb79c1360a0e69b7d894b7f36ae5f7ef7",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/hello-world-request.v1.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "hello-world-request.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "additionalProperties": false
+                      }
+                    }
+                  }
+                },
+                "hello-world-greeting.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/hello-world-greeting.v1.schema.json",
+                  "schemaDigest": "1fe380989022b61e7dec0bae78b421dcddea0d48fa6df0810ac1554071e33f73",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/hello-world-greeting.v1.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "hello-world-greeting.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "message"
+                        ],
+                        "properties": {
+                          "message": {
+                            "const": "Hello, World!"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:say-hello-world-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "hello-world-greeting.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "message": {
+                      "op": "literal",
+                      "value": "Hello, World!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:say-hello-world-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/say-hello-world/contracts/outcome.schema.json",
+          "entryDigest": "sha256:032a564e36eb1123f46c112386f96eded1a50c074537eb5e0f40c8beb7ba83c8",
+          "snapshot": "data/capsule-evidence/entries/032a564e36eb1123f46c112386f96eded1a50c074537eb5e0f40c8beb7ba83c8-4588dac6141bb256.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/hello-world-greeting.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "hello-world-greeting.v1"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "message"
+              ],
+              "properties": {
+                "message": {
+                  "const": "Hello, World!"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/say-hello-world/contracts/input.schema.json",
+          "entryDigest": "sha256:0cb0cff2850d0636dd684850c859b4216e4b65e3ebb1f646fcb7c34771a08eb0",
+          "snapshot": "data/capsule-evidence/entries/0cb0cff2850d0636dd684850c859b4216e4b65e3ebb1f646fcb7c34771a08eb0-bec748700642a698.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/hello-world-request.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "hello-world-request.v1"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/say-hello-world/blueprint.authority.json",
+          "entryDigest": "sha256:82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0",
+          "snapshot": "data/capsule-evidence/entries/82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0-ce284f07b8b7e926.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "say-hello-world",
+          "kind": "responsibility",
+          "altitude": "CAPABILITY",
+          "projectionOrdinal": 0,
+          "cell": {
+            "first": {
+              "identity": "hello-world-request",
+              "contract": {
+                "authorityId": "hello-world-request.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            },
+            "energized": {
+              "identity": "say-hello-world",
+              "authority": {
+                "authorityId": "say-hello-world.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            },
+            "result": {
+              "identity": "hello-world-greeting",
+              "contract": {
+                "authorityId": "hello-world-greeting.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            }
+          },
+          "observability": {
+            "checkpoints": [
+              "say-hello-world-admit-input",
+              "say-hello-world-emit-outcome"
+            ],
+            "semanticAddress": "sidefx://capability/say-hello-world/node/say-hello-world",
+            "causalAddress": "say-hello-world/say-hello-world",
+            "measurements": [
+              {
+                "measurementId": "say-hello-world-completion",
+                "unit": "count"
+              }
+            ],
+            "authorizedDimensions": [
+              "execution-id",
+              "route-id",
+              "terminal-disposition"
+            ],
+            "sampling": {
+              "strategy": "ALWAYS"
+            },
+            "evidenceDestination": "say-hello-world-evidence-ledger",
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/say-hello-world/blueprint.authority.json",
+          "entryDigest": "sha256:82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0",
+          "snapshot": "data/capsule-evidence/entries/82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0-ce284f07b8b7e926.json",
+          "pointer": "/edges/0"
+        },
+        "value": {
+          "edgeId": "hello-world-greeting-terminates",
+          "from": "say-hello-world",
+          "to": "hello-world-greeting-established",
+          "topology": "TRANSITION",
+          "semanticProgress": "TERMINATES",
+          "semanticPrecedence": "REQUIRED",
+          "projectionOrdinal": 0,
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "observability": {
+            "checkpoints": [
+              "hello-world-greeting-terminates-traversed"
+            ],
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            }
+          }
+        }
+      }
+    ],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/say-hello-world/fixtures.authority.json",
+          "entryDigest": "sha256:6d4cd5e92c03ca41c42307b1dc18c4de522d6a9bd4cdaeb8a37583567c7e898d",
+          "snapshot": "data/capsule-evidence/entries/6d4cd5e92c03ca41c42307b1dc18c4de522d6a9bd4cdaeb8a37583567c7e898d-cb0b91f5a39d9555.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "returns-the-exact-canonical-greeting-without-domain-input",
+            "input": {
+              "contractId": "hello-world-request.v1",
+              "payload": {}
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "say-hello-world",
+              "scenarioSequence": [
+                "say-hello-world"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "exact-contract",
+                  "path": "contractId",
+                  "operator": "equals",
+                  "value": "hello-world-greeting.v1"
+                },
+                {
+                  "conditionId": "exact-message",
+                  "path": "payload.message",
+                  "operator": "equals",
+                  "value": "Hello, World!"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "blueprint-cell-authoring.receipt.json",
+          "entryRef": "capabilities/say-hello-world/blueprint-cell-authoring.receipt.json",
+          "entryDigest": "sha256:42eb48234f3dacd12f8da9fd6e023afe75d89f00378cf3ba3fa230923eb8e95b",
+          "snapshot": "data/capsule-evidence/entries/42eb48234f3dacd12f8da9fd6e023afe75d89f00378cf3ba3fa230923eb8e95b-0c01084d4a4cbd59.json",
+          "pointer": ""
+        },
+        "value": {
+          "receiptVersion": "blueprint-guided-capability-assembly-receipt.first-admission.v1",
+          "capabilityId": "say-hello-world",
+          "lifecycleKind": "FIRST_ADMISSION",
+          "featureDigest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503",
+          "blueprintAuthorityDigest": "sha256:c62fa883b9177aa8a0b91a10beea8e1aede845b58502ac29a3f9c8a9f8cf9e12",
+          "admittedBlueprintCarrierDigest": "sha256:82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0",
+          "reviewReceiptDigest": "sha256:23c600acaba39116129b8ce270a85845faffc02d230669eecb8e9755dcf46ece",
+          "openReceiptDigest": "sha256:2e2f707a8a63f81fab2acaf22ca53817c464bde002792ff7b9f5c9b96033d83b",
+          "cellAuthoringLedgerDigest": "sha256:790b566411821faddd00ed1cdc198f7f5c0e7b35181651ff4cd4b08b5857066e",
+          "cellCount": 2,
+          "cells": [
+            {
+              "nodeId": "say-hello-world",
+              "projectionOrdinal": 0,
+              "cellKind": "responsibility",
+              "cellAltitude": "CAPABILITY",
+              "meaningCandidateDigest": "sha256:4b9a3e380f76eed187fb6f203338f80f18adc0f005f324f0ff82a744680e0ed9",
+              "solutionCandidateDigest": "sha256:d279a8e28281b9bf299a8471db14a4546563c8ee7ae8a6e4cb2cee97be61f694",
+              "realizationKind": "scenario-authority",
+              "executionAuthorityId": "say-hello-world.v1",
+              "transformationId": "say-hello-world-transform.v1",
+              "disposition": "BOUND_TO_ADMITTED_BLUEPRINT"
+            },
+            {
+              "nodeId": "hello-world-greeting-established",
+              "projectionOrdinal": 1,
+              "cellKind": "terminal",
+              "cellAltitude": "CAPABILITY",
+              "meaningCandidateDigest": "sha256:0072bf9e79d8173333ca04004163f3ca6f82cac8581b568345f4551a4d623978",
+              "solutionCandidateDigest": "sha256:b1f6bf7855c9fd93e64f96da363b4d22aed54fb732d2c034aaec83494ed4a5bb",
+              "realizationKind": "terminal-projection",
+              "disposition": "BOUND_TO_ADMITTED_BLUEPRINT"
+            }
+          ],
+          "assemblyDisposition": "DETERMINISTIC_CANDIDATE_ASSEMBLED",
+          "nonClaims": [
+            "projection",
+            "capsule-admission",
+            "estate-publication",
+            "mainline-publication"
+          ]
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/say-hello-world/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-e60c6fe7edcfbdb8.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "no domain input",
+        "line": 16
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/say-hello-world/contracts/outcome.schema.json",
+          "entryDigest": "sha256:032a564e36eb1123f46c112386f96eded1a50c074537eb5e0f40c8beb7ba83c8",
+          "snapshot": "data/capsule-evidence/entries/032a564e36eb1123f46c112386f96eded1a50c074537eb5e0f40c8beb7ba83c8-4588dac6141bb256.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/hello-world-greeting.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "hello-world-greeting.v1"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "message"
+              ],
+              "properties": {
+                "message": {
+                  "const": "Hello, World!"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/say-hello-world/contracts/input.schema.json",
+          "entryDigest": "sha256:0cb0cff2850d0636dd684850c859b4216e4b65e3ebb1f646fcb7c34771a08eb0",
+          "snapshot": "data/capsule-evidence/entries/0cb0cff2850d0636dd684850c859b4216e4b65e3ebb1f646fcb7c34771a08eb0-bec748700642a698.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/hello-world-request.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "hello-world-request.v1"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "caller"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "say-hello-world",
+          "scenario": {
+            "scenarioId": "say-hello-world",
+            "input": {
+              "inputId": "hello-world-request",
+              "contract": {
+                "contractId": "hello-world-request.v1"
+              }
+            },
+            "event": {
+              "eventId": "say-hello-world",
+              "executionAuthorityId": "say-hello-world.v1"
+            },
+            "outcome": {
+              "outcomeId": "hello-world-greeting",
+              "contract": {
+                "contractId": "hello-world-greeting.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "say-hello-world.operation.1",
+              "mechanicBindingId": "port:say-hello-world-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "hello-world-request.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/hello-world-request.v1.schema.json",
+                  "schemaDigest": "82ebed4bb2cb8f9b3e180a62cdeeffdfb79c1360a0e69b7d894b7f36ae5f7ef7",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/hello-world-request.v1.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "hello-world-request.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "additionalProperties": false
+                      }
+                    }
+                  }
+                },
+                "hello-world-greeting.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/hello-world-greeting.v1.schema.json",
+                  "schemaDigest": "1fe380989022b61e7dec0bae78b421dcddea0d48fa6df0810ac1554071e33f73",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/hello-world-greeting.v1.schema.json",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "hello-world-greeting.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "message"
+                        ],
+                        "properties": {
+                          "message": {
+                            "const": "Hello, World!"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:say-hello-world-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "hello-world-greeting.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "message": {
+                      "op": "literal",
+                      "value": "Hello, World!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:say-hello-world-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/say-hello-world/blueprint.authority.json",
+          "entryDigest": "sha256:82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0",
+          "snapshot": "data/capsule-evidence/entries/82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0-ce284f07b8b7e926.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "say-hello-world",
+          "kind": "responsibility",
+          "altitude": "CAPABILITY",
+          "projectionOrdinal": 0,
+          "cell": {
+            "first": {
+              "identity": "hello-world-request",
+              "contract": {
+                "authorityId": "hello-world-request.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            },
+            "energized": {
+              "identity": "say-hello-world",
+              "authority": {
+                "authorityId": "say-hello-world.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            },
+            "result": {
+              "identity": "hello-world-greeting",
+              "contract": {
+                "authorityId": "hello-world-greeting.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            }
+          },
+          "observability": {
+            "checkpoints": [
+              "say-hello-world-admit-input",
+              "say-hello-world-emit-outcome"
+            ],
+            "semanticAddress": "sidefx://capability/say-hello-world/node/say-hello-world",
+            "causalAddress": "say-hello-world/say-hello-world",
+            "measurements": [
+              {
+                "measurementId": "say-hello-world-completion",
+                "unit": "count"
+              }
+            ],
+            "authorizedDimensions": [
+              "execution-id",
+              "route-id",
+              "terminal-disposition"
+            ],
+            "sampling": {
+              "strategy": "ALWAYS"
+            },
+            "evidenceDestination": "say-hello-world-evidence-ledger",
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/say-hello-world/blueprint.authority.json",
+          "entryDigest": "sha256:82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0",
+          "snapshot": "data/capsule-evidence/entries/82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0-ce284f07b8b7e926.json",
+          "pointer": "/edges/0"
+        },
+        "value": {
+          "edgeId": "hello-world-greeting-terminates",
+          "from": "say-hello-world",
+          "to": "hello-world-greeting-established",
+          "topology": "TRANSITION",
+          "semanticProgress": "TERMINATES",
+          "semanticPrecedence": "REQUIRED",
+          "projectionOrdinal": 0,
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "observability": {
+            "checkpoints": [
+              "hello-world-greeting-terminates-traversed"
+            ],
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            }
+          }
+        }
+      }
+    ],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "the exact greeting is Hello, World!",
+        "line": 18
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/say-hello-world/fixtures.authority.json",
+          "entryDigest": "sha256:6d4cd5e92c03ca41c42307b1dc18c4de522d6a9bd4cdaeb8a37583567c7e898d",
+          "snapshot": "data/capsule-evidence/entries/6d4cd5e92c03ca41c42307b1dc18c4de522d6a9bd4cdaeb8a37583567c7e898d-cb0b91f5a39d9555.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "returns-the-exact-canonical-greeting-without-domain-input",
+            "input": {
+              "contractId": "hello-world-request.v1",
+              "payload": {}
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "say-hello-world",
+              "scenarioSequence": [
+                "say-hello-world"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "exact-contract",
+                  "path": "contractId",
+                  "operator": "equals",
+                  "value": "hello-world-greeting.v1"
+                },
+                {
+                  "conditionId": "exact-message",
+                  "path": "payload.message",
+                  "operator": "equals",
+                  "value": "Hello, World!"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:say-hello-world-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/say-hello-world/blueprint.authority.json",
+          "entryDigest": "sha256:82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0",
+          "snapshot": "data/capsule-evidence/entries/82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0-ce284f07b8b7e926.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "say-hello-world",
+          "kind": "responsibility",
+          "altitude": "CAPABILITY",
+          "projectionOrdinal": 0,
+          "cell": {
+            "first": {
+              "identity": "hello-world-request",
+              "contract": {
+                "authorityId": "hello-world-request.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            },
+            "energized": {
+              "identity": "say-hello-world",
+              "authority": {
+                "authorityId": "say-hello-world.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            },
+            "result": {
+              "identity": "hello-world-greeting",
+              "contract": {
+                "authorityId": "hello-world-greeting.v1",
+                "digest": "sha256:673d5f9accb6f40be3e4de6b146b1f3b202c9b54c605d577980f4d569460b503"
+              }
+            }
+          },
+          "observability": {
+            "checkpoints": [
+              "say-hello-world-admit-input",
+              "say-hello-world-emit-outcome"
+            ],
+            "semanticAddress": "sidefx://capability/say-hello-world/node/say-hello-world",
+            "causalAddress": "say-hello-world/say-hello-world",
+            "measurements": [
+              {
+                "measurementId": "say-hello-world-completion",
+                "unit": "count"
+              }
+            ],
+            "authorizedDimensions": [
+              "execution-id",
+              "route-id",
+              "terminal-disposition"
+            ],
+            "sampling": {
+              "strategy": "ALWAYS"
+            },
+            "evidenceDestination": "say-hello-world-evidence-ledger",
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "blueprint.authority.json",
+          "entryRef": "capabilities/say-hello-world/blueprint.authority.json",
+          "entryDigest": "sha256:82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0",
+          "snapshot": "data/capsule-evidence/entries/82306b2a9b352a7e15adfe356393c91091aa3946669d2842804aa17e1e82b4e0-ce284f07b8b7e926.json",
+          "pointer": "/edges/0"
+        },
+        "value": {
+          "edgeId": "hello-world-greeting-terminates",
+          "from": "say-hello-world",
+          "to": "hello-world-greeting-established",
+          "topology": "TRANSITION",
+          "semanticProgress": "TERMINATES",
+          "semanticPrecedence": "REQUIRED",
+          "projectionOrdinal": 0,
+          "bindingAuthority": {
+            "authorityId": "adr-001-blueprint-binding.v1",
+            "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+          },
+          "observability": {
+            "checkpoints": [
+              "hello-world-greeting-terminates-traversed"
+            ],
+            "authority": {
+              "authorityId": "adr-001-observability.v1",
+              "digest": "sha256:1299d2b7f0808b5c17842cedf132f41dd1276825441f032dbfa29d73ee36e1ee"
+            }
+          }
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "say-hello-world",
+        "scenario": {
+          "scenarioId": "say-hello-world",
+          "input": {
+            "inputId": "hello-world-request",
+            "contract": {
+              "contractId": "hello-world-request.v1"
+            }
+          },
+          "event": {
+            "eventId": "say-hello-world",
+            "executionAuthorityId": "say-hello-world.v1"
+          },
+          "outcome": {
+            "outcomeId": "hello-world-greeting",
+            "contract": {
+              "contractId": "hello-world-greeting.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "say-hello-world.operation.1",
+            "mechanicBindingId": "port:say-hello-world-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/say-hello-world/execution-plan.node.json",
+          "entryDigest": "sha256:f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb",
+          "snapshot": "data/capsule-evidence/entries/f9fa409a601d3d1acb84633c665f76d24062cf5a9146b1ab05dc06129889fefb-5e1697d1afbe2a10.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

@@ -1,0 +1,3661 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "derive-cross-language-equivalence::derive-cross-language-equivalence",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:f60904d8a8f0151f37cda5558f3e5fe0c04e0307fd168146d698affecf604769"
+  },
+  "scenarioSurface": {
+    "key": "derive-cross-language-equivalence::derive-cross-language-equivalence",
+    "capabilityId": "derive-cross-language-equivalence",
+    "capabilityName": "Derive cross-language equivalence",
+    "scenarioId": "derive-cross-language-equivalence",
+    "scenarioName": "Compare each canonical fixture disposition across languages",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one set of canonical fixture dispositions observed across languages",
+        "line": 25
+      }
+    ],
+    "event": [
+      {
+        "text": "each canonical fixture disposition is compared across languages",
+        "line": 26
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every shared fixture has an explicit per-language equivalence result and the equivalence matrix contains every fixture and targeted language",
+        "line": 27
+      }
+    ],
+    "products": [
+      "cross-language-equivalence-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "release consumer"
+    ],
+    "altitude": null,
+    "notes": "  A release consumer needs to know exactly where different language\n  embodiments of the same capability agree or diverge, fixture by fixture.\n  The capability compares each canonical fixture disposition across\n  languages.\n\n  Every shared fixture has an explicit per-language equivalence result, and\n  the resulting matrix contains every fixture and every targeted language.\n  The capability does not run any fixture itself — it only compares\n  dispositions already observed.",
+    "source": {
+      "capsuleFile": "derive-cross-language-equivalence.sfxcap",
+      "capsuleDigest": "sha256:f60904d8a8f0151f37cda5558f3e5fe0c04e0307fd168146d698affecf604769",
+      "featureEntry": "features/derive-cross-language-equivalence.feature",
+      "featureDigest": "sha256:d21e1110fa54f453008bc2ce51b608231383844fe96ba0d6012f8ff4d76f712c",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/derive-cross-language-equivalence.feature",
+      "scenarioLine": 24
+    },
+    "tags": [
+      "@capability:derive-cross-language-equivalence",
+      "@root-scenario:derive-cross-language-equivalence",
+      "@scenario:derive-cross-language-equivalence",
+      "@input:cross-language-equivalence-input",
+      "@input-contract:cross-language-equivalence-input.v1",
+      "@event:cross-language-equivalence-derivation-requested",
+      "@event-authority:cross-language-equivalence-derivation.v1",
+      "@outcome:cross-language-equivalence-known",
+      "@outcome-contract:cross-language-equivalence-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "derive-cross-language-equivalence",
+          "scenario": {
+            "scenarioId": "derive-cross-language-equivalence",
+            "input": {
+              "inputId": "cross-language-equivalence-input",
+              "contract": {
+                "contractId": "cross-language-equivalence-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "cross-language-equivalence-derivation-requested",
+              "executionAuthorityId": "cross-language-equivalence-derivation.v1"
+            },
+            "outcome": {
+              "outcomeId": "cross-language-equivalence-known",
+              "contract": {
+                "contractId": "cross-language-equivalence-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "derive-cross-language-equivalence.operation.1",
+              "mechanicBindingId": "port:derive-cross-language-equivalence-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "cross-language-equivalence-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "f1bdaf8d850dc26ecba769e097ec372836050c6001aa1a20874c01fc8cf7bb25",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "cross-language-equivalence-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "capabilityId",
+                          "targetLanguages",
+                          "equivalenceStatus",
+                          "fullyEquivalent",
+                          "totalFixtures",
+                          "divergentFixtureCount",
+                          "equivalenceMatrix"
+                        ],
+                        "properties": {
+                          "capabilityId": {
+                            "type": "string"
+                          },
+                          "targetLanguages": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "equivalenceStatus": {
+                            "type": "string",
+                            "enum": [
+                              "equivalent",
+                              "divergent"
+                            ]
+                          },
+                          "fullyEquivalent": {
+                            "type": "boolean"
+                          },
+                          "totalFixtures": {
+                            "type": "integer"
+                          },
+                          "divergentFixtureCount": {
+                            "type": "integer"
+                          },
+                          "equivalenceMatrix": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "fixtureId",
+                                "isEquivalent",
+                                "languageDispositions"
+                              ],
+                              "properties": {
+                                "fixtureId": {
+                                  "type": "string"
+                                },
+                                "isEquivalent": {
+                                  "type": "boolean"
+                                },
+                                "languageDispositions": {
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "cross-language-equivalence-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "ef750c7bf1294bbdd92365a02fe2087d694545ed09254458aa2cad5d1d1ab2bc",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "capabilityId",
+                      "targetLanguages",
+                      "equivalenceStatus",
+                      "fullyEquivalent",
+                      "totalFixtures",
+                      "divergentFixtureCount",
+                      "equivalenceMatrix"
+                    ],
+                    "properties": {
+                      "capabilityId": {
+                        "type": "string"
+                      },
+                      "targetLanguages": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "equivalenceStatus": {
+                        "type": "string",
+                        "enum": [
+                          "equivalent",
+                          "divergent"
+                        ]
+                      },
+                      "fullyEquivalent": {
+                        "type": "boolean"
+                      },
+                      "totalFixtures": {
+                        "type": "integer"
+                      },
+                      "divergentFixtureCount": {
+                        "type": "integer"
+                      },
+                      "equivalenceMatrix": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "fixtureId",
+                            "isEquivalent",
+                            "languageDispositions"
+                          ],
+                          "properties": {
+                            "fixtureId": {
+                              "type": "string"
+                            },
+                            "isEquivalent": {
+                              "type": "boolean"
+                            },
+                            "languageDispositions": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:derive-cross-language-equivalence-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "capabilityId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.capabilityId"
+                },
+                "targetLanguages": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.targetLanguages"
+                },
+                "equivalenceStatus": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.equivalenceStatus"
+                },
+                "fullyEquivalent": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.fullyEquivalent"
+                },
+                "totalFixtures": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.totalFixtures"
+                },
+                "divergentFixtureCount": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.divergentFixtureCount"
+                },
+                "equivalenceMatrix": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.equivalenceMatrix"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:derive-cross-language-equivalence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/contracts/input.schema.json",
+          "entryDigest": "sha256:f1bdaf8d850dc26ecba769e097ec372836050c6001aa1a20874c01fc8cf7bb25",
+          "snapshot": "data/capsule-evidence/entries/f1bdaf8d850dc26ecba769e097ec372836050c6001aa1a20874c01fc8cf7bb25-b0b42264c77bc457.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "cross-language-equivalence-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "capabilityId",
+                "targetLanguages",
+                "equivalenceStatus",
+                "fullyEquivalent",
+                "totalFixtures",
+                "divergentFixtureCount",
+                "equivalenceMatrix"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "type": "string"
+                },
+                "targetLanguages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "equivalenceStatus": {
+                  "type": "string",
+                  "enum": [
+                    "equivalent",
+                    "divergent"
+                  ]
+                },
+                "fullyEquivalent": {
+                  "type": "boolean"
+                },
+                "totalFixtures": {
+                  "type": "integer"
+                },
+                "divergentFixtureCount": {
+                  "type": "integer"
+                },
+                "equivalenceMatrix": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "fixtureId",
+                      "isEquivalent",
+                      "languageDispositions"
+                    ],
+                    "properties": {
+                      "fixtureId": {
+                        "type": "string"
+                      },
+                      "isEquivalent": {
+                        "type": "boolean"
+                      },
+                      "languageDispositions": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:ef750c7bf1294bbdd92365a02fe2087d694545ed09254458aa2cad5d1d1ab2bc",
+          "snapshot": "data/capsule-evidence/entries/ef750c7bf1294bbdd92365a02fe2087d694545ed09254458aa2cad5d1d1ab2bc-bb7df405e05db3f2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "capabilityId",
+            "targetLanguages",
+            "equivalenceStatus",
+            "fullyEquivalent",
+            "totalFixtures",
+            "divergentFixtureCount",
+            "equivalenceMatrix"
+          ],
+          "properties": {
+            "capabilityId": {
+              "type": "string"
+            },
+            "targetLanguages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "equivalenceStatus": {
+              "type": "string",
+              "enum": [
+                "equivalent",
+                "divergent"
+              ]
+            },
+            "fullyEquivalent": {
+              "type": "boolean"
+            },
+            "totalFixtures": {
+              "type": "integer"
+            },
+            "divergentFixtureCount": {
+              "type": "integer"
+            },
+            "equivalenceMatrix": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "fixtureId",
+                  "isEquivalent",
+                  "languageDispositions"
+                ],
+                "properties": {
+                  "fixtureId": {
+                    "type": "string"
+                  },
+                  "isEquivalent": {
+                    "type": "boolean"
+                  },
+                  "languageDispositions": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-575ca525d20915d5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-32ea4fff27202ddd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-e5ebbbfec0df02c3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-3dd95cb01713560d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "full-equivalence-typescript-rust",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "order-processing",
+                "targetLanguages": [
+                  "typescript",
+                  "rust"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 2,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-order-created",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "rust": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-order-rejected",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "rust": "terminated"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "order-processing",
+                  "targetLanguages": [
+                    "typescript",
+                    "rust"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 2,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-order-created",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "rust": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-order-rejected",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "rust": "terminated"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "fully-equivalent-verified",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "divergence-count-zero",
+                  "path": "divergentFixtureCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "divergence-detected-python",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "payment-gateway",
+                "targetLanguages": [
+                  "typescript",
+                  "python"
+                ],
+                "equivalenceStatus": "divergent",
+                "fullyEquivalent": false,
+                "totalFixtures": 2,
+                "divergentFixtureCount": 1,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-auth-success",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "python": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-auth-timeout",
+                    "isEquivalent": false,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "python": "failed"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "payment-gateway",
+                  "targetLanguages": [
+                    "typescript",
+                    "python"
+                  ],
+                  "equivalenceStatus": "divergent",
+                  "fullyEquivalent": false,
+                  "totalFixtures": 2,
+                  "divergentFixtureCount": 1,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-auth-success",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "python": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-auth-timeout",
+                      "isEquivalent": false,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "python": "failed"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "divergent"
+                },
+                {
+                  "conditionId": "fully-equivalent-false",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "divergence-count-matches",
+                  "path": "divergentFixtureCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "tri-language-full-equivalence",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "token-signer",
+                "targetLanguages": [
+                  "go",
+                  "typescript",
+                  "csharp"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 3,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-valid-key",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "go": "terminated",
+                      "typescript": "terminated",
+                      "csharp": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-expired-key",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "go": "terminated",
+                      "typescript": "terminated",
+                      "csharp": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-malformed-sig",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "go": "terminated",
+                      "typescript": "terminated",
+                      "csharp": "terminated"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "token-signer",
+                  "targetLanguages": [
+                    "go",
+                    "typescript",
+                    "csharp"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 3,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-valid-key",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "go": "terminated",
+                        "typescript": "terminated",
+                        "csharp": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-expired-key",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "go": "terminated",
+                        "typescript": "terminated",
+                        "csharp": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-malformed-sig",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "go": "terminated",
+                        "typescript": "terminated",
+                        "csharp": "terminated"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "total-fixtures-matches",
+                  "path": "totalFixtures",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multi-fixture-multiple-divergences",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "data-transformer",
+                "targetLanguages": [
+                  "python",
+                  "rust"
+                ],
+                "equivalenceStatus": "divergent",
+                "fullyEquivalent": false,
+                "totalFixtures": 3,
+                "divergentFixtureCount": 2,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-json-clean",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "python": "terminated",
+                      "rust": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-unicode-surrogate",
+                    "isEquivalent": false,
+                    "languageDispositions": {
+                      "python": "terminated",
+                      "rust": "failed"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-number-overflow",
+                    "isEquivalent": false,
+                    "languageDispositions": {
+                      "python": "terminated",
+                      "rust": "failed"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "data-transformer",
+                  "targetLanguages": [
+                    "python",
+                    "rust"
+                  ],
+                  "equivalenceStatus": "divergent",
+                  "fullyEquivalent": false,
+                  "totalFixtures": 3,
+                  "divergentFixtureCount": 2,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-json-clean",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "python": "terminated",
+                        "rust": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-unicode-surrogate",
+                      "isEquivalent": false,
+                      "languageDispositions": {
+                        "python": "terminated",
+                        "rust": "failed"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-number-overflow",
+                      "isEquivalent": false,
+                      "languageDispositions": {
+                        "python": "terminated",
+                        "rust": "failed"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "divergent"
+                },
+                {
+                  "conditionId": "divergence-count-matches",
+                  "path": "divergentFixtureCount",
+                  "operator": "equals",
+                  "value": 2
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-target-language-baseline",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "schema-validator",
+                "targetLanguages": [
+                  "typescript"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 1,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-valid-doc",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "schema-validator",
+                  "targetLanguages": [
+                    "typescript"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 1,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-valid-doc",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "total-fixtures-matches",
+                  "path": "totalFixtures",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-matrix-baseline",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "noop-capability",
+                "targetLanguages": [
+                  "typescript",
+                  "go"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 0,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": []
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "noop-capability",
+                  "targetLanguages": [
+                    "typescript",
+                    "go"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 0,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "total-fixtures-matches",
+                  "path": "totalFixtures",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-d4e1000135792939.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one set of canonical fixture dispositions observed across languages",
+        "line": 25
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/contracts/input.schema.json",
+          "entryDigest": "sha256:f1bdaf8d850dc26ecba769e097ec372836050c6001aa1a20874c01fc8cf7bb25",
+          "snapshot": "data/capsule-evidence/entries/f1bdaf8d850dc26ecba769e097ec372836050c6001aa1a20874c01fc8cf7bb25-b0b42264c77bc457.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "cross-language-equivalence-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "capabilityId",
+                "targetLanguages",
+                "equivalenceStatus",
+                "fullyEquivalent",
+                "totalFixtures",
+                "divergentFixtureCount",
+                "equivalenceMatrix"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "type": "string"
+                },
+                "targetLanguages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "equivalenceStatus": {
+                  "type": "string",
+                  "enum": [
+                    "equivalent",
+                    "divergent"
+                  ]
+                },
+                "fullyEquivalent": {
+                  "type": "boolean"
+                },
+                "totalFixtures": {
+                  "type": "integer"
+                },
+                "divergentFixtureCount": {
+                  "type": "integer"
+                },
+                "equivalenceMatrix": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "fixtureId",
+                      "isEquivalent",
+                      "languageDispositions"
+                    ],
+                    "properties": {
+                      "fixtureId": {
+                        "type": "string"
+                      },
+                      "isEquivalent": {
+                        "type": "boolean"
+                      },
+                      "languageDispositions": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:ef750c7bf1294bbdd92365a02fe2087d694545ed09254458aa2cad5d1d1ab2bc",
+          "snapshot": "data/capsule-evidence/entries/ef750c7bf1294bbdd92365a02fe2087d694545ed09254458aa2cad5d1d1ab2bc-bb7df405e05db3f2.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "capabilityId",
+            "targetLanguages",
+            "equivalenceStatus",
+            "fullyEquivalent",
+            "totalFixtures",
+            "divergentFixtureCount",
+            "equivalenceMatrix"
+          ],
+          "properties": {
+            "capabilityId": {
+              "type": "string"
+            },
+            "targetLanguages": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "equivalenceStatus": {
+              "type": "string",
+              "enum": [
+                "equivalent",
+                "divergent"
+              ]
+            },
+            "fullyEquivalent": {
+              "type": "boolean"
+            },
+            "totalFixtures": {
+              "type": "integer"
+            },
+            "divergentFixtureCount": {
+              "type": "integer"
+            },
+            "equivalenceMatrix": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "fixtureId",
+                  "isEquivalent",
+                  "languageDispositions"
+                ],
+                "properties": {
+                  "fixtureId": {
+                    "type": "string"
+                  },
+                  "isEquivalent": {
+                    "type": "boolean"
+                  },
+                  "languageDispositions": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-575ca525d20915d5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-32ea4fff27202ddd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-e5ebbbfec0df02c3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-3dd95cb01713560d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "release consumer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "derive-cross-language-equivalence",
+          "scenario": {
+            "scenarioId": "derive-cross-language-equivalence",
+            "input": {
+              "inputId": "cross-language-equivalence-input",
+              "contract": {
+                "contractId": "cross-language-equivalence-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "cross-language-equivalence-derivation-requested",
+              "executionAuthorityId": "cross-language-equivalence-derivation.v1"
+            },
+            "outcome": {
+              "outcomeId": "cross-language-equivalence-known",
+              "contract": {
+                "contractId": "cross-language-equivalence-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "derive-cross-language-equivalence.operation.1",
+              "mechanicBindingId": "port:derive-cross-language-equivalence-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "cross-language-equivalence-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "f1bdaf8d850dc26ecba769e097ec372836050c6001aa1a20874c01fc8cf7bb25",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "cross-language-equivalence-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "capabilityId",
+                          "targetLanguages",
+                          "equivalenceStatus",
+                          "fullyEquivalent",
+                          "totalFixtures",
+                          "divergentFixtureCount",
+                          "equivalenceMatrix"
+                        ],
+                        "properties": {
+                          "capabilityId": {
+                            "type": "string"
+                          },
+                          "targetLanguages": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "equivalenceStatus": {
+                            "type": "string",
+                            "enum": [
+                              "equivalent",
+                              "divergent"
+                            ]
+                          },
+                          "fullyEquivalent": {
+                            "type": "boolean"
+                          },
+                          "totalFixtures": {
+                            "type": "integer"
+                          },
+                          "divergentFixtureCount": {
+                            "type": "integer"
+                          },
+                          "equivalenceMatrix": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "required": [
+                                "fixtureId",
+                                "isEquivalent",
+                                "languageDispositions"
+                              ],
+                              "properties": {
+                                "fixtureId": {
+                                  "type": "string"
+                                },
+                                "isEquivalent": {
+                                  "type": "boolean"
+                                },
+                                "languageDispositions": {
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "cross-language-equivalence-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "ef750c7bf1294bbdd92365a02fe2087d694545ed09254458aa2cad5d1d1ab2bc",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "capabilityId",
+                      "targetLanguages",
+                      "equivalenceStatus",
+                      "fullyEquivalent",
+                      "totalFixtures",
+                      "divergentFixtureCount",
+                      "equivalenceMatrix"
+                    ],
+                    "properties": {
+                      "capabilityId": {
+                        "type": "string"
+                      },
+                      "targetLanguages": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "equivalenceStatus": {
+                        "type": "string",
+                        "enum": [
+                          "equivalent",
+                          "divergent"
+                        ]
+                      },
+                      "fullyEquivalent": {
+                        "type": "boolean"
+                      },
+                      "totalFixtures": {
+                        "type": "integer"
+                      },
+                      "divergentFixtureCount": {
+                        "type": "integer"
+                      },
+                      "equivalenceMatrix": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "fixtureId",
+                            "isEquivalent",
+                            "languageDispositions"
+                          ],
+                          "properties": {
+                            "fixtureId": {
+                              "type": "string"
+                            },
+                            "isEquivalent": {
+                              "type": "boolean"
+                            },
+                            "languageDispositions": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:derive-cross-language-equivalence-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "capabilityId": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.capabilityId"
+                },
+                "targetLanguages": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.targetLanguages"
+                },
+                "equivalenceStatus": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.equivalenceStatus"
+                },
+                "fullyEquivalent": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.fullyEquivalent"
+                },
+                "totalFixtures": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.totalFixtures"
+                },
+                "divergentFixtureCount": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.divergentFixtureCount"
+                },
+                "equivalenceMatrix": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.equivalenceMatrix"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:derive-cross-language-equivalence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every shared fixture has an explicit per-language equivalence result and the equivalence matrix contains every fixture and targeted language",
+        "line": 27
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "full-equivalence-typescript-rust",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "order-processing",
+                "targetLanguages": [
+                  "typescript",
+                  "rust"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 2,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-order-created",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "rust": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-order-rejected",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "rust": "terminated"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "order-processing",
+                  "targetLanguages": [
+                    "typescript",
+                    "rust"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 2,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-order-created",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "rust": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-order-rejected",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "rust": "terminated"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "fully-equivalent-verified",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                },
+                {
+                  "conditionId": "divergence-count-zero",
+                  "path": "divergentFixtureCount",
+                  "operator": "equals",
+                  "value": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "divergence-detected-python",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "payment-gateway",
+                "targetLanguages": [
+                  "typescript",
+                  "python"
+                ],
+                "equivalenceStatus": "divergent",
+                "fullyEquivalent": false,
+                "totalFixtures": 2,
+                "divergentFixtureCount": 1,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-auth-success",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "python": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-auth-timeout",
+                    "isEquivalent": false,
+                    "languageDispositions": {
+                      "typescript": "terminated",
+                      "python": "failed"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "payment-gateway",
+                  "targetLanguages": [
+                    "typescript",
+                    "python"
+                  ],
+                  "equivalenceStatus": "divergent",
+                  "fullyEquivalent": false,
+                  "totalFixtures": 2,
+                  "divergentFixtureCount": 1,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-auth-success",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "python": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-auth-timeout",
+                      "isEquivalent": false,
+                      "languageDispositions": {
+                        "typescript": "terminated",
+                        "python": "failed"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "divergent"
+                },
+                {
+                  "conditionId": "fully-equivalent-false",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": false
+                },
+                {
+                  "conditionId": "divergence-count-matches",
+                  "path": "divergentFixtureCount",
+                  "operator": "equals",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "tri-language-full-equivalence",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "token-signer",
+                "targetLanguages": [
+                  "go",
+                  "typescript",
+                  "csharp"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 3,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-valid-key",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "go": "terminated",
+                      "typescript": "terminated",
+                      "csharp": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-expired-key",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "go": "terminated",
+                      "typescript": "terminated",
+                      "csharp": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-malformed-sig",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "go": "terminated",
+                      "typescript": "terminated",
+                      "csharp": "terminated"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "token-signer",
+                  "targetLanguages": [
+                    "go",
+                    "typescript",
+                    "csharp"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 3,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-valid-key",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "go": "terminated",
+                        "typescript": "terminated",
+                        "csharp": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-expired-key",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "go": "terminated",
+                        "typescript": "terminated",
+                        "csharp": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-malformed-sig",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "go": "terminated",
+                        "typescript": "terminated",
+                        "csharp": "terminated"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "total-fixtures-matches",
+                  "path": "totalFixtures",
+                  "operator": "equals",
+                  "value": 3
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multi-fixture-multiple-divergences",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "data-transformer",
+                "targetLanguages": [
+                  "python",
+                  "rust"
+                ],
+                "equivalenceStatus": "divergent",
+                "fullyEquivalent": false,
+                "totalFixtures": 3,
+                "divergentFixtureCount": 2,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-json-clean",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "python": "terminated",
+                      "rust": "terminated"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-unicode-surrogate",
+                    "isEquivalent": false,
+                    "languageDispositions": {
+                      "python": "terminated",
+                      "rust": "failed"
+                    }
+                  },
+                  {
+                    "fixtureId": "fx-number-overflow",
+                    "isEquivalent": false,
+                    "languageDispositions": {
+                      "python": "terminated",
+                      "rust": "failed"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "data-transformer",
+                  "targetLanguages": [
+                    "python",
+                    "rust"
+                  ],
+                  "equivalenceStatus": "divergent",
+                  "fullyEquivalent": false,
+                  "totalFixtures": 3,
+                  "divergentFixtureCount": 2,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-json-clean",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "python": "terminated",
+                        "rust": "terminated"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-unicode-surrogate",
+                      "isEquivalent": false,
+                      "languageDispositions": {
+                        "python": "terminated",
+                        "rust": "failed"
+                      }
+                    },
+                    {
+                      "fixtureId": "fx-number-overflow",
+                      "isEquivalent": false,
+                      "languageDispositions": {
+                        "python": "terminated",
+                        "rust": "failed"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "divergent"
+                },
+                {
+                  "conditionId": "divergence-count-matches",
+                  "path": "divergentFixtureCount",
+                  "operator": "equals",
+                  "value": 2
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "single-target-language-baseline",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "schema-validator",
+                "targetLanguages": [
+                  "typescript"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 1,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": [
+                  {
+                    "fixtureId": "fx-valid-doc",
+                    "isEquivalent": true,
+                    "languageDispositions": {
+                      "typescript": "terminated"
+                    }
+                  }
+                ]
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "schema-validator",
+                  "targetLanguages": [
+                    "typescript"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 1,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": [
+                    {
+                      "fixtureId": "fx-valid-doc",
+                      "isEquivalent": true,
+                      "languageDispositions": {
+                        "typescript": "terminated"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "total-fixtures-matches",
+                  "path": "totalFixtures",
+                  "operator": "equals",
+                  "value": 1
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/derive-cross-language-equivalence/fixtures.authority.json",
+          "entryDigest": "sha256:b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194",
+          "snapshot": "data/capsule-evidence/entries/b648e50154a96cadc24b8a541df5191b413690b1134e44b1a5c4eafd317ea194-15f7c1415b224f76.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "empty-matrix-baseline",
+            "input": {
+              "contractId": "cross-language-equivalence-input.v1",
+              "payload": {
+                "capabilityId": "noop-capability",
+                "targetLanguages": [
+                  "typescript",
+                  "go"
+                ],
+                "equivalenceStatus": "equivalent",
+                "fullyEquivalent": true,
+                "totalFixtures": 0,
+                "divergentFixtureCount": 0,
+                "equivalenceMatrix": []
+              }
+            },
+            "portOutcomes": {
+              "derive-cross-language-equivalence-port": {
+                "output": {
+                  "capabilityId": "noop-capability",
+                  "targetLanguages": [
+                    "typescript",
+                    "go"
+                  ],
+                  "equivalenceStatus": "equivalent",
+                  "fullyEquivalent": true,
+                  "totalFixtures": 0,
+                  "divergentFixtureCount": 0,
+                  "equivalenceMatrix": []
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "derive-cross-language-equivalence",
+              "scenarioSequence": [
+                "derive-cross-language-equivalence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "equivalence-status-matches",
+                  "path": "equivalenceStatus",
+                  "operator": "equals",
+                  "value": "equivalent"
+                },
+                {
+                  "conditionId": "total-fixtures-matches",
+                  "path": "totalFixtures",
+                  "operator": "equals",
+                  "value": 0
+                },
+                {
+                  "conditionId": "fully-equivalent-matches",
+                  "path": "fullyEquivalent",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:derive-cross-language-equivalence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "derive-cross-language-equivalence",
+        "scenario": {
+          "scenarioId": "derive-cross-language-equivalence",
+          "input": {
+            "inputId": "cross-language-equivalence-input",
+            "contract": {
+              "contractId": "cross-language-equivalence-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "cross-language-equivalence-derivation-requested",
+            "executionAuthorityId": "cross-language-equivalence-derivation.v1"
+          },
+          "outcome": {
+            "outcomeId": "cross-language-equivalence-known",
+            "contract": {
+              "contractId": "cross-language-equivalence-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "derive-cross-language-equivalence.operation.1",
+            "mechanicBindingId": "port:derive-cross-language-equivalence-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/derive-cross-language-equivalence/execution-plan.node.json",
+          "entryDigest": "sha256:2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132",
+          "snapshot": "data/capsule-evidence/entries/2ea697d495b648f5be2aa3cff8297588e7963fdaf05cbfbdaff3415f5395b132-01da07d389d0a03a.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

@@ -1,0 +1,16 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object",
+ "required":["key","capabilityId","scenarioId","source","inputExperience","eventExperience","outcomeExperience","visualFamily","actors","environment","reviewRequired"],
+ "properties":{
+   "key":{"type":"string","minLength":1},
+   "source":{"type":"object","required":["featureDigest","capsuleDigest","scenarioLine","snapshot"]},
+   "inputExperience":{"$ref":"#/$defs/phase"},
+   "eventExperience":{"$ref":"#/$defs/phase"},
+   "outcomeExperience":{"$ref":"#/$defs/phase"},
+   "reviewRequired":{"const":true},
+   "actors":{"type":"array"},
+   "environment":{"type":"object"}
+ },
+ "$defs":{"phase":{"type":"object","required":["meaning","sourceSteps","overlay"],"properties":{"meaning":{"type":"string"},"sourceSteps":{"type":"array","items":{"type":"object","required":["text","line"]}}}}}
+}

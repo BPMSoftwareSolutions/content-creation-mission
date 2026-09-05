@@ -1,0 +1,3469 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "publish-implementation-evidence::publish-implementation-evidence",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:2a1005fb3fb7e3a60dd365519f241554fec9d713e73105647e287cac4c7ae83c"
+  },
+  "scenarioSurface": {
+    "key": "publish-implementation-evidence::publish-implementation-evidence",
+    "capabilityId": "publish-implementation-evidence",
+    "capabilityName": "Publish implementation evidence",
+    "scenarioId": "publish-implementation-evidence",
+    "scenarioName": "Construct one versioned implementation evidence artifact from a coherent evidence set",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one coherent evidence set covering a language implementation",
+        "line": 25
+      }
+    ],
+    "event": [
+      {
+        "text": "a versioned implementation evidence artifact is constructed from that evidence set",
+        "line": 26
+      }
+    ],
+    "outcome": [
+      {
+        "text": "the published artifact carries complete source, input, environment, disposition, time, and digest lineage",
+        "line": 27
+      }
+    ],
+    "products": [
+      "implementation-evidence-publication-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "release-consumer"
+    ],
+    "altitude": null,
+    "notes": "  A release consumer needs one inspectable, current admission record for a\n  language implementation, not a scattered set of intermediate evaluations.\n  The capability constructs a versioned implementation evidence artifact\n  from one coherent evidence set.\n\n  The published artifact carries complete source, input, environment,\n  disposition, timestamp, and digest lineage. The capability does not\n  evaluate any conformance itself — it only publishes the already-produced\n  evidence as one coherent, versioned artifact.",
+    "source": {
+      "capsuleFile": "publish-implementation-evidence.sfxcap",
+      "capsuleDigest": "sha256:2a1005fb3fb7e3a60dd365519f241554fec9d713e73105647e287cac4c7ae83c",
+      "featureEntry": "features/publish-implementation-evidence.feature",
+      "featureDigest": "sha256:675d777cf36741d554c83b4ef3864801a5af1ce9eaccc30e93dfb5453dbcb733",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/publish-implementation-evidence.feature",
+      "scenarioLine": 24
+    },
+    "tags": [
+      "@capability:publish-implementation-evidence",
+      "@root-scenario:publish-implementation-evidence",
+      "@scenario:publish-implementation-evidence",
+      "@input:implementation-evidence-publication-input",
+      "@input-contract:implementation-evidence-publication-input.v1",
+      "@event:implementation-evidence-publication-requested",
+      "@event-authority:implementation-evidence-publication.v1",
+      "@outcome:implementation-evidence-publication-known",
+      "@outcome-contract:published-implementation-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "publish-implementation-evidence",
+          "scenario": {
+            "scenarioId": "publish-implementation-evidence",
+            "input": {
+              "inputId": "implementation-evidence-publication-input",
+              "contract": {
+                "contractId": "implementation-evidence-publication-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "implementation-evidence-publication-requested",
+              "executionAuthorityId": "implementation-evidence-publication.v1"
+            },
+            "outcome": {
+              "outcomeId": "implementation-evidence-publication-known",
+              "contract": {
+                "contractId": "published-implementation-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "publish-implementation-evidence.operation.1",
+              "mechanicBindingId": "port:publish-implementation-evidence-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "implementation-evidence-publication-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "ca0c2ce3b235f83dbe091f15abcfd04c9d04cde133e32bca856d485eee42fdf1",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "implementation-evidence-publication-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "version",
+                          "source",
+                          "input",
+                          "environment",
+                          "disposition",
+                          "timestamp",
+                          "digestLineage"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "version": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "object"
+                          },
+                          "input": {
+                            "type": "object"
+                          },
+                          "environment": {
+                            "type": "object"
+                          },
+                          "disposition": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "string"
+                          },
+                          "digestLineage": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "published-implementation-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "39c016399c1536e190fc7a31225f757fc93b68a2f8c180a6a418e66bad5a6af6",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "published-implementation-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "version",
+                          "source",
+                          "input",
+                          "environment",
+                          "disposition",
+                          "timestamp",
+                          "digestLineage",
+                          "status"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "version": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "object"
+                          },
+                          "input": {
+                            "type": "object"
+                          },
+                          "environment": {
+                            "type": "object"
+                          },
+                          "disposition": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "string"
+                          },
+                          "digestLineage": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:publish-implementation-evidence-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "published-implementation-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "implementationId": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.implementationId"
+                    },
+                    "version": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.version"
+                    },
+                    "source": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.source"
+                    },
+                    "input": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.input"
+                    },
+                    "environment": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.environment"
+                    },
+                    "disposition": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.disposition"
+                    },
+                    "timestamp": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.timestamp"
+                    },
+                    "digestLineage": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.digestLineage"
+                    },
+                    "status": {
+                      "op": "literal",
+                      "value": "published"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:publish-implementation-evidence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/publish-implementation-evidence/contracts/input.schema.json",
+          "entryDigest": "sha256:ca0c2ce3b235f83dbe091f15abcfd04c9d04cde133e32bca856d485eee42fdf1",
+          "snapshot": "data/capsule-evidence/entries/ca0c2ce3b235f83dbe091f15abcfd04c9d04cde133e32bca856d485eee42fdf1-9790198b9f47eae7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "implementation-evidence-publication-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "version",
+                "source",
+                "input",
+                "environment",
+                "disposition",
+                "timestamp",
+                "digestLineage"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "object"
+                },
+                "input": {
+                  "type": "object"
+                },
+                "environment": {
+                  "type": "object"
+                },
+                "disposition": {
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": "string"
+                },
+                "digestLineage": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/publish-implementation-evidence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:39c016399c1536e190fc7a31225f757fc93b68a2f8c180a6a418e66bad5a6af6",
+          "snapshot": "data/capsule-evidence/entries/39c016399c1536e190fc7a31225f757fc93b68a2f8c180a6a418e66bad5a6af6-1ec7d79b8882badd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "published-implementation-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "version",
+                "source",
+                "input",
+                "environment",
+                "disposition",
+                "timestamp",
+                "digestLineage",
+                "status"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "object"
+                },
+                "input": {
+                  "type": "object"
+                },
+                "environment": {
+                  "type": "object"
+                },
+                "disposition": {
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": "string"
+                },
+                "digestLineage": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-0c6da1a281741eed.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-1a732dc385b319c3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-a73ea7bb32b187ca.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-0cb96fd4eccb6ee9.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-conforming-ts-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "typescript-runtime",
+                "version": "1.0.0",
+                "source": {
+                  "repository": "https://github.com/org/ts-runtime",
+                  "commit": "a1b2c3d"
+                },
+                "input": {
+                  "suiteId": "ts-conformance-suite.v1"
+                },
+                "environment": {
+                  "os": "linux",
+                  "arch": "x64",
+                  "node": "20.10.0"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-15T12:00:00Z",
+                "digestLineage": [
+                  "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "typescript-runtime",
+                    "version": "1.0.0",
+                    "source": {
+                      "repository": "https://github.com/org/ts-runtime",
+                      "commit": "a1b2c3d"
+                    },
+                    "input": {
+                      "suiteId": "ts-conformance-suite.v1"
+                    },
+                    "environment": {
+                      "os": "linux",
+                      "arch": "x64",
+                      "node": "20.10.0"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-15T12:00:00Z",
+                    "digestLineage": [
+                      "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "typescript-runtime"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-non-conforming-ts-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "typescript-runtime",
+                "version": "1.0.1-rc1",
+                "source": {
+                  "repository": "https://github.com/org/ts-runtime",
+                  "commit": "e4f5g6h"
+                },
+                "input": {
+                  "suiteId": "ts-conformance-suite.v1"
+                },
+                "environment": {
+                  "os": "linux",
+                  "arch": "x64",
+                  "node": "20.10.0"
+                },
+                "disposition": "non-conforming",
+                "timestamp": "2024-01-16T15:30:00Z",
+                "digestLineage": [
+                  "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "typescript-runtime",
+                    "version": "1.0.1-rc1",
+                    "source": {
+                      "repository": "https://github.com/org/ts-runtime",
+                      "commit": "e4f5g6h"
+                    },
+                    "input": {
+                      "suiteId": "ts-conformance-suite.v1"
+                    },
+                    "environment": {
+                      "os": "linux",
+                      "arch": "x64",
+                      "node": "20.10.0"
+                    },
+                    "disposition": "non-conforming",
+                    "timestamp": "2024-01-16T15:30:00Z",
+                    "digestLineage": [
+                      "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "typescript-runtime"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "non-conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-conforming-rust-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "rust-engine",
+                "version": "0.9.0",
+                "source": {
+                  "repository": "https://github.com/org/rust-engine",
+                  "commit": "7a8b9c0"
+                },
+                "input": {
+                  "suiteId": "rust-engine-compliance.v2"
+                },
+                "environment": {
+                  "os": "macos",
+                  "arch": "arm64",
+                  "rustc": "1.75.0"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-17T09:15:00Z",
+                "digestLineage": [
+                  "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "rust-engine",
+                    "version": "0.9.0",
+                    "source": {
+                      "repository": "https://github.com/org/rust-engine",
+                      "commit": "7a8b9c0"
+                    },
+                    "input": {
+                      "suiteId": "rust-engine-compliance.v2"
+                    },
+                    "environment": {
+                      "os": "macos",
+                      "arch": "arm64",
+                      "rustc": "1.75.0"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-17T09:15:00Z",
+                    "digestLineage": [
+                      "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "rust-engine"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-partial-go-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "go-runner",
+                "version": "2.1.0",
+                "source": {
+                  "repository": "https://github.com/org/go-runner",
+                  "commit": "deadbeef123"
+                },
+                "input": {
+                  "suiteId": "go-runner-harness.v1"
+                },
+                "environment": {
+                  "os": "windows",
+                  "arch": "x64",
+                  "go": "1.21.5"
+                },
+                "disposition": "partial-conformance",
+                "timestamp": "2024-01-18T18:45:00Z",
+                "digestLineage": [
+                  "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "go-runner",
+                    "version": "2.1.0",
+                    "source": {
+                      "repository": "https://github.com/org/go-runner",
+                      "commit": "deadbeef123"
+                    },
+                    "input": {
+                      "suiteId": "go-runner-harness.v1"
+                    },
+                    "environment": {
+                      "os": "windows",
+                      "arch": "x64",
+                      "go": "1.21.5"
+                    },
+                    "disposition": "partial-conformance",
+                    "timestamp": "2024-01-18T18:45:00Z",
+                    "digestLineage": [
+                      "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "go-runner"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "partial-conformance"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-python-bridge",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "python-bridge",
+                "version": "3.4.0",
+                "source": {
+                  "repository": "https://github.com/org/python-bridge",
+                  "commit": "abcdef12345"
+                },
+                "input": {
+                  "suiteId": "py-integration-suite.v1"
+                },
+                "environment": {
+                  "os": "linux",
+                  "arch": "arm64",
+                  "python": "3.12.1"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-19T10:00:00Z",
+                "digestLineage": [
+                  "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "python-bridge",
+                    "version": "3.4.0",
+                    "source": {
+                      "repository": "https://github.com/org/python-bridge",
+                      "commit": "abcdef12345"
+                    },
+                    "input": {
+                      "suiteId": "py-integration-suite.v1"
+                    },
+                    "environment": {
+                      "os": "linux",
+                      "arch": "arm64",
+                      "python": "3.12.1"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-19T10:00:00Z",
+                    "digestLineage": [
+                      "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "python-bridge"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-csharp-driver",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "csharp-driver",
+                "version": "5.0.0",
+                "source": {
+                  "repository": "https://github.com/org/csharp-driver",
+                  "commit": "98765fedcba"
+                },
+                "input": {
+                  "suiteId": "dotnet-conformance.v3"
+                },
+                "environment": {
+                  "os": "windows",
+                  "arch": "x64",
+                  "dotnet": "8.0.100"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-20T14:20:00Z",
+                "digestLineage": [
+                  "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "csharp-driver",
+                    "version": "5.0.0",
+                    "source": {
+                      "repository": "https://github.com/org/csharp-driver",
+                      "commit": "98765fedcba"
+                    },
+                    "input": {
+                      "suiteId": "dotnet-conformance.v3"
+                    },
+                    "environment": {
+                      "os": "windows",
+                      "arch": "x64",
+                      "dotnet": "8.0.100"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-20T14:20:00Z",
+                    "digestLineage": [
+                      "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "csharp-driver"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-cde44852a1d9f012.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one coherent evidence set covering a language implementation",
+        "line": 25
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/publish-implementation-evidence/contracts/input.schema.json",
+          "entryDigest": "sha256:ca0c2ce3b235f83dbe091f15abcfd04c9d04cde133e32bca856d485eee42fdf1",
+          "snapshot": "data/capsule-evidence/entries/ca0c2ce3b235f83dbe091f15abcfd04c9d04cde133e32bca856d485eee42fdf1-9790198b9f47eae7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "implementation-evidence-publication-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "version",
+                "source",
+                "input",
+                "environment",
+                "disposition",
+                "timestamp",
+                "digestLineage"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "object"
+                },
+                "input": {
+                  "type": "object"
+                },
+                "environment": {
+                  "type": "object"
+                },
+                "disposition": {
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": "string"
+                },
+                "digestLineage": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/publish-implementation-evidence/contracts/outcome.schema.json",
+          "entryDigest": "sha256:39c016399c1536e190fc7a31225f757fc93b68a2f8c180a6a418e66bad5a6af6",
+          "snapshot": "data/capsule-evidence/entries/39c016399c1536e190fc7a31225f757fc93b68a2f8c180a6a418e66bad5a6af6-1ec7d79b8882badd.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "published-implementation-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "version",
+                "source",
+                "input",
+                "environment",
+                "disposition",
+                "timestamp",
+                "digestLineage",
+                "status"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "object"
+                },
+                "input": {
+                  "type": "object"
+                },
+                "environment": {
+                  "type": "object"
+                },
+                "disposition": {
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": "string"
+                },
+                "digestLineage": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-0c6da1a281741eed.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-1a732dc385b319c3.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-a73ea7bb32b187ca.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-0cb96fd4eccb6ee9.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "release-consumer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "publish-implementation-evidence",
+          "scenario": {
+            "scenarioId": "publish-implementation-evidence",
+            "input": {
+              "inputId": "implementation-evidence-publication-input",
+              "contract": {
+                "contractId": "implementation-evidence-publication-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "implementation-evidence-publication-requested",
+              "executionAuthorityId": "implementation-evidence-publication.v1"
+            },
+            "outcome": {
+              "outcomeId": "implementation-evidence-publication-known",
+              "contract": {
+                "contractId": "published-implementation-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "publish-implementation-evidence.operation.1",
+              "mechanicBindingId": "port:publish-implementation-evidence-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "implementation-evidence-publication-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "ca0c2ce3b235f83dbe091f15abcfd04c9d04cde133e32bca856d485eee42fdf1",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "implementation-evidence-publication-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "version",
+                          "source",
+                          "input",
+                          "environment",
+                          "disposition",
+                          "timestamp",
+                          "digestLineage"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "version": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "object"
+                          },
+                          "input": {
+                            "type": "object"
+                          },
+                          "environment": {
+                            "type": "object"
+                          },
+                          "disposition": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "string"
+                          },
+                          "digestLineage": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "published-implementation-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "39c016399c1536e190fc7a31225f757fc93b68a2f8c180a6a418e66bad5a6af6",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "published-implementation-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "version",
+                          "source",
+                          "input",
+                          "environment",
+                          "disposition",
+                          "timestamp",
+                          "digestLineage",
+                          "status"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "version": {
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "object"
+                          },
+                          "input": {
+                            "type": "object"
+                          },
+                          "environment": {
+                            "type": "object"
+                          },
+                          "disposition": {
+                            "type": "string"
+                          },
+                          "timestamp": {
+                            "type": "string"
+                          },
+                          "digestLineage": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:publish-implementation-evidence-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "published-implementation-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "implementationId": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.implementationId"
+                    },
+                    "version": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.version"
+                    },
+                    "source": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.source"
+                    },
+                    "input": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.input"
+                    },
+                    "environment": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.environment"
+                    },
+                    "disposition": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.disposition"
+                    },
+                    "timestamp": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.timestamp"
+                    },
+                    "digestLineage": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.digestLineage"
+                    },
+                    "status": {
+                      "op": "literal",
+                      "value": "published"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:publish-implementation-evidence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "the published artifact carries complete source, input, environment, disposition, time, and digest lineage",
+        "line": 27
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-conforming-ts-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "typescript-runtime",
+                "version": "1.0.0",
+                "source": {
+                  "repository": "https://github.com/org/ts-runtime",
+                  "commit": "a1b2c3d"
+                },
+                "input": {
+                  "suiteId": "ts-conformance-suite.v1"
+                },
+                "environment": {
+                  "os": "linux",
+                  "arch": "x64",
+                  "node": "20.10.0"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-15T12:00:00Z",
+                "digestLineage": [
+                  "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "typescript-runtime",
+                    "version": "1.0.0",
+                    "source": {
+                      "repository": "https://github.com/org/ts-runtime",
+                      "commit": "a1b2c3d"
+                    },
+                    "input": {
+                      "suiteId": "ts-conformance-suite.v1"
+                    },
+                    "environment": {
+                      "os": "linux",
+                      "arch": "x64",
+                      "node": "20.10.0"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-15T12:00:00Z",
+                    "digestLineage": [
+                      "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "typescript-runtime"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-non-conforming-ts-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "typescript-runtime",
+                "version": "1.0.1-rc1",
+                "source": {
+                  "repository": "https://github.com/org/ts-runtime",
+                  "commit": "e4f5g6h"
+                },
+                "input": {
+                  "suiteId": "ts-conformance-suite.v1"
+                },
+                "environment": {
+                  "os": "linux",
+                  "arch": "x64",
+                  "node": "20.10.0"
+                },
+                "disposition": "non-conforming",
+                "timestamp": "2024-01-16T15:30:00Z",
+                "digestLineage": [
+                  "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "typescript-runtime",
+                    "version": "1.0.1-rc1",
+                    "source": {
+                      "repository": "https://github.com/org/ts-runtime",
+                      "commit": "e4f5g6h"
+                    },
+                    "input": {
+                      "suiteId": "ts-conformance-suite.v1"
+                    },
+                    "environment": {
+                      "os": "linux",
+                      "arch": "x64",
+                      "node": "20.10.0"
+                    },
+                    "disposition": "non-conforming",
+                    "timestamp": "2024-01-16T15:30:00Z",
+                    "digestLineage": [
+                      "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "typescript-runtime"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "non-conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-conforming-rust-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "rust-engine",
+                "version": "0.9.0",
+                "source": {
+                  "repository": "https://github.com/org/rust-engine",
+                  "commit": "7a8b9c0"
+                },
+                "input": {
+                  "suiteId": "rust-engine-compliance.v2"
+                },
+                "environment": {
+                  "os": "macos",
+                  "arch": "arm64",
+                  "rustc": "1.75.0"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-17T09:15:00Z",
+                "digestLineage": [
+                  "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "rust-engine",
+                    "version": "0.9.0",
+                    "source": {
+                      "repository": "https://github.com/org/rust-engine",
+                      "commit": "7a8b9c0"
+                    },
+                    "input": {
+                      "suiteId": "rust-engine-compliance.v2"
+                    },
+                    "environment": {
+                      "os": "macos",
+                      "arch": "arm64",
+                      "rustc": "1.75.0"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-17T09:15:00Z",
+                    "digestLineage": [
+                      "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "rust-engine"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-partial-go-runtime",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "go-runner",
+                "version": "2.1.0",
+                "source": {
+                  "repository": "https://github.com/org/go-runner",
+                  "commit": "deadbeef123"
+                },
+                "input": {
+                  "suiteId": "go-runner-harness.v1"
+                },
+                "environment": {
+                  "os": "windows",
+                  "arch": "x64",
+                  "go": "1.21.5"
+                },
+                "disposition": "partial-conformance",
+                "timestamp": "2024-01-18T18:45:00Z",
+                "digestLineage": [
+                  "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "go-runner",
+                    "version": "2.1.0",
+                    "source": {
+                      "repository": "https://github.com/org/go-runner",
+                      "commit": "deadbeef123"
+                    },
+                    "input": {
+                      "suiteId": "go-runner-harness.v1"
+                    },
+                    "environment": {
+                      "os": "windows",
+                      "arch": "x64",
+                      "go": "1.21.5"
+                    },
+                    "disposition": "partial-conformance",
+                    "timestamp": "2024-01-18T18:45:00Z",
+                    "digestLineage": [
+                      "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "go-runner"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "partial-conformance"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-python-bridge",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "python-bridge",
+                "version": "3.4.0",
+                "source": {
+                  "repository": "https://github.com/org/python-bridge",
+                  "commit": "abcdef12345"
+                },
+                "input": {
+                  "suiteId": "py-integration-suite.v1"
+                },
+                "environment": {
+                  "os": "linux",
+                  "arch": "arm64",
+                  "python": "3.12.1"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-19T10:00:00Z",
+                "digestLineage": [
+                  "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "python-bridge",
+                    "version": "3.4.0",
+                    "source": {
+                      "repository": "https://github.com/org/python-bridge",
+                      "commit": "abcdef12345"
+                    },
+                    "input": {
+                      "suiteId": "py-integration-suite.v1"
+                    },
+                    "environment": {
+                      "os": "linux",
+                      "arch": "arm64",
+                      "python": "3.12.1"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-19T10:00:00Z",
+                    "digestLineage": [
+                      "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "python-bridge"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/publish-implementation-evidence/fixtures.authority.json",
+          "entryDigest": "sha256:f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520",
+          "snapshot": "data/capsule-evidence/entries/f8e878b53cca22584e23e2a9e950350f7a369c643f44c60f5cbf6127d2a79520-73909df58f2e9cc0.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "publish-csharp-driver",
+            "input": {
+              "contractId": "implementation-evidence-publication-input.v1",
+              "payload": {
+                "implementationId": "csharp-driver",
+                "version": "5.0.0",
+                "source": {
+                  "repository": "https://github.com/org/csharp-driver",
+                  "commit": "98765fedcba"
+                },
+                "input": {
+                  "suiteId": "dotnet-conformance.v3"
+                },
+                "environment": {
+                  "os": "windows",
+                  "arch": "x64",
+                  "dotnet": "8.0.100"
+                },
+                "disposition": "conforming",
+                "timestamp": "2024-01-20T14:20:00Z",
+                "digestLineage": [
+                  "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+                ]
+              }
+            },
+            "portOutcomes": {
+              "publish-implementation-evidence-port": {
+                "output": {
+                  "contractId": "published-implementation-evidence.v1",
+                  "payload": {
+                    "implementationId": "csharp-driver",
+                    "version": "5.0.0",
+                    "source": {
+                      "repository": "https://github.com/org/csharp-driver",
+                      "commit": "98765fedcba"
+                    },
+                    "input": {
+                      "suiteId": "dotnet-conformance.v3"
+                    },
+                    "environment": {
+                      "os": "windows",
+                      "arch": "x64",
+                      "dotnet": "8.0.100"
+                    },
+                    "disposition": "conforming",
+                    "timestamp": "2024-01-20T14:20:00Z",
+                    "digestLineage": [
+                      "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+                    ],
+                    "status": "published"
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "publish-implementation-evidence",
+              "scenarioSequence": [
+                "publish-implementation-evidence"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "evidence-artifact-published",
+                  "path": "payload.status",
+                  "operator": "equals",
+                  "value": "published"
+                },
+                {
+                  "conditionId": "implementation-id-preserved",
+                  "path": "payload.implementationId",
+                  "operator": "equals",
+                  "value": "csharp-driver"
+                },
+                {
+                  "conditionId": "disposition-preserved",
+                  "path": "payload.disposition",
+                  "operator": "equals",
+                  "value": "conforming"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:publish-implementation-evidence-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "publish-implementation-evidence",
+        "scenario": {
+          "scenarioId": "publish-implementation-evidence",
+          "input": {
+            "inputId": "implementation-evidence-publication-input",
+            "contract": {
+              "contractId": "implementation-evidence-publication-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "implementation-evidence-publication-requested",
+            "executionAuthorityId": "implementation-evidence-publication.v1"
+          },
+          "outcome": {
+            "outcomeId": "implementation-evidence-publication-known",
+            "contract": {
+              "contractId": "published-implementation-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "publish-implementation-evidence.operation.1",
+            "mechanicBindingId": "port:publish-implementation-evidence-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/publish-implementation-evidence/execution-plan.node.json",
+          "entryDigest": "sha256:d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880",
+          "snapshot": "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}

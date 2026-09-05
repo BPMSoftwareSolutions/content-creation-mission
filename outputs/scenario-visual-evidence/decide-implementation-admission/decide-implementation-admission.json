@@ -1,0 +1,3151 @@
+{
+  "packageVersion": "scenario-visual-evidence.v1",
+  "key": "decide-implementation-admission::decide-implementation-admission",
+  "source": {
+    "estateManifestDigest": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+    "capsuleDigest": "sha256:8cfa29d259a0b85375664b2d9dfdcf1b5fed9823dba1c3e42bbd37f9492b1df4"
+  },
+  "scenarioSurface": {
+    "key": "decide-implementation-admission::decide-implementation-admission",
+    "capabilityId": "decide-implementation-admission",
+    "capabilityName": "Decide implementation admission",
+    "scenarioId": "decide-implementation-admission",
+    "scenarioName": "Derive one explained admission verdict without hiding failed or unobservable obligations",
+    "identityOrigin": "declared",
+    "scenarioKind": "Scenario",
+    "examples": [],
+    "input": [
+      {
+        "text": "one complete evidence set covering every required implementation obligation",
+        "line": 27
+      }
+    ],
+    "event": [
+      {
+        "text": "admission is derived from that evidence set without suppressing any failure or gap",
+        "line": 28
+      }
+    ],
+    "outcome": [
+      {
+        "text": "every required obligation participates exactly once in the verdict, and the verdict distinguishes a failed obligation from an unobservable one",
+        "line": 29
+      }
+    ],
+    "products": [
+      "implementation-admission-known"
+    ],
+    "dependencies": [],
+    "providers": [],
+    "providerDiscovery": "not inferred from dependency names",
+    "actors": [
+      "SDA maintainer"
+    ],
+    "altitude": null,
+    "notes": "  An SDA maintainer needs one final, honest admission verdict for a language\n  implementation, derived from the complete evidence set produced by the\n  other kernel-implementation-admission evaluators, with no failed or\n  unobservable obligation hidden or silently dropped. The capability derives\n  that verdict from one complete evidence set.\n\n  Every required obligation participates exactly once in the verdict, and\n  the verdict preserves the distinction between a failure and an\n  unobservable gap. The capability does not re-evaluate authority, shape,\n  execution, or behavioral conformance itself — it only composes their\n  evidence into one explained verdict.",
+    "source": {
+      "capsuleFile": "decide-implementation-admission.sfxcap",
+      "capsuleDigest": "sha256:8cfa29d259a0b85375664b2d9dfdcf1b5fed9823dba1c3e42bbd37f9492b1df4",
+      "featureEntry": "features/decide-implementation-admission.feature",
+      "featureDigest": "sha256:234312cf65bf90032f67513c5320ee1dba84fd91e63afabed826f894dcc7de87",
+      "estateManifestDigest": "sha256:0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+      "snapshot": "data/source-features/decide-implementation-admission.feature",
+      "scenarioLine": 26
+    },
+    "tags": [
+      "@capability:decide-implementation-admission",
+      "@root-scenario:decide-implementation-admission",
+      "@scenario:decide-implementation-admission",
+      "@input:implementation-admission-input",
+      "@input-contract:implementation-admission-input.v1",
+      "@event:implementation-admission-decision-requested",
+      "@event-authority:implementation-admission-decision.v1",
+      "@outcome:implementation-admission-known",
+      "@outcome-contract:implementation-admission-evidence.v1",
+      "@outcome-terminal"
+    ]
+  },
+  "evidence": {
+    "execution": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "decide-implementation-admission",
+          "scenario": {
+            "scenarioId": "decide-implementation-admission",
+            "input": {
+              "inputId": "implementation-admission-input",
+              "contract": {
+                "contractId": "implementation-admission-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "implementation-admission-decision-requested",
+              "executionAuthorityId": "implementation-admission-decision.v1"
+            },
+            "outcome": {
+              "outcomeId": "implementation-admission-known",
+              "contract": {
+                "contractId": "implementation-admission-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "decide-implementation-admission.operation.1",
+              "mechanicBindingId": "port:decide-implementation-admission-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "implementation-admission-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "df4b804b507ba72cd02ebd4ba2746d45d2fbde1bebc1d0db5b4e460840cdbe68",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "implementation-admission-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "targetLanguage",
+                          "verdict",
+                          "admitted",
+                          "failedObligations",
+                          "unobservableObligations",
+                          "explanation"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "targetLanguage": {
+                            "type": "string"
+                          },
+                          "verdict": {
+                            "type": "string",
+                            "enum": [
+                              "admitted",
+                              "rejected",
+                              "indeterminate"
+                            ]
+                          },
+                          "admitted": {
+                            "type": "boolean"
+                          },
+                          "failedObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "unobservableObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "explanation": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "implementation-admission-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "85908dee61cc6b6cfb01f60e32008f1d03b38f08b5cb3aff50d3525201532c7b",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "implementation-admission-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "targetLanguage",
+                          "verdict",
+                          "admitted",
+                          "failedObligations",
+                          "unobservableObligations",
+                          "explanation"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "targetLanguage": {
+                            "type": "string"
+                          },
+                          "verdict": {
+                            "type": "string",
+                            "enum": [
+                              "admitted",
+                              "rejected",
+                              "indeterminate"
+                            ]
+                          },
+                          "admitted": {
+                            "type": "boolean"
+                          },
+                          "failedObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "unobservableObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "explanation": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:decide-implementation-admission-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "implementation-admission-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "implementationId": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.implementationId"
+                    },
+                    "targetLanguage": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.targetLanguage"
+                    },
+                    "verdict": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.verdict"
+                    },
+                    "admitted": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.admitted"
+                    },
+                    "failedObligations": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.failedObligations"
+                    },
+                    "unobservableObligations": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.unobservableObligations"
+                    },
+                    "explanation": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.explanation"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:decide-implementation-admission-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/decide-implementation-admission/contracts/input.schema.json",
+          "entryDigest": "sha256:df4b804b507ba72cd02ebd4ba2746d45d2fbde1bebc1d0db5b4e460840cdbe68",
+          "snapshot": "data/capsule-evidence/entries/df4b804b507ba72cd02ebd4ba2746d45d2fbde1bebc1d0db5b4e460840cdbe68-16ea3742e0a9469d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "implementation-admission-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "targetLanguage",
+                "verdict",
+                "admitted",
+                "failedObligations",
+                "unobservableObligations",
+                "explanation"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "targetLanguage": {
+                  "type": "string"
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "admitted",
+                    "rejected",
+                    "indeterminate"
+                  ]
+                },
+                "admitted": {
+                  "type": "boolean"
+                },
+                "failedObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "unobservableObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "explanation": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/decide-implementation-admission/contracts/outcome.schema.json",
+          "entryDigest": "sha256:85908dee61cc6b6cfb01f60e32008f1d03b38f08b5cb3aff50d3525201532c7b",
+          "snapshot": "data/capsule-evidence/entries/85908dee61cc6b6cfb01f60e32008f1d03b38f08b5cb3aff50d3525201532c7b-6dc78ab1c7a57487.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "implementation-admission-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "targetLanguage",
+                "verdict",
+                "admitted",
+                "failedObligations",
+                "unobservableObligations",
+                "explanation"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "targetLanguage": {
+                  "type": "string"
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "admitted",
+                    "rejected",
+                    "indeterminate"
+                  ]
+                },
+                "admitted": {
+                  "type": "boolean"
+                },
+                "failedObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "unobservableObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "explanation": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-8ff11553ee0ea4b7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-f17993e16b668e4c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-f67dcfdffbac124b.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-11ca34bf3506b1f5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "topology": [],
+    "fixtures": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-obligations-satisfied-admitted",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-rust-v1",
+                "targetLanguage": "rust",
+                "verdict": "admitted",
+                "admitted": true,
+                "failedObligations": [],
+                "unobservableObligations": [],
+                "explanation": "All required implementation obligations fully demonstrated and admitted."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-rust-v1",
+                    "targetLanguage": "rust",
+                    "verdict": "admitted",
+                    "admitted": true,
+                    "failedObligations": [],
+                    "unobservableObligations": [],
+                    "explanation": "All required implementation obligations fully demonstrated and admitted."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-admitted",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-flag-true",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "behavioral-conformance-failure-rejected",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-go-v1",
+                "targetLanguage": "go",
+                "verdict": "rejected",
+                "admitted": false,
+                "failedObligations": [
+                  "behavioral-conformance"
+                ],
+                "unobservableObligations": [],
+                "explanation": "Implementation rejected due to failing behavioral conformance suites."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-go-v1",
+                    "targetLanguage": "go",
+                    "verdict": "rejected",
+                    "admitted": false,
+                    "failedObligations": [
+                      "behavioral-conformance"
+                    ],
+                    "unobservableObligations": [],
+                    "explanation": "Implementation rejected due to failing behavioral conformance suites."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-rejected",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unobservable-shape-obligation-indeterminate",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-python-v1",
+                "targetLanguage": "python",
+                "verdict": "indeterminate",
+                "admitted": false,
+                "failedObligations": [],
+                "unobservableObligations": [
+                  "shape-conformance"
+                ],
+                "explanation": "Shape conformance could not be observed for this environment."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-python-v1",
+                    "targetLanguage": "python",
+                    "verdict": "indeterminate",
+                    "admitted": false,
+                    "failedObligations": [],
+                    "unobservableObligations": [
+                      "shape-conformance"
+                    ],
+                    "explanation": "Shape conformance could not be observed for this environment."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-indeterminate",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "indeterminate"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multiple-failed-obligations-rejected",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-csharp-v1",
+                "targetLanguage": "csharp",
+                "verdict": "rejected",
+                "admitted": false,
+                "failedObligations": [
+                  "authority-admission",
+                  "execution-vector-conformance"
+                ],
+                "unobservableObligations": [],
+                "explanation": "Multiple authority and execution obligations failed."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-csharp-v1",
+                    "targetLanguage": "csharp",
+                    "verdict": "rejected",
+                    "admitted": false,
+                    "failedObligations": [
+                      "authority-admission",
+                      "execution-vector-conformance"
+                    ],
+                    "unobservableObligations": [],
+                    "explanation": "Multiple authority and execution obligations failed."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-rejected",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "mixed-failed-and-unobservable-rejected",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-zig-v1",
+                "targetLanguage": "zig",
+                "verdict": "rejected",
+                "admitted": false,
+                "failedObligations": [
+                  "behavioral-conformance"
+                ],
+                "unobservableObligations": [
+                  "execution-vector-conformance"
+                ],
+                "explanation": "Implementation has explicit failure in behavioral conformance and unobservable execution conformance."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-zig-v1",
+                    "targetLanguage": "zig",
+                    "verdict": "rejected",
+                    "admitted": false,
+                    "failedObligations": [
+                      "behavioral-conformance"
+                    ],
+                    "unobservableObligations": [
+                      "execution-vector-conformance"
+                    ],
+                    "explanation": "Implementation has explicit failure in behavioral conformance and unobservable execution conformance."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-rejected",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multiple-unobservable-obligations-indeterminate",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-swift-v1",
+                "targetLanguage": "swift",
+                "verdict": "indeterminate",
+                "admitted": false,
+                "failedObligations": [],
+                "unobservableObligations": [
+                  "shape-conformance",
+                  "telemetry-conformance"
+                ],
+                "explanation": "Multiple obligations lacked sufficient telemetry observations."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-swift-v1",
+                    "targetLanguage": "swift",
+                    "verdict": "indeterminate",
+                    "admitted": false,
+                    "failedObligations": [],
+                    "unobservableObligations": [
+                      "shape-conformance",
+                      "telemetry-conformance"
+                    ],
+                    "explanation": "Multiple obligations lacked sufficient telemetry observations."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-indeterminate",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "indeterminate"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "source": {
+          "entryId": "runtime.projection-conformance.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/projection-conformance.json",
+          "entryDigest": "sha256:eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed",
+          "snapshot": "data/capsule-evidence/entries/eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed-64da4f51db81d7e6.json",
+          "pointer": ""
+        },
+        "value": {
+          "conformanceType": "projected-artifact-mechanical-sterility.v1",
+          "sourceOrigin": "PROJECTED",
+          "forbiddenExecutableMechanics": {
+            "branch": 0,
+            "iteration": 0,
+            "exception-handling": 0,
+            "throw": 0,
+            "object-construction": 0,
+            "serialization": 0,
+            "normalization": 0,
+            "validation": 0,
+            "fallback": 0,
+            "retry": 0,
+            "state-mutation": 0,
+            "meaning-hidden-in-text": 0
+          },
+          "violations": [],
+          "disposition": "PURE_PROJECTION_CONFORMS"
+        }
+      }
+    ]
+  },
+  "providerQualification": "Bindings are declared suppliers, not proof of live availability. Simulation requires explicit fixture/provider evidence.",
+  "inputReality": {
+    "sourceSteps": [
+      {
+        "text": "one complete evidence set covering every required implementation obligation",
+        "line": 27
+      }
+    ],
+    "contracts": [
+      {
+        "source": {
+          "entryId": "contracts/input.schema.json",
+          "entryRef": "capabilities/decide-implementation-admission/contracts/input.schema.json",
+          "entryDigest": "sha256:df4b804b507ba72cd02ebd4ba2746d45d2fbde1bebc1d0db5b4e460840cdbe68",
+          "snapshot": "data/capsule-evidence/entries/df4b804b507ba72cd02ebd4ba2746d45d2fbde1bebc1d0db5b4e460840cdbe68-16ea3742e0a9469d.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "implementation-admission-input.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "targetLanguage",
+                "verdict",
+                "admitted",
+                "failedObligations",
+                "unobservableObligations",
+                "explanation"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "targetLanguage": {
+                  "type": "string"
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "admitted",
+                    "rejected",
+                    "indeterminate"
+                  ]
+                },
+                "admitted": {
+                  "type": "boolean"
+                },
+                "failedObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "unobservableObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "explanation": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/outcome.schema.json",
+          "entryRef": "capabilities/decide-implementation-admission/contracts/outcome.schema.json",
+          "entryDigest": "sha256:85908dee61cc6b6cfb01f60e32008f1d03b38f08b5cb3aff50d3525201532c7b",
+          "snapshot": "data/capsule-evidence/entries/85908dee61cc6b6cfb01f60e32008f1d03b38f08b5cb3aff50d3525201532c7b-6dc78ab1c7a57487.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+          "type": "object",
+          "required": [
+            "contractId",
+            "payload"
+          ],
+          "properties": {
+            "contractId": {
+              "const": "implementation-admission-evidence.v1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "implementationId",
+                "targetLanguage",
+                "verdict",
+                "admitted",
+                "failedObligations",
+                "unobservableObligations",
+                "explanation"
+              ],
+              "properties": {
+                "implementationId": {
+                  "type": "string"
+                },
+                "targetLanguage": {
+                  "type": "string"
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "admitted",
+                    "rejected",
+                    "indeterminate"
+                  ]
+                },
+                "admitted": {
+                  "type": "boolean"
+                },
+                "failedObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "unobservableObligations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "explanation": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-context.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-context.schema.json",
+          "entryDigest": "sha256:40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625",
+          "snapshot": "data/capsule-evidence/entries/40b787f077ae8c9e23e5b5c5d796eb9000a201687a7c8dbe2856172db7feb625-8ff11553ee0ea4b7.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "authoringType",
+            "candidate",
+            "modelProof"
+          ],
+          "properties": {
+            "authoringType": {
+              "const": "governed-feature-authoring-context.v1"
+            },
+            "candidate": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "scenarioId",
+                "inputId",
+                "inputContractId",
+                "eventId",
+                "eventAuthorityId",
+                "outcomeId",
+                "outcomeContractId",
+                "featureName",
+                "featureNarrative",
+                "scenarioName",
+                "given",
+                "when",
+                "then",
+                "actor",
+                "intent",
+                "outcome",
+                "promise"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "const": "observe-governed-disposition"
+                },
+                "scenarioId": {
+                  "const": "observe-governed-disposition"
+                },
+                "inputId": {
+                  "const": "governed-disposition-observation"
+                },
+                "inputContractId": {
+                  "const": "governed-disposition-observation.v1"
+                },
+                "eventId": {
+                  "const": "observe-governed-disposition"
+                },
+                "eventAuthorityId": {
+                  "const": "observe-governed-disposition.v1"
+                },
+                "outcomeId": {
+                  "const": "governed-disposition-testimony"
+                },
+                "outcomeContractId": {
+                  "const": "governed-disposition-testimony.v1"
+                },
+                "featureName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "featureNarrative": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "scenarioName": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "given": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "when": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "then": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "actor": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "intent": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "outcome": {
+                  "$ref": "#/$defs/authorText"
+                },
+                "promise": {
+                  "$ref": "#/$defs/authorText"
+                }
+              }
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "responseHash": {
+                  "$ref": "#/$defs/sha256"
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "$defs": {
+            "authorText": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 360,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ,.'():;-]*$"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryRef": "contracts/governed-feature-authoring-testimony.schema.json",
+          "entryDigest": "sha256:d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228",
+          "snapshot": "data/capsule-evidence/entries/d7619dc82bc2f6e71f30e6c04352efd57dcf73a79c33a58707bc0fb009798228-f17993e16b668e4c.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-feature-authoring-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceAdmissionDisposition",
+            "capabilityId",
+            "scenarioId",
+            "modelProof",
+            "resumeArtifact",
+            "artifacts",
+            "projectionRequest",
+            "authoringLineage"
+          ],
+          "properties": {
+            "sourceAdmissionDisposition": {
+              "const": "ADMITTED"
+            },
+            "capabilityId": {
+              "const": "observe-governed-disposition"
+            },
+            "scenarioId": {
+              "const": "observe-governed-disposition"
+            },
+            "modelProof": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "requestId",
+                "requestHash",
+                "responseHash",
+                "providerAuthorityId",
+                "resolvedModel"
+              ],
+              "properties": {
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responseHash": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "providerAuthorityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resolvedModel": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "resumeArtifact": {
+              "$ref": "#/$defs/materializedArtifact/properties/reference"
+            },
+            "artifacts": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "feature",
+                "capability",
+                "workspace",
+                "scenarioGraph",
+                "executionAuthorities",
+                "projectionAuthorities",
+                "interfaces",
+                "transformation",
+                "fixtures",
+                "contractCatalog",
+                "inputContract",
+                "outcomeContract"
+              ],
+              "properties": {
+                "feature": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "capability": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "workspace": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "scenarioGraph": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "executionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "projectionAuthorities": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "interfaces": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "transformation": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "fixtures": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "contractCatalog": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "inputContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                },
+                "outcomeContract": {
+                  "$ref": "#/$defs/materializedArtifact"
+                }
+              }
+            },
+            "projectionRequest": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "disposition",
+                "workspaceRoot",
+                "targets"
+              ],
+              "properties": {
+                "disposition": {
+                  "const": "REQUESTED"
+                },
+                "workspaceRoot": {
+                  "const": "authored/observe-governed-disposition"
+                },
+                "targets": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "enum": [
+                      "node",
+                      "csharp",
+                      "python"
+                    ]
+                  }
+                }
+              }
+            },
+            "authoringLineage": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "$defs": {
+            "materializedArtifact": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "content",
+                "reference"
+              ],
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "minLength": 2
+                },
+                "reference": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "path",
+                    "sha256",
+                    "byteSha256",
+                    "byteLength",
+                    "rootExecutionId"
+                  ],
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "pattern": "^capabilities/author-canonical-feature/projected/authored/observe-governed-disposition(?:/|$)"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "byteSha256": {
+                      "type": "string",
+                      "pattern": "^sha256:[a-f0-9]{64}$"
+                    },
+                    "byteLength": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rootExecutionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-context.schema.json",
+          "entryRef": "contracts/governed-agent-execution-context.schema.json",
+          "entryDigest": "sha256:a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2",
+          "snapshot": "data/capsule-evidence/entries/a5139e02052cdad068e44c28ab525cc125069039cd3fae86a1ff73b8d59037c2-f67dcfdffbac124b.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-context.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vectorType",
+            "vectorId",
+            "title",
+            "rootExecutionId",
+            "proposal",
+            "executionContext",
+            "providerTestimony",
+            "obligationContext"
+          ],
+          "properties": {
+            "$schema": {
+              "type": "string"
+            },
+            "vectorType": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vectorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rootExecutionId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "proposal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "scenarioId",
+                "responsibilityId",
+                "toolId",
+                "childScenarioId",
+                "childResponsibilityId"
+              ],
+              "properties": {
+                "scenarioId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "responsibilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "toolId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "childScenarioId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "childResponsibilityId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "executionContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "consumedSteps",
+                "approvalDecision"
+              ],
+              "properties": {
+                "consumedSteps": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "approvalDecision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "providerTestimony": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "shape",
+                "physicalDisposition",
+                "result"
+              ],
+              "properties": {
+                "shape": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "physicalDisposition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "status",
+                    "evidenceReference"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "evidenceReference": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "obligationContext": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "mode",
+                "confirmationObserved"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confirmationObserved": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryRef": "contracts/governed-agent-execution-testimony.schema.json",
+          "entryDigest": "sha256:aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222",
+          "snapshot": "data/capsule-evidence/entries/aba32320cab73aba0f744c539cea5df86522e224816ade2e5713f22367f89222-11ca34bf3506b1f5.json",
+          "pointer": ""
+        },
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://agentic-harness.local/contracts/governed-agent-execution-testimony.v1.schema.json",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "selectedResponsibility",
+            "stepAdmissionDisposition",
+            "toolIdentity",
+            "toolInvoked",
+            "policyDisposition",
+            "approvalDisposition",
+            "physicalExecutionDisposition",
+            "providerTestimonyDisposition",
+            "candidateOutcomeDisposition",
+            "outcomeAdmissionDisposition",
+            "obligationDisposition",
+            "experienceDisposition",
+            "lineage"
+          ],
+          "properties": {
+            "selectedResponsibility": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stepAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolIdentity": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInvoked": {
+              "type": "boolean"
+            },
+            "policyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approvalDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "physicalExecutionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "providerTestimonyDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "candidateOutcomeDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "outcomeAdmissionDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "obligationDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experienceDisposition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lineage": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ],
+    "actors": [
+      "SDA maintainer"
+    ],
+    "humanSituation": "Requires editorial interpretation from the cited input contracts."
+  },
+  "eventExecutionReality": {
+    "responsibilities": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/nodes/0"
+        },
+        "value": {
+          "nodeId": "decide-implementation-admission",
+          "scenario": {
+            "scenarioId": "decide-implementation-admission",
+            "input": {
+              "inputId": "implementation-admission-input",
+              "contract": {
+                "contractId": "implementation-admission-input.v1"
+              }
+            },
+            "event": {
+              "eventId": "implementation-admission-decision-requested",
+              "executionAuthorityId": "implementation-admission-decision.v1"
+            },
+            "outcome": {
+              "outcomeId": "implementation-admission-known",
+              "contract": {
+                "contractId": "implementation-admission-evidence.v1"
+              },
+              "terminal": true
+            }
+          },
+          "operations": [
+            {
+              "operationId": "decide-implementation-admission.operation.1",
+              "mechanicBindingId": "port:decide-implementation-admission-port"
+            }
+          ],
+          "transition": null
+        }
+      }
+    ],
+    "mechanics": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "mechanicType": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "contractAuthorities": {
+              "authorityType": "consumer-contract-authorities.v1",
+              "contracts": {
+                "implementation-admission-input.v1": {
+                  "schemaRef": "input.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                  "schemaDigest": "df4b804b507ba72cd02ebd4ba2746d45d2fbde1bebc1d0db5b4e460840cdbe68",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/input.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "implementation-admission-input.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "targetLanguage",
+                          "verdict",
+                          "admitted",
+                          "failedObligations",
+                          "unobservableObligations",
+                          "explanation"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "targetLanguage": {
+                            "type": "string"
+                          },
+                          "verdict": {
+                            "type": "string",
+                            "enum": [
+                              "admitted",
+                              "rejected",
+                              "indeterminate"
+                            ]
+                          },
+                          "admitted": {
+                            "type": "boolean"
+                          },
+                          "failedObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "unobservableObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "explanation": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "implementation-admission-evidence.v1": {
+                  "schemaRef": "outcome.schema.json",
+                  "schemaId": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                  "schemaDigest": "85908dee61cc6b6cfb01f60e32008f1d03b38f08b5cb3aff50d3525201532c7b",
+                  "schema": {
+                    "$schema": "https://json-schema.org/draft/2020-12/schema",
+                    "$id": "https://schemas.agentic-harness.local/contracts/outcome.schema.json",
+                    "type": "object",
+                    "required": [
+                      "contractId",
+                      "payload"
+                    ],
+                    "properties": {
+                      "contractId": {
+                        "const": "implementation-admission-evidence.v1"
+                      },
+                      "payload": {
+                        "type": "object",
+                        "required": [
+                          "implementationId",
+                          "targetLanguage",
+                          "verdict",
+                          "admitted",
+                          "failedObligations",
+                          "unobservableObligations",
+                          "explanation"
+                        ],
+                        "properties": {
+                          "implementationId": {
+                            "type": "string"
+                          },
+                          "targetLanguage": {
+                            "type": "string"
+                          },
+                          "verdict": {
+                            "type": "string",
+                            "enum": [
+                              "admitted",
+                              "rejected",
+                              "indeterminate"
+                            ]
+                          },
+                          "admitted": {
+                            "type": "boolean"
+                          },
+                          "failedObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "unobservableObligations": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "explanation": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:decide-implementation-admission-port",
+          "mechanicType": "event-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs",
+          "configuration": {
+            "expression": {
+              "op": "object",
+              "fields": {
+                "contractId": {
+                  "op": "literal",
+                  "value": "implementation-admission-evidence.v1"
+                },
+                "payload": {
+                  "op": "object",
+                  "fields": {
+                    "implementationId": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.implementationId"
+                    },
+                    "targetLanguage": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.targetLanguage"
+                    },
+                    "verdict": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.verdict"
+                    },
+                    "admitted": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.admitted"
+                    },
+                    "failedObligations": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.failedObligations"
+                    },
+                    "unobservableObligations": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.unobservableObligations"
+                    },
+                    "explanation": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.explanation"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "providers": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:decide-implementation-admission-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "topology": [],
+    "sideEffects": "Inspect exact mechanic configuration and effect policy; no inference from capability name."
+  },
+  "outcomeReality": {
+    "sourceSteps": [
+      {
+        "text": "every required obligation participates exactly once in the verdict, and the verdict distinguishes a failed obligation from an unobservable one",
+        "line": 29
+      }
+    ],
+    "evidence": [
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/0"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "all-obligations-satisfied-admitted",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-rust-v1",
+                "targetLanguage": "rust",
+                "verdict": "admitted",
+                "admitted": true,
+                "failedObligations": [],
+                "unobservableObligations": [],
+                "explanation": "All required implementation obligations fully demonstrated and admitted."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-rust-v1",
+                    "targetLanguage": "rust",
+                    "verdict": "admitted",
+                    "admitted": true,
+                    "failedObligations": [],
+                    "unobservableObligations": [],
+                    "explanation": "All required implementation obligations fully demonstrated and admitted."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-admitted",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "admitted"
+                },
+                {
+                  "conditionId": "admitted-flag-true",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/1"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "behavioral-conformance-failure-rejected",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-go-v1",
+                "targetLanguage": "go",
+                "verdict": "rejected",
+                "admitted": false,
+                "failedObligations": [
+                  "behavioral-conformance"
+                ],
+                "unobservableObligations": [],
+                "explanation": "Implementation rejected due to failing behavioral conformance suites."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-go-v1",
+                    "targetLanguage": "go",
+                    "verdict": "rejected",
+                    "admitted": false,
+                    "failedObligations": [
+                      "behavioral-conformance"
+                    ],
+                    "unobservableObligations": [],
+                    "explanation": "Implementation rejected due to failing behavioral conformance suites."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-rejected",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/2"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "unobservable-shape-obligation-indeterminate",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-python-v1",
+                "targetLanguage": "python",
+                "verdict": "indeterminate",
+                "admitted": false,
+                "failedObligations": [],
+                "unobservableObligations": [
+                  "shape-conformance"
+                ],
+                "explanation": "Shape conformance could not be observed for this environment."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-python-v1",
+                    "targetLanguage": "python",
+                    "verdict": "indeterminate",
+                    "admitted": false,
+                    "failedObligations": [],
+                    "unobservableObligations": [
+                      "shape-conformance"
+                    ],
+                    "explanation": "Shape conformance could not be observed for this environment."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-indeterminate",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "indeterminate"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/3"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multiple-failed-obligations-rejected",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-csharp-v1",
+                "targetLanguage": "csharp",
+                "verdict": "rejected",
+                "admitted": false,
+                "failedObligations": [
+                  "authority-admission",
+                  "execution-vector-conformance"
+                ],
+                "unobservableObligations": [],
+                "explanation": "Multiple authority and execution obligations failed."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-csharp-v1",
+                    "targetLanguage": "csharp",
+                    "verdict": "rejected",
+                    "admitted": false,
+                    "failedObligations": [
+                      "authority-admission",
+                      "execution-vector-conformance"
+                    ],
+                    "unobservableObligations": [],
+                    "explanation": "Multiple authority and execution obligations failed."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-rejected",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/4"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "mixed-failed-and-unobservable-rejected",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-zig-v1",
+                "targetLanguage": "zig",
+                "verdict": "rejected",
+                "admitted": false,
+                "failedObligations": [
+                  "behavioral-conformance"
+                ],
+                "unobservableObligations": [
+                  "execution-vector-conformance"
+                ],
+                "explanation": "Implementation has explicit failure in behavioral conformance and unobservable execution conformance."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-zig-v1",
+                    "targetLanguage": "zig",
+                    "verdict": "rejected",
+                    "admitted": false,
+                    "failedObligations": [
+                      "behavioral-conformance"
+                    ],
+                    "unobservableObligations": [
+                      "execution-vector-conformance"
+                    ],
+                    "explanation": "Implementation has explicit failure in behavioral conformance and unobservable execution conformance."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-rejected",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "rejected"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "source": {
+          "entryId": "fixtures.authority.json",
+          "entryRef": "capabilities/decide-implementation-admission/fixtures.authority.json",
+          "entryDigest": "sha256:a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5",
+          "snapshot": "data/capsule-evidence/entries/a900f3b8cf05762ffd2f29cecf547445124eacb3061c39878850a573d83ee0b5-19d2709cc1ecec79.json",
+          "pointer": "/fixtures/5"
+        },
+        "value": {
+          "scope": "capability",
+          "executionStatus": "DECLARED_EXPECTATION_NOT_EXECUTED",
+          "fixture": {
+            "fixtureId": "multiple-unobservable-obligations-indeterminate",
+            "input": {
+              "contractId": "implementation-admission-input.v1",
+              "payload": {
+                "implementationId": "kernel-swift-v1",
+                "targetLanguage": "swift",
+                "verdict": "indeterminate",
+                "admitted": false,
+                "failedObligations": [],
+                "unobservableObligations": [
+                  "shape-conformance",
+                  "telemetry-conformance"
+                ],
+                "explanation": "Multiple obligations lacked sufficient telemetry observations."
+              }
+            },
+            "portOutcomes": {
+              "decide-implementation-admission-port": {
+                "output": {
+                  "contractId": "implementation-admission-evidence.v1",
+                  "payload": {
+                    "implementationId": "kernel-swift-v1",
+                    "targetLanguage": "swift",
+                    "verdict": "indeterminate",
+                    "admitted": false,
+                    "failedObligations": [],
+                    "unobservableObligations": [
+                      "shape-conformance",
+                      "telemetry-conformance"
+                    ],
+                    "explanation": "Multiple obligations lacked sufficient telemetry observations."
+                  }
+                }
+              }
+            },
+            "expected": {
+              "disposition": "terminated",
+              "terminalScenarioId": "decide-implementation-admission",
+              "scenarioSequence": [
+                "decide-implementation-admission"
+              ],
+              "outcomeAssertions": [
+                {
+                  "conditionId": "verdict-is-indeterminate",
+                  "path": "payload.verdict",
+                  "operator": "equals",
+                  "value": "indeterminate"
+                },
+                {
+                  "conditionId": "admitted-flag-false",
+                  "path": "payload.admitted",
+                  "operator": "equals",
+                  "value": false
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "observedExecution": false
+  },
+  "visualDirection": {
+    "status": "CANDIDATE_REQUIRES_SEMANTIC_REVIEW",
+    "input": "Establish the human situation and supplied artifacts described by the input contracts.",
+    "event": "Expose each cited responsibility and its concrete transformation, validation, or provider interaction.",
+    "outcome": "Show only the resulting product and disposition supported by the selected fixture and contracts.",
+    "continuity": [
+      "Preserve source identities",
+      "Keep declared inputs distinct from derived working products"
+    ],
+    "mechanicalOverlays": [
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/0"
+        },
+        "value": {
+          "bindingId": "contract-admission",
+          "providerCapabilityId": "sda-schema-contract-admission.v1",
+          "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      },
+      {
+        "source": {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/mechanicBindings/1"
+        },
+        "value": {
+          "bindingId": "port:decide-implementation-admission-port",
+          "providerCapabilityId": "sda-authority-transformation-port.v1",
+          "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+          "implementationRef": "languages/typescript/runtimes/node/admitted-consumer-platform.mjs"
+        }
+      }
+    ],
+    "unresolved": [
+      "Specific human environment",
+      "Fixture selection",
+      "Mechanical-to-visible mapping",
+      "Audience legibility"
+    ]
+  },
+  "animationBeats": [
+    {
+      "ordinal": 0,
+      "status": "EXECUTION_FACT_REQUIRES_VISUAL_DIRECTION",
+      "executionFact": {
+        "nodeId": "decide-implementation-admission",
+        "scenario": {
+          "scenarioId": "decide-implementation-admission",
+          "input": {
+            "inputId": "implementation-admission-input",
+            "contract": {
+              "contractId": "implementation-admission-input.v1"
+            }
+          },
+          "event": {
+            "eventId": "implementation-admission-decision-requested",
+            "executionAuthorityId": "implementation-admission-decision.v1"
+          },
+          "outcome": {
+            "outcomeId": "implementation-admission-known",
+            "contract": {
+              "contractId": "implementation-admission-evidence.v1"
+            },
+            "terminal": true
+          }
+        },
+        "operations": [
+          {
+            "operationId": "decide-implementation-admission.operation.1",
+            "mechanicBindingId": "port:decide-implementation-admission-port"
+          }
+        ],
+        "transition": null
+      },
+      "sourceRefs": [
+        {
+          "entryId": "runtime.execution-plan.node.v2.json",
+          "entryRef": "capsule-runtime/decide-implementation-admission/execution-plan.node.json",
+          "entryDigest": "sha256:d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16",
+          "snapshot": "data/capsule-evidence/entries/d3f3db89be0f64681566cffbf1d4fe1d87a833545663ed6b8a0b71331148ca16-5098096155e3bed9.json",
+          "pointer": "/nodes/0"
+        }
+      ],
+      "visibleChange": null
+    }
+  ],
+  "disposition": "MECHANICS_EXTRACTED_REQUIRES_DIRECTION",
+  "findings": [],
+  "reviewRequired": true
+}
