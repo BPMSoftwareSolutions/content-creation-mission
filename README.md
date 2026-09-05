@@ -105,6 +105,11 @@ loopback and supports byte-range requests for video seeking.
 into its intended experience: retain human authority, hold unauthorized
 publication, permit the admitted inspection, and return its evidence. The narrated
 film has ten chapters, generated human stills, animated mechanics, and captions.
+The 1080p edition embeds the material infographics and rolling silver-ball flow
+at **00:55 (current adjudication)** and **02:27 (target certification)**. It uses
+the same flow scheduler as the living circuit, with narration-timed cutaways.
+See [episode infographic integration](docs/EPISODE-INFOGRAPHICS.md) for the reusable
+edit contract, render commands and exact source provenance.
 The package includes a vertical short, thumbnail, transcript/article, infographic,
 training assessment, target simulation, landing page, and evidence story.
 

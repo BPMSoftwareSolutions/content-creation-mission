@@ -142,16 +142,23 @@ def frame(c,local,images):
     return Image.alpha_composite(image,overlay).convert('RGB')
 
 def media_render():
+    from episode_infographics import EpisodeInfographics, CACHE
+    editor=EpisodeInfographics()
     tl=read(OUT/'timeline.json'); chapters=tl['chapters'];images,refs=pictures()
+    for c in chapters:
+        if digest(OUT/c['audioFile'])!=c['audioDigest']:raise ValueError('STALE_CHAPTER_AUDIO')
+    if digest(ROOT/'declarations/episode-01-direction.json')!=tl['directionDigest']:raise ValueError('STALE_EPISODE_DIRECTION')
     frames=math.ceil(tl['durationSeconds']*FPS)
-    silent=OUT/'episode-silent.mp4'
-    proc=subprocess.Popen([FF,'-hide_banner','-loglevel','error','-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','20','-pix_fmt','yuv420p',str(silent)],stdin=subprocess.PIPE)
+    silent=CACHE/'episode-silent.mp4'; output=CACHE/'episode-01.mp4'
+    proc=subprocess.Popen([FF,'-hide_banner','-loglevel','error','-y','-f','rawvideo','-pix_fmt','rgb24','-s','1920x1080','-r',str(FPS),'-i','-','-an','-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p',str(silent)],stdin=subprocess.PIPE)
     ci=0
     for i in range(frames):
         t=i/FPS
         while ci+1<len(chapters) and t>=chapters[ci+1]['start']:ci+=1
-        c=chapters[ci];im=frame(c,t-c['start'],images);proc.stdin.write(im.tobytes())
-        if i==round((c['start']+1)*FPS):im.save(OUT/f'qa-chapter-{ci+1:02}.jpg',quality=93)
+        c=chapters[ci];local=t-c['start']
+        im=editor.frame(c,local) if c['id'] in editor.edit['chapters'] else frame(c,local,images).resize((1920,1080),Image.Resampling.LANCZOS)
+        proc.stdin.write(im.tobytes())
+        if i==round((c['start']+1)*FPS):im.save(CACHE/f'qa-chapter-{ci+1:02}.jpg',quality=93)
         if i%(FPS*30)==0:print('RENDERED',round(t),flush=True)
     proc.stdin.close()
     if proc.wait():raise ValueError('ENCODE_FAILED')
@@ -161,10 +168,16 @@ def media_render():
         cmd+=['-i',str(OUT/c['audioFile'])]
         filters.append(f'[{i+1}:a]adelay={round(c["start"]*1000)}:all=1,apad[a{i}]')
     filters.append(''.join(f'[a{i}]' for i in range(len(chapters)))+f'amix=inputs={len(chapters)}:duration=longest:normalize=0,alimiter=limit=0.95[mix]')
-    cmd+=['-filter_complex',';'.join(filters),'-map','0:v','-map','[mix]','-t',str(tl['durationSeconds']),'-c:v','copy','-c:a','aac','-b:a','160k','-movflags','+faststart',str(OUT/'episode-01.mp4')]
+    cmd+=['-filter_complex',';'.join(filters),'-map','0:v','-map','[mix]','-t',str(tl['durationSeconds']),'-c:v','copy','-c:a','aac','-b:a','160k','-movflags','+faststart',str(output)]
     subprocess.run(cmd,check=True)
-    thumbnail(images)
-    write(OUT/'film.receipt.json',{'kind':'TARGET_EXPERIENCE_TRAINING_FILM','durationSeconds':tl['durationSeconds'],'format':'1280x720 H264 AAC','fps':FPS,'filmDigest':digest(OUT/'episode-01.mp4'),'timelineDigest':digest(OUT/'timeline.json'),'shots':refs,'motion':'Generated human stills, animated decision relationships, artifact panels and chapter cuts. Human movement is implied.','liveEnforcementClaimed':False})
+    # Keep the previous episode usable until the new picture and sound fully decode.
+    subprocess.run([FF,'-hide_banner','-loglevel','error','-xerror','-i',str(output),'-f','null','-'],check=True)
+    output.replace(OUT/'episode-01.mp4');silent.replace(OUT/'episode-silent.mp4')
+    for preview in CACHE.glob('qa-chapter-*.jpg'):preview.replace(OUT/preview.name)
+    receipt=editor.receipt()
+    receipt.update({'filmDigest':digest(OUT/'episode-01.mp4'),'format':'1920x1080 H264 AAC','fps':FPS,'frameCount':frames,'fullDecodeVerified':True,'audio':'Existing chapter WAVs, unchanged scripts and timeline; no new generation.'})
+    write(OUT/'infographic-edit.receipt.json',receipt)
+    write(OUT/'film.receipt.json',{'kind':'TARGET_EXPERIENCE_TRAINING_FILM','durationSeconds':tl['durationSeconds'],'format':'1920x1080 H264 AAC','fps':FPS,'filmDigest':digest(OUT/'episode-01.mp4'),'timelineDigest':digest(OUT/'timeline.json'),'shots':refs,'motion':'Generated human stills and chapter cuts, with native 1080p source-bound circuit cutaways in Open the Event and Evidence. Shared silver-ball flow, branch choice and arrival-aware ALL join. Human movement is implied.','infographicEdit':{'path':(OUT/'infographic-edit.receipt.json').relative_to(ROOT).as_posix(),'sha256':digest(OUT/'infographic-edit.receipt.json')},'humanChapterRaster':'1280x720 upscaled to 1920x1080','liveEnforcementClaimed':False})
     print('EPISODE COMPLETE',tl['durationSeconds'],flush=True)
 
 def thumbnail(images=None):

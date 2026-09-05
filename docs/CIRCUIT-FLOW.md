@@ -72,8 +72,9 @@ All added paths, spheres, gradients and counters live in one
 `data-flow-overlay` group, hidden from assistive technology and pointer input.
 The original vectors, labels, links and evidence attributes stay intact. Runtime
 CSS provides node emphasis; static SVG exports remain the original artifacts.
-The existing MP4 remains a separate rendered composition; this silver-ball
-edition is the interactive browser player.
+The standalone infographic MP4 remains its earlier Manim composition. Episode 1
+now embeds this silver-ball language in the lesson itself: the current decision
+at 00:55 and target certification at 02:27. See [episode integration](EPISODE-INFOGRAPHICS.md).
 
 ## Verification
 
@@ -83,7 +84,7 @@ node --test scripts/circuit-flow.test.cjs
 .\.venv\Scripts\python.exe -m unittest discover -s scripts -p 'test_*.py' -v
 ```
 
-Node.js 20+ is needed only for the JavaScript tests. Python builds the pages;
-the browser plays them without Node.js. The repository suite invokes the same
+Node.js 20+ is needed for the JavaScript tests and offline episode flow planning.
+Python builds the pages; the browser plays them without Node.js. The suite invokes the same
 JavaScript scheduler tests, including skewed arrivals, threshold policies,
 single-branch selection, source preservation, and refusal cases.

@@ -80,6 +80,14 @@
   };
   let serial = 0;
 
+  // Shared vector artwork for the browser player and offline episode renderer.
+  function sphereMarkup(prefix) {
+    return {
+      definitions: `<radialGradient id="${prefix}-metal" cx="32%" cy="24%" r="76%"><stop offset="0" stop-color="#fff"/><stop offset=".2" stop-color="#f7fcff"/><stop offset=".4" stop-color="#adb9c8"/><stop offset=".58" stop-color="#36475c"/><stop offset=".73" stop-color="#c8d4e1"/><stop offset="1" stop-color="#1b2839"/></radialGradient><radialGradient id="${prefix}-aura"><stop stop-color="#e6f5ff" stop-opacity=".65"/><stop offset="1" stop-color="#b2d8ff" stop-opacity="0"/></radialGradient><clipPath id="${prefix}-clip"><circle r="14"/></clipPath>`,
+      body: `<ellipse cx="1" cy="12" rx="16" ry="5" fill="#000" opacity=".5"/><circle r="29" fill="url(#${prefix}-aura)"/><circle r="14" fill="url(#${prefix}-metal)" stroke="#d1e3ef" stroke-width=".7"/><g clip-path="url(#${prefix}-clip)"><g data-flow-roll="sphere"><ellipse rx="6" ry="14" fill="none" stroke="#eef7ff" stroke-width="1.8" opacity=".55"/><path d="M-13 4 Q0 12 13 4" fill="none" stroke="#16283c" stroke-width="2" opacity=".38"/></g></g><ellipse cx="-4" cy="-6" rx="5" ry="2.8" fill="#fff" opacity=".95"/><circle cx="-6" cy="-8" r="1.5" fill="#fff"/>`
+    };
+  }
+
   class Player {
     constructor(svg, projection, onUpdate) {
       this.svg = svg; this.projection = projection; this.onUpdate = onUpdate;
@@ -89,7 +97,8 @@
       this.layer = svgNode('g', {'data-flow-overlay': 'silver-ball', 'aria-hidden': 'true', 'pointer-events': 'none'});
       const prefix = 'silver-flow-' + ++serial;
       const defs = svgNode('defs');
-      defs.innerHTML = `<radialGradient id="${prefix}-metal" cx="32%" cy="24%" r="76%"><stop offset="0" stop-color="#fff"/><stop offset=".2" stop-color="#f7fcff"/><stop offset=".4" stop-color="#adb9c8"/><stop offset=".58" stop-color="#36475c"/><stop offset=".73" stop-color="#c8d4e1"/><stop offset="1" stop-color="#1b2839"/></radialGradient><radialGradient id="${prefix}-aura"><stop stop-color="#e6f5ff" stop-opacity=".65"/><stop offset="1" stop-color="#b2d8ff" stop-opacity="0"/></radialGradient><clipPath id="${prefix}-clip"><circle r="14"/></clipPath>`;
+      const artwork = sphereMarkup(prefix);
+      defs.innerHTML = artwork.definitions;
       this.layer.append(defs); svg.append(this.layer);
       this.paths = new Map(); this.tokens = new Map(); this.waitLabels = new Map();
       const chosen = new Set(projection.animationBeats.flatMap(beat => beat.edgeIds));
@@ -104,16 +113,8 @@
       this.plan = plan(projection, lengths);
       const ball = id => {
         const group = svgNode('g', {'data-flow-ball': id, visibility: 'hidden'});
-        group.append(svgNode('ellipse', {cx: 1, cy: 12, rx: 16, ry: 5, fill: '#000', opacity: .5}),
-          svgNode('circle', {r: 29, fill: `url(#${prefix}-aura)`}),
-          svgNode('circle', {r: 14, fill: `url(#${prefix}-metal)`, stroke: '#d1e3ef', 'stroke-width': .7}));
-        const clipped = svgNode('g', {'clip-path': `url(#${prefix}-clip)`});
-        const roll = svgNode('g', {'data-flow-roll': id});
-        roll.append(svgNode('ellipse', {rx: 6, ry: 14, fill: 'none', stroke: '#eef7ff', 'stroke-width': 1.8, opacity: .55}),
-          svgNode('path', {d: 'M-13 4 Q0 12 13 4', fill: 'none', stroke: '#16283c', 'stroke-width': 2, opacity: .38}));
-        clipped.append(roll); group.append(clipped,
-          svgNode('ellipse', {cx: -4, cy: -6, rx: 5, ry: 2.8, fill: '#fff', opacity: .95}),
-          svgNode('circle', {cx: -6, cy: -8, r: 1.5, fill: '#fff'}));
+        group.innerHTML = artwork.body;
+        const roll = group.querySelector('[data-flow-roll]'); roll.setAttribute('data-flow-roll', id);
         this.layer.append(group); return {group, roll};
       };
       for (const flight of this.plan.flights) this.tokens.set(flight.id, ball(flight.id));
@@ -213,7 +214,7 @@
       for (const node of this.entities.values()) node.classList.remove('flow-active', 'flow-reached', 'flow-gap');
     }
   }
-  const api = {plan, route, Player};
+  const api = {plan, route, sphereMarkup, Player};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.SideFXCircuitFlow = api;
 })(typeof window !== 'undefined' ? window : globalThis);
