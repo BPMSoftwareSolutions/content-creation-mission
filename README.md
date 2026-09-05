@@ -32,6 +32,23 @@ geometry, labels, connections and evidence modes remain intact. The
 [enhancement guide](docs/INFOGRAPHIC-ENHANCEMENTS.md) documents asset generation,
 review, canonical masking and reproducible composition.
 
+## Reusable capability editions
+
+Open [the capability editions](samples/capability-pages/index.html) for a reusable
+page combining the human film, living SVG circuit, Nano Banana material, source
+evidence, assessment and nine media surfaces. Interlock has three explicitly
+scoped circuits; narration reuses the template and identifies its new circuit as
+an open production requirement.
+
+```powershell
+.\.venv\Scripts\python.exe scripts/build_capability_pages.py
+```
+
+The build consumes reviewed artifacts, makes no provider calls, and rejects
+stale content, evidence, media or circuit bindings. See the
+[three-layer product system](docs/CAPABILITY-VISUAL-PRODUCT-SYSTEM.md) for the
+composition contract, template, animation behavior and production workflow.
+
 ## Capability content estate
 
 Open `samples/content-catalog/index.html` for the source-bound catalog. The estate

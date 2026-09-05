@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Artifact",
+      "type": "object"
+    },
+    "Circuit": {
+      "additionalProperties": false,
+      "properties": {
+        "projectionId": {
+          "pattern": "^[a-z0-9-]+$",
+          "title": "Projectionid",
+          "type": "string"
+        },
+        "relationship": {
+          "enum": [
+            "scenario",
+            "related-scenario",
+            "capability-overview"
+          ],
+          "title": "Relationship",
+          "type": "string"
+        },
+        "context": {
+          "minLength": 1,
+          "title": "Context",
+          "type": "string"
+        },
+        "compiled": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "enhancementReceipt": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "motionReceipt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Artifact"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "projectionId",
+        "relationship",
+        "context",
+        "compiled",
+        "enhancementReceipt"
+      ],
+      "title": "Circuit",
+      "type": "object"
+    },
+    "Film": {
+      "additionalProperties": false,
+      "properties": {
+        "media": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "receipt": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "poster": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "captions": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Artifact"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "claimIds": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Claimids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "media",
+        "receipt",
+        "poster",
+        "claimIds"
+      ],
+      "title": "Film",
+      "type": "object"
+    },
+    "OpenCircuit": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement": {
+          "minLength": 1,
+          "title": "Requirement",
+          "type": "string"
+        },
+        "evidenceIds": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidenceids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "requirement",
+        "evidenceIds"
+      ],
+      "title": "OpenCircuit",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "contractVersion": {
+      "const": "capability-page.v1",
+      "title": "Contractversion",
+      "type": "string"
+    },
+    "capabilityId": {
+      "pattern": "^[a-z0-9-]+$",
+      "title": "Capabilityid",
+      "type": "string"
+    },
+    "content": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "film": {
+      "$ref": "#/$defs/Film"
+    },
+    "surfaces": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Artifact"
+      },
+      "title": "Surfaces",
+      "type": "object"
+    },
+    "circuits": {
+      "items": {
+        "$ref": "#/$defs/Circuit"
+      },
+      "title": "Circuits",
+      "type": "array"
+    },
+    "openCircuit": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/OpenCircuit"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "contractVersion",
+    "capabilityId",
+    "content",
+    "film",
+    "surfaces",
+    "circuits"
+  ],
+  "title": "Page",
+  "type": "object"
+}
