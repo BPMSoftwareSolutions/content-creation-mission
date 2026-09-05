@@ -7,10 +7,18 @@ from scl import parse, emit, validate_graph, graph_hash, Parser
 from reveal_scl import reveal
 from scl_render import compile_graph
 from scl_native import native_view
-from build_scl_studio import draft_from_projection
+from build_scl_studio import draft_from_projection, starter_scl
 
 
 class SCLTests(unittest.TestCase):
+    def test_playground_starter_accepts_new_labels_and_preserves_typed_flow(self):
+        g=parse(starter_scl().replace('Make it happen','Prepare the narration'))
+        self.assertEqual(g.status,'DRAFT');self.assertEqual(g.nodes[1].label,'Prepare the narration')
+        self.assertEqual(g.trace,['begin','finish'])
+        result=compile_graph(g,enhanced=True)
+        self.assertIn('Prepare the narration',result['svg'])
+        self.assertEqual(result['receipt']['visibleNodes'],3)
+        self.assertEqual(result['receipt']['junctions']['findings'],[])
     def draft(self):return draft_from_projection('scenario-target').model_dump()
     def rejects(self,data,code):
         with self.assertRaisesRegex(ValueError,code):validate_graph(data)

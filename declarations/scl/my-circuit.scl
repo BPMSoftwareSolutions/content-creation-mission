@@ -1,0 +1,51 @@
+// Your circuit. Change the labels below and watch the preview update.
+// Keep identities consistent when adding nodes, routes or scenario members.
+scl "0.1";
+circuit "my-circuit" {
+  title "My first circuit";
+  promise "Describe the human experience this capability should create.";
+  status "DRAFT";
+
+  input "request" {
+    label "A request arrives"; detail "What does the person need?";
+    capabilityId "my-capability"; scenarioId "happy-path";
+    basis "TARGET"; sourceRefs ["design"];
+  }
+  event "work" {
+    label "Make it happen"; detail "What mechanic changes the situation?";
+    capabilityId "my-capability"; scenarioId "happy-path";
+    basis "TARGET"; sourceRefs ["design"];
+  }
+  outcome "result" {
+    label "The person gets a result"; detail "What changed for the person?";
+    capabilityId "my-capability"; scenarioId "happy-path";
+    basis "TARGET"; sourceRefs ["design"];
+  }
+
+  // Routes connect exact node identities. Trace selects the rolling-ball path.
+  route "begin" {
+    source "request"; target "work"; type "transition"; label "begin";
+    basis "TARGET"; sourceRefs ["design"];
+  }
+  route "finish" {
+    source "work"; target "result"; type "transition"; label "complete";
+    basis "TARGET"; sourceRefs ["design"];
+  }
+  trace ["begin", "finish"];
+
+  capability "my-capability" {
+    label "My capability"; domain "My workspace";
+    scenarioIds ["happy-path"]; coverage "One intended scenario";
+    sourceRefs ["design"];
+  }
+  scenario "happy-path" {
+    capabilityId "my-capability"; label "The intended experience";
+    nodeIds ["request", "work", "result"]; sourceRefs ["design"];
+  }
+  // This identifies a draft context, not proof of implementation.
+  source "design" {
+    path "declarations/scl/playground-intent.json";
+    sha256 "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484";
+    kind "TARGET"; label "User-authored design context";
+  }
+}
