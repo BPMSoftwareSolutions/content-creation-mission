@@ -21,7 +21,7 @@ class CapabilityPageTests(unittest.TestCase):
         self.assertEqual((a['status'], a['circuitCount'], a['surfaceCount']), ('COMPOSED', 3, 9))
         self.assertEqual((b['status'], b['circuitCount'], b['surfaceCount']), ('COMPOSED_WITH_OPEN_CIRCUIT', 0, 9))
         self.assertNotEqual(a['storyTitle'], b['storyTitle'])
-        for filename in ('page.css', 'page.js'):
+        for filename in ('page.css', 'page.js', 'circuit-flow.js'):
             self.assertEqual((ROOT / f'samples/capability-pages/interlock-agent-operation/{filename}').read_bytes(), (ROOT / f'samples/capability-pages/generate-governed-narration/{filename}').read_bytes())
 
     def test_changed_content_bytes_are_rejected(self):

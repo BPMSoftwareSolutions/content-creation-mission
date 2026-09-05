@@ -42,6 +42,7 @@ def compile_page(path, check=False):
     template = Template(inputs.file('templates/capability-page.html').read_text(encoding='utf-8'))
     css = inputs.file('templates/capability-page.css').read_bytes()
     js = inputs.file('templates/capability-page.js').read_bytes()
+    flow_js = inputs.file('templates/circuit-flow.js').read_bytes()
     destination = DEST / page.capabilityId
     link = lambda path: url(path, destination)
     evidence = {e['id']: e for e in content['evidence']}
@@ -83,7 +84,7 @@ def compile_page(path, check=False):
     if not check:
         destination.mkdir(parents=True, exist_ok=True)
         outputs = {'index.html': page_html.encode(), 'page-data.js': json_script(data).encode(),
-                   'page.css': css, 'page.js': js}
+                   'page.css': css, 'page.js': js, 'circuit-flow.js': flow_js}
         for name, payload in outputs.items():
             (destination / name).write_bytes(payload)
         result['outputs'] = {name: digest(destination / name) for name in outputs}

@@ -49,6 +49,11 @@ stale content, evidence, media or circuit bindings. See the
 [three-layer product system](docs/CAPABILITY-VISUAL-PRODUCT-SYSTEM.md) for the
 composition contract, template, animation behavior and production workflow.
 
+**Play flow** rolls a silver ball along the exact circuit paths. Fan-out splits
+it, the ALL join waits for both arrivals, and validation precedes the intended
+outcome. Pause, scrub, replay and speed controls preserve the evidence labels.
+See [the flow specification](docs/CIRCUIT-FLOW.md) for geometry, timing and tests.
+
 ## Capability content estate
 
 Open `samples/content-catalog/index.html` for the source-bound catalog. The estate

@@ -104,13 +104,14 @@ groups stay inside their owning entities. Switching appearance preserves the
 selected component, phase, zoom and scroll. SVG exports follow the selected
 appearance. The independently rendered film is explicitly the composed edition.
 
-Five phases—Establish, Activate, Execute, Resolve, Prove—read the projection's
-`animationBeats`. Browser playback provides cumulative emphasis. It is not a
-timed simulation of parallel arrival or real execution. The authored Manim
-timeline owns the precise probe-arrival timing in the available circuit film.
+The [silver-ball flow player](CIRCUIT-FLOW.md) follows the selected paths in
+`animationBeats`, splits at fan-out, and schedules continuation only after the
+join's required arrivals. Timing is illustrative, never execution telemetry.
+Five manual phases—Establish, Activate, Execute, Resolve, Prove—remain available
+for cumulative emphasis. The existing Manim film retains its separate timeline.
 GAP components remain visible throughout, and evidence labels never change.
 
-Playback is opt-in. Reduced-motion users advance one phase per activation.
+Playback is opt-in. Reduced-motion users advance one flow event per activation.
 Changing tabs, inspecting a node, hiding the page or leaving it stops playback.
 Nodes support keyboard activation; the circuit has fit/zoom and scrolling.
 Claims, media, source links and lesson text remain available without JavaScript.
