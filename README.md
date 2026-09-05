@@ -91,6 +91,17 @@ and franchise yield. Rebuild and verify it with:
 
 ### Season 1 / Evidence and intended design
 
+The [Agentic Engineering signature class](samples/agentic-engineering/index.html)
+turns the series into a curriculum: nine engineering concepts, ten capability
+studies, Episode 1 with its living circuit, and a reference lab that separates
+authority, provider readiness and evidence. Learners predict decisions, compare
+provider substitutions and export an authority boundary brief for instructor
+defense. Six broader school pathways are labeled as a roadmap.
+
+Build with `.\.venv\Scripts\python.exe scripts/build_engineering_school.py`.
+See [the teaching and production guide](docs/AGENTIC-ENGINEERING-SCHOOL.md) and
+[the instructor guide](samples/agentic-engineering/instructor-guide.md).
+
 Open `samples/season-1/index.html` for **The Future of Agentic Engineering — A
 SideFX Training Series**. All ten episodes have lesson objectives, exercises,
 and takeaways. Episode 1 has a complete content package; Episodes 2–10 have

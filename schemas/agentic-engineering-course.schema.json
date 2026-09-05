@@ -1,0 +1,354 @@
+{
+  "$defs": {
+    "Artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "title": "Artifact",
+      "type": "object"
+    },
+    "BriefField": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "prompt": {
+          "title": "Prompt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "prompt"
+      ],
+      "title": "BriefField",
+      "type": "object"
+    },
+    "Concept": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "meaning": {
+          "title": "Meaning",
+          "type": "string"
+        },
+        "example": {
+          "title": "Example",
+          "type": "string"
+        },
+        "failure": {
+          "title": "Failure",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "question",
+        "meaning",
+        "example",
+        "failure"
+      ],
+      "title": "Concept",
+      "type": "object"
+    },
+    "Criterion": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "criterion": {
+          "title": "Criterion",
+          "type": "string"
+        },
+        "defense": {
+          "title": "Defense",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "criterion",
+        "defense"
+      ],
+      "title": "Criterion",
+      "type": "object"
+    },
+    "Lab": {
+      "additionalProperties": false,
+      "properties": {
+        "providers": {
+          "items": {
+            "$ref": "#/$defs/Provider"
+          },
+          "minItems": 2,
+          "title": "Providers",
+          "type": "array"
+        },
+        "briefFields": {
+          "items": {
+            "$ref": "#/$defs/BriefField"
+          },
+          "minItems": 1,
+          "title": "Brieffields",
+          "type": "array"
+        },
+        "rubric": {
+          "items": {
+            "$ref": "#/$defs/Criterion"
+          },
+          "minItems": 1,
+          "title": "Rubric",
+          "type": "array"
+        }
+      },
+      "required": [
+        "providers",
+        "briefFields",
+        "rubric"
+      ],
+      "title": "Lab",
+      "type": "object"
+    },
+    "Module": {
+      "additionalProperties": false,
+      "properties": {
+        "number": {
+          "maximum": 10,
+          "minimum": 1,
+          "title": "Number",
+          "type": "integer"
+        },
+        "capabilityId": {
+          "title": "Capabilityid",
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/Artifact"
+        },
+        "conceptIds": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Conceptids",
+          "type": "array"
+        },
+        "learnerArtifact": {
+          "title": "Learnerartifact",
+          "type": "string"
+        },
+        "defense": {
+          "title": "Defense",
+          "type": "string"
+        },
+        "availability": {
+          "enum": [
+            "WORKED_LESSON",
+            "CURRICULUM_READY"
+          ],
+          "title": "Availability",
+          "type": "string"
+        }
+      },
+      "required": [
+        "number",
+        "capabilityId",
+        "content",
+        "conceptIds",
+        "learnerArtifact",
+        "defense",
+        "availability"
+      ],
+      "title": "Module",
+      "type": "object"
+    },
+    "Pathway": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "audience": {
+          "title": "Audience",
+          "type": "string"
+        },
+        "outcome": {
+          "title": "Outcome",
+          "type": "string"
+        },
+        "status": {
+          "const": "ROADMAP",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "audience",
+        "outcome",
+        "status"
+      ],
+      "title": "Pathway",
+      "type": "object"
+    },
+    "Provider": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "compatible": {
+          "title": "Compatible",
+          "type": "boolean"
+        },
+        "available": {
+          "title": "Available",
+          "type": "boolean"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "compatible",
+        "available",
+        "explanation"
+      ],
+      "title": "Provider",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "agentic-engineering-course.v1",
+      "title": "Version",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "subtitle": {
+      "title": "Subtitle",
+      "type": "string"
+    },
+    "promise": {
+      "title": "Promise",
+      "type": "string"
+    },
+    "audience": {
+      "title": "Audience",
+      "type": "string"
+    },
+    "sourceBrief": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "season": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "caseStudy": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "target": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "gaps": {
+      "$ref": "#/$defs/Artifact"
+    },
+    "concepts": {
+      "items": {
+        "$ref": "#/$defs/Concept"
+      },
+      "minItems": 1,
+      "title": "Concepts",
+      "type": "array"
+    },
+    "modules": {
+      "items": {
+        "$ref": "#/$defs/Module"
+      },
+      "minItems": 1,
+      "title": "Modules",
+      "type": "array"
+    },
+    "pathways": {
+      "items": {
+        "$ref": "#/$defs/Pathway"
+      },
+      "minItems": 1,
+      "title": "Pathways",
+      "type": "array"
+    },
+    "lab": {
+      "$ref": "#/$defs/Lab"
+    }
+  },
+  "required": [
+    "version",
+    "title",
+    "subtitle",
+    "promise",
+    "audience",
+    "sourceBrief",
+    "season",
+    "caseStudy",
+    "target",
+    "gaps",
+    "concepts",
+    "modules",
+    "pathways",
+    "lab"
+  ],
+  "title": "Course",
+  "type": "object"
+}
