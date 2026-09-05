@@ -1,9 +1,11 @@
 # SCL playground
 
+The playground now supports [SCL 0.2 Lite and canonical authoring](SCL-0.2-SPECIFICATION.md), while keeping 0.1 drafts compatible.
+
 Run `.venv\Scripts\python.exe scripts/serve_scl.py --port 8766` from the content lab, then open
 [the playground](http://127.0.0.1:8766/samples/scl/index.html#playground).
 
-The editor opens with a three-node circuit, or restores the last draft saved in
+The editor opens with a compact 0.2 three-node circuit, or restores the last draft saved in
 this browser. Change a node's `label` or paste your own SCL. With **Live preview**
 on, compilation starts 650 ms after the last edit. The material infographic and
 selected rolling-ball trace are generated from that SCL.
@@ -21,7 +23,7 @@ selected rolling-ball trace are generated from that SCL.
   latest text compiles. **Play selected flow** animates the routes in `trace`.
 - **Reveal a capability** keeps the source-inspection workflow available.
 
-Syntax and contract errors appear below the controls. Edits clear the previous
+Syntax and contract errors appear below the controls, with repair hints, a source excerpt and Go to line when a source location is known. Edits clear the previous
 preview and disable derived exports until the new circuit validates. The editor
 never replaces your text with the compiler's normalized output. Requests are
 serialized; newer edits replace queued work and invalidate older responses.

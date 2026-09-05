@@ -1,0 +1,210 @@
+{
+  "version": "sidefx-circuit.v0.2",
+  "id": "my-capability",
+  "title": "My first circuit",
+  "promise": "Describe the experience this capability should create.",
+  "status": "DRAFT",
+  "sourceGeneration": null,
+  "sources": [
+    {
+      "id": "__scl.design.target",
+      "path": "declarations/scl/playground-intent.json",
+      "sha256": "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484",
+      "pointer": "",
+      "kind": "TARGET",
+      "label": "User-authored target design context",
+      "encoding": "json"
+    },
+    {
+      "id": "__scl.design.gap",
+      "path": "declarations/scl/playground-intent.json",
+      "sha256": "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484",
+      "pointer": "",
+      "kind": "GAP",
+      "label": "User-authored gap design context",
+      "encoding": "json"
+    },
+    {
+      "id": "__scl.design.staging",
+      "path": "declarations/scl/playground-intent.json",
+      "sha256": "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484",
+      "pointer": "",
+      "kind": "STAGING",
+      "label": "User-authored staging design context",
+      "encoding": "json"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "my-capability",
+      "label": "My first circuit",
+      "domain": "Authored capability",
+      "scenarioIds": [
+        "happy-path"
+      ],
+      "coverage": "Intended scenarios authored in SCL 0.2",
+      "sourceRefs": [
+        "__scl.design.target"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "happy-path",
+      "capabilityId": "my-capability",
+      "label": "The intended experience",
+      "nodeIds": [
+        "request",
+        "work",
+        "result"
+      ],
+      "sourceRefs": [
+        "__scl.design.target"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "request",
+      "label": "A request arrives",
+      "detail": "",
+      "capabilityId": "my-capability",
+      "scenarioId": "happy-path",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    },
+    {
+      "id": "work",
+      "label": "Make it happen",
+      "detail": "What mechanic changes the situation?",
+      "capabilityId": "my-capability",
+      "scenarioId": "happy-path",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    },
+    {
+      "id": "result",
+      "label": "The person gets a result",
+      "detail": "What changed for the person?",
+      "capabilityId": "my-capability",
+      "scenarioId": "happy-path",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    }
+  ],
+  "junctions": [],
+  "edges": [
+    {
+      "id": "__scl.transition.6c4d9911a31cd36b670c",
+      "source": "request",
+      "target": "work",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.63eac36bf38546ddc89f",
+      "source": "work",
+      "target": "result",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    }
+  ],
+  "providers": [],
+  "meanings": [
+    {
+      "nodeId": "request",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "work",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "What mechanic changes the situation?",
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "result",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "What changed for the person?",
+      "variants": [],
+      "productIsExperience": false
+    }
+  ],
+  "records": [],
+  "findings": [],
+  "trace": [
+    "__scl.transition.6c4d9911a31cd36b670c",
+    "__scl.transition.63eac36bf38546ddc89f"
+  ],
+  "traces": [
+    {
+      "id": "happy-path.flow",
+      "scenarioId": "happy-path",
+      "steps": [
+        {
+          "edgeId": "__scl.transition.6c4d9911a31cd36b670c",
+          "paths": null
+        },
+        {
+          "edgeId": "__scl.transition.63eac36bf38546ddc89f",
+          "paths": null
+        }
+      ]
+    }
+  ],
+  "selectedTrace": "happy-path.flow"
+}

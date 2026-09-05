@@ -1,0 +1,46 @@
+scl 0.2;
+capability interlock-agent-operation {
+  label "Prove both sides of the boundary.";
+  promise "Only governed agent operations cross the boundary.";
+
+  scenario certification {
+    label "Two-sided live certification";
+    given activation "Exact session, workspace, and policy";
+
+    when both-probes {
+      label "Both probes";
+      altitude scenario;
+      plane primary;
+      parallel {
+        deny unmanaged-probe expect no-effect {
+          label "Deny unmanaged probe";
+          responsibility "Observe no unmanaged effect";
+          requires-port live-probe-port;
+        }
+        permit read-only-probe expect declared-effect {
+          label "Permit read-only probe";
+          responsibility "Observe the declared effect";
+          requires-port live-probe-port;
+        }
+      }
+      join both-results all;
+    }
+
+    validate identities on session, coverage, time, authority;
+    then scoped-boundary {
+      label "Scoped boundary";
+      experience "Only when every obligation closes";
+    }
+    requires evidence probe-testimony;
+  }
+
+  provider candidate hook-runtime through live-probe-port;
+  evidence probe-testimony {
+    label "Required probe testimony";
+    basis GAP;
+    plane evidence;
+    altitude execution;
+    detail "Required / not observed";
+    closure "Execute both probes in the same exact live session; bind actual effects and ordered identities.";
+  }
+}

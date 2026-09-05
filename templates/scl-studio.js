@@ -4,14 +4,31 @@
   let catalog, examples, mode='draft', result=null, flow=null, generation=0, online=false, previousDraft=null;
   const draftKey='sidefx.scl.playground.v1';
   const option=(value,label)=>{const n=make('option',label);n.value=value;return n;};
-  async function api(path,body){const r=await fetch('/api/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await r.json();if(!r.ok)throw Error(data.error);return data;}
-  function fail(error){$('error').hidden=false;$('error').textContent=String(error.message||error);}
+  async function api(path,body){const r=await fetch('/api/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await r.json();if(!r.ok){const error=Error(data.error);error.diagnostic=data.diagnostic;throw error;}return data;}
+  function fail(error){
+    const d=error.diagnostic,box=$('error');box.hidden=false;box.replaceChildren();
+    box.append(make('strong',d?d.code+(d.line?` · Line ${d.line}, column ${d.column}`:''):'Compilation issue'),make('p',d?.message||String(error.message||error)));
+    if(d?.hint)box.append(make('p',d.hint));
+    if(d?.line&&mode==='draft'){
+      const lines=$('editor').value.split('\n'),line=lines[d.line-1]||'';
+      box.append(make('pre',`${d.line} │ ${line}`));const jump=make('button',`Go to line ${d.line}`);
+      jump.onclick=()=>{
+        const editor=$('editor'),start=lines.slice(0,d.line-1).reduce((n,s)=>n+s.length+1,0),css=getComputedStyle(editor),ruler=make('div','');
+        Object.assign(ruler.style,{position:'absolute',visibility:'hidden',width:editor.clientWidth+'px',boxSizing:'border-box',padding:css.padding,font:css.font,whiteSpace:'pre-wrap',overflowWrap:'break-word'});
+        ruler.textContent=editor.value.slice(0,start)+'\u200b';document.body.append(ruler);
+        editor.focus();editor.setSelectionRange(start,start+line.length);editor.scrollTop=Math.max(0,ruler.clientHeight-editor.clientHeight/3);ruler.remove();
+      };box.append(jump);
+    }
+    $('editor').setAttribute('aria-invalid','true');
+  }
   function stop(){flow?.destroy();flow=null;$('play').disabled=true;$('position').disabled=true;}
   function clearPreview(){
     stop();result=null;$('stage').replaceChildren();$('scope').textContent='';$('receipt').textContent='';
     $('findings').replaceChildren();$('record').replaceChildren();$('records-summary').textContent='';$('record-detail').textContent='';
+    $('canonical-scl').textContent='Compile a valid draft to inspect its canonical SCL.';
     $('inspect-record').disabled=true;$('native-controls').hidden=true;$('download-json').disabled=true;$('download-svg').disabled=true;
     $('flow-caption').textContent='Waiting for a valid circuit.';$('error').hidden=true;$('error').textContent='';
+    $('editor').removeAttribute('aria-invalid');$('proof-state').hidden=true;
   }
   function state(label,kind='pending'){$('compile-state').textContent=label;$('compile-state').dataset.state=kind;}
   function saveDraft(){
@@ -28,10 +45,16 @@
     stop();result=data;$('stage').innerHTML=data.svg;$('stage').classList.remove('native');$('material').disabled=false;$('error').hidden=true;$('error').textContent='';
     $('download-json').disabled=!data.graph;$('download-svg').disabled=false;
     const g=data.graph,p=data.projection,r=data.receipt;
+    $('trace-control').hidden=!g?.traces?.length;
+    $('trace').replaceChildren(...(g?.traces||[]).filter(t=>t.scenarioId===r.scenarioId).map(t=>{const o=option(t.id,t.id);o.dataset.scenario=t.scenarioId;return o;}));
+    $('trace').value=g?.selectedTrace||'';
+    $('proof-state').hidden=!r.evidenceRequirements?.length;
+    $('proof-state').textContent=r.evidenceRequirements?.length?`PROOF NOT ESTABLISHED · ${r.evidenceRequirements.length} evidence requirement${r.evidenceRequirements.length===1?'':'s'} · target design only`:'';
     $('basis').textContent=mode==='draft'?'TARGET / CANDIDATE DESIGN':'SOURCE / DECLARED';
     $('scope').textContent=`${r.visibleNodes} visible nodes / ${r.totalNodes} retained · ${r.retainedNativeRecords} native records`;
-    $('status').textContent=`${g?.title||p.title} · Graph ${r.graphSha256.slice(0,12)} · No capability execution`;
+    $('status').textContent=`${g?.title||p.title} · SCL ${g?.version?.endsWith('0.2')?'0.2':'0.1'} · Graph ${r.graphSha256.slice(0,12)} · No capability execution`;
     $('receipt').textContent=JSON.stringify(r,null,2);
+    $('canonical-scl').textContent=data.scl||'Canonical SCL is available when the compiler is connected.';
     if(g){
       const native=g.records.filter(x=>x.kind==='cell');$('native-controls').hidden=mode!=='reveal'||!native.length;
       $('native-cell').replaceChildren(...native.map(x=>option(x.nativeId,`${x.nativeType} / ${x.nativeId}`)));
@@ -42,7 +65,12 @@
       $('inspect-record').disabled=mode==='draft'||!records.length||!online;
       $('record-detail').textContent=records.length?'Select a record to inspect its exact source.':'No native records are attached to this draft. Its typed circuit is in the SCL editor.';
       $('findings').replaceChildren(...g.findings.map(f=>{const a=make('article','');a.append(make('b',f.code.replaceAll('_',' ')),make('p',f.detail),make('p','Closure: '+f.closure));return a;}));
-      if(!g.findings.length)$('findings').append(make('p','Structurally valid candidate. Semantic review, provider qualification, proof and platform admission remain separate.'));
+      for(const requirement of r.evidenceRequirements||[]){
+        const evidence=g.nodes.find(n=>n.id===requirement.evidenceId),item=make('article','');
+        item.append(make('b',`${evidence.label} · ${evidence.basis}`),make('p',evidence.closure||'Supply scoped evidence that establishes the required outcome.'),make('p','Outcome: '+requirement.outcomeId+' · proof not established'));
+        $('findings').append(item);
+      }
+      if(!g.findings.length&&!r.evidenceRequirements?.length)$('findings').append(make('p','Structurally valid candidate. Semantic review, provider qualification, proof and platform admission remain separate.'));
     }
     const chosen=p.animationBeats.flatMap(b=>b.edgeIds);
     $('flow-caption').textContent=chosen.length?'Illustrative trace / not execution testimony':'No trace selected. Source structure remains visible.';
@@ -50,13 +78,14 @@
       try{flow=new SideFXCircuitFlow.Player($('stage').firstElementChild,p,state=>{
         $('play').textContent=state.running?'Pause flow':matchMedia('(prefers-reduced-motion: reduce)').matches?'Step selected flow':'Play selected flow';
         $('position').max=state.duration;$('position').value=state.time;
-        $('flow-caption').textContent=state.joins.length?state.joins.map(j=>`${j.arrived} / ${j.required} arrivals`).join(' · '):`${state.time.toFixed(1)} / ${state.duration.toFixed(1)}s · illustrative`;
+        $('flow-caption').textContent=state.finished&&r.evidenceRequirements?.length?'Target flow illustrated. Proof remains open.':state.joins.length?state.joins.map(j=>`${j.arrived} / ${j.required} arrivals`).join(' · '):`${state.time.toFixed(1)} / ${state.duration.toFixed(1)}s · illustrative`;
       });$('play').disabled=false;$('position').disabled=false;}catch(e){$('flow-caption').textContent='Trace held: '+e.message;}
     }
   }
   function load(resetScenario=false,delay=0){
     if(!online)return;++generation;
     const body={...(mode==='draft'?{scl:$('editor').value}:{capabilityId:$('capability').value}),scenarioId:resetScenario?null:$('scenario').value,enhanced:$('material').checked};
+    if(!resetScenario&&$('trace').selectedOptions[0]?.dataset.scenario===body.scenarioId)body.traceId=$('trace').value;
     clearPreview();state(delay?'Waiting for your next edit…':'Queued…');
     $('status').textContent=delay?'Live preview updates after you pause typing.':'Preparing the latest circuit…';
     compiler.schedule({path:mode==='draft'?'draft':'reveal',body},delay);
@@ -68,6 +97,7 @@
   $('download-svg').onclick=()=>result&&download('infographic.svg',result.svg,'image/svg+xml');
   $('reveal-tab').onclick=()=>switchMode('reveal');$('draft-tab').onclick=()=>switchMode('draft');
   $('capability').onchange=()=>load(true);$('scenario').onchange=()=>load();$('material').onchange=()=>load();$('compile').onclick=()=>load(true);
+  $('trace').onchange=()=>load();
   function replaceDraft(text,example=''){
     previousDraft=$('editor').value;$('restore-draft').disabled=false;$('editor').value=text;$('example').value=example;
     saveDraft();load(true);
@@ -98,8 +128,8 @@
     $('capability').replaceChildren(...catalog.results.map(c=>option(c.id,c.title)));$('capability').value='interlock-agent-operation';
     $('example').replaceChildren(option('','Your edited draft'),...examples.map(e=>option(e.id,e.label)));$('example').value=examples[0].id;$('editor').value=examples[0].scl;
     try{const saved=JSON.parse(localStorage.getItem(draftKey));if(saved&&typeof saved.text==='string'){$('editor').value=saved.text;$('example').value=saved.example||'';previousDraft=typeof saved.previous==='string'?saved.previous:null;$('restore-draft').disabled=previousDraft===null;$('save-state').textContent='Your saved draft has been restored';}}catch(e){$('save-state').textContent='Browser storage unavailable. Use Save SCL to keep your draft.';}
-    try{online=(await fetch('/api/health').then(r=>r.json())).compiler==='scl.v0.1';}catch(e){online=false;}
-    $('connection').textContent=online?'Local compiler connected · no live effects':'Saved preview · start scripts/serve_scl.py for compilation';
+    try{online=(await fetch('/api/health').then(r=>r.json())).languages?.includes('0.2');}catch(e){online=false;}
+    $('connection').textContent=online?'SCL 0.2 compiler · 0.1 compatible · no live effects':'Saved preview · start or restart scripts/serve_scl.py for SCL 0.2';
     switchMode(location.hash==='#workbench'?'reveal':'draft');
     if(online){if(location.hash==='#playground')$('workbench').scrollIntoView();}
     else{const saved=await fetch('scenario-target.preview.json').then(r=>r.json());saved.graph=await fetch('../../declarations/scl/scenario-target.json').then(r=>r.json());saved.scl=examples.find(e=>e.id==='scenario-target').scl;show(saved);$('basis').textContent='TARGET / SAVED EXAMPLE';state('Compiler offline','error');for(const id of ['reveal-tab','draft-tab','capability','scenario','material','compile','example','new-draft','import-scl','restore-draft','live'])$(id).disabled=true;$('editor').readOnly=true;$('status').textContent='Saved target example (not a preview of editor text). Run .venv\\Scripts\\python.exe scripts/serve_scl.py and open http://127.0.0.1:8766/samples/scl/index.html';}

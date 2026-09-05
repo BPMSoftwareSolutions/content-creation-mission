@@ -1,0 +1,604 @@
+{
+  "version": "sidefx-circuit.v0.2",
+  "id": "interlock-agent-operation",
+  "title": "Prove both sides of the boundary.",
+  "promise": "Only governed agent operations cross the boundary.",
+  "status": "DRAFT",
+  "sourceGeneration": null,
+  "sources": [
+    {
+      "id": "__scl.design.target",
+      "path": "declarations/scl/playground-intent.json",
+      "sha256": "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484",
+      "pointer": "",
+      "kind": "TARGET",
+      "label": "User-authored target design context",
+      "encoding": "json"
+    },
+    {
+      "id": "__scl.design.gap",
+      "path": "declarations/scl/playground-intent.json",
+      "sha256": "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484",
+      "pointer": "",
+      "kind": "GAP",
+      "label": "User-authored gap design context",
+      "encoding": "json"
+    },
+    {
+      "id": "__scl.design.staging",
+      "path": "declarations/scl/playground-intent.json",
+      "sha256": "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484",
+      "pointer": "",
+      "kind": "STAGING",
+      "label": "User-authored staging design context",
+      "encoding": "json"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "interlock-agent-operation",
+      "label": "Prove both sides of the boundary.",
+      "domain": "Authored capability",
+      "scenarioIds": [
+        "certification"
+      ],
+      "coverage": "Intended scenarios authored in SCL 0.2",
+      "sourceRefs": [
+        "__scl.design.target"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "certification",
+      "capabilityId": "interlock-agent-operation",
+      "label": "Two-sided live certification",
+      "nodeIds": [
+        "activation",
+        "unmanaged-probe",
+        "read-only-probe",
+        "identities",
+        "scoped-boundary",
+        "both-probes",
+        "both-results"
+      ],
+      "sourceRefs": [
+        "__scl.design.target"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "probe-testimony",
+      "label": "Required probe testimony",
+      "detail": "Required / not observed",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": null,
+      "basis": "GAP",
+      "sourceRefs": [
+        "__scl.design.gap"
+      ],
+      "layer": "support",
+      "type": "evidence",
+      "productContract": null,
+      "closure": "Execute both probes in the same exact live session; bind actual effects and ordered identities.",
+      "plane": "evidence"
+    },
+    {
+      "id": "live-probe-port",
+      "label": "Live probe port",
+      "detail": "Provider responsibility",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": null,
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "support",
+      "type": "provider-port",
+      "productContract": null,
+      "closure": null,
+      "plane": "support"
+    },
+    {
+      "id": "hook-runtime",
+      "label": "Hook runtime",
+      "detail": "Candidate / not observed",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": null,
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "support",
+      "type": "provider",
+      "productContract": null,
+      "closure": null,
+      "plane": "provider"
+    },
+    {
+      "id": "activation",
+      "label": "Exact session, workspace, and policy",
+      "detail": "",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": "certification",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    },
+    {
+      "id": "unmanaged-probe",
+      "label": "Deny unmanaged probe",
+      "detail": "Observe no unmanaged effect",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": "certification",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    },
+    {
+      "id": "read-only-probe",
+      "label": "Permit read-only probe",
+      "detail": "Observe the declared effect",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": "certification",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    },
+    {
+      "id": "identities",
+      "label": "Identities",
+      "detail": "Match session, coverage, time, authority",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": "certification",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "validation",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    },
+    {
+      "id": "scoped-boundary",
+      "label": "Scoped boundary",
+      "detail": "Only when every obligation closes",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": "certification",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": null,
+      "closure": null,
+      "plane": "primary"
+    }
+  ],
+  "junctions": [
+    {
+      "id": "both-probes",
+      "label": "Both probes",
+      "detail": "",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": "certification",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "fan-out",
+      "rule": null,
+      "join": null,
+      "quorum": null,
+      "plane": "primary"
+    },
+    {
+      "id": "both-results",
+      "label": "Both results",
+      "detail": "",
+      "capabilityId": "interlock-agent-operation",
+      "scenarioId": "certification",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "layer": "mechanic",
+      "type": "convergence",
+      "rule": null,
+      "join": "all",
+      "quorum": null,
+      "plane": "primary"
+    }
+  ],
+  "edges": [
+    {
+      "id": "__scl.provider-binding.624c29902016849fb302",
+      "source": "hook-runtime",
+      "target": "live-probe-port",
+      "type": "provider-binding",
+      "label": "candidate",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.3fb40140b69e543a05b3",
+      "source": "activation",
+      "target": "both-probes",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.b5c446556dbe8acf238c",
+      "source": "both-probes",
+      "target": "unmanaged-probe",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.c30e618085a4781130b2",
+      "source": "unmanaged-probe",
+      "target": "both-results",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.839e96d206d14a8a8cad",
+      "source": "both-probes",
+      "target": "read-only-probe",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.6d74c22511457f64af06",
+      "source": "read-only-probe",
+      "target": "both-results",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.ed233fa73d84c1e5ed0a",
+      "source": "both-results",
+      "target": "identities",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.transition.2e11132337a59879042c",
+      "source": "identities",
+      "target": "scoped-boundary",
+      "type": "transition",
+      "label": "",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.dependency.1ee2cf0705e07abd8305",
+      "source": "live-probe-port",
+      "target": "unmanaged-probe",
+      "type": "dependency",
+      "label": "required responsibility",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.dependency.7cb2c45d661075c9fffd",
+      "source": "live-probe-port",
+      "target": "read-only-probe",
+      "type": "dependency",
+      "label": "required responsibility",
+      "basis": "TARGET",
+      "sourceRefs": [
+        "__scl.design.target"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "__scl.evidence-attachment.a17e5a7df456f86bdf6d",
+      "source": "probe-testimony",
+      "target": "scoped-boundary",
+      "type": "evidence-attachment",
+      "label": "required to establish",
+      "basis": "GAP",
+      "sourceRefs": [
+        "__scl.design.gap"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    }
+  ],
+  "providers": [
+    {
+      "nodeId": "hook-runtime",
+      "portIds": [
+        "live-probe-port"
+      ],
+      "binding": "candidate",
+      "state": "candidate"
+    }
+  ],
+  "meanings": [
+    {
+      "nodeId": "probe-testimony",
+      "altitude": "execution",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "live-probe-port",
+      "altitude": "execution",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "hook-runtime",
+      "altitude": "provider",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "activation",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "both-probes",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "both-results",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "unmanaged-probe",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "Observe no unmanaged effect",
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [
+        "deny",
+        "no-effect"
+      ],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "read-only-probe",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "Observe the declared effect",
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [
+        "permit",
+        "declared-effect"
+      ],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "identities",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "Match session, coverage, time, authority",
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [
+        "session",
+        "coverage",
+        "time",
+        "authority"
+      ],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "scoped-boundary",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "Only when every obligation closes",
+      "variants": [],
+      "productIsExperience": false
+    }
+  ],
+  "records": [],
+  "findings": [],
+  "trace": [
+    "__scl.transition.3fb40140b69e543a05b3",
+    "__scl.transition.b5c446556dbe8acf238c",
+    "__scl.transition.c30e618085a4781130b2",
+    "__scl.transition.839e96d206d14a8a8cad",
+    "__scl.transition.6d74c22511457f64af06",
+    "__scl.transition.ed233fa73d84c1e5ed0a",
+    "__scl.transition.2e11132337a59879042c"
+  ],
+  "traces": [
+    {
+      "id": "certification.flow",
+      "scenarioId": "certification",
+      "steps": [
+        {
+          "edgeId": "__scl.transition.3fb40140b69e543a05b3",
+          "paths": null
+        },
+        {
+          "edgeId": null,
+          "paths": [
+            [
+              {
+                "edgeId": "__scl.transition.b5c446556dbe8acf238c",
+                "paths": null
+              },
+              {
+                "edgeId": "__scl.transition.c30e618085a4781130b2",
+                "paths": null
+              }
+            ],
+            [
+              {
+                "edgeId": "__scl.transition.839e96d206d14a8a8cad",
+                "paths": null
+              },
+              {
+                "edgeId": "__scl.transition.6d74c22511457f64af06",
+                "paths": null
+              }
+            ]
+          ]
+        },
+        {
+          "edgeId": "__scl.transition.ed233fa73d84c1e5ed0a",
+          "paths": null
+        },
+        {
+          "edgeId": "__scl.transition.2e11132337a59879042c",
+          "paths": null
+        }
+      ]
+    }
+  ],
+  "selectedTrace": "certification.flow"
+}

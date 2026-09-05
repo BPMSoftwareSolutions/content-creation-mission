@@ -89,13 +89,21 @@ def main():
     starter=starter_scl();g=parse(starter)
     (ROOT/'declarations/scl/my-circuit.scl').write_text(starter,encoding='utf-8')
     examples.insert(0,dict(id='my-circuit',label='Simple circuit / start here',scl=starter,graphSha256=graph_hash(g)))
+    for identity,label in reversed([('my-circuit.v02','0.2 / Simple circuit — start here'),('certification.v02','0.2 / Parallel certification & evidence')]):
+        text=(ROOT/f'declarations/scl/{identity}.scl').read_text(encoding='utf-8');g=parse(text)
+        examples.insert(0,dict(id=identity,label=label,scl=text,graphSha256=graph_hash(g)))
+        write(out/f'{identity}.preview.json',compile_graph(g,enhanced=True))
+        write(out/f'{identity}.canonical.json',g.model_dump())
+        (out/f'{identity}.canonical.scl').write_text(emit(g),encoding='utf-8')
     write(out/'examples.json',examples)
     for file in ('scl-studio.html','scl-studio.css','scl-studio.js','scl-live.js','circuit-flow.js'):
         (out/('index.html' if file.endswith('.html') else file)).write_bytes((ROOT/'templates'/file).read_bytes())
     write('schemas/sidefx-circuit.v0.1.schema.json',{'$schema':'https://json-schema.org/draft/2020-12/schema',**Circuit.model_json_schema()})
-    write(out/'build-receipt.json',dict(kind='SCL_WORKBENCH_BUILD',inputs={str(p.relative_to(ROOT)).replace('\\','/'):digest(p) for p in [ROOT/'scripts/scl.py',ROOT/'scripts/reveal_scl.py',ROOT/'scripts/scl_render.py',ROOT/'scripts/build_scl_studio.py',ROOT/'declarations/scl/playground-intent.json',ROOT/'docs/sidefx-circuit-language (SCL).md',*[ROOT/'templates'/f for f in ('scl-studio.html','scl-studio.css','scl-studio.js','scl-live.js')]]},
+    from scl_v02 import Circuit02
+    write('schemas/sidefx-circuit.v0.2.schema.json',{'$schema':'https://json-schema.org/draft/2020-12/schema',**Circuit02.model_json_schema()})
+    write(out/'build-receipt.json',dict(kind='SCL_WORKBENCH_BUILD',inputs={str(p.relative_to(ROOT)).replace('\\','/'):digest(p) for p in [ROOT/'scripts/scl.py',ROOT/'scripts/scl_v02.py',ROOT/'scripts/serve_scl.py',ROOT/'declarations/scl/my-circuit.v02.scl',ROOT/'declarations/scl/certification.v02.scl',ROOT/'scripts/reveal_scl.py',ROOT/'scripts/scl_render.py',ROOT/'scripts/build_scl_studio.py',ROOT/'declarations/scl/playground-intent.json',ROOT/'docs/sidefx-circuit-language (SCL).md',*[ROOT/'templates'/f for f in ('scl-studio.html','scl-studio.css','scl-studio.js','scl-live.js')]]},
         outputs={p.name:digest(p) for p in sorted(out.glob('*')) if p.is_file() and p.name!='build-receipt.json'},admission='NOT_PERFORMED'))
-    print('SCL workbench built / 3 typed drafts / live playground / shared SideFX renderer')
+    print('SCL 0.2 workbench built / 5 drafts / 0.1 compatibility / shared SideFX renderer')
 
 
 if __name__=='__main__':main()

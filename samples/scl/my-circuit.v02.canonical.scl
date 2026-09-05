@@ -1,0 +1,113 @@
+scl "0.2";
+circuit "my-capability" {
+  title "My first circuit";
+  promise "Describe the experience this capability should create.";
+  status "DRAFT";
+  sourceGeneration null;
+  source "__scl.design.target" {
+    path "declarations/scl/playground-intent.json";
+    sha256 "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484";
+    pointer "";
+    kind "TARGET";
+    label "User-authored target design context";
+    encoding "json";
+  }
+  source "__scl.design.gap" {
+    path "declarations/scl/playground-intent.json";
+    sha256 "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484";
+    pointer "";
+    kind "GAP";
+    label "User-authored gap design context";
+    encoding "json";
+  }
+  source "__scl.design.staging" {
+    path "declarations/scl/playground-intent.json";
+    sha256 "3a689fdcdf33272f61449e37b0f41df03a47fdbe7b041ace47543c7e30e36484";
+    pointer "";
+    kind "STAGING";
+    label "User-authored staging design context";
+    encoding "json";
+  }
+  capability "my-capability" {
+    label "My first circuit";
+    domain "Authored capability";
+    scenarioIds ["happy-path"];
+    coverage "Intended scenarios authored in SCL 0.2";
+    sourceRefs ["__scl.design.target"];
+  }
+  scenario "happy-path" {
+    capabilityId "my-capability";
+    label "The intended experience";
+    nodeIds ["request", "work", "result"];
+    sourceRefs ["__scl.design.target"];
+  }
+  input "request" {
+    label "A request arrives";
+    detail "";
+    capabilityId "my-capability";
+    scenarioId "happy-path";
+    basis "TARGET";
+    sourceRefs ["__scl.design.target"];
+    layer "mechanic";
+    plane "primary";
+  }
+  event "work" {
+    label "Make it happen";
+    detail "What mechanic changes the situation?";
+    capabilityId "my-capability";
+    scenarioId "happy-path";
+    basis "TARGET";
+    sourceRefs ["__scl.design.target"];
+    layer "mechanic";
+    plane "primary";
+  }
+  outcome "result" {
+    label "The person gets a result";
+    detail "What changed for the person?";
+    capabilityId "my-capability";
+    scenarioId "happy-path";
+    basis "TARGET";
+    sourceRefs ["__scl.design.target"];
+    layer "mechanic";
+    plane "primary";
+  }
+  route "__scl.transition.6c4d9911a31cd36b670c" {
+    source "request";
+    target "work";
+    type "transition";
+    label "";
+    basis "TARGET";
+    sourceRefs ["__scl.design.target"];
+  }
+  route "__scl.transition.63eac36bf38546ddc89f" {
+    source "work";
+    target "result";
+    type "transition";
+    label "";
+    basis "TARGET";
+    sourceRefs ["__scl.design.target"];
+  }
+  meaning {
+    nodeId "request";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "work";
+    altitude "scenario";
+    responsibility "What mechanic changes the situation?";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "result";
+    altitude "scenario";
+    experience "What changed for the person?";
+    variants [];
+    productIsExperience false;
+  }
+  trace ["__scl.transition.6c4d9911a31cd36b670c", "__scl.transition.63eac36bf38546ddc89f"];
+  traces [{"id": "happy-path.flow", "scenarioId": "happy-path", "steps": [{"edgeId": "__scl.transition.6c4d9911a31cd36b670c", "paths": null}, {"edgeId": "__scl.transition.63eac36bf38546ddc89f", "paths": null}]}];
+  selectedTrace "happy-path.flow";
+}

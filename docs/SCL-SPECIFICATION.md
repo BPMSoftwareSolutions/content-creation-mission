@@ -1,5 +1,7 @@
 # SideFX Circuit Language 0.1
 
+This is the 0.1 compatibility specification. See [SCL 0.2](SCL-0.2-SPECIFICATION.md) for the current Lite authoring language and diagnostics.
+
 Status: **implemented content-lab candidate specification**. This version is not an admitted SideFX language authority or a runtime. It establishes a repeatable inspection and design boundary. Its source brief is [SideFX Circuit Language](sidefx-circuit-language%20(SCL).md), retained unchanged.
 
 ## What works now

@@ -1,4 +1,4 @@
-"""SCL 0.1: a data language and candidate graph, never an execution boundary."""
+"""SCL 0.1 and 0.2: data languages and candidate graphs, never execution boundaries."""
 import argparse
 import hashlib
 import json
@@ -94,7 +94,14 @@ def resolve_sources(sources):
 
 
 def validate_graph(data, verify_sources=True):
-    g = Circuit.model_validate(data)
+    need(isinstance(data,(Circuit,dict)), 'CIRCUIT_OBJECT_REQUIRED')
+    version = data.version if isinstance(data, Circuit) else data.get('version', VERSION)
+    if version == 'sidefx-circuit.v0.2':
+        from scl_v02 import Circuit02, validate_extensions
+        g = Circuit02.model_validate(data)
+        validate_extensions(g)
+    else:
+        g = Circuit.model_validate(data)
     nodes = {n.id: n for n in g.nodes + g.junctions}
     edges = {e.id: e for e in g.edges}
     sources = {s.id: s for s in g.sources}
@@ -181,16 +188,26 @@ def validate_graph(data, verify_sources=True):
             need(m.parentId in nodes, 'UNKNOWN_PARENT:' + m.nodeId); hierarchy.add_edge(m.parentId, m.nodeId)
             need(nodes[m.parentId].capabilityId == nodes[m.nodeId].capabilityId, 'CROSS_CAPABILITY_CONTAINMENT')
             if m.parentId in meanings:
-                levels = {'scenario':0,'execution':1,'mechanic':2,'provider':3}
+                levels = {v:i for i,v in enumerate(('strategy','product','capability','scenario','execution','mechanic','provider','physical'))}
                 need(levels[m.altitude] >= levels[meanings[m.parentId].altitude], 'ALTITUDE_INVERSION:' + m.nodeId)
     need(nx.is_directed_acyclic_graph(hierarchy), 'CONTAINMENT_CYCLE')
     need(len({r.id for r in g.records}) == len(g.records), 'DUPLICATE_RECORD')
     for r in g.records:
         need(r.sourceRef in sources and set(r.scenarioIds) <= scenarios.keys(), 'INVALID_NATIVE_RECORD:' + r.id)
-    need(len(g.trace) == len(set(g.trace)) and set(g.trace) <= edges.keys(), 'INVALID_TRACE')
+    validate_trace(g, g.trace)
+    if version == 'sidefx-circuit.v0.2':
+        from scl_v02 import flatten
+        for trace in g.traces: validate_trace(g, flatten(trace.steps))
+    return g
+
+
+def validate_trace(g, trace):
+    nodes = {n.id:n for n in g.nodes+g.junctions}; edges = {e.id:e for e in g.edges}
+    flow = nx.DiGraph((e.source,e.target) for e in g.edges if e.type in ('transition','product-transfer'))
+    need(len(trace) == len(set(trace)) and set(trace) <= edges.keys(), 'INVALID_TRACE')
     # Selection is an authored illustration; guards are never evaluated as code.
-    if g.trace:
-        chosen = [edges[i] for i in g.trace]
+    if trace:
+        chosen = [edges[i] for i in trace]
         need(all(e.type in ('transition', 'product-transfer') for e in chosen), 'TRACE_UNSUPPORTED_RELATION')
         used = {i for e in chosen for i in (e.source, e.target)}
         for i in used:
@@ -202,7 +219,6 @@ def validate_graph(data, verify_sources=True):
             if n.type == 'convergence':
                 required = flow.in_degree(i) if n.join == 'all' else 1 if n.join == 'any' else n.quorum
                 need(len(incoming) >= required, 'TRACE_INCOMPLETE_JOIN:' + i)
-    return g
 
 
 # Every property value is strict JSON. Braces delimit typed declarations, not code.
@@ -282,11 +298,17 @@ class Parser:
         return data
 
 
-def parse(text, verify_sources=True): return validate_graph(Parser(text).parse(), verify_sources)
+def parse(text, verify_sources=True):
+    header=Parser(text);header.token('scl');version=header.value()
+    if version in ('0.2', 0.2):
+        from scl_v02 import parse_v02
+        return parse_v02(text, verify_sources)[0]
+    return validate_graph(Parser(text).parse(), verify_sources)
 
 
 def emit(graph):
-    g = graph.model_dump(); out = ['scl "0.1";', 'circuit ' + json.dumps(g.pop('id')) + ' {']; g.pop('version')
+    g = graph.model_dump(); version=g.pop('version').rsplit('v',1)[-1]
+    out = ['scl '+json.dumps(version)+';', 'circuit ' + json.dumps(g.pop('id')) + ' {']
     names = {'sources':'source','capabilities':'capability','scenarios':'scenario','nodes':'node','junctions':'junction',
              'edges':'route','providers':'binding','meanings':'meaning','records':'record','findings':'finding'}
     for key, value in g.items():
@@ -315,9 +337,13 @@ def handoff(graph):
 
 
 def main():
-    p = argparse.ArgumentParser(description=__doc__); p.add_argument('input', nargs='?'); p.add_argument('--output'); p.add_argument('--schema', action='store_true'); p.add_argument('--handoff', action='store_true'); a = p.parse_args()
+    p = argparse.ArgumentParser(description=__doc__); p.add_argument('input', nargs='?'); p.add_argument('--output'); p.add_argument('--schema', action='store_true'); p.add_argument('--schema-version',choices=('0.1','0.2'),default='0.1'); p.add_argument('--handoff', action='store_true'); a = p.parse_args()
     if a.schema:
-        data = {'$schema':'https://json-schema.org/draft/2020-12/schema', **Circuit.model_json_schema()}
+        model=Circuit
+        if a.schema_version=='0.2':
+            from scl_v02 import Circuit02
+            model=Circuit02
+        data = {'$schema':'https://json-schema.org/draft/2020-12/schema', **model.model_json_schema()}
     else:
         path = Path(a.input); g = parse(path.read_text(encoding='utf-8')) if path.suffix == '.scl' else validate_graph(json.loads(path.read_bytes()))
         data = handoff(g) if a.handoff else g.model_dump()
