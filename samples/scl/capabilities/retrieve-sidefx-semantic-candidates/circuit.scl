@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "retrieve-sidefx-semantic-candidates" {
+  title "Retrieve semantic candidates in fixed channel order";
+  promise "{\"experienceId\": \"sidefx-semantic-candidate-retrieval.v1\", \"actor\": \"SideFX semantic-brain evaluator\", \"promise\": \"runs exact, graph, lexical, and optional digest-bound vector recall in policy order within declared depth and limit without inventing rank\", \"observableConditions\": [{\"conditionId\": \"exact-identity-outranks-every-other-channel\"}, {\"conditionId\": \"traversal-stays-inside-allow-listed-kinds-and-depth\"}, {\"conditionId\": \"candidates-carry-channel-attribution-not-facts\"}, {\"conditionId\": \"vector-candidates-require-a-reproduced-full-provider-record\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/retrieve-sidefx-semantic-candidates.json";
+    sha256 "e739574574176461904e868fa572bd12b11a2f4a69356885dd972931e32d7784";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/e5c2069fe038b7d9eb2e5dfc04c59900486564ba234bfd5bfda5869a678c9cd5-c174508ead3fd9ca.json";
+    sha256 "eca7e7f418e6d2bac4dc98546868a384a1ef192f747f186397d2b9e3749599e8";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/e5c2069fe038b7d9eb2e5dfc04c59900486564ba234bfd5bfda5869a678c9cd5-c174508ead3fd9ca.json";
+    sha256 "eca7e7f418e6d2bac4dc98546868a384a1ef192f747f186397d2b9e3749599e8";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/e5c2069fe038b7d9eb2e5dfc04c59900486564ba234bfd5bfda5869a678c9cd5-c174508ead3fd9ca.json";
+    sha256 "eca7e7f418e6d2bac4dc98546868a384a1ef192f747f186397d2b9e3749599e8";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/e5c2069fe038b7d9eb2e5dfc04c59900486564ba234bfd5bfda5869a678c9cd5-c174508ead3fd9ca.json";
+    sha256 "eca7e7f418e6d2bac4dc98546868a384a1ef192f747f186397d2b9e3749599e8";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/716";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/e5c2069fe038b7d9eb2e5dfc04c59900486564ba234bfd5bfda5869a678c9cd5-c174508ead3fd9ca.json";
+    sha256 "eca7e7f418e6d2bac4dc98546868a384a1ef192f747f186397d2b9e3749599e8";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "retrieve-sidefx-semantic-candidates" {
+    label "Retrieve semantic candidates in fixed channel order";
+    domain "Frozen source corpus";
+    scenarioIds ["retrieve-sidefx-semantic-candidates"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "retrieve-sidefx-semantic-candidates" {
+    capabilityId "retrieve-sidefx-semantic-candidates";
+    label "Execute exact, graph, lexical, and optional vector channels in fixed policy order";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "sidefx semantic candidate retrieval request";
+    detail "one admitted plan, the pinned identity and lexical indexes, the admitted relationship graph, and optional digest-bound vector testimony";
+    capabilityId "retrieve-sidefx-semantic-candidates";
+    scenarioId "retrieve-sidefx-semantic-candidates";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-semantic-candidate-retrieval-request.v1";
+  }
+  event "s0-event" {
+    label "sidefx semantic candidate retrieval requested";
+    detail "the exact, graph, lexical, and enabled vector channels run in policy order within the declared depth and result limit";
+    capabilityId "retrieve-sidefx-semantic-candidates";
+    scenarioId "retrieve-sidefx-semantic-candidates";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "sidefx semantic candidate set";
+    detail "one digest-bound candidate set carries channel-attributed candidates in catalog order and asserts no fact about them";
+    capabilityId "retrieve-sidefx-semantic-candidates";
+    scenarioId "retrieve-sidefx-semantic-candidates";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-semantic-candidate-set.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "the exact, graph, lexical, and enabled vector channels run in policy order within the declared depth and result limit";
+    authorityId "retrieve-sidefx-semantic-candidates.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "one digest-bound candidate set carries channel-attributed candidates in catalog order and asserts no fact about them";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["retrieve-sidefx-semantic-candidates"];
+    nativeId "retrieve-sidefx-semantic-candidates.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["retrieve-sidefx-semantic-candidates"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["retrieve-sidefx-semantic-candidates"];
+    nativeId "port:retrieve-sidefx-semantic-candidates-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "retrieve-sidefx-semantic-candidates";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "retrieve-sidefx-semantic-candidates";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "retrieve-sidefx-semantic-candidates";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

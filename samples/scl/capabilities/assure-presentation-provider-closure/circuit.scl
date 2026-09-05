@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "assure-presentation-provider-closure" {
+  title "Assure complete presentation provider closure";
+  promise "{\"experienceId\": \"presentation-provider-closure-experience.v1\", \"actor\": \"architecture-reviewer\", \"promise\": \"presentation provider closure decision with explicit closure evidence\", \"observableConditions\": [{\"conditionId\": \"closure-decision-established\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/assure-presentation-provider-closure.json";
+    sha256 "3866e06a79fb600bc293113095d003c089da97464729bff79f2d01b8d4a3a688";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/43cfd7dc7897f9bc8d5cbd1ec174895da661d9cddb8955ac57655e27caed0a55-64507bf03c8ce45d.json";
+    sha256 "54aa3bc38afed7a276e6da5ef3bc48f2bba5428dedb8eb40a759f9f3e8b34e93";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/43cfd7dc7897f9bc8d5cbd1ec174895da661d9cddb8955ac57655e27caed0a55-64507bf03c8ce45d.json";
+    sha256 "54aa3bc38afed7a276e6da5ef3bc48f2bba5428dedb8eb40a759f9f3e8b34e93";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/43cfd7dc7897f9bc8d5cbd1ec174895da661d9cddb8955ac57655e27caed0a55-64507bf03c8ce45d.json";
+    sha256 "54aa3bc38afed7a276e6da5ef3bc48f2bba5428dedb8eb40a759f9f3e8b34e93";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/43cfd7dc7897f9bc8d5cbd1ec174895da661d9cddb8955ac57655e27caed0a55-64507bf03c8ce45d.json";
+    sha256 "54aa3bc38afed7a276e6da5ef3bc48f2bba5428dedb8eb40a759f9f3e8b34e93";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/43";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/43cfd7dc7897f9bc8d5cbd1ec174895da661d9cddb8955ac57655e27caed0a55-64507bf03c8ce45d.json";
+    sha256 "54aa3bc38afed7a276e6da5ef3bc48f2bba5428dedb8eb40a759f9f3e8b34e93";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "assure-presentation-provider-closure" {
+    label "Assure complete presentation provider closure";
+    domain "Frozen source corpus";
+    scenarioIds ["assure-presentation-provider-closure"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "assure-presentation-provider-closure" {
+    capabilityId "assure-presentation-provider-closure";
+    label "Decide whether a semantic presentation provider completely replaces its oracle";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "presentation provider closure facts";
+    detail "admitted semantic authority, database round-trip evidence, regeneration evidence, projection lineage, native testimony, oracle comparison, binding evidence, …";
+    capabilityId "assure-presentation-provider-closure";
+    scenarioId "assure-presentation-provider-closure";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "assure-presentation-provider-closure-input.v1";
+  }
+  event "s0-event" {
+    label "presentation provider closure assurance requested";
+    detail "presentation provider closure is assured";
+    capabilityId "assure-presentation-provider-closure";
+    scenarioId "assure-presentation-provider-closure";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "presentation provider closure known";
+    detail "closure is proven only when every requirement passes and no handwritten provider or target-specific migration executable remains active";
+    capabilityId "assure-presentation-provider-closure";
+    scenarioId "assure-presentation-provider-closure";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "presentation-provider-closure-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "presentation provider closure is assured";
+    authorityId "presentation-provider-closure-assurance.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "closure is proven only when every requirement passes and no handwritten provider or target-specific migration executable remains active";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["assure-presentation-provider-closure"];
+    nativeId "assure-presentation-provider-closure.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["assure-presentation-provider-closure"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["assure-presentation-provider-closure"];
+    nativeId "port:assure-presentation-provider-closure-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "assure-presentation-provider-closure";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "assure-presentation-provider-closure";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "assure-presentation-provider-closure";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

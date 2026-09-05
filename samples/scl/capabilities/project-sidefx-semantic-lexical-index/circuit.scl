@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "project-sidefx-semantic-lexical-index" {
+  title "Project the deterministic lexical index from the closed corpus";
+  promise "{\"experienceId\": \"sidefx-semantic-lexical-index.v1\", \"actor\": \"SideFX semantic-brain evaluator\", \"promise\": \"retains allowed text for candidate recall under a versioned profile that declares its own limits\", \"observableConditions\": [{\"conditionId\": \"only-allowed-text-fields-are-retained\"}, {\"conditionId\": \"catalog-order-is-preserved\"}, {\"conditionId\": \"no-score-rank-or-authority-is-claimed\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/project-sidefx-semantic-lexical-index.json";
+    sha256 "bc4dd0b9911172d47cab819b50ac5058c0de8b693d9dc33a327a460402da7367";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/addf48257d6a8d1513ec9795f5240c1e72191899a8bbbbf9a137e5f2477fd204-89dfb0f16251618a.json";
+    sha256 "198ba5aa1a7a8d57945461a3a8da4cd969bad01f25068d0fc804912aa6270018";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/addf48257d6a8d1513ec9795f5240c1e72191899a8bbbbf9a137e5f2477fd204-89dfb0f16251618a.json";
+    sha256 "198ba5aa1a7a8d57945461a3a8da4cd969bad01f25068d0fc804912aa6270018";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/addf48257d6a8d1513ec9795f5240c1e72191899a8bbbbf9a137e5f2477fd204-89dfb0f16251618a.json";
+    sha256 "198ba5aa1a7a8d57945461a3a8da4cd969bad01f25068d0fc804912aa6270018";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/addf48257d6a8d1513ec9795f5240c1e72191899a8bbbbf9a137e5f2477fd204-89dfb0f16251618a.json";
+    sha256 "198ba5aa1a7a8d57945461a3a8da4cd969bad01f25068d0fc804912aa6270018";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/560";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/addf48257d6a8d1513ec9795f5240c1e72191899a8bbbbf9a137e5f2477fd204-89dfb0f16251618a.json";
+    sha256 "198ba5aa1a7a8d57945461a3a8da4cd969bad01f25068d0fc804912aa6270018";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "project-sidefx-semantic-lexical-index" {
+    label "Project the deterministic lexical index from the closed corpus";
+    domain "Frozen source corpus";
+    scenarioIds ["project-sidefx-semantic-lexical-index"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "project-sidefx-semantic-lexical-index" {
+    capabilityId "project-sidefx-semantic-lexical-index";
+    label "Project a profile-bound lexical index over the allowed text field";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "sidefx semantic lexical index projection request";
+    detail "the closed catalog subjects, the versioned lexical profile, and the declared snapshot and catalog digests";
+    capabilityId "project-sidefx-semantic-lexical-index";
+    scenarioId "project-sidefx-semantic-lexical-index";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-semantic-lexical-index-projection-request.v1";
+  }
+  event "s0-event" {
+    label "sidefx semantic lexical index projection requested";
+    detail "each allowed search representation is retained whole against its catalog ordinal and the index and receipt digests are derived";
+    capabilityId "project-sidefx-semantic-lexical-index";
+    scenarioId "project-sidefx-semantic-lexical-index";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "sidefx semantic lexical index";
+    detail "one digest-bound lexical index carries recall material only and claims no score, rank, authority, or relationship";
+    capabilityId "project-sidefx-semantic-lexical-index";
+    scenarioId "project-sidefx-semantic-lexical-index";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-semantic-lexical-index.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "each allowed search representation is retained whole against its catalog ordinal and the index and receipt digests are derived";
+    authorityId "project-sidefx-semantic-lexical-index.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "one digest-bound lexical index carries recall material only and claims no score, rank, authority, or relationship";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["project-sidefx-semantic-lexical-index"];
+    nativeId "project-sidefx-semantic-lexical-index.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["project-sidefx-semantic-lexical-index"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["project-sidefx-semantic-lexical-index"];
+    nativeId "port:project-sidefx-semantic-lexical-index-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "project-sidefx-semantic-lexical-index";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "project-sidefx-semantic-lexical-index";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "project-sidefx-semantic-lexical-index";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

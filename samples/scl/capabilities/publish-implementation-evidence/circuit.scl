@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "publish-implementation-evidence" {
+  title "Publish implementation evidence";
+  promise "{\"experienceId\": \"publish-implementation-evidence-experience.v1\", \"actor\": \"release-consumer\", \"promise\": \"publishes the already-produced evidence as one coherent, versioned artifact\", \"observableConditions\": [{\"conditionId\": \"evidence-artifact-published\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/publish-implementation-evidence.json";
+    sha256 "cf9e8445dc4ff2f3b1aaafb6666f4d6653e4b0f8b64308d6cae811bf3d52fa7e";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json";
+    sha256 "c50c88f176ffa176162990b2c0eb3e7fe7cd02397eb314fa3d1f6756d288acfc";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json";
+    sha256 "c50c88f176ffa176162990b2c0eb3e7fe7cd02397eb314fa3d1f6756d288acfc";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json";
+    sha256 "c50c88f176ffa176162990b2c0eb3e7fe7cd02397eb314fa3d1f6756d288acfc";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json";
+    sha256 "c50c88f176ffa176162990b2c0eb3e7fe7cd02397eb314fa3d1f6756d288acfc";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/604";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/d27cc21363469058cf3be9626d3687d5ed92c40dc9b73e6d1338aeef2eca9880-2664f77e0f1e1170.json";
+    sha256 "c50c88f176ffa176162990b2c0eb3e7fe7cd02397eb314fa3d1f6756d288acfc";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "publish-implementation-evidence" {
+    label "Publish implementation evidence";
+    domain "Frozen source corpus";
+    scenarioIds ["publish-implementation-evidence"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "publish-implementation-evidence" {
+    capabilityId "publish-implementation-evidence";
+    label "Construct one versioned implementation evidence artifact from a coherent evidence set";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "implementation evidence publication input";
+    detail "one coherent evidence set covering a language implementation";
+    capabilityId "publish-implementation-evidence";
+    scenarioId "publish-implementation-evidence";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "implementation-evidence-publication-input.v1";
+  }
+  event "s0-event" {
+    label "implementation evidence publication requested";
+    detail "a versioned implementation evidence artifact is constructed from that evidence set";
+    capabilityId "publish-implementation-evidence";
+    scenarioId "publish-implementation-evidence";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "implementation evidence publication known";
+    detail "the published artifact carries complete source, input, environment, disposition, time, and digest lineage";
+    capabilityId "publish-implementation-evidence";
+    scenarioId "publish-implementation-evidence";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "published-implementation-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "a versioned implementation evidence artifact is constructed from that evidence set";
+    authorityId "implementation-evidence-publication.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "the published artifact carries complete source, input, environment, disposition, time, and digest lineage";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["publish-implementation-evidence"];
+    nativeId "publish-implementation-evidence.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["publish-implementation-evidence"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["publish-implementation-evidence"];
+    nativeId "port:publish-implementation-evidence-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "publish-implementation-evidence";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "publish-implementation-evidence";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "publish-implementation-evidence";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

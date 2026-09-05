@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "project-document-presentation" {
+  title "Project semantic document presentation";
+  promise "{\"experienceId\": \"promised-experience.v1\", \"actor\": \"consumer-application\", \"promise\": \"preserves admitted document presentation semantics\", \"observableConditions\": [{\"conditionId\": \"document-presentation-preserved\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/project-document-presentation.json";
+    sha256 "9dcc459f05c09d14d310cf329342413f4a386d24a1dcd07c04097f09e30116a3";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/083c8eea59cfd3211f7c452b4356b5955a580844bd9280c51aa856692cc260f8-575556025ff4610a.json";
+    sha256 "d883d1727a619f834585fa4f2f44cab466c8fca92fe786e6577f865229d47270";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/083c8eea59cfd3211f7c452b4356b5955a580844bd9280c51aa856692cc260f8-575556025ff4610a.json";
+    sha256 "d883d1727a619f834585fa4f2f44cab466c8fca92fe786e6577f865229d47270";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/083c8eea59cfd3211f7c452b4356b5955a580844bd9280c51aa856692cc260f8-575556025ff4610a.json";
+    sha256 "d883d1727a619f834585fa4f2f44cab466c8fca92fe786e6577f865229d47270";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/083c8eea59cfd3211f7c452b4356b5955a580844bd9280c51aa856692cc260f8-575556025ff4610a.json";
+    sha256 "d883d1727a619f834585fa4f2f44cab466c8fca92fe786e6577f865229d47270";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/524";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/083c8eea59cfd3211f7c452b4356b5955a580844bd9280c51aa856692cc260f8-575556025ff4610a.json";
+    sha256 "d883d1727a619f834585fa4f2f44cab466c8fca92fe786e6577f865229d47270";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "project-document-presentation" {
+    label "Project semantic document presentation";
+    domain "Frozen source corpus";
+    scenarioIds ["project-document-presentation"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "project-document-presentation" {
+    capabilityId "project-document-presentation";
+    label "Preserve admitted document semantics for projection";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "document presentation facts";
+    detail "one admitted semantic document and its sanitization and accessibility obligations";
+    capabilityId "project-document-presentation";
+    scenarioId "project-document-presentation";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "project-document-presentation-input.v1";
+  }
+  event "s0-event" {
+    label "document presentation projection requested";
+    detail "semantic document presentation is projected";
+    capabilityId "project-document-presentation";
+    scenarioId "project-document-presentation";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "document presentation projection known";
+    detail "blocks, hierarchy, content, links, emphasis, empty disposition, obligations, and lineage are preserved without executable markup or target-owned document mea…";
+    capabilityId "project-document-presentation";
+    scenarioId "project-document-presentation";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "document-presentation-projection-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "semantic document presentation is projected";
+    authorityId "document-presentation-projection.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "blocks, hierarchy, content, links, emphasis, empty disposition, obligations, and lineage are preserved without executable markup or target-owned document meaning";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["project-document-presentation"];
+    nativeId "project-document-presentation.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["project-document-presentation"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["project-document-presentation"];
+    nativeId "port:project-document-presentation-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "project-document-presentation";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "project-document-presentation";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "project-document-presentation";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

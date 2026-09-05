@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "assemble-sidefx-capability-authoring-context" {
+  title "Assemble the smallest sufficient authoring context";
+  promise "{\"experienceId\": \"sidefx-capability-authoring-context-pack.v1\", \"actor\": \"SideFX semantic-brain evaluator\", \"promise\": \"keeps the pack bounded, cited, and honest about everything it left out\", \"observableConditions\": [{\"conditionId\": \"every-item-cites-its-exact-source\"}, {\"conditionId\": \"everything-dropped-is-recorded-as-an-omission\"}, {\"conditionId\": \"an-insufficient-pack-is-held-not-emitted\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/assemble-sidefx-capability-authoring-context.json";
+    sha256 "1279560dc481dfac158a6e73728afda0211b66ae39182f252f608ed24142f9e4";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/341472310d193eed74800bea3a08a9f8f32fe56414bf554e2880442774698cfd-f362c810c578d3c6.json";
+    sha256 "2c2e83998408d87a80554a62f7567cf09a58784be0df18d9a725b117b86c60e9";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/341472310d193eed74800bea3a08a9f8f32fe56414bf554e2880442774698cfd-f362c810c578d3c6.json";
+    sha256 "2c2e83998408d87a80554a62f7567cf09a58784be0df18d9a725b117b86c60e9";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/341472310d193eed74800bea3a08a9f8f32fe56414bf554e2880442774698cfd-f362c810c578d3c6.json";
+    sha256 "2c2e83998408d87a80554a62f7567cf09a58784be0df18d9a725b117b86c60e9";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/341472310d193eed74800bea3a08a9f8f32fe56414bf554e2880442774698cfd-f362c810c578d3c6.json";
+    sha256 "2c2e83998408d87a80554a62f7567cf09a58784be0df18d9a725b117b86c60e9";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/42";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/341472310d193eed74800bea3a08a9f8f32fe56414bf554e2880442774698cfd-f362c810c578d3c6.json";
+    sha256 "2c2e83998408d87a80554a62f7567cf09a58784be0df18d9a725b117b86c60e9";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "assemble-sidefx-capability-authoring-context" {
+    label "Assemble the smallest sufficient authoring context";
+    domain "Frozen source corpus";
+    scenarioIds ["assemble-sidefx-capability-authoring-context"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "assemble-sidefx-capability-authoring-context" {
+    capabilityId "assemble-sidefx-capability-authoring-context";
+    label "Bind a budgeted, cited, digest-bound pack or hold it";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "sidefx authoring context request";
+    detail "admitted candidate items, declared exclusions, required purposes, and a fixed item and size budget";
+    capabilityId "assemble-sidefx-capability-authoring-context";
+    scenarioId "assemble-sidefx-capability-authoring-context";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-authoring-context-request.v1";
+  }
+  event "s0-event" {
+    label "sidefx authoring context requested";
+    detail "items are admitted in declared order until the budget is reached and the required purposes are checked";
+    capabilityId "assemble-sidefx-capability-authoring-context";
+    scenarioId "assemble-sidefx-capability-authoring-context";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "sidefx capability authoring context pack";
+    detail "one digest-bound pack cites every item and lists every omission, or the pack is HELD with the reason it could not be assembled";
+    capabilityId "assemble-sidefx-capability-authoring-context";
+    scenarioId "assemble-sidefx-capability-authoring-context";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-capability-authoring-context-pack.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "items are admitted in declared order until the budget is reached and the required purposes are checked";
+    authorityId "assemble-sidefx-capability-authoring-context.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "one digest-bound pack cites every item and lists every omission, or the pack is HELD with the reason it could not be assembled";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["assemble-sidefx-capability-authoring-context"];
+    nativeId "assemble-sidefx-capability-authoring-context.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["assemble-sidefx-capability-authoring-context"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["assemble-sidefx-capability-authoring-context"];
+    nativeId "port:assemble-sidefx-capability-authoring-context-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "assemble-sidefx-capability-authoring-context";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "assemble-sidefx-capability-authoring-context";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "assemble-sidefx-capability-authoring-context";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

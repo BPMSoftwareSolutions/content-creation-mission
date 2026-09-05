@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "admit-kernel-specification" {
+  title "Admit kernel specification";
+  promise "{\"experienceId\": \"kernel-specification-admission.v1\", \"actor\": \"SDA maintainer\", \"promise\": \"establish whether the specification being implemented is structurally sound against its schema\", \"observableConditions\": [{\"conditionId\": \"schema-admission-disposition-known\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/admit-kernel-specification.json";
+    sha256 "2682b97cfd0cd33e9ca30c0188ad89e8850d259d8f40aa7aea0e1770e6251424";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/06097ffe6f1d2dc0bcdfc216284b1a2c9c21c531f889409053db663cb3d474e4-c6cb1cbfb27c6a39.json";
+    sha256 "e54e9aaa435f0e596b1dd8b5333380a6a854dfafd715c6de55b8eb55fa8577d0";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/06097ffe6f1d2dc0bcdfc216284b1a2c9c21c531f889409053db663cb3d474e4-c6cb1cbfb27c6a39.json";
+    sha256 "e54e9aaa435f0e596b1dd8b5333380a6a854dfafd715c6de55b8eb55fa8577d0";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/06097ffe6f1d2dc0bcdfc216284b1a2c9c21c531f889409053db663cb3d474e4-c6cb1cbfb27c6a39.json";
+    sha256 "e54e9aaa435f0e596b1dd8b5333380a6a854dfafd715c6de55b8eb55fa8577d0";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/06097ffe6f1d2dc0bcdfc216284b1a2c9c21c531f889409053db663cb3d474e4-c6cb1cbfb27c6a39.json";
+    sha256 "e54e9aaa435f0e596b1dd8b5333380a6a854dfafd715c6de55b8eb55fa8577d0";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/24";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/06097ffe6f1d2dc0bcdfc216284b1a2c9c21c531f889409053db663cb3d474e4-c6cb1cbfb27c6a39.json";
+    sha256 "e54e9aaa435f0e596b1dd8b5333380a6a854dfafd715c6de55b8eb55fa8577d0";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "admit-kernel-specification" {
+    label "Admit kernel specification";
+    domain "Frozen source corpus";
+    scenarioIds ["admit-kernel-specification"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "admit-kernel-specification" {
+    capabilityId "admit-kernel-specification";
+    label "Validate the canonical kernel specification against its admitted schema";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "kernel specification admission input";
+    detail "one canonical kernel specification and its admitted schema";
+    capabilityId "admit-kernel-specification";
+    scenarioId "admit-kernel-specification";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "kernel-specification-admission-input.v1";
+  }
+  event "s0-event" {
+    label "kernel specification admission requested";
+    detail "the canonical kernel specification is validated against its admitted schema";
+    capabilityId "admit-kernel-specification";
+    scenarioId "admit-kernel-specification";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "kernel specification admission known";
+    detail "the specification carries one explicit schema-admission disposition naming every admitted or identified requirement, without evaluating any language implemen…";
+    capabilityId "admit-kernel-specification";
+    scenarioId "admit-kernel-specification";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "kernel-specification-admission-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "the canonical kernel specification is validated against its admitted schema";
+    authorityId "kernel-specification-admission.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "the specification carries one explicit schema-admission disposition naming every admitted or identified requirement, without evaluating any language implementation";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["admit-kernel-specification"];
+    nativeId "admit-kernel-specification.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["admit-kernel-specification"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["admit-kernel-specification"];
+    nativeId "port:admit-kernel-specification-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "admit-kernel-specification";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "admit-kernel-specification";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "admit-kernel-specification";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

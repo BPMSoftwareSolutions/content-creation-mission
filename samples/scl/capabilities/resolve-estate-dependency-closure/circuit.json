@@ -1,0 +1,1163 @@
+{
+  "version": "sidefx-circuit.v0.1",
+  "id": "resolve-estate-dependency-closure",
+  "title": "Resolve whether every admitted capability in the estate can still be executed",
+  "promise": "  An estate can verify clean, pass its entire test suite, and be unable to execute\n  a single capability. That is not hypothetical. It happened here: repairing one\n  capability changed its application binding, every capsule that pinned the old\n  binding digest became unresolvable, and nothing in the repository noticed.\n  Capsule verification confirmed that each capsule matched its own recorded bytes,\n  which was true and irrelevant. The tests exercised transformations directly and\n  never resolved the estate. Both gates were green over a broken estate.\n\n  The missing gate is closure. A capability is executable only if every dependency\n  it declares resolves to an admitted capsule whose application binding still\n  canonicalizes to the digest the dependent pinned, and whose capability authority\n  still matches the digest its execution plan recorded. Each capsule being\n  internally consistent proves nothing about whether the graph they form holds.\n\n  Closure is computed, never assumed. Every declared dependency is resolved to a\n  target, every target binding is recanonicalized and rehashed, and every pin is\n  compared against what was recomputed. A pin that matches by name and diverges by\n  digest is exactly the failure that hid here, so name agreement is never accepted\n  as resolution.\n\n  Resolution is pure. It consumes the estate inventory it is given: capsules,\n  their declared dependencies, their application bindings and their recorded\n  digests. It reads no filesystem and admits nothing. What it returns is the\n  disposition the estate is actually in.\n\n  Absence is never normalized. An estate presenting no capsules has not thereby\n  achieved closure; it has failed to present an estate, and that is a finding.\n  Closure reports RESOLVED only when every declared dependency of every presented\n  capsule resolved and matched.",
+  "status": "SOURCE_REVEAL",
+  "sourceGeneration": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+  "sources": [
+    {
+      "id": "src-00000",
+      "path": "data/capsule-evidence/capabilities/resolve-estate-dependency-closure.json",
+      "sha256": "683ef67845b2a1d45f2bc36a48f19969522ac36042b11cedf6b202d998cc3c72",
+      "pointer": "",
+      "kind": "DECLARED",
+      "label": "Frozen capability snapshot",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00001",
+      "path": "data/capsule-evidence/entries/55c7160050b96024c0c2be5c1d0a3ff8d9965401f2cdd6c2c36b7f6296e42b79-dcb661c93fb63e04.json",
+      "sha256": "c9baa2c25ee53c8541f1cc581c2b3a0ff106f37a249da7bf91ef5219be54051f",
+      "pointer": "",
+      "kind": "DECLARED",
+      "label": "blueprint / canonical-circuit-blueprint.v1",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00002",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "",
+      "kind": "DECLARED",
+      "label": "policy / consumer-execution-embodiment-plan.v2",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00003",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/0/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00004",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/0/operations/1",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00005",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/0/operations/2",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00006",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/0/operations/3",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00007",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/0/operations/4",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00008",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/1/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00009",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/2/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00010",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/3/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00011",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/4/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00012",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/mechanicBindings/0",
+      "kind": "DECLARED",
+      "label": "mechanic / contract-admission",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00013",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/mechanicBindings/1",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00014",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/mechanicBindings/2",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00015",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/mechanicBindings/3",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00016",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/mechanicBindings/4",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00017",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/mechanicBindings/5",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00018",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/661",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00019",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/0/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00020",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/662",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00021",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/1/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00022",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/663",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00023",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/2/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00024",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/664",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00025",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/3/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00026",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/665",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00027",
+      "path": "data/capsule-evidence/entries/70b96c65ad49d24ae35d1f2a8b96e681999db0c0b45e4ad0f051e3b883fd48d8-19422ea388fb8343.json",
+      "sha256": "6e3ec86941844417755a78dbd400325a461ff46edd72d01ef072c1b253667346",
+      "pointer": "/nodes/4/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "resolve-estate-dependency-closure",
+      "label": "Resolve whether every admitted capability in the estate can still be executed",
+      "domain": "Frozen source corpus",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure",
+        "resolve-declared-dependencies",
+        "recompute-binding-digests",
+        "detect-stale-pins",
+        "close-execution-resolvability"
+      ],
+      "coverage": "5 declared scenarios; native detail remains separately inspectable",
+      "sourceRefs": [
+        "src-00000"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "resolve-estate-dependency-closure",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "label": "Return the exact executability disposition of one presented estate",
+      "nodeIds": [
+        "s0-input",
+        "s0-event",
+        "s0-outcome"
+      ],
+      "sourceRefs": [
+        "src-00018",
+        "src-00019"
+      ]
+    },
+    {
+      "id": "resolve-declared-dependencies",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "label": "Resolve every declared dependency to an admitted target",
+      "nodeIds": [
+        "s1-input",
+        "s1-event",
+        "s1-outcome"
+      ],
+      "sourceRefs": [
+        "src-00020",
+        "src-00021"
+      ]
+    },
+    {
+      "id": "recompute-binding-digests",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "label": "Recompute each target binding rather than trusting its recorded digest",
+      "nodeIds": [
+        "s2-input",
+        "s2-event",
+        "s2-outcome"
+      ],
+      "sourceRefs": [
+        "src-00022",
+        "src-00023"
+      ]
+    },
+    {
+      "id": "detect-stale-pins",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "label": "Compare every pin against what was recomputed",
+      "nodeIds": [
+        "s3-input",
+        "s3-event",
+        "s3-outcome"
+      ],
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ]
+    },
+    {
+      "id": "close-execution-resolvability",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "label": "Close over the whole graph rather than each capsule alone",
+      "nodeIds": [
+        "s4-input",
+        "s4-event",
+        "s4-outcome"
+      ],
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "s0-input",
+      "label": "closure request",
+      "detail": "one estate inventory carrying every admitted capsule, its declared dependencies and its application binding",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "resolve-estate-dependency-closure",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00018",
+        "src-00019"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "estate-dependency-closure-request.v1",
+      "closure": null
+    },
+    {
+      "id": "s0-event",
+      "label": "resolve estate dependency closure",
+      "detail": "the dependency closure is resolved",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "resolve-estate-dependency-closure",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00018",
+        "src-00019"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s0-outcome",
+      "label": "closure",
+      "detail": "one closure binds every resolved dependency, every recomputed digest, and every divergence found RESOLVED is returned only when no declared dependency is unr…",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "resolve-estate-dependency-closure",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00018",
+        "src-00019"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "estate-dependency-closure.v1",
+      "closure": null
+    },
+    {
+      "id": "s1-input",
+      "label": "closure inputs",
+      "detail": "one estate inventory whose capsules declare dependencies by binding reference",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "resolve-declared-dependencies",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00020",
+        "src-00021"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s1-event",
+      "label": "resolve declared dependencies",
+      "detail": "the declared dependencies are resolved",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "resolve-declared-dependencies",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00020",
+        "src-00021"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s1-outcome",
+      "label": "declared",
+      "detail": "every declared dependency names the admitted capsule it resolved to a dependency naming no admitted capsule returns DEPENDENCY_TARGET_UNRESOLVED",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "resolve-declared-dependencies",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00020",
+        "src-00021"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s2-input",
+      "label": "closure inputs",
+      "detail": "one resolved dependency set carrying each target application binding",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "recompute-binding-digests",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00022",
+        "src-00023"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s2-event",
+      "label": "recompute binding digests",
+      "detail": "the binding digests are recomputed",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "recompute-binding-digests",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00022",
+        "src-00023"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s2-outcome",
+      "label": "recomputed",
+      "detail": "every target binding is canonicalized and hashed to the digest it currently produces a target presenting no application binding returns TARGET_BINDING_ABSENT…",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "recompute-binding-digests",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00022",
+        "src-00023"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s3-input",
+      "label": "closure inputs",
+      "detail": "one dependency set carrying both the pinned digests and the recomputed digests",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "detect-stale-pins",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s3-event",
+      "label": "detect stale pins",
+      "detail": "the pins are compared",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "detect-stale-pins",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s3-outcome",
+      "label": "stale",
+      "detail": "every pin whose digest diverges from the recomputed digest is reported with both values a dependency that resolves by name while diverging by digest returns …",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "detect-stale-pins",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s4-input",
+      "label": "closure inputs",
+      "detail": "one dependency graph and the divergences found within it",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "close-execution-resolvability",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s4-event",
+      "label": "close execution resolvability",
+      "detail": "execution resolvability is closed",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "close-execution-resolvability",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s4-outcome",
+      "label": "resolvability",
+      "detail": "every capsule reachable from a divergent binding is reported as unexecutable, not only the capsule that changed an estate presenting no capsules returns ESTA…",
+      "capabilityId": "resolve-estate-dependency-closure",
+      "scenarioId": "close-execution-resolvability",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "estate-closure-carrier.v1",
+      "closure": null
+    }
+  ],
+  "junctions": [],
+  "edges": [
+    {
+      "id": "s0-e0",
+      "source": "s0-input",
+      "target": "s0-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00018",
+        "src-00019"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s0-e1",
+      "source": "s0-event",
+      "target": "s0-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00018",
+        "src-00019"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s1-e0",
+      "source": "s1-input",
+      "target": "s1-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00020",
+        "src-00021"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s1-e1",
+      "source": "s1-event",
+      "target": "s1-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00020",
+        "src-00021"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s2-e0",
+      "source": "s2-input",
+      "target": "s2-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00022",
+        "src-00023"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s2-e1",
+      "source": "s2-event",
+      "target": "s2-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00022",
+        "src-00023"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s3-e0",
+      "source": "s3-input",
+      "target": "s3-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s3-e1",
+      "source": "s3-event",
+      "target": "s3-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s4-e0",
+      "source": "s4-input",
+      "target": "s4-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s4-e1",
+      "source": "s4-event",
+      "target": "s4-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    }
+  ],
+  "providers": [],
+  "meanings": [
+    {
+      "nodeId": "s0-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s0-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the dependency closure is resolved",
+      "authorityId": "resolve-estate-dependency-closure.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s0-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "one closure binds every resolved dependency, every recomputed digest, and every divergence found RESOLVED is returned only when no declared dependency is unresolved and no pin diverges",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s1-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s1-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the declared dependencies are resolved",
+      "authorityId": "resolve-declared-dependencies.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s1-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "every declared dependency names the admitted capsule it resolved to a dependency naming no admitted capsule returns DEPENDENCY_TARGET_UNRESOLVED",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s2-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s2-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the binding digests are recomputed",
+      "authorityId": "recompute-binding-digests.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s2-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "every target binding is canonicalized and hashed to the digest it currently produces a target presenting no application binding returns TARGET_BINDING_ABSENT rather than a recomputed digest over nothing",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s3-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s3-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the pins are compared",
+      "authorityId": "detect-stale-pins.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s3-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "every pin whose digest diverges from the recomputed digest is reported with both values a dependency that resolves by name while diverging by digest returns DEPENDENCY_PIN_STALE, because name agreement is not resolution",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s4-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s4-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "execution resolvability is closed",
+      "authorityId": "close-execution-resolvability.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s4-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "every capsule reachable from a divergent binding is reported as unexecutable, not only the capsule that changed an estate presenting no capsules returns ESTATE_INVENTORY_ABSENT rather than an empty closure reported as RESOLVED",
+      "variants": [],
+      "productIsExperience": false
+    }
+  ],
+  "records": [
+    {
+      "id": "record-00000",
+      "kind": "blueprint",
+      "nativeType": "canonical-circuit-blueprint.v1",
+      "sourceRef": "src-00001",
+      "scenarioIds": [],
+      "nativeId": "resolve-estate-dependency-closure-blueprint.v1",
+      "parentId": null
+    },
+    {
+      "id": "record-00001",
+      "kind": "policy",
+      "nativeType": "consumer-execution-embodiment-plan.v2",
+      "sourceRef": "src-00002",
+      "scenarioIds": [],
+      "nativeId": null,
+      "parentId": null
+    },
+    {
+      "id": "record-00002",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00003",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure"
+      ],
+      "nativeId": "resolve-estate-dependency-closure.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00003",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00004",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure"
+      ],
+      "nativeId": "resolve-estate-dependency-closure.operation.2",
+      "parentId": null
+    },
+    {
+      "id": "record-00004",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00005",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure"
+      ],
+      "nativeId": "resolve-estate-dependency-closure.operation.3",
+      "parentId": null
+    },
+    {
+      "id": "record-00005",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00006",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure"
+      ],
+      "nativeId": "resolve-estate-dependency-closure.operation.4",
+      "parentId": null
+    },
+    {
+      "id": "record-00006",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00007",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure"
+      ],
+      "nativeId": "resolve-estate-dependency-closure.operation.5",
+      "parentId": null
+    },
+    {
+      "id": "record-00007",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00008",
+      "scenarioIds": [
+        "resolve-declared-dependencies"
+      ],
+      "nativeId": "resolve-declared-dependencies.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00008",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00009",
+      "scenarioIds": [
+        "recompute-binding-digests"
+      ],
+      "nativeId": "recompute-binding-digests.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00009",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00010",
+      "scenarioIds": [
+        "detect-stale-pins"
+      ],
+      "nativeId": "detect-stale-pins.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00010",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00011",
+      "scenarioIds": [
+        "close-execution-resolvability"
+      ],
+      "nativeId": "close-execution-resolvability.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00011",
+      "kind": "mechanic",
+      "nativeType": "contract-admission",
+      "sourceRef": "src-00012",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure",
+        "resolve-declared-dependencies",
+        "recompute-binding-digests",
+        "detect-stale-pins",
+        "close-execution-resolvability"
+      ],
+      "nativeId": "contract-admission",
+      "parentId": null
+    },
+    {
+      "id": "record-00012",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00013",
+      "scenarioIds": [
+        "close-execution-resolvability"
+      ],
+      "nativeId": "port:close-execution-resolvability-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00013",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00014",
+      "scenarioIds": [
+        "detect-stale-pins"
+      ],
+      "nativeId": "port:detect-stale-pins-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00014",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00015",
+      "scenarioIds": [
+        "recompute-binding-digests"
+      ],
+      "nativeId": "port:recompute-binding-digests-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00015",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00016",
+      "scenarioIds": [
+        "resolve-declared-dependencies"
+      ],
+      "nativeId": "port:resolve-declared-dependencies-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00016",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00017",
+      "scenarioIds": [
+        "resolve-estate-dependency-closure"
+      ],
+      "nativeId": "port:resolve-estate-dependency-closure-port",
+      "parentId": null
+    }
+  ],
+  "findings": [
+    {
+      "code": "BLUEPRINT_UNRESOLVED_ENDPOINTS",
+      "subject": "resolve-estate-dependency-closure",
+      "detail": "Stored blueprint routes reference undeclared nodes: bind-closure-disposition",
+      "closure": "Resolve these exact endpoints through the governed blueprint boundary. Do not fabricate junctions in the infographic."
+    },
+    {
+      "code": "BLUEPRINT_DECLARED_ADMISSION_STATE",
+      "subject": "resolve-estate-dependency-closure",
+      "detail": "REQUIRES_CONFORMANCE_AND_HUMAN_BLUEPRINT_ADMISSION",
+      "closure": "Respect the stored blueprint admission state; capsule membership alone does not admit this candidate blueprint."
+    },
+    {
+      "code": "BLUEPRINT_VISUAL_PROFILE_OPEN",
+      "subject": "resolve-estate-dependency-closure",
+      "detail": "The separate canonical blueprint is retained exactly, including topology, semantic progress and observability. It is not conflated with the runtime graph.",
+      "closure": "Qualify a visual profile for the blueprint carrier before projecting its state and responsibility nodes as execution flow."
+    },
+    {
+      "code": "EDITORIAL_REVIEW_REQUIRED",
+      "subject": "resolve-estate-dependency-closure",
+      "detail": "Source revelation preserves declarations; human storytelling and visual acceptance are separate.",
+      "closure": "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use."
+    },
+    {
+      "code": "NATIVE_MOTION_NOT_LOWERED",
+      "subject": "resolve-estate-dependency-closure",
+      "detail": "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.",
+      "closure": "Admit explicit visual/trace profiles for native control flow before animating its mechanics."
+    },
+    {
+      "code": "NO_NATIVE_CANONICAL_GRAPH",
+      "subject": "resolve-estate-dependency-closure",
+      "detail": "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.",
+      "closure": "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions."
+    }
+  ],
+  "trace": []
+}

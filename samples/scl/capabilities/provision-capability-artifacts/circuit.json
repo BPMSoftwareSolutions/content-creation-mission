@@ -1,0 +1,1581 @@
+{
+  "version": "sidefx-circuit.v0.1",
+  "id": "provision-capability-artifacts",
+  "title": "Decide which observed artifacts enter the content-addressed capability estate",
+  "promise": "  Provisioning has been performed by a hand-written script since the estate began.\n  That script does seven things, and only two of them are effects: it walks a\n  directory tree, and it writes bytes. The other five are decisions - admitting a\n  batch request, screening artifacts against a secret policy, classifying each\n  artifact by its declared extension, resolving what provisioning disposition each\n  one earns, and binding the manifest entries that record them. Those five are what\n  this capability owns.\n\n  It owns no walk and no scan. The observed artifact set is presented to it, and\n  each artifact arrives carrying the policy screen already applied. That is not a\n  convenience: the admitted transformation vocabulary has no pattern matching, so a\n  capability claiming to screen bytes would be claiming something it cannot perform.\n  Screening is testimony. Deciding what that testimony means is governance.\n\n  An artifact carrying any policy finding is rejected unless the batch request\n  declares an explicit allowance naming that artifact and that rule. An allowance\n  naming no finding is itself a finding, because a blanket allowance is how a secret\n  enters an estate that believes it screens.\n\n  Classification is declared, never inferred. An artifact whose extension is absent\n  from the declared catalog is rejected rather than guessed at, because a guessed\n  media type is how an unreviewable byte acquires a respectable name.\n\n  Coverage is proven. Every artifact the batch selected is either provisioned with a\n  content-addressed entry or rejected with a named reason. An artifact that is\n  neither is a hole in the account the estate keeps of itself.\n\n  Absence is never normalized. A batch presenting no observed artifacts has not\n  provisioned an empty set; it has failed to present its observations.",
+  "status": "SOURCE_REVEAL",
+  "sourceGeneration": "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802",
+  "sources": [
+    {
+      "id": "src-00000",
+      "path": "data/capsule-evidence/capabilities/provision-capability-artifacts.json",
+      "sha256": "e2832713e7156093a24477b5d516eefcaeefcbeb47eb8a3541f81ac41d1c7dd5",
+      "pointer": "",
+      "kind": "DECLARED",
+      "label": "Frozen capability snapshot",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00001",
+      "path": "data/capsule-evidence/entries/7fb6a907da2cbdb1c2a4719e5d9f6b999fbc34cf3a85a2d1ff517b88c4ffe6df-05fa79e4e21330f6.json",
+      "sha256": "ee4b27472abd9670ac4b0d6ffff8e8164ac79a6337b2505767254e3d76393c95",
+      "pointer": "",
+      "kind": "DECLARED",
+      "label": "blueprint / canonical-circuit-blueprint.v1",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00002",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "",
+      "kind": "DECLARED",
+      "label": "policy / consumer-execution-embodiment-plan.v2",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00003",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00004",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/operations/1",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00005",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/operations/2",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00006",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/operations/3",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00007",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/operations/4",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00008",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/operations/5",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00009",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/operations/6",
+      "kind": "DECLARED",
+      "label": "operation / invoke-scenario",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00010",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/1/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00011",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/2/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00012",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/3/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00013",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/4/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00014",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/5/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00015",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/6/operations/0",
+      "kind": "DECLARED",
+      "label": "operation / invoke-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00016",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/0",
+      "kind": "DECLARED",
+      "label": "mechanic / contract-admission",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00017",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/1",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00018",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/2",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00019",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/3",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00020",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/4",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00021",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/5",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00022",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/6",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00023",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/mechanicBindings/7",
+      "kind": "DECLARED",
+      "label": "mechanic / event-port",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00024",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/589",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00025",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/0/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00026",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/590",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00027",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/1/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00028",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/591",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00029",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/2/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00030",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/592",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00031",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/3/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00032",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/593",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00033",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/4/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00034",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/594",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00035",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/5/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    },
+    {
+      "id": "src-00036",
+      "path": "inventories/scenario-inventory.json",
+      "sha256": "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383",
+      "pointer": "/595",
+      "kind": "DECLARED",
+      "label": "Exact narrative; verified against capsule feature bytes",
+      "encoding": "json"
+    },
+    {
+      "id": "src-00037",
+      "path": "data/capsule-evidence/entries/4b2676d3ba08632a120b13d8e5546a5c520577e24b3e391b81e4dc81bafb8a8a-f397df67b87cd2ac.json",
+      "sha256": "8ec4506105a52b63c166c369352ce8f299b6b139ef7180e48a60be4e932b0e24",
+      "pointer": "/nodes/6/scenario",
+      "kind": "DECLARED",
+      "label": "Declared scenario boundary",
+      "encoding": "capsule-entry"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "provision-capability-artifacts",
+      "label": "Decide which observed artifacts enter the content-addressed capability estate",
+      "domain": "Frozen source corpus",
+      "scenarioIds": [
+        "provision-capability-artifacts",
+        "admit-provisioning-batch-request",
+        "screen-observed-artifacts-against-policy",
+        "classify-artifact-by-declared-extension",
+        "resolve-artifact-provisioning-disposition",
+        "bind-provisioning-manifest-entries",
+        "close-provisioning-coverage"
+      ],
+      "coverage": "7 declared scenarios; native detail remains separately inspectable",
+      "sourceRefs": [
+        "src-00000"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "provision-capability-artifacts",
+      "capabilityId": "provision-capability-artifacts",
+      "label": "Return one exact provisioning decision for one presented batch",
+      "nodeIds": [
+        "s0-input",
+        "s0-event",
+        "s0-outcome"
+      ],
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ]
+    },
+    {
+      "id": "admit-provisioning-batch-request",
+      "capabilityId": "provision-capability-artifacts",
+      "label": "Admit the batch request before observing anything about its artifacts",
+      "nodeIds": [
+        "s1-input",
+        "s1-event",
+        "s1-outcome"
+      ],
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ]
+    },
+    {
+      "id": "screen-observed-artifacts-against-policy",
+      "capabilityId": "provision-capability-artifacts",
+      "label": "Reject any artifact whose supplied screen carries a finding",
+      "nodeIds": [
+        "s2-input",
+        "s2-event",
+        "s2-outcome"
+      ],
+      "sourceRefs": [
+        "src-00028",
+        "src-00029"
+      ]
+    },
+    {
+      "id": "classify-artifact-by-declared-extension",
+      "capabilityId": "provision-capability-artifacts",
+      "label": "Classify each artifact from the declared catalog rather than inferring it",
+      "nodeIds": [
+        "s3-input",
+        "s3-event",
+        "s3-outcome"
+      ],
+      "sourceRefs": [
+        "src-00030",
+        "src-00031"
+      ]
+    },
+    {
+      "id": "resolve-artifact-provisioning-disposition",
+      "capabilityId": "provision-capability-artifacts",
+      "label": "Resolve what provisioning disposition each artifact earns",
+      "nodeIds": [
+        "s4-input",
+        "s4-event",
+        "s4-outcome"
+      ],
+      "sourceRefs": [
+        "src-00032",
+        "src-00033"
+      ]
+    },
+    {
+      "id": "bind-provisioning-manifest-entries",
+      "capabilityId": "provision-capability-artifacts",
+      "label": "Bind one content-addressed entry for every provisioned artifact",
+      "nodeIds": [
+        "s5-input",
+        "s5-event",
+        "s5-outcome"
+      ],
+      "sourceRefs": [
+        "src-00034",
+        "src-00035"
+      ]
+    },
+    {
+      "id": "close-provisioning-coverage",
+      "capabilityId": "provision-capability-artifacts",
+      "label": "Prove every selected artifact was accounted for",
+      "nodeIds": [
+        "s6-input",
+        "s6-event",
+        "s6-outcome"
+      ],
+      "sourceRefs": [
+        "src-00036",
+        "src-00037"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "s0-input",
+      "label": "provisioning request",
+      "detail": "one admitted batch request and the observed artifacts it selected",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "provision-capability-artifacts",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "capability-provisioning-request.v1",
+      "closure": null
+    },
+    {
+      "id": "s0-event",
+      "label": "provision capability artifacts",
+      "detail": "the batch is provisioned",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "provision-capability-artifacts",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s0-outcome",
+      "label": "provisioning decision",
+      "detail": "one decision binds every provisioned entry, every rejection, and the exact coverage of the selection PROVISIONED is returned only when every observed artifac…",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "provision-capability-artifacts",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "capability-provisioning-decision.v1",
+      "closure": null
+    },
+    {
+      "id": "s1-input",
+      "label": "provisioning inputs",
+      "detail": "one batch request declaring its zone, its source node and its selections",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "admit-provisioning-batch-request",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s1-event",
+      "label": "admit provisioning batch request",
+      "detail": "the request is admitted",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "admit-provisioning-batch-request",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s1-outcome",
+      "label": "admitted request",
+      "detail": "the batch identity, zone and selection set are bound exactly as declared a batch declaring no selection returns PROVISIONING_SELECTION_UNDECLARED a batch pre…",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "admit-provisioning-batch-request",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s2-input",
+      "label": "provisioning inputs",
+      "detail": "observed artifacts each carrying the policy screen already applied to their bytes",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "screen-observed-artifacts-against-policy",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00028",
+        "src-00029"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s2-event",
+      "label": "screen observed artifacts against policy",
+      "detail": "the screen testimony is admitted",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "screen-observed-artifacts-against-policy",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00028",
+        "src-00029"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s2-outcome",
+      "label": "screened artifacts",
+      "detail": "every artifact carrying a policy finding is rejected with the rule that rejected it an artifact whose screen was never applied returns POLICY_SCREEN_NOT_APPL…",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "screen-observed-artifacts-against-policy",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00028",
+        "src-00029"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s3-input",
+      "label": "provisioning inputs",
+      "detail": "one declared artifact catalog binding each extension to its type, language and media type",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "classify-artifact-by-declared-extension",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00030",
+        "src-00031"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s3-event",
+      "label": "classify artifact by declared extension",
+      "detail": "the observed artifacts are classified",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "classify-artifact-by-declared-extension",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00030",
+        "src-00031"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s3-outcome",
+      "label": "classified artifacts",
+      "detail": "every artifact carries the exact artifact type, language and media type its extension declares an extension absent from the declared catalog returns ARTIFACT…",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "classify-artifact-by-declared-extension",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00030",
+        "src-00031"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s4-input",
+      "label": "provisioning inputs",
+      "detail": "classified artifacts and the refinement state each one is declared to hold",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "resolve-artifact-provisioning-disposition",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00032",
+        "src-00033"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s4-event",
+      "label": "resolve artifact provisioning disposition",
+      "detail": "the dispositions are resolved",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "resolve-artifact-provisioning-disposition",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00032",
+        "src-00033"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s4-outcome",
+      "label": "dispositioned artifacts",
+      "detail": "a non-script artifact is DURABLY_PROVISIONED a script that has been scenario-shaped is SEMANTIC_EXTRACTION_PENDING, and one that has not is SCENARIO_SHAPING_…",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "resolve-artifact-provisioning-disposition",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00032",
+        "src-00033"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s5-input",
+      "label": "provisioning inputs",
+      "detail": "dispositioned artifacts and the digests observed for their bytes",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "bind-provisioning-manifest-entries",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00034",
+        "src-00035"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s5-event",
+      "label": "bind provisioning manifest entries",
+      "detail": "the manifest entries are bound",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "bind-provisioning-manifest-entries",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00034",
+        "src-00035"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s5-outcome",
+      "label": "manifest entries",
+      "detail": "every entry names its source digest, its byte length, its content-addressed repository path and the sources that observed it two observations of identical by…",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "bind-provisioning-manifest-entries",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00034",
+        "src-00035"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s6-input",
+      "label": "provisioning inputs",
+      "detail": "the observed artifact set and the entries and rejections resolved from it",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "close-provisioning-coverage",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00036",
+        "src-00037"
+      ],
+      "layer": "mechanic",
+      "type": "input",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    },
+    {
+      "id": "s6-event",
+      "label": "close provisioning coverage",
+      "detail": "coverage is closed",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "close-provisioning-coverage",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00036",
+        "src-00037"
+      ],
+      "layer": "mechanic",
+      "type": "event",
+      "productContract": null,
+      "closure": null
+    },
+    {
+      "id": "s6-outcome",
+      "label": "coverage ledger",
+      "detail": "the ledger reports every observed artifact, its entry or its rejection, and any artifact left unaccounted an unaccounted artifact holds the batch rather than…",
+      "capabilityId": "provision-capability-artifacts",
+      "scenarioId": "close-provisioning-coverage",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00036",
+        "src-00037"
+      ],
+      "layer": "mechanic",
+      "type": "outcome",
+      "productContract": "provisioning-carrier.v1",
+      "closure": null
+    }
+  ],
+  "junctions": [],
+  "edges": [
+    {
+      "id": "s0-e0",
+      "source": "s0-input",
+      "target": "s0-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s0-e1",
+      "source": "s0-event",
+      "target": "s0-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00024",
+        "src-00025"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s1-e0",
+      "source": "s1-input",
+      "target": "s1-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s1-e1",
+      "source": "s1-event",
+      "target": "s1-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00026",
+        "src-00027"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s2-e0",
+      "source": "s2-input",
+      "target": "s2-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00028",
+        "src-00029"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s2-e1",
+      "source": "s2-event",
+      "target": "s2-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00028",
+        "src-00029"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s3-e0",
+      "source": "s3-input",
+      "target": "s3-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00030",
+        "src-00031"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s3-e1",
+      "source": "s3-event",
+      "target": "s3-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00030",
+        "src-00031"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s4-e0",
+      "source": "s4-input",
+      "target": "s4-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00032",
+        "src-00033"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s4-e1",
+      "source": "s4-event",
+      "target": "s4-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00032",
+        "src-00033"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s5-e0",
+      "source": "s5-input",
+      "target": "s5-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00034",
+        "src-00035"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s5-e1",
+      "source": "s5-event",
+      "target": "s5-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00034",
+        "src-00035"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s6-e0",
+      "source": "s6-input",
+      "target": "s6-event",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00036",
+        "src-00037"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    },
+    {
+      "id": "s6-e1",
+      "source": "s6-event",
+      "target": "s6-outcome",
+      "type": "transition",
+      "label": "declared boundary",
+      "basis": "DECLARED",
+      "sourceRefs": [
+        "src-00036",
+        "src-00037"
+      ],
+      "guard": null,
+      "productContract": null,
+      "maxAttempts": null,
+      "exitCondition": null,
+      "stopTarget": null
+    }
+  ],
+  "providers": [],
+  "meanings": [
+    {
+      "nodeId": "s0-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s0-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the batch is provisioned",
+      "authorityId": "provision-capability-artifacts.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s0-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "one decision binds every provisioned entry, every rejection, and the exact coverage of the selection PROVISIONED is returned only when every observed artifact was either provisioned or explicitly rejected",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s1-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s1-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the request is admitted",
+      "authorityId": "admit-provisioning-batch-request.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s1-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "the batch identity, zone and selection set are bound exactly as declared a batch declaring no selection returns PROVISIONING_SELECTION_UNDECLARED a batch presenting no observed artifact returns PROVISIONING_OBSERVATION_ABSENT rather than an empty provisioned set",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s2-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s2-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the screen testimony is admitted",
+      "authorityId": "screen-observed-artifacts-against-policy.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s2-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "every artifact carrying a policy finding is rejected with the rule that rejected it an artifact whose screen was never applied returns POLICY_SCREEN_NOT_APPLIED rather than passing unscreened a declared allowance naming no specific finding returns POLICY_ALLOWANCE_UNBOUNDED, because a blanket allowance is not an exception",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s3-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s3-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the observed artifacts are classified",
+      "authorityId": "classify-artifact-by-declared-extension.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s3-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "every artifact carries the exact artifact type, language and media type its extension declares an extension absent from the declared catalog returns ARTIFACT_EXTENSION_UNDECLARED rather than a guessed classification",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s4-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s4-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the dispositions are resolved",
+      "authorityId": "resolve-artifact-provisioning-disposition.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s4-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "a non-script artifact is DURABLY_PROVISIONED a script that has been scenario-shaped is SEMANTIC_EXTRACTION_PENDING, and one that has not is SCENARIO_SHAPING_PENDING, because a provisioned script is preserved evidence and never a discharged responsibility",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s5-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s5-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "the manifest entries are bound",
+      "authorityId": "bind-provisioning-manifest-entries.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s5-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "every entry names its source digest, its byte length, its content-addressed repository path and the sources that observed it two observations of identical bytes bind one entry carrying both observed sources, never two entries an entry whose observed digest does not match its declared digest returns PROVISIONED_DIGEST_DIVERGED",
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s6-input",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s6-event",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": "coverage is closed",
+      "authorityId": "close-provisioning-coverage.v1",
+      "mechanicProfile": null,
+      "experience": null,
+      "variants": [],
+      "productIsExperience": false
+    },
+    {
+      "nodeId": "s6-outcome",
+      "altitude": "scenario",
+      "parentId": null,
+      "responsibility": null,
+      "authorityId": null,
+      "mechanicProfile": null,
+      "experience": "the ledger reports every observed artifact, its entry or its rejection, and any artifact left unaccounted an unaccounted artifact holds the batch rather than reporting it provisioned",
+      "variants": [],
+      "productIsExperience": false
+    }
+  ],
+  "records": [
+    {
+      "id": "record-00000",
+      "kind": "blueprint",
+      "nativeType": "canonical-circuit-blueprint.v1",
+      "sourceRef": "src-00001",
+      "scenarioIds": [],
+      "nativeId": "provision-capability-artifacts-blueprint.v1",
+      "parentId": null
+    },
+    {
+      "id": "record-00001",
+      "kind": "policy",
+      "nativeType": "consumer-execution-embodiment-plan.v2",
+      "sourceRef": "src-00002",
+      "scenarioIds": [],
+      "nativeId": null,
+      "parentId": null
+    },
+    {
+      "id": "record-00002",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00003",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "provision-capability-artifacts.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00003",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00004",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "provision-capability-artifacts.operation.2",
+      "parentId": null
+    },
+    {
+      "id": "record-00004",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00005",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "provision-capability-artifacts.operation.3",
+      "parentId": null
+    },
+    {
+      "id": "record-00005",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00006",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "provision-capability-artifacts.operation.4",
+      "parentId": null
+    },
+    {
+      "id": "record-00006",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00007",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "provision-capability-artifacts.operation.5",
+      "parentId": null
+    },
+    {
+      "id": "record-00007",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00008",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "provision-capability-artifacts.operation.6",
+      "parentId": null
+    },
+    {
+      "id": "record-00008",
+      "kind": "operation",
+      "nativeType": "invoke-scenario",
+      "sourceRef": "src-00009",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "provision-capability-artifacts.operation.7",
+      "parentId": null
+    },
+    {
+      "id": "record-00009",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00010",
+      "scenarioIds": [
+        "admit-provisioning-batch-request"
+      ],
+      "nativeId": "admit-provisioning-batch-request.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00010",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00011",
+      "scenarioIds": [
+        "screen-observed-artifacts-against-policy"
+      ],
+      "nativeId": "screen-observed-artifacts-against-policy.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00011",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00012",
+      "scenarioIds": [
+        "classify-artifact-by-declared-extension"
+      ],
+      "nativeId": "classify-artifact-by-declared-extension.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00012",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00013",
+      "scenarioIds": [
+        "resolve-artifact-provisioning-disposition"
+      ],
+      "nativeId": "resolve-artifact-provisioning-disposition.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00013",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00014",
+      "scenarioIds": [
+        "bind-provisioning-manifest-entries"
+      ],
+      "nativeId": "bind-provisioning-manifest-entries.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00014",
+      "kind": "operation",
+      "nativeType": "invoke-port",
+      "sourceRef": "src-00015",
+      "scenarioIds": [
+        "close-provisioning-coverage"
+      ],
+      "nativeId": "close-provisioning-coverage.operation.1",
+      "parentId": null
+    },
+    {
+      "id": "record-00015",
+      "kind": "mechanic",
+      "nativeType": "contract-admission",
+      "sourceRef": "src-00016",
+      "scenarioIds": [
+        "provision-capability-artifacts",
+        "admit-provisioning-batch-request",
+        "screen-observed-artifacts-against-policy",
+        "classify-artifact-by-declared-extension",
+        "resolve-artifact-provisioning-disposition",
+        "bind-provisioning-manifest-entries",
+        "close-provisioning-coverage"
+      ],
+      "nativeId": "contract-admission",
+      "parentId": null
+    },
+    {
+      "id": "record-00016",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00017",
+      "scenarioIds": [
+        "admit-provisioning-batch-request"
+      ],
+      "nativeId": "port:admit-provisioning-batch-request-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00017",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00018",
+      "scenarioIds": [
+        "bind-provisioning-manifest-entries"
+      ],
+      "nativeId": "port:bind-provisioning-manifest-entries-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00018",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00019",
+      "scenarioIds": [
+        "classify-artifact-by-declared-extension"
+      ],
+      "nativeId": "port:classify-artifact-by-declared-extension-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00019",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00020",
+      "scenarioIds": [
+        "close-provisioning-coverage"
+      ],
+      "nativeId": "port:close-provisioning-coverage-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00020",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00021",
+      "scenarioIds": [
+        "provision-capability-artifacts"
+      ],
+      "nativeId": "port:provision-capability-artifacts-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00021",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00022",
+      "scenarioIds": [
+        "resolve-artifact-provisioning-disposition"
+      ],
+      "nativeId": "port:resolve-artifact-provisioning-disposition-port",
+      "parentId": null
+    },
+    {
+      "id": "record-00022",
+      "kind": "mechanic",
+      "nativeType": "event-port",
+      "sourceRef": "src-00023",
+      "scenarioIds": [
+        "screen-observed-artifacts-against-policy"
+      ],
+      "nativeId": "port:screen-observed-artifacts-against-policy-port",
+      "parentId": null
+    }
+  ],
+  "findings": [
+    {
+      "code": "BLUEPRINT_UNRESOLVED_ENDPOINTS",
+      "subject": "provision-capability-artifacts",
+      "detail": "Stored blueprint routes reference undeclared nodes: bind-provisioning-disposition",
+      "closure": "Resolve these exact endpoints through the governed blueprint boundary. Do not fabricate junctions in the infographic."
+    },
+    {
+      "code": "BLUEPRINT_DECLARED_ADMISSION_STATE",
+      "subject": "provision-capability-artifacts",
+      "detail": "REQUIRES_CONFORMANCE_AND_HUMAN_BLUEPRINT_ADMISSION",
+      "closure": "Respect the stored blueprint admission state; capsule membership alone does not admit this candidate blueprint."
+    },
+    {
+      "code": "BLUEPRINT_VISUAL_PROFILE_OPEN",
+      "subject": "provision-capability-artifacts",
+      "detail": "The separate canonical blueprint is retained exactly, including topology, semantic progress and observability. It is not conflated with the runtime graph.",
+      "closure": "Qualify a visual profile for the blueprint carrier before projecting its state and responsibility nodes as execution flow."
+    },
+    {
+      "code": "EDITORIAL_REVIEW_REQUIRED",
+      "subject": "provision-capability-artifacts",
+      "detail": "Source revelation preserves declarations; human storytelling and visual acceptance are separate.",
+      "closure": "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use."
+    },
+    {
+      "code": "NATIVE_MOTION_NOT_LOWERED",
+      "subject": "provision-capability-artifacts",
+      "detail": "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.",
+      "closure": "Admit explicit visual/trace profiles for native control flow before animating its mechanics."
+    },
+    {
+      "code": "NO_NATIVE_CANONICAL_GRAPH",
+      "subject": "provision-capability-artifacts",
+      "detail": "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.",
+      "closure": "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions."
+    }
+  ],
+  "trace": []
+}

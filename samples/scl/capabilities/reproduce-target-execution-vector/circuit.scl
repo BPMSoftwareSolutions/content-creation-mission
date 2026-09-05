@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "reproduce-target-execution-vector" {
+  title "Reproduce target execution vector";
+  promise "{\"experienceId\": \"reproduce-target-execution-vector.v1\", \"actor\": \"language maintainer\", \"promise\": \"identical input always yields identical bytes and deterministic embodiments\", \"observableConditions\": [{\"conditionId\": \"deterministic-plan-rendered\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/reproduce-target-execution-vector.json";
+    sha256 "27a61760078c91957000d7d03b523b074dedeed26fe18ce7c0a90760dedf38bd";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/8c0f2f0b169deeb71a4f57f383af1a2decf69d005cf39466f19c341f83c3f8a9-d7acec11a1014757.json";
+    sha256 "e2a2bc97651581d685ca4eacd1445755d1f7d2c0b5e8410d5c4e6582ffd30acc";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/8c0f2f0b169deeb71a4f57f383af1a2decf69d005cf39466f19c341f83c3f8a9-d7acec11a1014757.json";
+    sha256 "e2a2bc97651581d685ca4eacd1445755d1f7d2c0b5e8410d5c4e6582ffd30acc";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/8c0f2f0b169deeb71a4f57f383af1a2decf69d005cf39466f19c341f83c3f8a9-d7acec11a1014757.json";
+    sha256 "e2a2bc97651581d685ca4eacd1445755d1f7d2c0b5e8410d5c4e6582ffd30acc";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/8c0f2f0b169deeb71a4f57f383af1a2decf69d005cf39466f19c341f83c3f8a9-d7acec11a1014757.json";
+    sha256 "e2a2bc97651581d685ca4eacd1445755d1f7d2c0b5e8410d5c4e6582ffd30acc";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/635";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/8c0f2f0b169deeb71a4f57f383af1a2decf69d005cf39466f19c341f83c3f8a9-d7acec11a1014757.json";
+    sha256 "e2a2bc97651581d685ca4eacd1445755d1f7d2c0b5e8410d5c4e6582ffd30acc";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "reproduce-target-execution-vector" {
+    label "Reproduce target execution vector";
+    domain "Frozen source corpus";
+    scenarioIds ["reproduce-target-execution-vector"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "reproduce-target-execution-vector" {
+    capabilityId "reproduce-target-execution-vector";
+    label "Render a deterministic in-memory execution projection plan";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "target execution graph";
+    detail "one target execution graph";
+    capabilityId "reproduce-target-execution-vector";
+    scenarioId "reproduce-target-execution-vector";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "reproduce-target-execution-vector-input.v1";
+  }
+  event "s0-event" {
+    label "target execution vector reproduction requested";
+    detail "an in-memory execution projection plan is rendered without invoking a toolchain";
+    capabilityId "reproduce-target-execution-vector";
+    scenarioId "reproduce-target-execution-vector";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "target execution vector plan known";
+    detail "every target execution node has a deterministic embodiment with a unique path, stable bytes, digest, and source lineage, and identical input yields identical…";
+    capabilityId "reproduce-target-execution-vector";
+    scenarioId "reproduce-target-execution-vector";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "execution-projection-plan-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "an in-memory execution projection plan is rendered without invoking a toolchain";
+    authorityId "target-execution-vector-reproduction.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every target execution node has a deterministic embodiment with a unique path, stable bytes, digest, and source lineage, and identical input yields identical bytes";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["reproduce-target-execution-vector"];
+    nativeId "reproduce-target-execution-vector.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["reproduce-target-execution-vector"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["reproduce-target-execution-vector"];
+    nativeId "port:reproduce-target-execution-vector-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "reproduce-target-execution-vector";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "reproduce-target-execution-vector";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "reproduce-target-execution-vector";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

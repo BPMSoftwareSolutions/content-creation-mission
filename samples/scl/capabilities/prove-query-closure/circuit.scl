@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "prove-query-closure" {
+  title "Prove query closure";
+  promise "{\"experienceId\": \"prove-query-closure-experience.v1\", \"actor\": \"consumer\", \"promise\": \"evaluated query closure evidence backed by fixture observations\", \"observableConditions\": [{\"conditionId\": \"query-closure-known\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/prove-query-closure.json";
+    sha256 "9461b304ccff50f457696f4b3c7fb401b87aa167fb5fc98b76cc0f5fb0e4df04";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json";
+    sha256 "f40ab5e8148e21b0f399a977be178108b6114ceb3428de891457681cd93df5d3";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json";
+    sha256 "f40ab5e8148e21b0f399a977be178108b6114ceb3428de891457681cd93df5d3";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json";
+    sha256 "f40ab5e8148e21b0f399a977be178108b6114ceb3428de891457681cd93df5d3";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json";
+    sha256 "f40ab5e8148e21b0f399a977be178108b6114ceb3428de891457681cd93df5d3";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/588";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/8b9facdb757972c5a923fb5d2cd12d064dcec0722100b567871071553af385ab-b935a4996babeee5.json";
+    sha256 "f40ab5e8148e21b0f399a977be178108b6114ceb3428de891457681cd93df5d3";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "prove-query-closure" {
+    label "Prove query closure";
+    domain "Frozen source corpus";
+    scenarioIds ["prove-query-closure"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "prove-query-closure" {
+    capabilityId "prove-query-closure";
+    label "Evaluate implemented consumer queries against fixture observations";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "consumer query observation facts";
+    detail "consumer query observation facts collected from fixtures";
+    capabilityId "prove-query-closure";
+    scenarioId "prove-query-closure";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "prove-query-closure-input.v1";
+  }
+  event "s0-event" {
+    label "query closure proof requested";
+    detail "implemented queries are evaluated against fixture observations";
+    capabilityId "prove-query-closure";
+    scenarioId "prove-query-closure";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "query closure known";
+    detail "every implemented query is observed with a satisfying fixture result, or is explicitly unproven";
+    capabilityId "prove-query-closure";
+    scenarioId "prove-query-closure";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "query-closure-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "implemented queries are evaluated against fixture observations";
+    authorityId "consumer-query-closure-proof.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every implemented query is observed with a satisfying fixture result, or is explicitly unproven";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["prove-query-closure"];
+    nativeId "prove-query-closure.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["prove-query-closure"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["prove-query-closure"];
+    nativeId "port:prove-query-closure-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "prove-query-closure";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "prove-query-closure";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "prove-query-closure";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

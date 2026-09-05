@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "admit-execution-vector" {
+  title "Admit execution vector";
+  promise "{\"experienceId\": \"execution-vector-admission-experience.v1\", \"actor\": \"SDA maintainer\", \"promise\": \"validate execution vector soundness and ordering constraints\", \"observableConditions\": [{\"conditionId\": \"execution-vector-admitted-or-gap-identified\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/admit-execution-vector.json";
+    sha256 "a88f85ae453ea55779ec34149ca12dc69ce5da77de2db4b29f9fd99ab4f25919";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/cd7a23540cd5f812f8fb1dc1e757b4cacbd93c6c7b220024b374baf2698efb06-bc2cc6437fd055df.json";
+    sha256 "a23f7fa55252a3b63aa37562c20d5fe93d1e8b43fcce300319a95912b5a90927";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/cd7a23540cd5f812f8fb1dc1e757b4cacbd93c6c7b220024b374baf2698efb06-bc2cc6437fd055df.json";
+    sha256 "a23f7fa55252a3b63aa37562c20d5fe93d1e8b43fcce300319a95912b5a90927";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/cd7a23540cd5f812f8fb1dc1e757b4cacbd93c6c7b220024b374baf2698efb06-bc2cc6437fd055df.json";
+    sha256 "a23f7fa55252a3b63aa37562c20d5fe93d1e8b43fcce300319a95912b5a90927";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/cd7a23540cd5f812f8fb1dc1e757b4cacbd93c6c7b220024b374baf2698efb06-bc2cc6437fd055df.json";
+    sha256 "a23f7fa55252a3b63aa37562c20d5fe93d1e8b43fcce300319a95912b5a90927";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/18";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/cd7a23540cd5f812f8fb1dc1e757b4cacbd93c6c7b220024b374baf2698efb06-bc2cc6437fd055df.json";
+    sha256 "a23f7fa55252a3b63aa37562c20d5fe93d1e8b43fcce300319a95912b5a90927";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "admit-execution-vector" {
+    label "Admit execution vector";
+    domain "Frozen source corpus";
+    scenarioIds ["admit-execution-vector"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "admit-execution-vector" {
+    capabilityId "admit-execution-vector";
+    label "Validate the canonical execution vector and its declared ordering";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "execution vector admission input";
+    detail "one canonical execution vector and its declared step ordering";
+    capabilityId "admit-execution-vector";
+    scenarioId "admit-execution-vector";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "execution-vector-admission-input.v1";
+  }
+  event "s0-event" {
+    label "execution vector admission requested";
+    detail "the canonical execution vector and its declared ordering are validated against its admitted schema";
+    capabilityId "admit-execution-vector";
+    scenarioId "admit-execution-vector";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "execution vector admission known";
+    detail "every declared step and ordering constraint is admitted or identified as a precise gap, without evaluating any language implementation";
+    capabilityId "admit-execution-vector";
+    scenarioId "admit-execution-vector";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "execution-vector-admission-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "the canonical execution vector and its declared ordering are validated against its admitted schema";
+    authorityId "execution-vector-admission.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every declared step and ordering constraint is admitted or identified as a precise gap, without evaluating any language implementation";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["admit-execution-vector"];
+    nativeId "admit-execution-vector.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["admit-execution-vector"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["admit-execution-vector"];
+    nativeId "port:admit-execution-vector-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "admit-execution-vector";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "admit-execution-vector";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "admit-execution-vector";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

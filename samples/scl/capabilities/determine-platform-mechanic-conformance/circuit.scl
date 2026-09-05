@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "determine-platform-mechanic-conformance" {
+  title "Determine platform mechanic conformance";
+  promise "{\"experienceId\": \"platform-mechanic-conformance-assurance.v1\", \"actor\": \"consumer\", \"promise\": \"every mandatory mechanic has current implementation and conformance evidence, and each active language carries complete current mechanic proof\", \"observableConditions\": [{\"conditionId\": \"mechanic-proof-verified\"}, {\"conditionId\": \"conformance-evidence-evaluated\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/determine-platform-mechanic-conformance.json";
+    sha256 "122136e0395601d65bd7910359bcb02cdfdeea0a6d5064dfac8f2ee072beed0f";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/90b99626a4405762c09d7e18bfb205f7e15c865b4d183ba24d314924e1021256-fb958dae213c9abc.json";
+    sha256 "0ae661c269ce84ec509d5c3ae1733176758930648da0d9ad0bc1eda7e2cac511";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/90b99626a4405762c09d7e18bfb205f7e15c865b4d183ba24d314924e1021256-fb958dae213c9abc.json";
+    sha256 "0ae661c269ce84ec509d5c3ae1733176758930648da0d9ad0bc1eda7e2cac511";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/90b99626a4405762c09d7e18bfb205f7e15c865b4d183ba24d314924e1021256-fb958dae213c9abc.json";
+    sha256 "0ae661c269ce84ec509d5c3ae1733176758930648da0d9ad0bc1eda7e2cac511";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/90b99626a4405762c09d7e18bfb205f7e15c865b4d183ba24d314924e1021256-fb958dae213c9abc.json";
+    sha256 "0ae661c269ce84ec509d5c3ae1733176758930648da0d9ad0bc1eda7e2cac511";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/237";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/90b99626a4405762c09d7e18bfb205f7e15c865b4d183ba24d314924e1021256-fb958dae213c9abc.json";
+    sha256 "0ae661c269ce84ec509d5c3ae1733176758930648da0d9ad0bc1eda7e2cac511";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "determine-platform-mechanic-conformance" {
+    label "Determine platform mechanic conformance";
+    domain "Frozen source corpus";
+    scenarioIds ["determine-platform-mechanic-conformance"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "determine-platform-mechanic-conformance" {
+    capabilityId "determine-platform-mechanic-conformance";
+    label "Evaluate admitted platform providers against current toolchain proof";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "language platform mechanic facts";
+    detail "one set of language platform mechanic facts";
+    capabilityId "determine-platform-mechanic-conformance";
+    scenarioId "determine-platform-mechanic-conformance";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "determine-platform-mechanic-conformance-input.v1";
+  }
+  event "s0-event" {
+    label "platform mechanic conformance evaluation requested";
+    detail "admitted platform providers are evaluated against current toolchain proof";
+    capabilityId "determine-platform-mechanic-conformance";
+    scenarioId "determine-platform-mechanic-conformance";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "platform mechanic conformance known";
+    detail "every mandatory mechanic has current implementation and conformance evidence, and each active language carries complete current mechanic proof";
+    capabilityId "determine-platform-mechanic-conformance";
+    scenarioId "determine-platform-mechanic-conformance";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "platform-mechanic-conformance-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "admitted platform providers are evaluated against current toolchain proof";
+    authorityId "platform-mechanic-conformance.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every mandatory mechanic has current implementation and conformance evidence, and each active language carries complete current mechanic proof";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["determine-platform-mechanic-conformance"];
+    nativeId "determine-platform-mechanic-conformance.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["determine-platform-mechanic-conformance"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["determine-platform-mechanic-conformance"];
+    nativeId "port:evaluate-platform-mechanics-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "determine-platform-mechanic-conformance";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "determine-platform-mechanic-conformance";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "determine-platform-mechanic-conformance";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

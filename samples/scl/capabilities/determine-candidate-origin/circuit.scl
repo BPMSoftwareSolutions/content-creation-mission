@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "determine-candidate-origin" {
+  title "Determine candidate origin";
+  promise "{\"experienceType\": \"promised-experience.v1\", \"experienceId\": \"candidate-origin-is-visible\", \"actor\": \"language maintainer\", \"promise\": \"candidate origin classification and file counts are provided\", \"observableConditions\": [{\"conditionId\": \"origin-classification-is-derived\", \"statement\": \"the origin classification is derived from the presence of canonical source pointers on each file\"}, {\"conditionId\": \"projected-count-is-derived\", \"statement\": \"the projected count equals the number of files with at least one canonical source pointer\"}, {\"conditionId\": \"hand-written-count-is-derived\", \"statement\": \"the hand authored count equals the number of files without a canonical source pointer\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/determine-candidate-origin.json";
+    sha256 "66c0f4acf5749c5e358e42ea6a03ac2d26951c876f7f09ca615eb681b88339f2";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/8bddf020c7d5587c075aae0f9e9ae1bd6df20651e46ec2dd58de9c0ba3d36278-caf5c914059f6219.json";
+    sha256 "89f68fdba297a2e84bfb5f8a4fcf6c05146b2304a720e0f0b1556a5d96a3261e";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/8bddf020c7d5587c075aae0f9e9ae1bd6df20651e46ec2dd58de9c0ba3d36278-caf5c914059f6219.json";
+    sha256 "89f68fdba297a2e84bfb5f8a4fcf6c05146b2304a720e0f0b1556a5d96a3261e";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/8bddf020c7d5587c075aae0f9e9ae1bd6df20651e46ec2dd58de9c0ba3d36278-caf5c914059f6219.json";
+    sha256 "89f68fdba297a2e84bfb5f8a4fcf6c05146b2304a720e0f0b1556a5d96a3261e";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/8bddf020c7d5587c075aae0f9e9ae1bd6df20651e46ec2dd58de9c0ba3d36278-caf5c914059f6219.json";
+    sha256 "89f68fdba297a2e84bfb5f8a4fcf6c05146b2304a720e0f0b1556a5d96a3261e";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/222";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/8bddf020c7d5587c075aae0f9e9ae1bd6df20651e46ec2dd58de9c0ba3d36278-caf5c914059f6219.json";
+    sha256 "89f68fdba297a2e84bfb5f8a4fcf6c05146b2304a720e0f0b1556a5d96a3261e";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "determine-candidate-origin" {
+    label "Determine candidate origin";
+    domain "Frozen source corpus";
+    scenarioIds ["determine-candidate-origin"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "determine-candidate-origin" {
+    capabilityId "determine-candidate-origin";
+    label "Determine candidate origin from candidate files and manifest facts";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "candidate file and manifest facts";
+    detail "a candidate file set and manifest facts are ready for evaluation";
+    capabilityId "determine-candidate-origin";
+    scenarioId "determine-candidate-origin";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "determine-candidate-origin-input.v1";
+  }
+  event "s0-event" {
+    label "candidate origin determination requested";
+    detail "candidate origin determination is requested";
+    capabilityId "determine-candidate-origin";
+    scenarioId "determine-candidate-origin";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "candidate origin known";
+    detail "candidate origin evidence is generated with origin classification and file counts";
+    capabilityId "determine-candidate-origin";
+    scenarioId "determine-candidate-origin";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "candidate-origin-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "candidate origin determination is requested";
+    authorityId "candidate-origin-determination.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "candidate origin evidence is generated with origin classification and file counts";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["determine-candidate-origin"];
+    nativeId "determine-candidate-origin.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["determine-candidate-origin"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["determine-candidate-origin"];
+    nativeId "port:determine-candidate-origin";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "determine-candidate-origin";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "determine-candidate-origin";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "determine-candidate-origin";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

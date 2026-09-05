@@ -1,0 +1,209 @@
+scl "0.1";
+circuit "greet-by-name" {
+  title "Construct a greeting from one name input";
+  promise "{\"actor\": \"caller\", \"experienceId\": \"personalized-greeting-from-name.v1\", \"observableConditions\": [{\"conditionId\": \"one-name-input-required\"}, {\"conditionId\": \"input-name-preserved-in-greeting\"}, {\"conditionId\": \"deterministic-greeting-format\"}, {\"conditionId\": \"no-external-effect-invoked\"}], \"promise\": \"every admitted execution constructs exactly Hello, {name}! from the admitted name without external effects\"}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/greet-by-name.json";
+    sha256 "406f7b5a700b1a4549a2ea7be67fce0a7f0f639925ee0d4381015eb07f27f9f5";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/5f283bd6ff5150364bf9c20d9a56d3ebde7b95c6f6379f252a3d553d0c97e6e1-d316091fb1bbe00e.json";
+    sha256 "26c394d2cbe9cf7981640f679e4c9466a77e61f18b670e5e2617ffae0c569201";
+    pointer "";
+    kind "DECLARED";
+    label "blueprint / canonical-circuit-blueprint.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json";
+    sha256 "1b5d4ca6e0888d455e91b360f688cac57f00a451ca80ea8d0f23fc61fa3f5c6d";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json";
+    sha256 "1b5d4ca6e0888d455e91b360f688cac57f00a451ca80ea8d0f23fc61fa3f5c6d";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json";
+    sha256 "1b5d4ca6e0888d455e91b360f688cac57f00a451ca80ea8d0f23fc61fa3f5c6d";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json";
+    sha256 "1b5d4ca6e0888d455e91b360f688cac57f00a451ca80ea8d0f23fc61fa3f5c6d";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00006" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/371";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00007" {
+    path "data/capsule-evidence/entries/c880851ee921a5d6936aa01f88a8723f61b1d75ae7a4ddbfdfbe7286ee1ae55c-3461f5f3b1da31be.json";
+    sha256 "1b5d4ca6e0888d455e91b360f688cac57f00a451ca80ea8d0f23fc61fa3f5c6d";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "greet-by-name" {
+    label "Construct a greeting from one name input";
+    domain "Frozen source corpus";
+    scenarioIds ["greet-by-name"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "greet-by-name" {
+    capabilityId "greet-by-name";
+    label "Greet a caller by name";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00006", "src-00007"];
+  }
+  input "s0-input" {
+    label "personal greeting request";
+    detail "one admitted non-empty person name";
+    capabilityId "greet-by-name";
+    scenarioId "greet-by-name";
+    basis "DECLARED";
+    sourceRefs ["src-00006", "src-00007"];
+    layer "mechanic";
+    productContract "personal-greeting-request.v1";
+  }
+  event "s0-event" {
+    label "greet by name";
+    detail "a personalized greeting is requested";
+    capabilityId "greet-by-name";
+    scenarioId "greet-by-name";
+    basis "DECLARED";
+    sourceRefs ["src-00006", "src-00007"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "personal greeting";
+    detail "the exact greeting Hello, {name}! is returned without an external effect";
+    capabilityId "greet-by-name";
+    scenarioId "greet-by-name";
+    basis "DECLARED";
+    sourceRefs ["src-00006", "src-00007"];
+    layer "mechanic";
+    productContract "personal-greeting.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00006", "src-00007"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00006", "src-00007"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "a personalized greeting is requested";
+    authorityId "greet-by-name.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "the exact greeting Hello, {name}! is returned without an external effect";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "blueprint";
+    nativeType "canonical-circuit-blueprint.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+    nativeId "greet-by-name-blueprint.v1";
+  }
+  record "record-00001" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00002";
+    scenarioIds [];
+  }
+  record "record-00002" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00003";
+    scenarioIds ["greet-by-name"];
+    nativeId "greet-by-name.operation.1";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00004";
+    scenarioIds ["greet-by-name"];
+    nativeId "contract-admission";
+  }
+  record "record-00004" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00005";
+    scenarioIds ["greet-by-name"];
+    nativeId "port:greet-by-name-port";
+  }
+  finding {
+    code "BLUEPRINT_VISUAL_PROFILE_OPEN";
+    subject "greet-by-name";
+    detail "The separate canonical blueprint is retained exactly, including topology, semantic progress and observability. It is not conflated with the runtime graph.";
+    closure "Qualify a visual profile for the blueprint carrier before projecting its state and responsibility nodes as execution flow.";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "greet-by-name";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "greet-by-name";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "greet-by-name";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

@@ -1,0 +1,295 @@
+scl "0.1";
+circuit "scenario-target" {
+  title "Prove both sides of the boundary.";
+  promise "Explicit target design. Animated outcomes do not establish current implementation or completed proof.";
+  status "DRAFT";
+  sourceGeneration null;
+  source "runtime" {
+    path "data/capsule-evidence/entries/18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38-f69129442ac57290.json";
+    sha256 "3faf2878fca1d2d1b091d4e237c7e2d1a25efa06c6f38a011d9aa32b3a35ed08";
+    pointer "";
+    kind "TARGET";
+    label "Exact runtime execution plan";
+    encoding "capsule-entry";
+  }
+  source "capsule" {
+    path "outputs/scenario-visual-evidence/interlock-agent-operation/interlock-agent-operation.json";
+    sha256 "4a682135a10ed6a5ea014d31cdd95f380ed39519daddf5da132099fb9e98b90a";
+    pointer "";
+    kind "TARGET";
+    label "Verified capsule evidence package";
+    encoding "json";
+  }
+  source "story" {
+    path "declarations/episode-01-direction.json";
+    sha256 "79f3848afd6d7ec33a58140380040bffaa059ed3e63cc7fdea67e0a766328f3d";
+    pointer "";
+    kind "STAGING";
+    label "Fictional human experience";
+    encoding "json";
+  }
+  source "target" {
+    path "declarations/infographic-design-intent.v1.json";
+    sha256 "ef389df72699c9be8028ac9daeddb7a3251e34f34594805ccb256c2973dfdae9";
+    pointer "";
+    kind "TARGET";
+    label "Intended visual circuit";
+    encoding "json";
+  }
+  source "gap" {
+    path "evaluations/episode-01-platform-gap.json";
+    sha256 "f1ede79ac956bd79e6d5bc71d8e7828516b36bda612f2da1fa281a406e9b6649";
+    pointer "";
+    kind "GAP";
+    label "Missing live enforcement and testimony";
+    encoding "json";
+  }
+  capability "interlock-agent-operation" {
+    label "Interlock Agent Operation";
+    domain "Governed agent work";
+    scenarioIds ["certification"];
+    coverage "One intended scenario";
+    sourceRefs ["target"];
+  }
+  scenario "certification" {
+    capabilityId "interlock-agent-operation";
+    label "Two-sided live certification";
+    nodeIds ["activation", "deny-probe", "permit-probe", "check", "certified", "split", "join"];
+    sourceRefs ["target"];
+  }
+  input "activation" {
+    label "Exact activation";
+    detail "One session / workspace / policy";
+    capabilityId "interlock-agent-operation";
+    scenarioId "certification";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "mechanic";
+  }
+  event "deny-probe" {
+    label "Deny unmanaged probe";
+    detail "Observe no effect";
+    capabilityId "interlock-agent-operation";
+    scenarioId "certification";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "mechanic";
+  }
+  event "permit-probe" {
+    label "Permit read-only probe";
+    detail "Observe the declared effect";
+    capabilityId "interlock-agent-operation";
+    scenarioId "certification";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "mechanic";
+  }
+  validation "check" {
+    label "Match identities";
+    detail "Session, coverage, time, authority";
+    capabilityId "interlock-agent-operation";
+    scenarioId "certification";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "mechanic";
+  }
+  outcome "certified" {
+    label "Scoped boundary";
+    detail "Only if every obligation closes";
+    capabilityId "interlock-agent-operation";
+    scenarioId "certification";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "mechanic";
+  }
+  provider-port "port" {
+    label "Live probe port";
+    detail "Responsibility remains to be supplied";
+    capabilityId "interlock-agent-operation";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "support";
+  }
+  provider "provider" {
+    label "Hook runtime candidate";
+    detail "Candidate / not observed";
+    capabilityId "interlock-agent-operation";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "support";
+  }
+  evidence "proof" {
+    label "Required probe testimony";
+    detail "Not an observed receipt";
+    capabilityId "interlock-agent-operation";
+    basis "GAP";
+    sourceRefs ["gap"];
+    layer "support";
+    closure "Execute both probes in the same exact live session; bind actual effects and ordered identities.";
+  }
+  fan-out "split" {
+    label "Both probes";
+    detail "Same identity envelope";
+    capabilityId "interlock-agent-operation";
+    scenarioId "certification";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "mechanic";
+  }
+  convergence "join" {
+    label "Both results";
+    detail "ALL / 2 of 2";
+    capabilityId "interlock-agent-operation";
+    scenarioId "certification";
+    basis "TARGET";
+    sourceRefs ["target"];
+    layer "mechanic";
+    join "all";
+  }
+  route "e00" {
+    source "activation";
+    target "split";
+    type "transition";
+    label "";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e01" {
+    source "split";
+    target "deny-probe";
+    type "transition";
+    label "dependent 1";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e02" {
+    source "split";
+    target "permit-probe";
+    type "transition";
+    label "dependent 2";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e03" {
+    source "deny-probe";
+    target "join";
+    type "transition";
+    label "";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e04" {
+    source "permit-probe";
+    target "join";
+    type "transition";
+    label "";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e05" {
+    source "join";
+    target "check";
+    type "transition";
+    label "both arrived";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e06" {
+    source "check";
+    target "certified";
+    type "transition";
+    label "matching proof";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e07" {
+    source "provider";
+    target "port";
+    type "provider-binding";
+    label "candidate";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e08" {
+    source "port";
+    target "deny-probe";
+    type "dependency";
+    label "probe responsibility";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e09" {
+    source "port";
+    target "permit-probe";
+    type "dependency";
+    label "probe responsibility";
+    basis "TARGET";
+    sourceRefs ["target"];
+  }
+  route "e10" {
+    source "proof";
+    target "certified";
+    type "evidence-attachment";
+    label "required to establish";
+    basis "GAP";
+    sourceRefs ["gap"];
+  }
+  binding {
+    nodeId "provider";
+    portIds ["port"];
+    binding "candidate";
+    state "candidate";
+  }
+  meaning {
+    nodeId "activation";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "deny-probe";
+    altitude "scenario";
+    responsibility "Observe no effect";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "permit-probe";
+    altitude "scenario";
+    responsibility "Observe the declared effect";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "check";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "certified";
+    altitude "scenario";
+    experience "Only if every obligation closes";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "port";
+    altitude "execution";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "provider";
+    altitude "provider";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "proof";
+    altitude "execution";
+    variants [];
+    productIsExperience false;
+  }
+  trace ["e00", "e01", "e02", "e03", "e04", "e05", "e06"];
+}

@@ -1,0 +1,251 @@
+scl "0.1";
+circuit "scenario-current" {
+  title "A decision is not yet an interlock.";
+  promise "Stored capsule semantics, source references and authored visual direction. No observed live interception.";
+  status "DRAFT";
+  sourceGeneration null;
+  source "runtime" {
+    path "data/capsule-evidence/entries/18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38-f69129442ac57290.json";
+    sha256 "3faf2878fca1d2d1b091d4e237c7e2d1a25efa06c6f38a011d9aa32b3a35ed08";
+    pointer "";
+    kind "TARGET";
+    label "Exact runtime execution plan";
+    encoding "capsule-entry";
+  }
+  source "capsule" {
+    path "outputs/scenario-visual-evidence/interlock-agent-operation/interlock-agent-operation.json";
+    sha256 "4a682135a10ed6a5ea014d31cdd95f380ed39519daddf5da132099fb9e98b90a";
+    pointer "";
+    kind "TARGET";
+    label "Verified capsule evidence package";
+    encoding "json";
+  }
+  source "story" {
+    path "declarations/episode-01-direction.json";
+    sha256 "79f3848afd6d7ec33a58140380040bffaa059ed3e63cc7fdea67e0a766328f3d";
+    pointer "";
+    kind "STAGING";
+    label "Fictional human experience";
+    encoding "json";
+  }
+  source "target" {
+    path "declarations/infographic-design-intent.v1.json";
+    sha256 "ef389df72699c9be8028ac9daeddb7a3251e34f34594805ccb256c2973dfdae9";
+    pointer "";
+    kind "TARGET";
+    label "Intended visual circuit";
+    encoding "json";
+  }
+  source "gap" {
+    path "evaluations/episode-01-platform-gap.json";
+    sha256 "f1ede79ac956bd79e6d5bc71d8e7828516b36bda612f2da1fa281a406e9b6649";
+    pointer "";
+    kind "GAP";
+    label "Missing live enforcement and testimony";
+    encoding "json";
+  }
+  source "adjudication" {
+    path "data/capsule-evidence/entries/18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38-f69129442ac57290.json";
+    sha256 "3faf2878fca1d2d1b091d4e237c7e2d1a25efa06c6f38a011d9aa32b3a35ed08";
+    pointer "/mechanicBindings/2";
+    kind "TARGET";
+    label "Adjudication expression";
+    encoding "capsule-entry";
+  }
+  capability "interlock-agent-operation" {
+    label "Interlock Agent Operation";
+    domain "Governed agent work";
+    scenarioIds ["adjudication"];
+    coverage "One source scenario";
+    sourceRefs ["runtime"];
+  }
+  scenario "adjudication" {
+    capabilityId "interlock-agent-operation";
+    label "Adjudicate covered agent tool call";
+    nodeIds ["request", "act", "operator", "allow", "select"];
+    sourceRefs ["runtime"];
+  }
+  input "request" {
+    label "Admitted call envelope";
+    detail "ADJUDICATE / safe-tool";
+    capabilityId "interlock-agent-operation";
+    scenarioId "adjudication";
+    basis "TARGET";
+    sourceRefs ["runtime"];
+    layer "mechanic";
+    productContract "covered-agent-tool-call.v1";
+  }
+  event "act" {
+    label "Adjudicate call";
+    detail "Stored authority transformation";
+    capabilityId "interlock-agent-operation";
+    scenarioId "adjudication";
+    basis "TARGET";
+    sourceRefs ["adjudication"];
+    layer "mechanic";
+  }
+  outcome "operator" {
+    label "OPERATOR_REQUIRED";
+    detail "Returned decision label";
+    capabilityId "interlock-agent-operation";
+    scenarioId "adjudication";
+    basis "TARGET";
+    sourceRefs ["adjudication"];
+    layer "mechanic";
+    productContract "agent-tool-call-disposition.v1";
+  }
+  outcome "allow" {
+    label "ALLOW";
+    detail "Returned decision label";
+    capabilityId "interlock-agent-operation";
+    scenarioId "adjudication";
+    basis "TARGET";
+    sourceRefs ["adjudication"];
+    layer "mechanic";
+    productContract "agent-tool-call-disposition.v1";
+  }
+  provider "provider" {
+    label "Authority transformation";
+    detail "Bound provider / live state unknown";
+    capabilityId "interlock-agent-operation";
+    basis "TARGET";
+    sourceRefs ["runtime"];
+    layer "support";
+  }
+  provider-port "port" {
+    label "Adjudication port";
+    detail "Required responsibility";
+    capabilityId "interlock-agent-operation";
+    basis "TARGET";
+    sourceRefs ["adjudication"];
+    layer "support";
+  }
+  evidence "receipt" {
+    label "Expression + fixtures";
+    detail "Declared expectations; no live hook proof";
+    capabilityId "interlock-agent-operation";
+    basis "TARGET";
+    sourceRefs ["capsule", "adjudication"];
+    layer "support";
+  }
+  decision "select" {
+    label "Tool name?";
+    detail "dangerous-tool";
+    capabilityId "interlock-agent-operation";
+    scenarioId "adjudication";
+    basis "TARGET";
+    sourceRefs ["adjudication"];
+    layer "mechanic";
+    rule "toolId equals dangerous-tool; otherwise ALLOW";
+  }
+  route "e00" {
+    source "request";
+    target "act";
+    type "transition";
+    label "";
+    basis "TARGET";
+    sourceRefs ["runtime"];
+  }
+  route "e01" {
+    source "act";
+    target "select";
+    type "transition";
+    label "";
+    basis "TARGET";
+    sourceRefs ["runtime"];
+  }
+  route "e02" {
+    source "select";
+    target "operator";
+    type "transition";
+    label "equals";
+    basis "TARGET";
+    sourceRefs ["adjudication"];
+    guard "toolId == dangerous-tool";
+  }
+  route "e03" {
+    source "select";
+    target "allow";
+    type "transition";
+    label "otherwise";
+    basis "TARGET";
+    sourceRefs ["adjudication"];
+    guard "otherwise";
+  }
+  route "e04" {
+    source "provider";
+    target "port";
+    type "provider-binding";
+    label "declared binding";
+    basis "TARGET";
+    sourceRefs ["runtime"];
+  }
+  route "e05" {
+    source "port";
+    target "act";
+    type "dependency";
+    label "supplies responsibility";
+    basis "TARGET";
+    sourceRefs ["runtime"];
+  }
+  route "e06" {
+    source "receipt";
+    target "act";
+    type "evidence-attachment";
+    label "source semantics";
+    basis "TARGET";
+    sourceRefs ["runtime"];
+  }
+  binding {
+    nodeId "provider";
+    portIds ["port"];
+    binding "bound";
+    state "unknown";
+  }
+  meaning {
+    nodeId "request";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "act";
+    altitude "scenario";
+    responsibility "Stored authority transformation";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "operator";
+    altitude "scenario";
+    experience "Returned decision label";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "allow";
+    altitude "scenario";
+    experience "Returned decision label";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "provider";
+    altitude "provider";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "port";
+    altitude "execution";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "receipt";
+    altitude "execution";
+    variants [];
+    productIsExperience false;
+  }
+  trace ["e00", "e01", "e03"];
+}

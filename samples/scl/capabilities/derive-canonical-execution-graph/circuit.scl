@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "derive-canonical-execution-graph" {
+  title "Derive canonical execution graph";
+  promise "{\"experienceId\": \"canonical-execution-graph-experience.v1\", \"actor\": \"projector author\", \"promise\": \"one target-neutral execution graph is established before language-specific projection\", \"observableConditions\": [{\"conditionId\": \"ordered-steps-represented\"}, {\"conditionId\": \"dependencies-represented\"}, {\"conditionId\": \"failure-boundaries-represented\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/derive-canonical-execution-graph.json";
+    sha256 "c0c2d07c7d4028f707203a244903161f4bfa946be6467af6cb1ce7ef1c91e8ba";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/6ff349af13e95025ade7981f141f98ca97ad1a67975ddc52a8f58fdaca3b1697-914f8510b93f63a9.json";
+    sha256 "4bf91ed411cb5f7d598cc086e83653044d9fa2a513fc5efbed34eccb29711661";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/6ff349af13e95025ade7981f141f98ca97ad1a67975ddc52a8f58fdaca3b1697-914f8510b93f63a9.json";
+    sha256 "4bf91ed411cb5f7d598cc086e83653044d9fa2a513fc5efbed34eccb29711661";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/6ff349af13e95025ade7981f141f98ca97ad1a67975ddc52a8f58fdaca3b1697-914f8510b93f63a9.json";
+    sha256 "4bf91ed411cb5f7d598cc086e83653044d9fa2a513fc5efbed34eccb29711661";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/6ff349af13e95025ade7981f141f98ca97ad1a67975ddc52a8f58fdaca3b1697-914f8510b93f63a9.json";
+    sha256 "4bf91ed411cb5f7d598cc086e83653044d9fa2a513fc5efbed34eccb29711661";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/209";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/6ff349af13e95025ade7981f141f98ca97ad1a67975ddc52a8f58fdaca3b1697-914f8510b93f63a9.json";
+    sha256 "4bf91ed411cb5f7d598cc086e83653044d9fa2a513fc5efbed34eccb29711661";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "derive-canonical-execution-graph" {
+    label "Derive canonical execution graph";
+    domain "Frozen source corpus";
+    scenarioIds ["derive-canonical-execution-graph"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "derive-canonical-execution-graph" {
+    capabilityId "derive-canonical-execution-graph";
+    label "Resolve canonical execution facts into one target-neutral execution graph";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "execution vector facts";
+    detail "one set of canonical execution vector facts";
+    capabilityId "derive-canonical-execution-graph";
+    scenarioId "derive-canonical-execution-graph";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "derive-canonical-execution-graph-input.v1";
+  }
+  event "s0-event" {
+    label "canonical execution graph derivation requested";
+    detail "canonical steps, dependencies, and failure paths are resolved into target-neutral execution meaning";
+    capabilityId "derive-canonical-execution-graph";
+    scenarioId "derive-canonical-execution-graph";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "canonical execution graph known";
+    detail "the graph represents every ordered step, dependency, and failure boundary before any target policy is applied";
+    capabilityId "derive-canonical-execution-graph";
+    scenarioId "derive-canonical-execution-graph";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "canonical-execution-graph-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "canonical steps, dependencies, and failure paths are resolved into target-neutral execution meaning";
+    authorityId "canonical-execution-graph-derivation.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "the graph represents every ordered step, dependency, and failure boundary before any target policy is applied";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["derive-canonical-execution-graph"];
+    nativeId "derive-canonical-execution-graph.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["derive-canonical-execution-graph"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["derive-canonical-execution-graph"];
+    nativeId "port:derive-canonical-execution-graph-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "derive-canonical-execution-graph";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "derive-canonical-execution-graph";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "derive-canonical-execution-graph";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

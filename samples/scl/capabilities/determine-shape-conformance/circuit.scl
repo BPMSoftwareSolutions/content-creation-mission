@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "determine-shape-conformance" {
+  title "Determine shape conformance";
+  promise "{\"experienceId\": \"promised-experience.v1\", \"actor\": \"SDA maintainer\", \"promise\": \"an explicit shape disposition for every required semantic object making all shape gaps visible\", \"observableConditions\": [{\"conditionId\": \"every-semantic-object-disposition-known\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/determine-shape-conformance.json";
+    sha256 "ff5662ad4b4d8650c16564df49ec0a2414ce7ea63727dce8677bc28e7f22c029";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/a2d164b2257069fa94d5fa73178191e45ff8f8e2fe154bb15e16b94a607d7e7a-e251fe8100afeeb8.json";
+    sha256 "b1b3b7eaf270caf11c83df0d84ae6a7d58679351720c357073e2e89b4d973206";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/a2d164b2257069fa94d5fa73178191e45ff8f8e2fe154bb15e16b94a607d7e7a-e251fe8100afeeb8.json";
+    sha256 "b1b3b7eaf270caf11c83df0d84ae6a7d58679351720c357073e2e89b4d973206";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/a2d164b2257069fa94d5fa73178191e45ff8f8e2fe154bb15e16b94a607d7e7a-e251fe8100afeeb8.json";
+    sha256 "b1b3b7eaf270caf11c83df0d84ae6a7d58679351720c357073e2e89b4d973206";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/a2d164b2257069fa94d5fa73178191e45ff8f8e2fe154bb15e16b94a607d7e7a-e251fe8100afeeb8.json";
+    sha256 "b1b3b7eaf270caf11c83df0d84ae6a7d58679351720c357073e2e89b4d973206";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/239";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/a2d164b2257069fa94d5fa73178191e45ff8f8e2fe154bb15e16b94a607d7e7a-e251fe8100afeeb8.json";
+    sha256 "b1b3b7eaf270caf11c83df0d84ae6a7d58679351720c357073e2e89b4d973206";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "determine-shape-conformance" {
+    label "Determine shape conformance";
+    domain "Frozen source corpus";
+    scenarioIds ["determine-shape-conformance"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "determine-shape-conformance" {
+    capabilityId "determine-shape-conformance";
+    label "Compare declared embodiments against every required canonical semantic object";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "shape conformance input";
+    detail "one set of declared embodiments and the required canonical semantic objects";
+    capabilityId "determine-shape-conformance";
+    scenarioId "determine-shape-conformance";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "shape-conformance-input.v1";
+  }
+  event "s0-event" {
+    label "shape conformance evaluation requested";
+    detail "declared embodiments are compared with every required semantic object";
+    capabilityId "determine-shape-conformance";
+    scenarioId "determine-shape-conformance";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "shape conformance known";
+    detail "every canonical semantic object has an explicit present, mismatched, or missing disposition, without an implementation admission decision being made";
+    capabilityId "determine-shape-conformance";
+    scenarioId "determine-shape-conformance";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "shape-conformance-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "declared embodiments are compared with every required semantic object";
+    authorityId "shape-conformance-evaluation.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every canonical semantic object has an explicit present, mismatched, or missing disposition, without an implementation admission decision being made";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["determine-shape-conformance"];
+    nativeId "determine-shape-conformance.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["determine-shape-conformance"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["determine-shape-conformance"];
+    nativeId "port:determine-shape-conformance-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "determine-shape-conformance";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "determine-shape-conformance";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "determine-shape-conformance";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

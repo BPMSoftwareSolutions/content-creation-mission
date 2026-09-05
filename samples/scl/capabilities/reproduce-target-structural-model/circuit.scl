@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "reproduce-target-structural-model" {
+  title "Reproduce target structural model";
+  promise "{\"experienceId\": \"structural-model-reproduction.v1\", \"actor\": \"language maintainer\", \"promise\": \"identical input always produces identical target projection plan bytes with every profile-declared type represented exactly once\", \"observableConditions\": [{\"conditionId\": \"deterministic-plan-rendered\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/reproduce-target-structural-model.json";
+    sha256 "96dd802be14661ca933c84bfbcc2a40baa482a3d23e083b78f7f8232d5b4573e";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/3cc2eb49021c10d1cf202155bdc0f2d7cc7c8be6947f72706658979cd6322063-dbf1aaf03f66afed.json";
+    sha256 "199a3dd4e226a7feec3835d2d884e8c6854af3593f96e91829951e0b926117a4";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/3cc2eb49021c10d1cf202155bdc0f2d7cc7c8be6947f72706658979cd6322063-dbf1aaf03f66afed.json";
+    sha256 "199a3dd4e226a7feec3835d2d884e8c6854af3593f96e91829951e0b926117a4";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/3cc2eb49021c10d1cf202155bdc0f2d7cc7c8be6947f72706658979cd6322063-dbf1aaf03f66afed.json";
+    sha256 "199a3dd4e226a7feec3835d2d884e8c6854af3593f96e91829951e0b926117a4";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/3cc2eb49021c10d1cf202155bdc0f2d7cc7c8be6947f72706658979cd6322063-dbf1aaf03f66afed.json";
+    sha256 "199a3dd4e226a7feec3835d2d884e8c6854af3593f96e91829951e0b926117a4";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/636";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/3cc2eb49021c10d1cf202155bdc0f2d7cc7c8be6947f72706658979cd6322063-dbf1aaf03f66afed.json";
+    sha256 "199a3dd4e226a7feec3835d2d884e8c6854af3593f96e91829951e0b926117a4";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "reproduce-target-structural-model" {
+    label "Reproduce target structural model";
+    domain "Frozen source corpus";
+    scenarioIds ["reproduce-target-structural-model"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "reproduce-target-structural-model" {
+    capabilityId "reproduce-target-structural-model";
+    label "Render an admitted target projection graph into a deterministic in-memory plan";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "reproduce structural model input";
+    detail "one admitted target projection graph";
+    capabilityId "reproduce-target-structural-model";
+    scenarioId "reproduce-target-structural-model";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "reproduce-structural-model-input.v1";
+  }
+  event "s0-event" {
+    label "target structural model reproduction requested";
+    detail "the target projection graph is rendered into an in-memory target projection plan";
+    capabilityId "reproduce-target-structural-model";
+    scenarioId "reproduce-target-structural-model";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "target structural model plan known";
+    detail "every profile-declared type is represented exactly once with a deterministic embodiment, and identical input produces identical plan bytes";
+    capabilityId "reproduce-target-structural-model";
+    scenarioId "reproduce-target-structural-model";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "structural-projection-plan-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "the target projection graph is rendered into an in-memory target projection plan";
+    authorityId "structural-model-reproduction.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every profile-declared type is represented exactly once with a deterministic embodiment, and identical input produces identical plan bytes";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["reproduce-target-structural-model"];
+    nativeId "reproduce-target-structural-model.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["reproduce-target-structural-model"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["reproduce-target-structural-model"];
+    nativeId "port:reproduce-structural-model-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "reproduce-target-structural-model";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "reproduce-target-structural-model";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "reproduce-target-structural-model";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

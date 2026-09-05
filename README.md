@@ -1,5 +1,16 @@
 # Content Creation Mission
 
+## SideFX Circuit Language
+
+The [SCL workbench](http://127.0.0.1:8766/samples/scl/index.html) reveals all
+219 capabilities in the frozen corpus as typed circuit data, renders their 823
+scenario boundaries, and retains native mechanics and topology for inspection.
+Start it with `.venv\Scripts\python.exe scripts/serve_scl.py`. Edit the supplied
+SCL drafts to compile the same SideFX infographic grammar and selected silver-ball
+flows. See the [language specification](docs/SCL-SPECIFICATION.md) and
+[coverage report](evaluations/scl-coverage.json) for exact support and open profiles.
+Draft compilation is design testimony, not platform admission or execution.
+
 ## Open the workspace
 
 ```powershell

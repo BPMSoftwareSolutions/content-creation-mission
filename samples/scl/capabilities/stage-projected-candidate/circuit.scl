@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "stage-projected-candidate" {
+  title "Stage projected candidate";
+  promise "{\"experienceId\": \"stage-projected-candidate-experience.v1\", \"actor\": \"language maintainer\", \"promise\": \"staging never modifies the admitted implementation and keeps candidate isolated\", \"observableConditions\": [{\"conditionId\": \"admitted-implementation-unmodified\"}, {\"conditionId\": \"candidate-isolated-outside-destination\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/stage-projected-candidate.json";
+    sha256 "ff13b61718abf466d0ba3c5e0c6a0ee71be19227f180813d4549f5d24075b898";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/42a857e2e0ca090814194bec965aa01447f5db69c95c4f69560fe460dde4325d-b4db1842e419d8fb.json";
+    sha256 "3444139d05f26b426a5d73b2e1ca05c8ed33760b730125bb99c4548e8d813c4d";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/42a857e2e0ca090814194bec965aa01447f5db69c95c4f69560fe460dde4325d-b4db1842e419d8fb.json";
+    sha256 "3444139d05f26b426a5d73b2e1ca05c8ed33760b730125bb99c4548e8d813c4d";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/42a857e2e0ca090814194bec965aa01447f5db69c95c4f69560fe460dde4325d-b4db1842e419d8fb.json";
+    sha256 "3444139d05f26b426a5d73b2e1ca05c8ed33760b730125bb99c4548e8d813c4d";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/42a857e2e0ca090814194bec965aa01447f5db69c95c4f69560fe460dde4325d-b4db1842e419d8fb.json";
+    sha256 "3444139d05f26b426a5d73b2e1ca05c8ed33760b730125bb99c4548e8d813c4d";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/754";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/42a857e2e0ca090814194bec965aa01447f5db69c95c4f69560fe460dde4325d-b4db1842e419d8fb.json";
+    sha256 "3444139d05f26b426a5d73b2e1ca05c8ed33760b730125bb99c4548e8d813c4d";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "stage-projected-candidate" {
+    label "Stage projected candidate";
+    domain "Frozen source corpus";
+    scenarioIds ["stage-projected-candidate"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "stage-projected-candidate" {
+    capabilityId "stage-projected-candidate";
+    label "Evaluate that a complete plan was staged without modifying admitted bytes";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "projection plan and staging facts";
+    detail "one projection plan and its staging facts";
+    capabilityId "stage-projected-candidate";
+    scenarioId "stage-projected-candidate";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "stage-projected-candidate-input.v1";
+  }
+  event "s0-event" {
+    label "projected candidate staging requested";
+    detail "staging is evaluated to confirm the complete plan was staged without modifying admitted bytes";
+    capabilityId "stage-projected-candidate";
+    scenarioId "stage-projected-candidate";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "projected candidate staged";
+    detail "the admitted implementation remains unmodified and the candidate is isolated outside the admitted destination until activation";
+    capabilityId "stage-projected-candidate";
+    scenarioId "stage-projected-candidate";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "projected-candidate-staging-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "staging is evaluated to confirm the complete plan was staged without modifying admitted bytes";
+    authorityId "projected-candidate-staging.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "the admitted implementation remains unmodified and the candidate is isolated outside the admitted destination until activation";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["stage-projected-candidate"];
+    nativeId "stage-projected-candidate.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["stage-projected-candidate"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["stage-projected-candidate"];
+    nativeId "port:stage-projected-candidate-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "stage-projected-candidate";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "stage-projected-candidate";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "stage-projected-candidate";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

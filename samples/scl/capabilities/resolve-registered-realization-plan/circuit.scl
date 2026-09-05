@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "resolve-registered-realization-plan" {
+  title "Resolve registered realization plan";
+  promise "{\"experienceId\": \"registered-realization-planning.v1\", \"actor\": \"realization operator\", \"promise\": \"friendly, registry-backed authority selectors resolve without losing exact digest lineage\", \"observableConditions\": [{\"conditionId\": \"selectors-pinned-to-immutable-digests\"}, {\"conditionId\": \"deterministic-planning-invoked\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/resolve-registered-realization-plan.json";
+    sha256 "0b2ab6c1068e878c1dd83e5b007d40d2357856bedcde1502a203b615c82cd371";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/bce2a459f44a2fa5f6ef6f5856c83e4c1354468810d4d89816a5677f550d3a1f-507fd291baf44cb5.json";
+    sha256 "83c60b76c8e9c9a42b15253b6b51fccc236f563db2a69bda4218b433356debee";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/bce2a459f44a2fa5f6ef6f5856c83e4c1354468810d4d89816a5677f550d3a1f-507fd291baf44cb5.json";
+    sha256 "83c60b76c8e9c9a42b15253b6b51fccc236f563db2a69bda4218b433356debee";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/bce2a459f44a2fa5f6ef6f5856c83e4c1354468810d4d89816a5677f550d3a1f-507fd291baf44cb5.json";
+    sha256 "83c60b76c8e9c9a42b15253b6b51fccc236f563db2a69bda4218b433356debee";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/bce2a459f44a2fa5f6ef6f5856c83e4c1354468810d4d89816a5677f550d3a1f-507fd291baf44cb5.json";
+    sha256 "83c60b76c8e9c9a42b15253b6b51fccc236f563db2a69bda4218b433356debee";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/684";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/bce2a459f44a2fa5f6ef6f5856c83e4c1354468810d4d89816a5677f550d3a1f-507fd291baf44cb5.json";
+    sha256 "83c60b76c8e9c9a42b15253b6b51fccc236f563db2a69bda4218b433356debee";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "resolve-registered-realization-plan" {
+    label "Resolve registered realization plan";
+    domain "Frozen source corpus";
+    scenarioIds ["resolve-registered-realization-plan"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "resolve-registered-realization-plan" {
+    capabilityId "resolve-registered-realization-plan";
+    label "Resolve registry-backed selectors to pinned authority before constructing a plan";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "registry backed realization plan request";
+    detail "one registry-backed realization plan request naming admitted selectors";
+    capabilityId "resolve-registered-realization-plan";
+    scenarioId "resolve-registered-realization-plan";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "registry-backed-realization-plan-request.v1";
+  }
+  event "s0-event" {
+    label "registered realization plan requested";
+    detail "admitted aliases are resolved to immutable digests and deterministic plan construction is invoked";
+    capabilityId "resolve-registered-realization-plan";
+    scenarioId "resolve-registered-realization-plan";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "registered realization plan known";
+    detail "every requested authority selector resolves exactly once and is digest-pinned before planning, with resolution evidence naming the alias and its selected digest";
+    capabilityId "resolve-registered-realization-plan";
+    scenarioId "resolve-registered-realization-plan";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "registry-backed-realization-plan-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "admitted aliases are resolved to immutable digests and deterministic plan construction is invoked";
+    authorityId "registered-realization-plan-resolution.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every requested authority selector resolves exactly once and is digest-pinned before planning, with resolution evidence naming the alias and its selected digest";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["resolve-registered-realization-plan"];
+    nativeId "resolve-registered-realization-plan.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["resolve-registered-realization-plan"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["resolve-registered-realization-plan"];
+    nativeId "port:resolve-registered-plan-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "resolve-registered-realization-plan";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "resolve-registered-realization-plan";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "resolve-registered-realization-plan";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

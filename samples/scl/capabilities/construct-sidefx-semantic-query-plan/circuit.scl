@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "construct-sidefx-semantic-query-plan" {
+  title "Compile a typed request into one allow-listed semantic query plan";
+  promise "{\"experienceId\": \"sidefx-semantic-query-plan-construction.v1\", \"actor\": \"SideFX semantic-brain evaluator\", \"promise\": \"admits only requests the query policy allows and rejects the rest as typed findings without narrowing them\", \"observableConditions\": [{\"conditionId\": \"every-plan-pins-one-snapshot-and-policy\"}, {\"conditionId\": \"allow-lists-are-checked-before-a-plan-exists\"}, {\"conditionId\": \"rejection-names-the-violated-allowance\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/construct-sidefx-semantic-query-plan.json";
+    sha256 "68311689ad8354f38e2a9adbfb0c360970b292737ba3de1bf1f872510992fcef";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/c57849587205e254ef7be3451874404f05c75ad4e10f6f9b88767d818640d86c-d25df6c1cd39224b.json";
+    sha256 "f387b6467a6759e62d467cba1b72c25aa5773796b28c2b45db8f683dfb9a5746";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/c57849587205e254ef7be3451874404f05c75ad4e10f6f9b88767d818640d86c-d25df6c1cd39224b.json";
+    sha256 "f387b6467a6759e62d467cba1b72c25aa5773796b28c2b45db8f683dfb9a5746";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/c57849587205e254ef7be3451874404f05c75ad4e10f6f9b88767d818640d86c-d25df6c1cd39224b.json";
+    sha256 "f387b6467a6759e62d467cba1b72c25aa5773796b28c2b45db8f683dfb9a5746";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/c57849587205e254ef7be3451874404f05c75ad4e10f6f9b88767d818640d86c-d25df6c1cd39224b.json";
+    sha256 "f387b6467a6759e62d467cba1b72c25aa5773796b28c2b45db8f683dfb9a5746";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/174";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/c57849587205e254ef7be3451874404f05c75ad4e10f6f9b88767d818640d86c-d25df6c1cd39224b.json";
+    sha256 "f387b6467a6759e62d467cba1b72c25aa5773796b28c2b45db8f683dfb9a5746";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "construct-sidefx-semantic-query-plan" {
+    label "Compile a typed request into one allow-listed semantic query plan";
+    domain "Frozen source corpus";
+    scenarioIds ["construct-sidefx-semantic-query-plan"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "construct-sidefx-semantic-query-plan" {
+    capabilityId "construct-sidefx-semantic-query-plan";
+    label "Compile an admitted request into one digest-bound plan or reject it";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "sidefx semantic query plan construction request";
+    detail "a typed semantic request, a pinned snapshot, and the digest-bound query policy allowances";
+    capabilityId "construct-sidefx-semantic-query-plan";
+    scenarioId "construct-sidefx-semantic-query-plan";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-semantic-query-plan-construction-request.v1";
+  }
+  event "s0-event" {
+    label "sidefx semantic query plan construction requested";
+    detail "the mode, graph pattern, subject kind, relationship kinds, depth, limit, and lexical term count are checked against those allowances";
+    capabilityId "construct-sidefx-semantic-query-plan";
+    scenarioId "construct-sidefx-semantic-query-plan";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "sidefx semantic query plan construction outcome";
+    detail "either one digest-bound provider-neutral plan is constructed or the request is rejected as a typed finding without narrowing it";
+    capabilityId "construct-sidefx-semantic-query-plan";
+    scenarioId "construct-sidefx-semantic-query-plan";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "sidefx-semantic-query-plan-construction-outcome.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "the mode, graph pattern, subject kind, relationship kinds, depth, limit, and lexical term count are checked against those allowances";
+    authorityId "construct-sidefx-semantic-query-plan.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "either one digest-bound provider-neutral plan is constructed or the request is rejected as a typed finding without narrowing it";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["construct-sidefx-semantic-query-plan"];
+    nativeId "construct-sidefx-semantic-query-plan.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["construct-sidefx-semantic-query-plan"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["construct-sidefx-semantic-query-plan"];
+    nativeId "port:construct-sidefx-semantic-query-plan-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "construct-sidefx-semantic-query-plan";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "construct-sidefx-semantic-query-plan";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "construct-sidefx-semantic-query-plan";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}

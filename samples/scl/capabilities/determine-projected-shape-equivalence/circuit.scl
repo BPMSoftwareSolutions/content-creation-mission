@@ -1,0 +1,188 @@
+scl "0.1";
+circuit "determine-projected-shape-equivalence" {
+  title "Determine projected shape equivalence";
+  promise "{\"experienceId\": \"projected-shape-equivalence-experience.v1\", \"actor\": \"language maintainer\", \"promise\": \"every canonical type present in either side has an explicit MATCH, MISMATCH, HAND_WRITTEN_ONLY, or GENERATED_ONLY disposition\", \"observableConditions\": [{\"conditionId\": \"shape-equivalence-disposition-made\"}]}";
+  status "SOURCE_REVEAL";
+  sourceGeneration "0b02db7ee691898d499cb9046737dce3f7c34aa8e1e3d6ca4908afeb823fb802";
+  source "src-00000" {
+    path "data/capsule-evidence/capabilities/determine-projected-shape-equivalence.json";
+    sha256 "179f30851859a134aafca3afdf89cee534c738f8b92679ff72be15c59d24714d";
+    pointer "";
+    kind "DECLARED";
+    label "Frozen capability snapshot";
+    encoding "json";
+  }
+  source "src-00001" {
+    path "data/capsule-evidence/entries/79a231bc495101a3c14ffdb415a170de3a0cbe3b1e1eefe468e0b069183b4690-a42a57f3e1b95948.json";
+    sha256 "dc309fec7169c4036558c99b5e4b4a2ca5cdf2ddd4c1996cd12cebfb7bd556d7";
+    pointer "";
+    kind "DECLARED";
+    label "policy / consumer-execution-embodiment-plan.v1";
+    encoding "capsule-entry";
+  }
+  source "src-00002" {
+    path "data/capsule-evidence/entries/79a231bc495101a3c14ffdb415a170de3a0cbe3b1e1eefe468e0b069183b4690-a42a57f3e1b95948.json";
+    sha256 "dc309fec7169c4036558c99b5e4b4a2ca5cdf2ddd4c1996cd12cebfb7bd556d7";
+    pointer "/nodes/0/operations/0";
+    kind "DECLARED";
+    label "operation / invoke-port";
+    encoding "capsule-entry";
+  }
+  source "src-00003" {
+    path "data/capsule-evidence/entries/79a231bc495101a3c14ffdb415a170de3a0cbe3b1e1eefe468e0b069183b4690-a42a57f3e1b95948.json";
+    sha256 "dc309fec7169c4036558c99b5e4b4a2ca5cdf2ddd4c1996cd12cebfb7bd556d7";
+    pointer "/mechanicBindings/0";
+    kind "DECLARED";
+    label "mechanic / contract-admission";
+    encoding "capsule-entry";
+  }
+  source "src-00004" {
+    path "data/capsule-evidence/entries/79a231bc495101a3c14ffdb415a170de3a0cbe3b1e1eefe468e0b069183b4690-a42a57f3e1b95948.json";
+    sha256 "dc309fec7169c4036558c99b5e4b4a2ca5cdf2ddd4c1996cd12cebfb7bd556d7";
+    pointer "/mechanicBindings/1";
+    kind "DECLARED";
+    label "mechanic / event-port";
+    encoding "capsule-entry";
+  }
+  source "src-00005" {
+    path "inventories/scenario-inventory.json";
+    sha256 "4e8f3aaf4382c8d52de1760596107293ba36ad9a016d55b02a06637be5730383";
+    pointer "/238";
+    kind "DECLARED";
+    label "Exact narrative; verified against capsule feature bytes";
+    encoding "json";
+  }
+  source "src-00006" {
+    path "data/capsule-evidence/entries/79a231bc495101a3c14ffdb415a170de3a0cbe3b1e1eefe468e0b069183b4690-a42a57f3e1b95948.json";
+    sha256 "dc309fec7169c4036558c99b5e4b4a2ca5cdf2ddd4c1996cd12cebfb7bd556d7";
+    pointer "/nodes/0/scenario";
+    kind "DECLARED";
+    label "Declared scenario boundary";
+    encoding "capsule-entry";
+  }
+  capability "determine-projected-shape-equivalence" {
+    label "Determine projected shape equivalence";
+    domain "Frozen source corpus";
+    scenarioIds ["determine-projected-shape-equivalence"];
+    coverage "1 declared scenarios; native detail remains separately inspectable";
+    sourceRefs ["src-00000"];
+  }
+  scenario "determine-projected-shape-equivalence" {
+    capabilityId "determine-projected-shape-equivalence";
+    label "Compare projected and admitted structural shape independently of file layout";
+    nodeIds ["s0-input", "s0-event", "s0-outcome"];
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  input "s0-input" {
+    label "determine shape equivalence input";
+    detail "one target projection plan and one admitted implementation";
+    capabilityId "determine-projected-shape-equivalence";
+    scenarioId "determine-projected-shape-equivalence";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "determine-shape-equivalence-input.v1";
+  }
+  event "s0-event" {
+    label "projected shape equivalence evaluation requested";
+    detail "semantic member shape is compared between the projection plan and the admitted implementation, independently of file layout";
+    capabilityId "determine-projected-shape-equivalence";
+    scenarioId "determine-projected-shape-equivalence";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+  }
+  outcome "s0-outcome" {
+    label "projected shape equivalence known";
+    detail "every type name present in either side has an explicit MATCH, MISMATCH, HAND_WRITTEN_ONLY, or GENERATED_ONLY disposition";
+    capabilityId "determine-projected-shape-equivalence";
+    scenarioId "determine-projected-shape-equivalence";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+    layer "mechanic";
+    productContract "projected-shape-evidence.v1";
+  }
+  route "s0-e0" {
+    source "s0-input";
+    target "s0-event";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  route "s0-e1" {
+    source "s0-event";
+    target "s0-outcome";
+    type "transition";
+    label "declared boundary";
+    basis "DECLARED";
+    sourceRefs ["src-00005", "src-00006"];
+  }
+  meaning {
+    nodeId "s0-input";
+    altitude "scenario";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-event";
+    altitude "scenario";
+    responsibility "semantic member shape is compared between the projection plan and the admitted implementation, independently of file layout";
+    authorityId "projected-shape-equivalence-evaluation.v1";
+    variants [];
+    productIsExperience false;
+  }
+  meaning {
+    nodeId "s0-outcome";
+    altitude "scenario";
+    experience "every type name present in either side has an explicit MATCH, MISMATCH, HAND_WRITTEN_ONLY, or GENERATED_ONLY disposition";
+    variants [];
+    productIsExperience false;
+  }
+  record "record-00000" {
+    kind "policy";
+    nativeType "consumer-execution-embodiment-plan.v1";
+    sourceRef "src-00001";
+    scenarioIds [];
+  }
+  record "record-00001" {
+    kind "operation";
+    nativeType "invoke-port";
+    sourceRef "src-00002";
+    scenarioIds ["determine-projected-shape-equivalence"];
+    nativeId "determine-projected-shape-equivalence.operation.1";
+  }
+  record "record-00002" {
+    kind "mechanic";
+    nativeType "contract-admission";
+    sourceRef "src-00003";
+    scenarioIds ["determine-projected-shape-equivalence"];
+    nativeId "contract-admission";
+  }
+  record "record-00003" {
+    kind "mechanic";
+    nativeType "event-port";
+    sourceRef "src-00004";
+    scenarioIds ["determine-projected-shape-equivalence"];
+    nativeId "port:determine-shape-equivalence-port";
+  }
+  finding {
+    code "EDITORIAL_REVIEW_REQUIRED";
+    subject "determine-projected-shape-equivalence";
+    detail "Source revelation preserves declarations; human storytelling and visual acceptance are separate.";
+    closure "Review the scenario, claim scope, evidence, human experience and selected animation trace before episode use.";
+  }
+  finding {
+    code "NATIVE_MOTION_NOT_LOWERED";
+    subject "determine-projected-shape-equivalence";
+    detail "Native records are preserved and inspectable. Scenario triads are not a simulation of the native execution graph.";
+    closure "Admit explicit visual/trace profiles for native control flow before animating its mechanics.";
+  }
+  finding {
+    code "NO_NATIVE_CANONICAL_GRAPH";
+    subject "determine-projected-shape-equivalence";
+    detail "Legacy plan operations and bindings are retained exactly; no full canonical graph is supplied.";
+    closure "Use the governed blueprint projection boundary to obtain the native graph; never infer it from expressions.";
+  }
+  trace [];
+}
