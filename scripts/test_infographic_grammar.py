@@ -82,7 +82,9 @@ class InfographicGrammar(unittest.TestCase):
             static=etree.parse(str(directory.parent/'infographic.svg'));ids=static.xpath('//*[@data-entity or @data-edge]')
             expected={n.get('id'):(n.get('data-type'),n.get('data-basis'),''.join(n.itertext()),[etree.QName(x).localname for x in n.iter()]) for n in ids}
             for frame in directory.parent.glob('frame-*.svg'):
-                actual=etree.parse(str(frame)).xpath('//*[@data-entity or @data-edge]')
+                tree=etree.parse(str(frame))
+                for material in tree.xpath('//*[@data-enhancement]'):material.getparent().remove(material)
+                actual=tree.xpath('//*[@data-entity or @data-edge]')
                 values={n.get('id'):(n.get('data-type'),n.get('data-basis'),''.join(n.itertext()),[etree.QName(x).localname for x in n.iter()]) for n in actual}
                 self.assertEqual(expected,values)
 

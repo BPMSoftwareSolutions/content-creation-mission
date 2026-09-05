@@ -1,5 +1,6 @@
 """Manim traces compiled paths and reveals the exact SVG groups, without redrawing meaning."""
 import copy
+import argparse
 import io
 import math
 import subprocess
@@ -18,11 +19,12 @@ from infographic_contract import ROOT,read,write,digest,validate
 DEST=ROOT/'samples/infographic-grammar/scenario-target'
 P=read(DEST/'projection.json');G=P['layout'];W,H=G['width'],G['height'];SCALE=1920/W
 ASSETS=ROOT/'outputs/infographic-motion-assets';ASSETS.mkdir(parents=True,exist_ok=True)
+SUFFIX=''
 
 def point(x,y):return np.array([(x/W-.5)*16,(.5-y/H)*(H/W*16),0.])
 
 def prepare():
-    root=etree.parse(str(DEST/'infographic.svg')).getroot();background=copy.deepcopy(root)
+    root=etree.parse(str(DEST/f'infographic{SUFFIX}.svg')).getroot();background=copy.deepcopy(root)
     for group in background.xpath('//*[@data-entity or @data-edge]'):group.set('opacity','.2')
     cairosvg.svg2png(bytestring=etree.tostring(background),write_to=str(ASSETS/'background.png'),output_width=1920)
     for id,box in G['boxes'].items():
@@ -89,20 +91,27 @@ class CircuitMotion(Scene):
                 trace(inbound);reveal(ready);pending-=set(ready)
                 if any(nodes[id]['type']=='convergence' for id in ready):self.wait(.7)
             self.wait(1.6 if i<4 else 4)
-        write(DEST/'motion-timeline.json',{'meaning':'Illustrative target timing, not execution telemetry.','contractSha256':P['contractSha256'],'events':self.timeline,'durationSeconds':round(float(self.time),3)})
+        write(DEST/f'motion-timeline{SUFFIX}.json',{'meaning':'Illustrative target timing, not execution telemetry.','contractSha256':P['contractSha256'],'events':self.timeline,'durationSeconds':round(float(self.time),3)})
 
 def main():
+    global SUFFIX,ASSETS
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--enhanced',action='store_true');args=parser.parse_args()
+    if args.enhanced:
+        from enhance_infographics import asset_receipts,strip_material
+        asset_receipts()
+        SUFFIX='-enhanced';ASSETS=ROOT/'outputs/infographic-motion-assets-enhanced';ASSETS.mkdir(parents=True,exist_ok=True)
+        if strip_material((DEST/'infographic-enhanced.svg').read_bytes())!=strip_material((DEST/'infographic.svg').read_bytes()):raise ValueError('ENHANCED_MOTION_CHANGED_BASE')
     p=validate(read('declarations/infographics/scenario-target.json'))
     if digest(ROOT/'declarations/infographics/scenario-target.json')!=P['contractSha256']:raise ValueError('STALE_MOTION_CONTRACT')
     prepare()
     with tempconfig({'pixel_width':1920,'pixel_height':1080,'frame_width':16,'frame_height':9,'frame_rate':24,'media_dir':str(ASSETS/'manim'),'output_file':'circuit-motion','disable_caching':True,'verbosity':'WARNING','progress_bar':'none','write_to_movie':True}):
         scene=CircuitMotion();scene.render();source=Path(scene.renderer.file_writer.movie_file_path)
-    result=DEST/'circuit-motion.mp4'
+    result=DEST/f'circuit-motion{SUFFIX}.mp4'
     subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(),'-y','-i',str(source),'-c','copy','-movflags','+faststart',str(result)],capture_output=True,check=True)
     import av
     with av.open(str(result)) as media:
         stream=media.streams.video[0];frames=sum(1 for _ in media.decode(video=0));duration=frames/float(stream.average_rate)
-    write(DEST/'motion-receipt.json',{'status':'RENDERED_AND_DECODED','renderer':'Manim 0.21.0 / Cairo + FFmpeg','contractSha256':P['contractSha256'],'staticSvgSha256':digest(DEST/'infographic.svg'),'videoSha256':digest(result),'timelineSha256':digest(DEST/'motion-timeline.json'),'width':1920,'height':1080,'frames':frames,'fps':24,'durationSeconds':duration,'evidence':'Media rendering proof only. No capability execution is asserted.'})
+    write(DEST/f'motion-receipt{SUFFIX}.json',{'status':'RENDERED_AND_DECODED','renderer':'Manim 0.21.0 / Cairo + FFmpeg','contractSha256':P['contractSha256'],'staticSvgSha256':digest(DEST/f'infographic{SUFFIX}.svg'),'videoSha256':digest(result),'timelineSha256':digest(DEST/f'motion-timeline{SUFFIX}.json'),'width':1920,'height':1080,'frames':frames,'fps':24,'durationSeconds':duration,'evidence':'Media rendering proof only. No capability execution is asserted.'})
     print('MANIM_RENDERED',frames,'frames',round(duration,2),'seconds',flush=True)
 
 if __name__=='__main__':main()

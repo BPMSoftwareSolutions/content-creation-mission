@@ -25,6 +25,13 @@ routing, with independent SVG checks for contact and tangent continuity.
 See [the compiler guide](docs/INFOGRAPHIC-COMPILER.md) for reproducible exports and
 [the grammar](docs/SIDEFX-INFOGRAPHIC-GRAMMAR.md) for visual semantics.
 
+The studio's **Material edition** adds fifteen individually generated Nano Banana
+component treatments, a Base / Enhanced comparison, enhanced SVG/PNG exports at
+all three altitudes, and an enhanced 1080p circuit animation. Original vector
+geometry, labels, connections and evidence modes remain intact. The
+[enhancement guide](docs/INFOGRAPHIC-ENHANCEMENTS.md) documents asset generation,
+review, canonical masking and reproducible composition.
+
 ## Capability content estate
 
 Open `samples/content-catalog/index.html` for the source-bound catalog. The estate
