@@ -223,6 +223,25 @@ Rebuild existing media without paid calls:
 .\.venv\Scripts\python.exe scripts/analyze_audience_observations.py
 ```
 
+### RapidAPI assimilation live demo
+
+`releases/rapidapi-assimilation-demo/` contains the recordable proof that five
+downloaded RapidAPI pages can pass through one generic Python compiler, collapse
+to four provider-operation candidates, and project four tools through the official
+MCP SDK. The live mode calls an entitled Yahoo Finance operation and the legacy YH
+Finance entitlement boundary, retaining response metadata and hashes rather than
+response bodies.
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_rapidapi_assimilation_demo.py --live --pace 3.8
+```
+
+The final stage separately verifies the provisioned Agentic Harness token and
+capsule estate. Its on-screen label preserves the current limit: the managed token
+has one open event-mechanic slot, so the local Python execution is not presented as
+managed Harness behavior. The release package includes the voiceover, claim ledger,
+capture checklist, exact take transcript, and an FFmpeg assembly command.
+
 ## Current work: capsule-grounded experience preparation
 
 Open `samples/mechanics-workbench/index.html`. It follows a real pending-convergence
