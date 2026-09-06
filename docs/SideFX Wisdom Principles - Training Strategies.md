@@ -2,7 +2,7 @@
 
 > **SideFX does not claim to encode wisdom. It proposes a set of challengeable principles for reasoning about consequential effects, and teaches learners to test those principles against reality, evidence, competing perspectives, and their own limitations.**
 
-**Status: Revision 4 — bounded pilot design; validation pending.** The SideFX Wisdom Principles are proposed tests for disciplined judgment under consequential capability. They are not claimed to be a complete theory of wisdom, ethics, morality, or justice. Their sufficiency, the effectiveness of this instruction, and the reliability of its assessment remain unproven.
+**Status: Revision 5 — bounded pilot design; explicit Gemini Nano Banana production enhancement; validation pending.** The SideFX Wisdom Principles are proposed tests for disciplined judgment under consequential capability. They are not claimed to be a complete theory of wisdom, ethics, morality, or justice. Their sufficiency, the effectiveness of this instruction, and the reliability of its assessment remain unproven.
 
 The five-channel strategy below is the production roadmap. The immediate pilot covers only **Consequences, Humility, and Adversarial survivability**, with one learner cohort and limited assets. The broader curriculum and cross-channel rollout depend on what that pilot reveals. This document does not claim that proposed lessons, website features, or animation sequences have already been built.
 
@@ -219,6 +219,75 @@ Each plate needs a title framed as a question, a plain-language answer or open d
 
 **Acceptance check:** An unfamiliar reader can identify the decision, the authority boundary, the affected person, and the evidence limitation without watching the episode. Ask them to explain one altered version of the case; a beautiful plate that cannot support that explanation needs revision.
 
+### Visual Projection Pipeline — production law
+
+**SideFX visual production preserves three distinct layers.** The infographic grammar determines the instructional composition; SCL projects exact circuit topology, semantic routes, and selected illustrative flows; Gemini Nano Banana supplies generative material and environmental enhancement. The deterministic SCL/SVG layer remains authoritative for circuit geometry, labels, identities, claim/evidence status, and current/target/gap distinctions **as bound to the source authority and content contract**. Generated imagery may enhance that projection but may not modify its semantic meaning.
+
+```text
+CAPABILITY / LESSON AUTHORITY
+claims + evidence + current/target/gap
+        ↓
+CAPABILITY CONTENT CONTRACT
+what may be claimed
+        ↓
+INFOGRAPHIC GRAMMAR
+how the lesson is visually composed
+        ↓
+SCL
+how the semantic circuit is authored/projected
+        ↓
+SVG / DETERMINISTIC VISUAL LAYER
+exact topology, labels, routes, statuses
+        ↓
+GEMINI NANO BANANA
+material / cinematic enhancement
+        ↓
+COMPOSITE INFOGRAPHIC / VIDEO FRAME
+        ↓
+ANIMATE
+```
+
+This stack fixes production responsibilities and the direction of derivation; it is not a runtime circuit or a claim that one compiler implements every step. The capability content contract records permitted claims and their evidence bindings; it does not create source authority or prove an effect. Current/target/gap presentation follows §3's claim-kind crosswalk: a gap remains an annotation, not a fifth contract claim kind. An ordinary-language pilot lesson can use an editorial brief and a narrative plate without inventing a capability contract, SCL circuit, or generated imagery.
+
+| Layer | Responsibility | Must never do |
+|---|---|---|
+| **Infographic Grammar — composition grammar** | Compose the teaching experience: what goes on the plate, visual priority, the human scene's relationship to the circuit, and where evidence, judgment, and limitations appear. Use the human question → semantic circuit → evidence/judgment structure when a circuit helps, and the four recurring forms above. | Author capability semantics or invent semantic relationships for compositional convenience. |
+| **SCL — circuit projection grammar** | Represent source-bound circuit topology and semantic routes. SCL 0.2 and the shared flow player support selected illustrative traversal, route-following motion, parallel paths, and ALL joins. The deterministic SVG preserves exact geometry and overlays the bound editorial labels/statuses. | Treat a projection as execution, admission, or proof; invent a `wisdom` altitude; or turn a provider/evidence attachment into an execution route. |
+| **Gemini Nano Banana — enhancement layer** | Add visual presence, environments, human and hero imagery, depth, materials, and cinematic overlays around the canonical projection. | Alter or obscure topology, labels, identities, routes, claims, status, evidence, or current/target/gap distinctions. |
+
+Canonical meaning therefore precedes SCL projection and the visual circuit. A completed diagram or traversal does not establish that execution happened. The infographic grammar, SCL, and Nano Banana are not interchangeable graphics tools, and none can strengthen the claims from which the visual was derived.
+
+**Animation responsibilities:** SCL plus the shared circuit-flow player supplies exact circuit traversal against authored topology and selected traces, with illustrative timing. Nano Banana supplies cinematic/material assets, not traversal semantics or evidence. Editorial motion supplies camera moves, reveals, viewpoint changes, before/after comparisons, and timestamps around that layer. The final animation must retain canonical routes, join behavior, status labels, and open proof obligations in every decisive state. “ANIMATE” describes the assembled presentation, not a requirement to rasterize the circuit or reconstruct motion from generated pixels.
+
+**The graphics can become spectacular without the spectacle gaining authority over the meaning.**
+
+### Gemini Nano Banana visual enhancement
+
+**Pilot:** use simple decision plates; Gemini Nano Banana is optional and restrained. Keep advanced effects deferred until the learning explanation works. Record any generated treatment shown to learners as part of their material exposure; visual polish is not evidence of learning.
+
+**Production rollout:** use **Gemini Nano Banana as the preferred generative visual-enhancement provider** for production-quality SideFX infographics and episode visuals: hero illustrations, environmental and human scenes, material treatments, component imagery, depth, and cinematic overlays. Follow the [Gemini generation strategy](gemini-generation-strategy.md) and [material enhancement workflow](INFOGRAPHIC-ENHANCEMENTS.md). Record the actual provider/model and reviewed asset revision in the lesson package; any departure from the preferred provider must be explicit in the production direction.
+
+> **Nano Banana enhances the projection. It never authors or changes the semantic circuit.**
+
+The canonical SVG/SCL projection remains authoritative for topology, identities, labels, routes, claim status, evidence status, and current/target/gap distinctions. Nano Banana output may visually enhance those elements but **MUST NOT add, remove, reinterpret, obscure, or reposition semantic relationships in a way that changes their meaning**. Preserve the clean SVG version independently and composite generated visual assets over or around it. Keep canonical labels and status markings legible in the final composite; generated lettering, connector shapes, or apparent completion cues cannot replace them.
+
+```text
+CANONICAL SVG / SCL
+      ↓
+exact topology + labels + status
+      ↓
+GEMINI NANO BANANA
+      ↓
+visual enhancement layer
+      ↓
+depth / materials / environment /
+human scenes / cinematic overlays
+      ↓
+COMPOSITE
+```
+
+This is a production workflow, not a semantic execution route. The canonical projection is retained independently throughout; the generated layer is an asset input to compositing, never a replacement circuit. A human scene remains ILLUSTRATIVE; material depth or a cinematic reveal cannot turn a target into an observed result or conceal an open proof obligation. Compare each generated overlay and final composite with the clean canonical projection, including exported crops, before release.
+
 ## 6. LinkedIn: practice one judgment at a time
 
 **Role:** Introduce a concrete dilemma, invite reasoned disagreement, and lead readers to an inspectable lesson. These posts are small teaching units, not compressed product brochures.
@@ -425,6 +494,8 @@ Keep claim identities and evidence scope consistent when a video becomes a post 
 
 ### Initial production sequence
 
+The [WP-01 pilot package](wisdom-pilot/README.md) supplies draft scripts, simple text decision plates, separated assessment cards, feedback exemplars, and empty review records for step 1. Cohort recruitment, human review, learner collection, and validation remain pending.
+
 1. **Prepare only the three-lesson pilot:** Select one cohort, write the ordinary-language cases and variants, develop feedback exemplars, and produce simple decision plates and teaching scripts. Do not commission the full academy or five-channel campaign.
 2. **Run and inspect:** Collect learner explanations and unfamiliar-case responses. Have 2–3 reviewers independently examine the same 10–20 responses using the calibration process. Preserve disagreements and limits to the evidence.
 3. **Revise and recheck:** Repair the affected explanations, prompts, or anchors and use fresh responses to inspect the revision. Produce a report distinguishing observed learning behavior from open questions.
@@ -432,7 +503,9 @@ Keep claim identities and evidence scope consistent when a video becomes a post 
 
 This is a proposed release sequence, not a scheduled automation. Let the pilot determine pacing and lesson length before committing to a fixed publishing cadence.
 
-Assign explicit responsibilities: an instructional editor owns the objective and exercise; a capability reviewer checks claims and sources; a visual director checks topology and motion; an adversarial reviewer tests the argument and alternatives; and a course facilitator reviews learner reasoning. One person may fill multiple production roles, but calibration requires independent reviewers and separate initial judgments. Each review decision should remain attributable. Appropriate domain expertise is a further requirement if a later lesson is to present operational guidance in a sensitive practice area.
+Assign explicit responsibilities: an instructional editor owns the objective and exercise; a capability reviewer checks claims and sources; a visual director owns canonical SVG/SCL fidelity, Nano Banana asset direction, generated-overlay review, compositing, semantic-visual parity, and motion; an adversarial reviewer tests the argument and alternatives; and a course facilitator reviews learner reasoning. One person may fill multiple production roles, but calibration requires independent reviewers and separate initial judgments. Each review decision should remain attributable. Appropriate domain expertise is a further requirement if a later lesson is to present operational guidance in a sensitive practice area.
+
+The Visual Director applies §5's Visual Projection Pipeline as production law, records which clean canonical projection and generated assets were compared, confirms that labels and current/target/gap distinctions survive compositing and cropping, and records unresolved visual discrepancies. Review circuit traversal, material assets, and editorial motion against their separate responsibilities before accepting an animated frame. For the simple pilot, record Nano Banana as unused when no generated assets are needed; production rollout retains the preferred-provider rule in §5.
 
 ### Measure learning separately from distribution
 
@@ -475,6 +548,7 @@ Record unresolved objections as open. A review result describes the reviewed mat
 - Conflicting perspectives, decision rights, and the basis for any unresolved judgment are explicit.
 - Claims, sources, current evidence, intended design, and gaps remain distinguishable in every surface and crop.
 - Animation preserves circuit semantics; illustrative timing and open proof obligations remain explicit.
+- Production visuals use the preferred Gemini Nano Banana enhancement workflow or record an explicit departure; retain the independent clean SVG and review generated overlays and final composites for semantic-visual parity. Pilot plates may remain simple and unenhanced.
 - Sensitive-domain material remains illustrative unless appropriate domain review supports its specifically stated operational scope.
 - Captions, static diagrams, and text equivalents preserve the essential reasoning.
 - Assessment rewards justified uncertainty, correction, and transfer, including declining automation or formalization; no pilot score certifies a learner.
@@ -508,3 +582,5 @@ The following tables record changes made in response to the supplied reviews. Th
 | Revision history appears as teaching rules. | State the current vocabulary and assessment requirements directly; retain the superseded threshold and reviewer's minimum only in this disposition history. |
 
 **Revision 4 follow-up:** Promote the README strategy section to a top-level heading while keeping the film sections under their own parent. Complete §10's lesson-package enumeration with gap annotation references, assessment case roles, and linked exposure records. Replace Lesson C's record-based cases with arguments about approval regress and incompatible simultaneous commitments, to distinguish reconsideration under challenge from Lesson B's evidence assessment. Whether the revised cases successfully separate those skills remains a pilot question.
+
+**Revision 5 follow-up:** Freeze the Visual Projection Pipeline from capability/lesson authority and content contract through infographic composition grammar, SCL circuit projection, deterministic SVG, Nano Banana enhancement, compositing, and animation. Separate circuit traversal, material assets, and editorial motion. Name Gemini Nano Banana as the preferred production visual-enhancement provider, preserve canonical SVG/SCL fidelity and an independent clean SVG, and require overlay/composite review for semantic-visual parity. Make Nano Banana optional and restrained in the three-lesson pilot. Expand the Visual Director's responsibilities to include asset direction, generated-overlay review, and compositing. These production directions do not establish learning effectiveness or close any platform proof gap.

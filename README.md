@@ -110,6 +110,15 @@ calibration. The seven lenses remain proposed; learning and assessment validatio
 are pending. The strategy also defines contract claim labels and open-gap
 annotations for the media projections.
 
+The [three-lesson pilot package](docs/wisdom-pilot/README.md) now supplies draft
+teaching scripts, simple decision plates, separately delivered assessment cards,
+feedback exemplars, and empty exposure/calibration records. Learner collection
+and independent review remain pending. Strategy Revision 5 fixes the visual
+production pipeline: infographic composition grammar → SCL circuit projection →
+deterministic SVG → Gemini Nano Banana enhancement → composite → animation.
+Claims and evidence govern every layer; Nano Banana is optional and restrained
+for the pilot and preferred for production enhancement.
+
 ## Watch the human-experience film
 
 ### Season 1 / Evidence and intended design
