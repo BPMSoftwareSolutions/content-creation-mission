@@ -1,0 +1,3017 @@
+{
+  "revision": {
+    "title": "An AI Permission Check Is Not an Off Switch | SideFX Episode 1",
+    "thumbnail": [
+      "WHO",
+      "STOPS IT?"
+    ],
+    "promise": "Find the missing boundary between a permission label and an action.",
+    "takeaway": "boundary-evidence-checklist.md",
+    "scenes": [
+      {
+        "id": "01",
+        "status": "FICTIONAL REQUEST",
+        "narration": "Inspect candidate C seventeen. Do not publish it. The agent queues publication anyway. That would put an unreviewed change in front of users. Same candidate, different action. Before that command runs, what actually stops it?",
+        "states": [
+          {
+            "title": "One request. Wrong action.",
+            "lines": [
+              "REQUEST  /  Inspect C-17",
+              "QUEUED  /  Publish C-17"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-01:state-1"
+          },
+          {
+            "title": "Before review is complete.",
+            "lines": [
+              "Publish C-17 to users",
+              "Review still pending."
+            ],
+            "trigger": "That would",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-01:state-consequence"
+          },
+          {
+            "title": "What stops publication?",
+            "lines": [
+              "Inspect C-17",
+              "Publish C-17  /  NOT REQUESTED"
+            ],
+            "trigger": "Before",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-01:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Brief engineer establishing shot, then cut into the exact requested and queued action. Focus moves from person to mismatched verb.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-01",
+        "audioRef": "releases/episode-01/revision-02/audio/01.wav",
+        "sectionVisualId": "01/01",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/01.png"
+      },
+      {
+        "id": "02",
+        "status": "FROZEN RULE / LOCAL EVALUATION",
+        "narration": "Here is one frozen SideFX decision expression. For an adjudicate request, it compares the tool name with dangerous tool. A match returns operator required. Any other name returns allow. These are returned labels. Neither label, by itself, stops a command.",
+        "states": [
+          {
+            "title": "The check is a name test.",
+            "lines": [
+              "operation = ADJUDICATE",
+              "toolId = dangerous-tool"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-02:state-1"
+          },
+          {
+            "title": "Exact name matches.",
+            "lines": [
+              "\"OPERATOR_REQUIRED\"",
+              "RETURNED LABEL ONLY"
+            ],
+            "trigger": "A match",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-02:state-2"
+          },
+          {
+            "title": "Every other name.",
+            "lines": [
+              "\"ALLOW\"",
+              "RETURNED LABEL ONLY"
+            ],
+            "trigger": "Any other",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-02:state-3"
+          }
+        ],
+        "photo": null,
+        "direction": "Isolate input, comparison, returned string. No full circuit or activation badges; returned-label qualification has equal visual priority.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-02",
+        "audioRef": "releases/episode-01/revision-02/audio/02.wav",
+        "sectionVisualId": "01/02",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/02.png"
+      },
+      {
+        "id": "03",
+        "status": "FROZEN RULE / LOCAL EVALUATION",
+        "narration": "Try an unrecognized name: publish alias. The expression still returns allow. Which checked fact establishes permission to publish? None. This counterexample breaks the claim that this name test establishes authorization. It does not demonstrate an escaped effect on a live platform.",
+        "states": [
+          {
+            "title": "Change only the tool name.",
+            "lines": [
+              "toolId = publish-alias",
+              "Same operation: ADJUDICATE"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-03:state-1"
+          },
+          {
+            "title": "Unknown name → \"ALLOW\"",
+            "lines": [
+              "No grant checked here.",
+              "No live effect tested."
+            ],
+            "trigger": "The expression",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-03:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Keep operation fixed, replace only the name, then reveal the evaluated output. The observable result is local expression evaluation.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-03",
+        "audioRef": "releases/episode-01/revision-02/audio/03.wav",
+        "sectionVisualId": "01/03",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/03.png"
+      },
+      {
+        "id": "04",
+        "status": "PROPOSED DESIGN / NOT LIVE PROOF",
+        "narration": "Separate three responsibilities. The person requests an inspection. The organization grants inspection of C seventeen, with read only arguments. An operator may approve an exception only within delegated authority. Approval cannot create power the organization never delegated.",
+        "states": [
+          {
+            "title": "Request ≠ permission",
+            "lines": [
+              "PERSON  /  asks to inspect",
+              "ORGANIZATION  /  grants scope"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-04:state-1"
+          },
+          {
+            "title": "Bind the grant.",
+            "lines": [
+              "Inspect + C-17 + read-only",
+              "Operator stays within delegation."
+            ],
+            "trigger": "An operator",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-04:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Build the authority relationship before introducing dispatcher. Grant belongs outside the agent; no invented SCL altitude.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-04",
+        "audioRef": "releases/episode-01/revision-02/audio/04.wav",
+        "sectionVisualId": "01/04",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/04.png"
+      },
+      {
+        "id": "05",
+        "status": "PROPOSED DESIGN / NOT LIVE PROOF",
+        "narration": "The proposed dispatcher owns the effect credential. It checks the protected grant before dispatch. The agent cannot edit that grant or acquire the credential. Unavailable authorization means hold. This is the trust boundary to build and test, not evidence that SideFX already enforces it.",
+        "states": [
+          {
+            "title": "Decision ≠ dispatch",
+            "lines": [
+              "AGENT  →  DISPATCHER  →  EFFECT",
+              "Credential stays at dispatcher."
+            ],
+            "trigger": "",
+            "kind": "route",
+            "stateId": "episode-01:revision-03:scene-05:state-1",
+            "routeNodes": [
+              "AGENT",
+              "DISPATCHER",
+              "EFFECT"
+            ],
+            "routeStopIndex": 1,
+            "routeCaption": "Credential stays at dispatcher."
+          },
+          {
+            "title": "No valid check? Hold.",
+            "lines": [
+              "Grant outside agent control.",
+              "No dispatch while unavailable."
+            ],
+            "trigger": "Unavailable",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-05:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "A request trace reaches the dispatcher and stops there. The effect segment never lights up; diagram explicitly proposed.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-05",
+        "audioRef": "releases/episode-01/revision-02/audio/05.wav",
+        "sectionVisualId": "01/05",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/05.png"
+      },
+      {
+        "id": "06",
+        "status": "LOCAL TOY SIMULATION",
+        "narration": "Now a deliberately small simulation. Publication reaches our dispatcher with an inspection only grant. It is held. A separate inspection of the same candidate is permitted. The dispatcher records these calls; the agent does not write that observation. This covers only this toy route.",
+        "states": [
+          {
+            "title": "Attempt: publish C-17",
+            "lines": [
+              "Grant: inspection only",
+              "Effect calls: 0"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-06:state-1"
+          },
+          {
+            "title": "Attempt: inspect C-17",
+            "lines": [
+              "Decision: PERMIT",
+              "Inspection calls: 1"
+            ],
+            "trigger": "A separate",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-06:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Two actual local toy calls, one denied publication then one allowed read. Values must match worked-evidence.json; no claim of managed execution.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-06",
+        "audioRef": "releases/episode-01/revision-02/audio/06.wav",
+        "sectionVisualId": "01/06",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/06.png"
+      },
+      {
+        "id": "07",
+        "status": "LOCAL TOY SIMULATION",
+        "narration": "Open the returned report: two checks pass; one required summary is missing. The engineer now has something to repair. Candidate C seventeen remains unpublished. That is a useful inspection result, not a publication success and not a production security certification.",
+        "states": [
+          {
+            "title": "C-17 / inspection report",
+            "lines": [
+              "PASS  /  title and owner",
+              "MISSING  /  required summary"
+            ],
+            "trigger": "",
+            "kind": "report",
+            "stateId": "episode-01:revision-03:scene-07:state-1",
+            "fields": [
+              {
+                "label": "Title",
+                "value": "PASS",
+                "attention": false
+              },
+              {
+                "label": "Owner",
+                "value": "PASS",
+                "attention": false
+              },
+              {
+                "label": "Summary",
+                "value": "MISSING",
+                "attention": true
+              }
+            ],
+            "resultLines": [
+              "Published",
+              "false → false"
+            ]
+          },
+          {
+            "title": "Useful work. Limited result.",
+            "lines": [
+              "Inspection report returned.",
+              "Published: false → false"
+            ],
+            "trigger": "The engineer",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-07:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Open a concrete report artifact; reveal missing summary and unchanged state. The payoff is knowledge, with no fabricated live recovery.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-07",
+        "audioRef": "releases/episode-01/revision-02/audio/07.wav",
+        "sectionVisualId": "01/07",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/07.png"
+      },
+      {
+        "id": "08",
+        "status": "LOCAL TOY SIMULATION",
+        "narration": "Change the object to C eighteen, keeping the old grant. The dispatcher holds the request: the object no longer matches. Changing approved arguments must also invalidate the match. Permission belongs to the bound action, object, and arguments, not to a reassuring label.",
+        "states": [
+          {
+            "title": "Change one condition.",
+            "lines": [
+              "Grant: inspect C-17",
+              "Request: inspect C-18"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-08:state-1"
+          },
+          {
+            "title": "Mismatch → HOLD",
+            "lines": [
+              "No inspection of C-18.",
+              "Recheck changed arguments too."
+            ],
+            "trigger": "The dispatcher",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-08:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Replace object in request only; retain grant visibly. Freeze trace at mismatch; evidence comes from toy model.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-08",
+        "audioRef": "releases/episode-01/revision-02/audio/08.wav",
+        "sectionVisualId": "01/08",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/08.png"
+      },
+      {
+        "id": "09",
+        "status": "EVIDENCE SCOPE / LIVE GAP OPEN",
+        "narration": "For a real boundary, observe the denied attempt at dispatch and the permitted inspection output in the same session. Match caller, object, arguments, and policy version. Then test another route. Our toy observer sees no shell or second adapter. Those paths remain unverified.",
+        "states": [
+          {
+            "title": "Two observations. One scope.",
+            "lines": [
+              "Denied dispatch + returned report",
+              "Same session and bound request"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-09:state-1"
+          },
+          {
+            "title": "What can the observer miss?",
+            "lines": [
+              "Shell / alternate adapter",
+              "UNVERIFIED"
+            ],
+            "trigger": "Then test",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-09:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Pair two observations, then expose a separate unobserved route. No animated traversal presented as execution or proof.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-09",
+        "audioRef": "releases/episode-01/revision-02/audio/09.wav",
+        "sectionVisualId": "01/09",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/09.png"
+      },
+      {
+        "id": "10",
+        "status": "TAKEAWAY / REVIEW EDITION",
+        "narration": "Use the boundary evidence checklist: name the effect, bind the grant, locate the dispatcher, and test a changed condition. A permission label is not an off switch. Next, the tool succeeds. Can the agent truthfully say the task is complete?",
+        "states": [
+          {
+            "title": "Before trusting the label:",
+            "lines": [
+              "Effect · grant · dispatcher",
+              "Evidence · changed condition"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-10:state-1"
+          },
+          {
+            "title": "Next: booked. Still stuck.",
+            "lines": [
+              "Tool success ≠ task complete",
+              "Use the companion checklist."
+            ],
+            "trigger": "Next",
+            "kind": "cards",
+            "stateId": "episode-01:revision-03:scene-10:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Land the tested distinction; sequel promise matches Episode 2 exactly. Hold CTA long enough to read.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-03:scene-10",
+        "audioRef": "releases/episode-01/revision-02/audio/10.wav",
+        "sectionVisualId": "01/10",
+        "visualAssetRef": "releases/episode-01/revision-03/visual-assets/10.png"
+      }
+    ],
+    "episodeId": "01",
+    "revisionId": "episode-01:revision-03",
+    "status": "DRAFT_NOT_REVIEWED",
+    "audience": {
+      "audience": "Engineers and technical leads building or evaluating agents; ordinary language before SideFX vocabulary.",
+      "seriesPromise": "One agent claim, one visible check, one bounded conclusion.",
+      "demandTheme": "Trusting agent action and completion reports",
+      "humanStake": "People retain authority over consequential changes and can see unmet needs.",
+      "hookVariants": [
+        "WHO STOPS IT?",
+        "INSPECT ≠ PUBLISH",
+        "BOOKED. STILL STUCK.",
+        "SUCCESS ≠ DONE"
+      ],
+      "curiosityQuestion": "Which observed fact justifies this claim?",
+      "visualTriggers": [
+        "changed tool name",
+        "unchanged publication state",
+        "changed object",
+        "crossed-out unsupported claim",
+        "new venue reply"
+      ],
+      "intensityCurve": "Conflict immediately; concentrate motion on counterexample and new fact; settle on usable report.",
+      "emotionalArc": "Unease → investigation → bounded clarity",
+      "payoff": "Concrete report or handoff, with remaining uncertainty visible.",
+      "shareHypothesis": "A useful checklist may invite discussion among agent builders; unmeasured.",
+      "evidenceStatus": "Creative hypotheses only. No audience, retention, conversion or learning claims."
+    },
+    "outputDirectory": "releases/episode-01/revision-03",
+    "filmFile": "episode-01-revision-03.mp4",
+    "publication": {
+      "status": "REVIEW_BEFORE_PUBLISHING",
+      "videoUrl": null,
+      "liveThumbnailVerified": false
+    },
+    "productionProfileRef": "data/section-production-profile.json",
+    "brandLine": "SideFX / ENGINEERING 01 / REVISION 03",
+    "evidenceRef": "releases/episode-01/revision-03/worked-evidence.json",
+    "evidenceRecord": {
+      "sourceDigest": "18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38",
+      "sourcePointer": "/mechanicBindings/2/configuration/expression",
+      "method": "Local subset interpreter of frozen expression; no harness execution.",
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input",
+            "path": ""
+          },
+          {
+            "op": "object",
+            "fields": {
+              "adjudicationOutcome": {
+                "op": "if",
+                "when": {
+                  "op": "equals",
+                  "left": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "payload.operation"
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": "ADJUDICATE"
+                  }
+                },
+                "then": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.toolId"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": "dangerous-tool"
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": "OPERATOR_REQUIRED"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "ALLOW"
+                  }
+                },
+                "else": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "adjudicationOutcome"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "classificationTests": [
+        {
+          "input": {
+            "payload": {
+              "operation": "ADJUDICATE",
+              "toolId": "dangerous-tool"
+            }
+          },
+          "returnedLabel": "OPERATOR_REQUIRED"
+        },
+        {
+          "input": {
+            "payload": {
+              "operation": "ADJUDICATE",
+              "toolId": "inspection-tool"
+            }
+          },
+          "returnedLabel": "ALLOW"
+        },
+        {
+          "input": {
+            "payload": {
+              "operation": "ADJUDICATE",
+              "toolId": "publish-alias"
+            }
+          },
+          "returnedLabel": "ALLOW"
+        }
+      ],
+      "simulation": {
+        "kind": "AUTHORED_LOCAL_TOY_NOT_MANAGED_EXECUTION",
+        "grant": {
+          "action": "inspect",
+          "object": "C-17",
+          "arguments": {
+            "readOnly": true
+          },
+          "policy": "toy-v1",
+          "caller": "editor"
+        },
+        "observations": [
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "publish",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": false
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": true
+            },
+            "decision": "PERMIT",
+            "effectCalls": 0,
+            "inspectionCalls": 1,
+            "report": {
+              "object": "C-17",
+              "passed": [
+                "title",
+                "owner"
+              ],
+              "missing": [
+                "summary"
+              ],
+              "published": false
+            },
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-18",
+            "arguments": {
+              "readOnly": true
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": false
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": true
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": false
+          }
+        ],
+        "finalCandidates": {
+          "C-17": {
+            "title": "Release candidate",
+            "owner": "Editor",
+            "summary": "",
+            "published": false
+          },
+          "C-18": {
+            "title": "Other candidate",
+            "owner": "Editor",
+            "summary": "",
+            "published": false
+          }
+        },
+        "unverified": [
+          "shell",
+          "second adapter",
+          "other sessions",
+          "credential isolation in production"
+        ]
+      },
+      "note": "Toy fixtures and outputs teach a proposed boundary. Frozen ALLOW and toy PERMIT belong to different models.",
+      "sourceArtifactRef": "data/capsule-evidence/entries/18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38-f69129442ac57290.json"
+    },
+    "companionStoreRef": "data/production-companions.json",
+    "companionId": "boundary-evidence-checklist",
+    "description": "Find the missing boundary between a permission label and an action.\n\nOne agent claim, one visible check, one bounded conclusion.\n\nReview edition: fictional staging, synthetic narration, deterministic SVG graphics. Source evidence, proposed design and local simulation remain distinct.\n\nCompanion: boundary-evidence-checklist.md",
+    "sectionDirectionRef": "data/section-visual-direction.json",
+    "sectionCompositionRef": "data/section-compositions.json",
+    "sectionAssetReviewRef": "data/section-assets-review.json"
+  },
+  "profile": {
+    "profileId": "section-authored-film-v1",
+    "speech": {
+      "provider": "Gemini",
+      "model": "gemini-2.5-flash-preview-tts",
+      "voice": "Kore",
+      "instruction": "Read the following exact script with natural documentary pacing, approximately 145 words per minute. No introduction or added words.\n"
+    },
+    "visual": {
+      "templateId": "section-authored-svg-v1",
+      "width": 1920,
+      "height": 1080,
+      "fps": 24,
+      "background": "#08131e",
+      "foreground": "#f2f5ed",
+      "muted": "#b1c1cb",
+      "accent": "#6ce4cd",
+      "status": "#ffc884",
+      "panel": "#142633",
+      "fontFamily": "Segoe UI",
+      "fontFile": "C:/Windows/Fonts/segoeui.ttf",
+      "boldFontFile": "C:/Windows/Fonts/segoeuib.ttf",
+      "statusSize": 52,
+      "titleSize": 86,
+      "bodySize": 70,
+      "establishingSeconds": 2.5,
+      "revealSeconds": 0.28,
+      "chapterTailSeconds": 0.7,
+      "videoCRF": 19,
+      "videoPreset": "veryfast"
+    },
+    "captions": {
+      "model": "base.en",
+      "minimumSimilarity": 0.9,
+      "lineCharacters": 42,
+      "maximumCharacters": 82,
+      "minimumSeconds": 1.0,
+      "preferredMinimumSeconds": 1.2,
+      "maximumSeconds": 6.8,
+      "sampleWidths": [
+        480,
+        375
+      ]
+    },
+    "mastering": {
+      "integratedLUFS": -16,
+      "targetTruePeakDBTP": -2,
+      "maximumEncodedTruePeakDBTP": -1,
+      "loudnessRangeLU": 7,
+      "audioBitrate": "192k",
+      "sampleRate": 48000
+    },
+    "review": {
+      "label": "LOCAL REVIEW / NOT PUBLISHED",
+      "disclosure": "Fictional teaching scenes and simulations; section-specific Gemini Nano Banana imagery; synthetic narration; exact SVG labels and relationships. Camera moves use still images, not generated live performance. No live platform enforcement or real booking is demonstrated.",
+      "continuousHumanListening": "PENDING_USER_REVIEW",
+      "unfamiliarViewerAssessment": "NOT_COLLECTED",
+      "audiencePerformance": "UNMEASURED"
+    }
+  },
+  "direction": {
+    "version": "section-visual-direction.v1",
+    "law": "Blanket subsection layouts are prohibited. Choose the teaching function and visual format before authoring the composition. SVG owns semantic content; Nano Banana supplies the section-specific embodiment.",
+    "provider": {
+      "name": "Gemini Nano Banana",
+      "model": "gemini-3-pro-image",
+      "aspectRatio": "16:9",
+      "imageSize": "2K",
+      "maximumConcurrentRequests": 3
+    },
+    "imageConstraints": "Generate one high-quality cinematic 16:9 image for the specified section, not a generic slide or dashboard. No letters, numbers, logos, watermarks, arrows, diagrams, interface, checkmarks, traffic-light statuses or readable documents. The compositor adds every semantic mark independently. Do not invent a completed publication, a live security test, a solved outing, approval or consensus. Fictional editorial staging, not documentary evidence. Rich material detail, carefully controlled light, credible objects and hands. Keep designated annotation zones visually quiet. Never fill quiet zones with invented panels. Reference images establish cast and room identity only; follow this section's camera and blocking.",
+    "sections": [
+      {
+        "key": "01/01",
+        "format": "cinematic-dilemma",
+        "purpose": "Make an unauthorized publication attempt feel consequential before explaining it.",
+        "camera": "Over the engineer's left shoulder, wide close foreground, screen/right hand in focus.",
+        "assetPrompt": "The same fictional Black woman engineer with short curls, fine silver glasses, navy overshirt and rust shirt at her oak desk. Her right hand has stopped just above the keyboard; an unlettered translucent window glows on the monitor at far right. A closed review folio in foreground makes unfinished work tangible. Dusk blue with warm task light. Engineer and monitor in RIGHT HALF; deep unobstructed dark space across LEFT HALF for a large request-versus-attempt composition. An uneasy pause, no action dispatched, no publication shown.",
+        "reference": "outputs/generated/b3b0ce166fe14edd41c98030c2d126e800ce1e7909c248c64be0314c80d9decf-0.jpg",
+        "composition": "A large inspect request at upper left, the queued publication command beneath it, and an amber underline emphasizing the conflict; the human remains visible on the right.",
+        "palette": "dark",
+        "motion": "Slow lateral approach to the hand; the queued command and conflict emphasis follow narration. No stopped live dispatch is implied."
+      },
+      {
+        "key": "01/02",
+        "format": "decision-tree-dissection",
+        "purpose": "Expose exactly what the frozen expression checks and returns.",
+        "camera": "Straight-on technical macro with a low horizontal horizon.",
+        "assetPrompt": "An exquisite disassembled mechanical selector on a dark graphite workbench, brushed aluminum, smoked glass and a single warm work light. The selector hardware occupies the BOTTOM RIGHT corner, only the outer fourth of the frame. The LEFT and UPPER THREE QUARTERS are clean almost-black graphite, subtly textured, for a precise SVG decision tree. No actual circuit, wire routes, labels, symbols, outputs or screens. The hardware is a restrained conceptual embellishment, not an operating security device.",
+        "composition": "A vertical input-to-name-test spine opens into two widely separated branches. Match and other-name results are revealed as quoted strings; RETURNED LABEL ONLY has equal scale.",
+        "palette": "dark",
+        "motion": "Trace only the authored classification branches; reveal the matching and otherwise outcomes separately."
+      },
+      {
+        "key": "01/03",
+        "format": "forensic-counterexample",
+        "purpose": "Make one changed identifier visibly defeat the authorization claim.",
+        "camera": "Top-down macro of a single specimen on an investigator's light table.",
+        "assetPrompt": "Forensic light table at night: a single unmarked translucent specimen slide lies diagonally in the LOWER LEFT, illuminated by a narrow amber inspection light. A magnifying lens rests at the far left edge, partly cropped. Vast clean black-to-deep-blue glass area across CENTER and RIGHT for exact before/after typography and a returned label. No text, no circuit, no evidence stamps. Elegant investigation mood, visibly different from a workstation or dashboard.",
+        "composition": "A large replaced identifier runs diagonally across the specimen area; the ALLOW result dominates the right, with an explicit no-grant/no-live-effect limitation beneath.",
+        "palette": "dark",
+        "motion": "Highlight only the changed identifier; expose the result as a counterexample, then settle on the missing checked fact."
+      },
+      {
+        "key": "01/04",
+        "format": "authority-nesting-map",
+        "purpose": "Distinguish organizational delegation, operator scope and a person's request.",
+        "camera": "Oblique architectural model from above, depth contained at frame edges.",
+        "assetPrompt": "Architectural study in ivory paper and frosted glass on a pale warm studio table. Three elegant translucent boundary walls form a loose nested enclosure in the FAR RIGHT THIRD only; no labels, tokens, people or connecting paths. Gentle natural shadows, copper accents. LEFT TWO THIRDS are clean pale paper reserved for a precise nested authority map. This is an editorial model, not a real permission system. No locks or green success imagery.",
+        "composition": "Nested organization and delegated-operator boundaries on an ivory field, with the user's request outside and a separately bound grant. Containment communicates scope.",
+        "palette": "light",
+        "motion": "Reveal outer authority first, then the narrower delegation; the request never becomes an authority boundary."
+      },
+      {
+        "key": "01/05",
+        "format": "dispatcher-cross-section",
+        "purpose": "Locate the proposed component that can stop an effect.",
+        "camera": "Symmetrical low-angle cutaway through a physical boundary.",
+        "assetPrompt": "A dark cinematic cutaway of an abstract industrial access chamber: a single heavy brushed-steel partition at the horizontal CENTER, narrow warm slit of light, empty space to either side. Hardware is confined to the LOWER THIRD; the UPPER TWO THIRDS are clear charcoal haze for a three-node exact SVG circuit. Not science-fiction spectacle, no screens, no arrows, no status lamps, no actual movement or open gate. Make the boundary feel physical and inspectable without implying any live enforcement.",
+        "composition": "An agent-to-dispatcher-to-effect route spans the scene; a tall boundary at the dispatcher owns the credential. The moving request stops before the effect segment.",
+        "palette": "dark",
+        "motion": "A canonical request marker reaches the boundary and stops. A separate unavailable-authorization hold replaces the route view."
+      },
+      {
+        "key": "01/06",
+        "format": "paired-probe-lab",
+        "purpose": "Compare a held publication and an allowed read inside one explicitly toy observer scope.",
+        "camera": "Overhead lab bench, two distinct work areas with a clear center gutter.",
+        "assetPrompt": "A precise editorial laboratory still life: two unlettered smoked-glass sample trays on a midnight workbench, one upper-left and one lower-right, with brushed-metal measuring instruments ONLY around outer edges. One warm task lamp, restrained cyan reflected light. No labels, no gauges with numbers, no status colors, no symbols, no wires joining trays. Center of both trays and the broad upper-left margin remain visually quiet for separately authored test traces. A local simulation metaphor, not a real security experiment.",
+        "composition": "A diagonal pairing of two probe lanes inside one observer boundary; publication is held with zero effects, then inspection produces one read.",
+        "palette": "dark",
+        "motion": "Walk the two lanes separately; counters and observer scope are exact SVG, not generated instrumentation."
+      },
+      {
+        "key": "01/07",
+        "format": "inspection-document-closeup",
+        "purpose": "Let viewers inspect the requested artifact and unchanged publication state.",
+        "camera": "Top-down near-flat document photography, with a human hand at the edge.",
+        "assetPrompt": "A large completely blank ivory inspection sheet on an oak desk, occupying LEFT TWO THIRDS and nearly square to camera. The same engineer's hand rests lightly at bottom left, not writing. A closed dark navy candidate folio occupies far right. Beautiful morning task light, paper fibers and subtle copper clip, no marks or letters anywhere. Keep the paper center clear for exact overlaid report fields. Keep upper-right wall soft and dark for a publication-state comparison. No signatures, approval stamps, celebration or published product.",
+        "reference": "outputs/generated/b3b0ce166fe14edd41c98030c2d126e800ce1e7909c248c64be0314c80d9decf-0.jpg",
+        "composition": "Report fields are set directly on the paper; a separate dark publication-state margin stays bound to C-17. The missing summary is the focal discovery.",
+        "palette": "mixed",
+        "motion": "A reading light progresses from passing fields to the missing field; no generated checkmarks or fabricated report writing."
+      },
+      {
+        "key": "01/08",
+        "format": "identity-mismatch-macro",
+        "purpose": "Show why a grant for one object cannot authorize another.",
+        "camera": "Extreme close-up of two incompatible physical fittings.",
+        "assetPrompt": "Editorial macro photograph of two elegant unmarked machined-metal fittings that almost meet but visibly do not align, one matte silver at LOWER LEFT and one dark copper at LOWER RIGHT. Clear gap between them. Dark blue studio background, shallow depth, crisp controlled side light. Entire UPPER HALF is quiet near-black for large identity typography. No keys with labels, no circuit, no arrows, no lock-opening action. This is a visual metaphor for mismatch, not a claim about physical security.",
+        "composition": "The grant's C-17 and request's C-18 sit on opposite sides of a visible gap; one changed character is emphasized, with HOLD centered in the gap.",
+        "palette": "dark",
+        "motion": "Only the request identity changes; the grant stays fixed. The attempted connector approaches the gap but never joins."
+      },
+      {
+        "key": "01/09",
+        "format": "evidence-scope-investigation",
+        "purpose": "Separate bounded observations from the routes the observer cannot see.",
+        "camera": "Wide investigator's board viewed straight on, light falling off abruptly at the right edge.",
+        "assetPrompt": "A sophisticated charcoal evidence-inspection wall with two blank off-white paper sheets on the LEFT HALF, one above the other, each held by a small copper clip. A warm lamp lights only those sheets. The RIGHT HALF falls away into a dark corridor beyond the lit work area. No text, strings, arrows, symbols, photographs or documents with markings. The boundary of illumination is the visual subject: observed area versus uninspected area. Nothing suggests a proven secure perimeter.",
+        "composition": "Two observations are attached to the same-session rail on the lit side. A dashed, unverified alternate route occupies the dark side without a completion marker.",
+        "palette": "dark",
+        "motion": "Bind the two observations, then widen the viewpoint to reveal the previously unseen route and its explicit unverified status."
+      },
+      {
+        "key": "01/10",
+        "format": "doctrine-poster-and-teaser",
+        "purpose": "Land the permission-versus-enforcement rule and honestly cue the next film.",
+        "camera": "Graphic editorial product portrait with strong negative space.",
+        "assetPrompt": "An isolated substantial brushed-metal toggle switch mounted in a small dark stone block at RIGHT CENTER, clearly separate from a blank loose paper tag lying lower left. Nothing connected, no electricity or active status, no letters or symbols. Cinematic black studio with a narrow warm rim and teal ambient depth. LEFT HALF and TOP are clean for a memorable doctrine headline. A faint abstract warm rectangular doorway far in the background can suggest a next story without depicting a booked event. Conceptual metaphor only.",
+        "composition": "Oversized rule typography dominates; the unconnected switch is the metaphor. The next-episode promise is a small distinct horizon line, not another full slide.",
+        "palette": "dark",
+        "motion": "The rule settles while the material image slowly recedes; the sequel line appears only when narrated."
+      },
+      {
+        "key": "02/01",
+        "format": "human-time-conflict",
+        "purpose": "Put two people's travel constraint against a successful booking immediately.",
+        "camera": "Eye-level human scene with a long horizontal travel horizon.",
+        "assetPrompt": "The same fictional silver-haired woman in an olive jacket and close-cropped man in a sand sweater stand together at a quiet covered bus shelter in late-afternoon blue light. They are concerned and thinking, not stranded or celebrating. No bus departure is depicted. A softly lit community room is visible far across the street, with no crowd or event. Place the TWO people in the RIGHT THIRD; LEFT TWO THIRDS contain quiet blue shelter glass and open sky for a booking artifact and qualitative time conflict. No timetable, clocks, route maps, writing, ticket numbers or signage. Fictional staging of a reported concern, not a claim that they traveled or missed a bus.",
+        "reference": "releases/episode-02/film-assets/02.png",
+        "composition": "A small confirmed booking ticket contrasts with a long last-bus-before-event-end axis. The two affected people stay visibly present at the far end of the composition.",
+        "palette": "dark",
+        "motion": "Begin on the booking artifact, then reveal the wider time conflict and people without changing any clock time."
+      },
+      {
+        "key": "02/02",
+        "format": "bounded-choice-tableau",
+        "purpose": "Make the viewer choose between completion, unauthorized change and one permitted check.",
+        "camera": "Direct overhead view of a pause before choosing.",
+        "assetPrompt": "Overhead editorial photograph of a walnut planning table with three distinct, unmarked objects arranged as a wide triangle: closed cream folio at upper-left, a small blank notepad at lower-left, and an unused plain brass paperweight at right. A volunteer's hands pause at the bottom edge, touching none of them. Warm neutral daylight, no moral red/green coloring, no text, diagrams, pens writing, signatures or tick marks. The central area remains clear for a three-way SVG choice composition. No action has been selected or booking changed.",
+        "composition": "Three large verbs form a triangular choice, with one explicit grant boundary below. Equal treatment prevents the answer being signaled by color.",
+        "palette": "dark",
+        "motion": "Present all three choices, then hold still for a genuine reflection beat; no countdown or decorative motion."
+      },
+      {
+        "key": "02/03",
+        "format": "equal-burden-diptych",
+        "purpose": "Give keeping and moving the event comparable human costs.",
+        "camera": "Deliberate wide diptych with balanced visual weight.",
+        "assetPrompt": "One editorial diptych of two equally weighted spaces in the SAME modest community room, separated by a narrow architectural doorway. LEFT: a closed cream booking folio on a table with neatly arranged personal belongings, suggesting existing plans. RIGHT: two empty chairs beside a window, suggesting people whose needs are unresolved. Warm-neutral consistent exposure and identical visual importance on both sides. No one is shown excluded in reality; this is comparison staging. No writing, maps, routes, signs, symbols, diagrams or success/failure colors. Both upper quadrants have smooth quiet plaster for exact overlay text.",
+        "composition": "A full-width diptych compares people affected on both sides, followed by a shared lower authority line. No arbitrary preferred side.",
+        "palette": "light",
+        "motion": "Reveal the burden of each option in turn, then hold both visible while stating the shared uncertainty and decision owner."
+      },
+      {
+        "key": "02/04",
+        "format": "claim-depth-exploded-view",
+        "purpose": "Separate tool response, resulting state and required human outcome.",
+        "camera": "Oblique exploded editorial still life with three depth planes.",
+        "assetPrompt": "Three unmarked translucent glass planes float in a controlled editorial studio composition, stepping from LOWER LEFT foreground to UPPER RIGHT background, with wide gaps and visible depth. Beneath them a tiny ivory architectural room model rests at far bottom right. Pearl gray and smoky teal, precise soft shadows, bright enough to read black typography. Each plane is blank and uncluttered for exact independent overlay labels. No connecting arrows, text, numbers, icons, data or people. A conceptual separation of claims, never evidence of a real booking.",
+        "composition": "Three offset semantic planes reveal response, venue record and unmet result. The viewer must travel through the depth instead of reading three identical cards.",
+        "palette": "light",
+        "motion": "Shift emphasis from front plane to middle to back; exact state and evidence labels stay legible and stationary."
+      },
+      {
+        "key": "02/05",
+        "format": "completion-report-redline",
+        "purpose": "Make the unsupported success claim disappear while supported facts remain.",
+        "camera": "Close overhead editorial desk, paper fills the frame asymmetrically.",
+        "assetPrompt": "A completely blank cream report sheet lies diagonally across a charcoal editorial desk, occupying the CENTRAL TWO THIRDS. A red pencil rests beside its upper-right edge, untouched. A second smaller blank paper sits at the far left. Directional warm light reveals paper grain, a narrow shadow under the sheet, no handwriting or printing, no red marks, stamps or checkmarks. Plenty of uninterrupted paper for precise SVG redlining and a corrected agent report. No hand signs or approves anything.",
+        "composition": "Large report sentence across the page receives a deliberate redline; the truthful replacement is written beneath in a different typographic hierarchy.",
+        "palette": "mixed",
+        "motion": "Draw the authored strike through the unsupported assertion, then reveal the corrected report in clauses while retaining the reservation fact."
+      },
+      {
+        "key": "02/06",
+        "format": "new-fact-correspondence",
+        "purpose": "Give the new venue reply a source and update only its narrow implication.",
+        "camera": "Close-up correspondence arriving into the decision field.",
+        "assetPrompt": "An open plain ochre envelope and a large blank ivory note entering from the RIGHT edge of a dark blue planning desk, lit by a sharp afternoon shaft. A softly defocused empty community-room doorway in far background. Note occupies RIGHT HALF; LEFT HALF is clear dark tabletop for a source label and the eliminated alternative. No text, clock, calendar, date, digits, arrows or seals. This is an illustrative incoming venue response, not a real message or exhaustive search.",
+        "composition": "A source-stamped venue note occupies the right; the single ruled-out option sits on the left. Unchanged constraints remain as a narrow baseline.",
+        "palette": "mixed",
+        "motion": "Reveal the note, strike only the same-room/same-day alternative, and keep the remaining conflict visible."
+      },
+      {
+        "key": "02/07",
+        "format": "human-bounded-handoff",
+        "purpose": "End inquiry at the authorized limit and return the decision to its owner.",
+        "camera": "Table-level side view across a quiet handoff.",
+        "assetPrompt": "The same four fictional adults in the same community room. Volunteer with short curls, indigo overshirt and rust shirt at LEFT OF GROUP slides the CLOSED cream folio only halfway toward the gray-haired coordinator in charcoal cardigan. Silver-haired woman in olive and sand-sweater man remain present, attentive. No handshake, approval, signature, smiles of relief or booking change. Stage all people in the RIGHT HALF; LEFT HALF is dark quiet foreground table for an exact three-line handoff and coordinator choices. Camera lower than earlier scene, clear hands and eye contact, humane unresolved ending.",
+        "reference": "releases/episode-02/film-assets/02.png",
+        "composition": "A bounded report occupies the left; a thin handoff path terminates at the coordinator, with no return arrow or resolved-outcome icon.",
+        "palette": "dark",
+        "motion": "The report assembles in three facts, then the camera eases toward the human decision owner. This is motion over a still, not a generated performance."
+      },
+      {
+        "key": "02/08",
+        "format": "evaluation-versus-outcome-balance",
+        "purpose": "Keep a good report evaluation distinct from a solved outing.",
+        "camera": "Spare editorial sculpture, balanced asymmetry.",
+        "assetPrompt": "A thoughtful studio still life on pale ivory: a small precisely balanced stack of dark slate papers at LOWER LEFT and a single empty open wire frame at RIGHT CENTER, separated by a large quiet gap. Soft shadows, restrained copper details, calm natural light. No scale with readings, no numbers, tick marks, labels, text, diagrams or status colors. The stable stack and empty frame are a conceptual contrast between a well-formed partial result and an unresolved wider outcome, not a performance score.",
+        "composition": "Four report criteria form a compact evaluation ring on the left; the required result remains an intentionally open frame on the right. Two distinct verdicts, no overall green pass.",
+        "palette": "light",
+        "motion": "Complete the report's four checks, then leave the separate outcome frame open with its unresolved label."
+      },
+      {
+        "key": "02/09",
+        "format": "outcome-doctrine-poster",
+        "purpose": "Leave a memorable distinction and usable question, not another table.",
+        "camera": "Quiet wide closing image with a human-scale object.",
+        "assetPrompt": "A closed cream planning folio with a teal corner tab on a wide walnut table in a modest community room at dusk. No people; the room is quiet, not celebrating. A single warm practical lamp at far LEFT; soft blue window depth at far RIGHT. Folio is small in LOWER CENTER, with rich but restrained material detail. UPPER TWO THIRDS provide deep uninterrupted atmospheric space for oversized doctrine typography. No marks, numbers, writing, clocks, evidence, signatures or implied final arrangement. A reflective ending, not a completed outcome.",
+        "composition": "SUCCESS and DONE are separated by a large not-equal sign; four short worksheet prompts follow on a single quiet line around the folio.",
+        "palette": "dark",
+        "motion": "The closing rule appears slowly and holds; the material scene recedes slightly as the worksheet invitation arrives."
+      }
+    ]
+  },
+  "compositions": {
+    "version": "section-compositions.v1",
+    "canvas": [
+      1920,
+      1080
+    ],
+    "sections": {
+      "01/01": {
+        "camera": [
+          -22,
+          10,
+          28,
+          -6
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 1160,
+            "height": 1080,
+            "fill": "#071420",
+            "opacity": 0.83
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "value": "INSPECT",
+            "x": 90,
+            "y": 310,
+            "size": 150,
+            "weight": 700,
+            "fill": "#f8f2e3"
+          },
+          {
+            "type": "text",
+            "value": "C-17",
+            "x": 100,
+            "y": 425,
+            "size": 88,
+            "fill": "#88dccf"
+          },
+          {
+            "type": "path",
+            "d": "M 90 478 H 930",
+            "stroke": "#aac3ca",
+            "strokeWidth": 3
+          },
+          {
+            "type": "text",
+            "x": 90,
+            "y": 585,
+            "size": 70,
+            "width": 990,
+            "fill": "#ffd19a",
+            "value": "QUEUED: PUBLISH C-17"
+          },
+          {
+            "type": "path",
+            "d": "M 82 650 H 1005",
+            "stroke": "#f3b260",
+            "strokeWidth": 9,
+            "states": [
+              1,
+              2
+            ]
+          },
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 95,
+            "y": 790,
+            "size": 58,
+            "width": 1250,
+            "fill": "#f8f2e3"
+          }
+        ]
+      },
+      "01/02": {
+        "camera": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 1920,
+            "height": 900,
+            "fill": "#07111b",
+            "opacity": 0.4
+          },
+          {
+            "x": 70,
+            "y": 510,
+            "width": 1750,
+            "height": 350,
+            "fill": "#071420",
+            "opacity": 0.87
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 90,
+            "y": 195,
+            "size": 80,
+            "width": 1740,
+            "fill": "#f1f5e9",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "operation = ADJUDICATE",
+            "x": 605,
+            "y": 288,
+            "size": 56,
+            "fill": "#b5d4d7"
+          },
+          {
+            "type": "path",
+            "d": "M 960 313 V 342 M 630 412 L 960 342 L 1290 412 L 960 485 Z M 960 485 V 537 H 420 V 587 M 960 537 H 1470 V 587",
+            "stroke": "#7ddcc9",
+            "strokeWidth": 5,
+            "fill": "#112834"
+          },
+          {
+            "type": "text",
+            "value": "dangerous-tool ?",
+            "x": 693,
+            "y": 435,
+            "size": 62,
+            "fill": "#ffffff"
+          },
+          {
+            "type": "text",
+            "value": "MATCH",
+            "x": 190,
+            "y": 622,
+            "size": 52,
+            "fill": "#c8d3d4"
+          },
+          {
+            "type": "text",
+            "value": "OTHER NAME",
+            "x": 1250,
+            "y": 622,
+            "size": 52,
+            "fill": "#c8d3d4"
+          },
+          {
+            "type": "text",
+            "value": "\"OPERATOR_REQUIRED\"",
+            "x": 110,
+            "y": 713,
+            "size": 56,
+            "fill": "#ffcf8a",
+            "states": [
+              1,
+              2
+            ]
+          },
+          {
+            "type": "text",
+            "value": "\"ALLOW\"",
+            "x": 1270,
+            "y": 718,
+            "size": 84,
+            "fill": "#ffffff",
+            "states": [
+              2
+            ]
+          },
+          {
+            "type": "text",
+            "value": "RETURNED LABELS ONLY",
+            "x": 615,
+            "y": 790,
+            "size": 54,
+            "fill": "#ffcf8a",
+            "states": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      "01/03": {
+        "camera": [
+          -10,
+          8,
+          16,
+          -8
+        ],
+        "shade": [
+          {
+            "x": 780,
+            "y": 120,
+            "width": 1140,
+            "height": 740,
+            "fill": "#08121e",
+            "opacity": 0.78
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "value": "CHANGE ONE INPUT",
+            "x": 80,
+            "y": 235,
+            "size": 60,
+            "fill": "#e8d5ae"
+          },
+          {
+            "type": "text",
+            "value": "publish-alias",
+            "x": 100,
+            "y": 400,
+            "size": 94,
+            "width": 760,
+            "fill": "#ffffff",
+            "rotation": -7
+          },
+          {
+            "type": "path",
+            "d": "M 100 487 L 775 405",
+            "stroke": "#fbc87e",
+            "strokeWidth": 4
+          },
+          {
+            "type": "text",
+            "value": "ADJUDICATE stays fixed",
+            "x": 80,
+            "y": 600,
+            "size": 52,
+            "width": 720,
+            "fill": "#d2dadb"
+          },
+          {
+            "type": "text",
+            "value": "\"ALLOW\"",
+            "x": 1010,
+            "y": 400,
+            "size": 142,
+            "fill": "#f7f4df",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "ref": "lines.0",
+            "x": 985,
+            "y": 578,
+            "size": 62,
+            "width": 825,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "ref": "lines.1",
+            "x": 985,
+            "y": 717,
+            "size": 58,
+            "width": 825,
+            "fill": "#ffd49b",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "01/04": {
+        "camera": [
+          -12,
+          2,
+          10,
+          -2
+        ],
+        "shade": [
+          {
+            "x": 45,
+            "y": 110,
+            "width": 1180,
+            "height": 695,
+            "fill": "#fffaf0",
+            "opacity": 0.84
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 90,
+            "y": 220,
+            "size": 88,
+            "weight": 700,
+            "width": 1740,
+            "fill": "#102c39"
+          },
+          {
+            "type": "rect",
+            "x": 110,
+            "y": 288,
+            "width": 1080,
+            "height": 451,
+            "rx": 30,
+            "fill": "none",
+            "stroke": "#244c57",
+            "strokeWidth": 7
+          },
+          {
+            "type": "text",
+            "value": "ORGANIZATION",
+            "x": 150,
+            "y": 370,
+            "size": 66,
+            "weight": 700,
+            "fill": "#244c57"
+          },
+          {
+            "type": "rect",
+            "x": 155,
+            "y": 415,
+            "width": 760,
+            "height": 245,
+            "rx": 20,
+            "fill": "#daece4",
+            "stroke": "#688b82",
+            "strokeWidth": 4,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Delegated operator",
+            "x": 190,
+            "y": 502,
+            "size": 61,
+            "width": 700,
+            "fill": "#163c40",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Within this grant",
+            "x": 190,
+            "y": 599,
+            "size": 58,
+            "fill": "#163c40",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Inspect + C-17 + read-only",
+            "x": 150,
+            "y": 706,
+            "size": 51,
+            "fill": "#163c40",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "PERSON",
+            "x": 1325,
+            "y": 386,
+            "size": 68,
+            "fill": "#143342",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "asks to inspect",
+            "x": 1295,
+            "y": 495,
+            "size": 57,
+            "width": 530,
+            "fill": "#143342"
+          },
+          {
+            "type": "path",
+            "d": "M 1270 540 H 1210 l 14 -11 m -14 11 l 14 11",
+            "stroke": "#8b5b2f",
+            "strokeWidth": 5
+          }
+        ]
+      },
+      "01/05": {
+        "camera": [
+          0,
+          7,
+          0,
+          -7
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 100,
+            "width": 1920,
+            "height": 700,
+            "fill": "#070e17",
+            "opacity": 0.58
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 90,
+            "y": 230,
+            "size": 92,
+            "width": 1740,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "rect",
+            "x": 90,
+            "y": 370,
+            "width": 400,
+            "height": 178,
+            "rx": 20,
+            "fill": "#112c3a",
+            "stroke": "#88b9c8",
+            "strokeWidth": 4
+          },
+          {
+            "type": "rect",
+            "x": 760,
+            "y": 370,
+            "width": 400,
+            "height": 178,
+            "rx": 20,
+            "fill": "#173542",
+            "stroke": "#ffd095",
+            "strokeWidth": 6
+          },
+          {
+            "type": "rect",
+            "x": 1430,
+            "y": 370,
+            "width": 400,
+            "height": 178,
+            "rx": 20,
+            "fill": "#112c3a",
+            "stroke": "#88b9c8",
+            "strokeWidth": 4
+          },
+          {
+            "type": "text",
+            "value": "AGENT",
+            "x": 160,
+            "y": 480,
+            "size": 73,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "DISPATCHER",
+            "x": 783,
+            "y": 479,
+            "size": 57,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "EFFECT",
+            "x": 1484,
+            "y": 480,
+            "size": 70,
+            "fill": "#d3dee0",
+            "weight": 700
+          },
+          {
+            "type": "path",
+            "d": "M 490 460 H 744 l -17 -12 m 17 12 l -17 12 M 1160 460 H 1414 l -17 -12 m 17 12 l -17 12",
+            "stroke": "#a0c5cf",
+            "strokeWidth": 5
+          },
+          {
+            "type": "path",
+            "d": "M 1198 315 V 600",
+            "stroke": "#efb976",
+            "strokeWidth": 10
+          },
+          {
+            "type": "text",
+            "value": "Credential stays here",
+            "x": 690,
+            "y": 661,
+            "size": 59,
+            "fill": "#ffd095"
+          },
+          {
+            "type": "text",
+            "value": "Unavailable → HOLD",
+            "x": 650,
+            "y": 770,
+            "size": 64,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          }
+        ],
+        "traces": [
+          {
+            "from": [
+              503,
+              460
+            ],
+            "to": [
+              742,
+              460
+            ],
+            "start": 0.4,
+            "duration": 3,
+            "color": "#87f5d9",
+            "size": 22,
+            "states": [
+              0
+            ]
+          }
+        ]
+      },
+      "01/06": {
+        "camera": [
+          -9,
+          -7,
+          12,
+          5
+        ],
+        "shade": [
+          {
+            "x": 50,
+            "y": 150,
+            "width": 1810,
+            "height": 650,
+            "fill": "#071621",
+            "opacity": 0.62
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 80,
+            "y": 234,
+            "size": 88,
+            "width": 1740,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "path",
+            "d": "M 75 302 H 1050 V 745 H 1840",
+            "stroke": "#87a6ae",
+            "strokeWidth": 3
+          },
+          {
+            "type": "text",
+            "value": "PUBLICATION PROBE",
+            "x": 105,
+            "y": 378,
+            "size": 53,
+            "fill": "#f2c58f"
+          },
+          {
+            "type": "text",
+            "value": "0",
+            "x": 140,
+            "y": 578,
+            "size": 188,
+            "fill": "#fff7e6",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "effect calls",
+            "x": 318,
+            "y": 539,
+            "size": 63,
+            "fill": "#ffffff"
+          },
+          {
+            "type": "text",
+            "value": "HELD",
+            "x": 125,
+            "y": 686,
+            "size": 75,
+            "fill": "#f2c58f",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "INSPECTION PROBE",
+            "x": 1120,
+            "y": 391,
+            "size": 52,
+            "fill": "#a4d6d4",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "1",
+            "x": 1125,
+            "y": 587,
+            "size": 188,
+            "fill": "#ffffff",
+            "weight": 700,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "read",
+            "x": 1308,
+            "y": 550,
+            "size": 73,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "PERMIT",
+            "x": 1128,
+            "y": 691,
+            "size": 73,
+            "fill": "#a4d6d4",
+            "weight": 700,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "ONE TOY OBSERVER / ONE SESSION",
+            "x": 590,
+            "y": 790,
+            "size": 44,
+            "fill": "#d2dfdf"
+          }
+        ]
+      },
+      "01/07": {
+        "camera": [
+          -7,
+          3,
+          7,
+          -3
+        ],
+        "shade": [
+          {
+            "x": 55,
+            "y": 180,
+            "width": 1080,
+            "height": 620,
+            "fill": "#fffaf0",
+            "opacity": 0.91
+          },
+          {
+            "x": 1160,
+            "y": 205,
+            "width": 760,
+            "height": 585,
+            "fill": "#0a1722",
+            "opacity": 0.8
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "value": "C-17 / INSPECTION",
+            "x": 100,
+            "y": 279,
+            "size": 69,
+            "weight": 700,
+            "fill": "#17323b"
+          },
+          {
+            "type": "path",
+            "d": "M 100 313 H 1060",
+            "stroke": "#b6ad94",
+            "strokeWidth": 3
+          },
+          {
+            "type": "text",
+            "value": "Title",
+            "x": 115,
+            "y": 423,
+            "size": 71,
+            "fill": "#233840"
+          },
+          {
+            "type": "text",
+            "value": "PASS",
+            "x": 718,
+            "y": 423,
+            "size": 69,
+            "weight": 700,
+            "fill": "#1e6959"
+          },
+          {
+            "type": "text",
+            "value": "Owner",
+            "x": 115,
+            "y": 538,
+            "size": 71,
+            "fill": "#233840"
+          },
+          {
+            "type": "text",
+            "value": "PASS",
+            "x": 718,
+            "y": 538,
+            "size": 69,
+            "weight": 700,
+            "fill": "#1e6959"
+          },
+          {
+            "type": "text",
+            "value": "Summary",
+            "x": 115,
+            "y": 659,
+            "size": 71,
+            "fill": "#233840"
+          },
+          {
+            "type": "text",
+            "value": "MISSING",
+            "x": 685,
+            "y": 659,
+            "size": 68,
+            "weight": 700,
+            "fill": "#a05a1d"
+          },
+          {
+            "type": "text",
+            "value": "PUBLISHED",
+            "x": 1220,
+            "y": 371,
+            "size": 64,
+            "fill": "#e1e7df"
+          },
+          {
+            "type": "text",
+            "value": "false",
+            "x": 1250,
+            "y": 506,
+            "size": 109,
+            "fill": "#ffffff"
+          },
+          {
+            "type": "text",
+            "value": "→ false",
+            "x": 1245,
+            "y": 647,
+            "size": 105,
+            "fill": "#ffffff"
+          },
+          {
+            "type": "text",
+            "value": "Useful work. Limited result.",
+            "x": 105,
+            "y": 758,
+            "size": 53,
+            "fill": "#17323b",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "01/08": {
+        "camera": [
+          -12,
+          0,
+          12,
+          0
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 100,
+            "width": 1920,
+            "height": 530,
+            "fill": "#091423",
+            "opacity": 0.8
+          },
+          {
+            "x": 80,
+            "y": 640,
+            "width": 1750,
+            "height": 195,
+            "fill": "#071420",
+            "opacity": 0.92
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 85,
+            "y": 220,
+            "size": 80,
+            "width": 1740,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "GRANT",
+            "x": 135,
+            "y": 365,
+            "size": 62,
+            "fill": "#bcd9e0"
+          },
+          {
+            "type": "text",
+            "value": "C-17",
+            "x": 115,
+            "y": 512,
+            "size": 146,
+            "fill": "#ffffff"
+          },
+          {
+            "type": "text",
+            "value": "≠",
+            "x": 881,
+            "y": 493,
+            "size": 153,
+            "fill": "#f4c58d"
+          },
+          {
+            "type": "text",
+            "value": "REQUEST",
+            "x": 1275,
+            "y": 365,
+            "size": 62,
+            "fill": "#bcd9e0"
+          },
+          {
+            "type": "text",
+            "value": "C-18",
+            "x": 1260,
+            "y": 512,
+            "size": 146,
+            "fill": "#ffffff"
+          },
+          {
+            "type": "path",
+            "d": "M 485 575 H 888 M 1032 575 H 1430",
+            "stroke": "#b4cbd3",
+            "strokeWidth": 5
+          },
+          {
+            "type": "text",
+            "value": "HOLD",
+            "x": 800,
+            "y": 709,
+            "size": 117,
+            "fill": "#ffd094",
+            "weight": 700,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Changed arguments also require a new match.",
+            "x": 205,
+            "y": 790,
+            "size": 54,
+            "width": 1520,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "01/09": {
+        "camera": [
+          -16,
+          0,
+          18,
+          0
+        ],
+        "shade": [
+          {
+            "x": 60,
+            "y": 200,
+            "width": 1060,
+            "height": 560,
+            "fill": "#faf6e9",
+            "opacity": 0.9
+          },
+          {
+            "x": 1200,
+            "y": 180,
+            "width": 720,
+            "height": 650,
+            "fill": "#07111d",
+            "opacity": 0.57
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 80,
+            "y": 179,
+            "size": 79,
+            "width": 1740,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "DENIED DISPATCH",
+            "x": 125,
+            "y": 310,
+            "size": 62,
+            "fill": "#263a40",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "Observer sees no effect call.",
+            "x": 125,
+            "y": 410,
+            "size": 55,
+            "width": 930,
+            "fill": "#263a40"
+          },
+          {
+            "type": "path",
+            "d": "M 115 465 H 1045",
+            "stroke": "#8a9a91",
+            "strokeWidth": 3
+          },
+          {
+            "type": "text",
+            "value": "INSPECTION OUTPUT",
+            "x": 125,
+            "y": 559,
+            "size": 62,
+            "fill": "#263a40",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "Same bound request + session",
+            "x": 125,
+            "y": 662,
+            "size": 54,
+            "width": 930,
+            "fill": "#263a40"
+          },
+          {
+            "type": "path",
+            "d": "M 1150 250 V 741 M 1175 480 H 1310",
+            "stroke": "#ffc477",
+            "strokeWidth": 4,
+            "dash": "14 12"
+          },
+          {
+            "type": "text",
+            "value": "SHELL?",
+            "x": 1330,
+            "y": 369,
+            "size": 88,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "ADAPTER?",
+            "x": 1260,
+            "y": 510,
+            "size": 80,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "UNVERIFIED",
+            "x": 1245,
+            "y": 687,
+            "size": 70,
+            "fill": "#ffcb87",
+            "weight": 700,
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "01/10": {
+        "camera": [
+          0,
+          -7,
+          0,
+          10
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 100,
+            "width": 1140,
+            "height": 790,
+            "fill": "#07131f",
+            "opacity": 0.76
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "value": "LABEL",
+            "x": 85,
+            "y": 287,
+            "size": 145,
+            "fill": "#ffffff",
+            "weight": 700,
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "≠",
+            "x": 95,
+            "y": 470,
+            "size": 169,
+            "fill": "#ffc782",
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "OFF SWITCH",
+            "x": 90,
+            "y": 621,
+            "size": 120,
+            "fill": "#ffffff",
+            "weight": 700,
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Effect · grant · dispatcher",
+            "x": 90,
+            "y": 765,
+            "size": 60,
+            "fill": "#c7dbdd",
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "NEXT:",
+            "x": 90,
+            "y": 270,
+            "size": 77,
+            "fill": "#ffc782",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "BOOKED.\nSTILL STUCK.",
+            "x": 90,
+            "y": 420,
+            "size": 103,
+            "width": 1110,
+            "fill": "#ffffff",
+            "weight": 700,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Tool success ≠ task complete",
+            "x": 90,
+            "y": 737,
+            "size": 61,
+            "width": 1220,
+            "fill": "#c7dbdd",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "02/01": {
+        "camera": [
+          -20,
+          3,
+          12,
+          -3
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 100,
+            "width": 1220,
+            "height": 740,
+            "fill": "#081829",
+            "opacity": 0.76
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 85,
+            "y": 218,
+            "size": 89,
+            "width": 1260,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "path",
+            "d": "M 110 296 H 760 L 800 337 V 635 H 110 Z M 760 296 V 337 H 800",
+            "fill": "#f9f0db",
+            "stroke": "#d1bb99",
+            "strokeWidth": 3,
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "RESERVATION",
+            "x": 155,
+            "y": 392,
+            "size": 61,
+            "fill": "#203c46",
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "R-17",
+            "x": 155,
+            "y": 542,
+            "size": 128,
+            "fill": "#203c46",
+            "weight": 700,
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Agent: “Outing arranged.”",
+            "x": 110,
+            "y": 744,
+            "size": 63,
+            "width": 1120,
+            "fill": "#ffffff",
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "R-17 still exists.",
+            "x": 110,
+            "y": 330,
+            "size": 53,
+            "fill": "#c7e3e2",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "path",
+            "d": "M 150 520 H 1050 l -18 -13 m 18 13 l -18 13",
+            "stroke": "#f2cd91",
+            "strokeWidth": 6,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "circle",
+            "cx": 150,
+            "cy": 520,
+            "r": 15,
+            "fill": "#f2cd91",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "circle",
+            "cx": 1035,
+            "cy": 520,
+            "r": 15,
+            "fill": "#f2cd91",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "LAST BUS",
+            "x": 105,
+            "y": 460,
+            "size": 59,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "EVENT ENDS",
+            "x": 770,
+            "y": 460,
+            "size": 59,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Moving it disrupts other plans.",
+            "x": 100,
+            "y": 713,
+            "size": 58,
+            "width": 1130,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "02/02": {
+        "camera": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 1920,
+            "height": 850,
+            "fill": "#0b1520",
+            "opacity": 0.74
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 85,
+            "y": 191,
+            "size": 79,
+            "width": 1740,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "path",
+            "d": "M 960 320 L 340 555 H 1580 Z",
+            "stroke": "#b7c9ca",
+            "strokeWidth": 3,
+            "fill": "none",
+            "dash": "11 12"
+          },
+          {
+            "type": "text",
+            "value": "COMPLETE?",
+            "x": 680,
+            "y": 325,
+            "size": 90,
+            "fill": "#ffebc9"
+          },
+          {
+            "type": "text",
+            "value": "CHANGE?",
+            "x": 120,
+            "y": 567,
+            "size": 90,
+            "fill": "#ffebc9"
+          },
+          {
+            "type": "text",
+            "value": "CHECK?",
+            "x": 1310,
+            "y": 567,
+            "size": 90,
+            "fill": "#ffebc9"
+          },
+          {
+            "type": "text",
+            "value": "One availability check is allowed.",
+            "x": 380,
+            "y": 715,
+            "size": 63,
+            "width": 1340,
+            "fill": "#ffffff"
+          },
+          {
+            "type": "text",
+            "value": "No booking changes.",
+            "x": 640,
+            "y": 790,
+            "size": 58,
+            "fill": "#ffffff"
+          }
+        ]
+      },
+      "02/03": {
+        "camera": [
+          0,
+          3,
+          0,
+          -3
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 115,
+            "width": 1920,
+            "height": 690,
+            "fill": "#fcf7eb",
+            "opacity": 0.82
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 90,
+            "y": 211,
+            "size": 82,
+            "width": 1740,
+            "fill": "#163340",
+            "weight": 700
+          },
+          {
+            "type": "path",
+            "d": "M 960 275 V 676",
+            "stroke": "#9f8260",
+            "strokeWidth": 4
+          },
+          {
+            "type": "text",
+            "value": "KEEP",
+            "x": 160,
+            "y": 374,
+            "size": 112,
+            "fill": "#214451",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "MOVE",
+            "x": 1110,
+            "y": 374,
+            "size": 112,
+            "fill": "#214451",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "Plans preserved",
+            "x": 160,
+            "y": 500,
+            "size": 65,
+            "fill": "#214451"
+          },
+          {
+            "type": "text",
+            "value": "Two excluded",
+            "x": 160,
+            "y": 603,
+            "size": 65,
+            "fill": "#214451"
+          },
+          {
+            "type": "text",
+            "value": "Might help two",
+            "x": 1110,
+            "y": 500,
+            "size": 65,
+            "fill": "#214451"
+          },
+          {
+            "type": "text",
+            "value": "Other plans at risk",
+            "x": 1110,
+            "y": 603,
+            "size": 63,
+            "width": 715,
+            "fill": "#214451"
+          },
+          {
+            "type": "text",
+            "value": "Needs unresolved · Coordinator decides",
+            "x": 305,
+            "y": 765,
+            "size": 60,
+            "width": 1520,
+            "fill": "#704b2a",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "02/04": {
+        "camera": [
+          -8,
+          4,
+          8,
+          -4
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 110,
+            "width": 1920,
+            "height": 700,
+            "fill": "#f3f5e9",
+            "opacity": 0.55
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 90,
+            "y": 202,
+            "size": 80,
+            "width": 1740,
+            "fill": "#193844",
+            "weight": 700
+          },
+          {
+            "type": "path",
+            "d": "M 80 288 L 665 245 V 468 L 80 513 Z",
+            "fill": "#eef7ee",
+            "stroke": "#73989a",
+            "strokeWidth": 3
+          },
+          {
+            "type": "path",
+            "d": "M 650 421 L 1250 378 V 607 L 650 652 Z",
+            "fill": "#e3eeee",
+            "stroke": "#73989a",
+            "strokeWidth": 3
+          },
+          {
+            "type": "path",
+            "d": "M 1215 565 L 1830 520 V 746 L 1215 791 Z",
+            "fill": "#f8edda",
+            "stroke": "#a18966",
+            "strokeWidth": 3
+          },
+          {
+            "type": "text",
+            "value": "TOOL RESPONSE",
+            "x": 110,
+            "y": 348,
+            "size": 49,
+            "fill": "#345761"
+          },
+          {
+            "type": "text",
+            "value": "success: true",
+            "x": 113,
+            "y": 449,
+            "size": 68,
+            "fill": "#153943",
+            "states": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "type": "text",
+            "value": "VENUE RECORD",
+            "x": 685,
+            "y": 486,
+            "size": 49,
+            "fill": "#345761"
+          },
+          {
+            "type": "text",
+            "value": "R-17 exists",
+            "x": 691,
+            "y": 586,
+            "size": 68,
+            "fill": "#153943",
+            "states": [
+              1,
+              2
+            ]
+          },
+          {
+            "type": "text",
+            "value": "REQUIRED RESULT",
+            "x": 1250,
+            "y": 624,
+            "size": 46,
+            "fill": "#715333"
+          },
+          {
+            "type": "text",
+            "value": "UNRESOLVED",
+            "x": 1245,
+            "y": 725,
+            "size": 63,
+            "fill": "#845b2c",
+            "weight": 700,
+            "states": [
+              2
+            ]
+          }
+        ]
+      },
+      "02/05": {
+        "camera": [
+          -4,
+          2,
+          7,
+          -2
+        ],
+        "shade": [
+          {
+            "x": 150,
+            "y": 230,
+            "width": 1550,
+            "height": 555,
+            "fill": "#fffaec",
+            "opacity": 0.92
+          },
+          {
+            "x": 55,
+            "y": 120,
+            "width": 1700,
+            "height": 100,
+            "fill": "#071420",
+            "opacity": 0.92
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 90,
+            "y": 187,
+            "size": 78,
+            "width": 1740,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "R-17",
+            "x": 1430,
+            "y": 311,
+            "size": 69,
+            "fill": "#52666a"
+          },
+          {
+            "type": "text",
+            "value": "Everyone can attend.",
+            "x": 250,
+            "y": 478,
+            "size": 103,
+            "width": 1390,
+            "fill": "#283d43",
+            "rotation": -3,
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "path",
+            "d": "M 225 460 L 1560 377",
+            "stroke": "#b34b35",
+            "strokeWidth": 11,
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "UNSUPPORTED",
+            "x": 250,
+            "y": 665,
+            "size": 81,
+            "fill": "#a34634",
+            "weight": 700,
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Room reserved.",
+            "x": 250,
+            "y": 414,
+            "size": 89,
+            "fill": "#203d42",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Conflict open.",
+            "x": 250,
+            "y": 553,
+            "size": 89,
+            "fill": "#203d42",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "No booking change authorized.",
+            "x": 250,
+            "y": 693,
+            "size": 72,
+            "width": 1400,
+            "fill": "#203d42",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "02/06": {
+        "camera": [
+          12,
+          -3,
+          -10,
+          3
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 95,
+            "width": 1020,
+            "height": 750,
+            "fill": "#091b2b",
+            "opacity": 0.75
+          },
+          {
+            "x": 1050,
+            "y": 240,
+            "width": 785,
+            "height": 520,
+            "fill": "#fff1d4",
+            "opacity": 0.93
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 85,
+            "y": 195,
+            "size": 78,
+            "width": 1740,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "VENUE REPLY",
+            "x": 1090,
+            "y": 331,
+            "size": 54,
+            "fill": "#765437"
+          },
+          {
+            "type": "text",
+            "value": "No other time\navailable.",
+            "x": 1090,
+            "y": 446,
+            "size": 73,
+            "width": 705,
+            "fill": "#233e48",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "Same room.\nSame day.",
+            "x": 1090,
+            "y": 641,
+            "size": 59,
+            "width": 690,
+            "fill": "#233e48"
+          },
+          {
+            "type": "text",
+            "value": "MOVE TODAY",
+            "x": 85,
+            "y": 409,
+            "size": 95,
+            "width": 920,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "path",
+            "d": "M 70 395 L 934 324",
+            "stroke": "#e6b07a",
+            "strokeWidth": 9,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "This room: unavailable.",
+            "x": 85,
+            "y": 538,
+            "size": 61,
+            "width": 900,
+            "fill": "#f4c996",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Travel conflict remains.",
+            "x": 85,
+            "y": 705,
+            "size": 60,
+            "width": 900,
+            "fill": "#ffffff",
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "02/07": {
+        "camera": [
+          -18,
+          3,
+          14,
+          -3
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 0,
+            "width": 1100,
+            "height": 950,
+            "fill": "#091621",
+            "opacity": 0.86
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "value": "ONE CHECK.\nTHEN HAND OFF.",
+            "x": 80,
+            "y": 250,
+            "size": 97,
+            "width": 1100,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "Reservation unchanged.",
+            "x": 90,
+            "y": 496,
+            "size": 67,
+            "width": 995,
+            "fill": "#d4e2e2",
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Two still cannot attend.",
+            "x": 90,
+            "y": 597,
+            "size": 67,
+            "width": 995,
+            "fill": "#d4e2e2",
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "No other time today.",
+            "x": 90,
+            "y": 699,
+            "size": 67,
+            "width": 995,
+            "fill": "#d4e2e2",
+            "states": [
+              0
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Travel? Venue? Keep?",
+            "x": 90,
+            "y": 508,
+            "size": 71,
+            "width": 995,
+            "fill": "#d4e2e2",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "text",
+            "value": "Coordinator decides.",
+            "x": 90,
+            "y": 660,
+            "size": 75,
+            "width": 1030,
+            "fill": "#ffd397",
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "path",
+            "d": "M 90 769 H 1280 l -20 -13 m 20 13 l -20 13",
+            "stroke": "#edc18b",
+            "strokeWidth": 4,
+            "states": [
+              1
+            ]
+          }
+        ]
+      },
+      "02/08": {
+        "camera": [
+          -8,
+          4,
+          8,
+          -4
+        ],
+        "shade": [
+          {
+            "x": 30,
+            "y": 100,
+            "width": 1820,
+            "height": 700,
+            "fill": "#fffbf0",
+            "opacity": 0.72
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 85,
+            "y": 207,
+            "size": 80,
+            "width": 1740,
+            "fill": "#213d45",
+            "weight": 700
+          },
+          {
+            "type": "circle",
+            "cx": 470,
+            "cy": 505,
+            "r": 173,
+            "stroke": "#7b9e92",
+            "strokeWidth": 5,
+            "fill": "none"
+          },
+          {
+            "type": "text",
+            "value": "FACTS",
+            "x": 370,
+            "y": 309,
+            "size": 57,
+            "fill": "#284c4d"
+          },
+          {
+            "type": "text",
+            "value": "LIMIT",
+            "x": 350,
+            "y": 768,
+            "size": 57,
+            "fill": "#284c4d"
+          },
+          {
+            "type": "text",
+            "value": "AUTHORITY",
+            "x": 715,
+            "y": 523,
+            "size": 46,
+            "fill": "#284c4d"
+          },
+          {
+            "type": "text",
+            "value": "STOP",
+            "x": 85,
+            "y": 523,
+            "size": 51,
+            "fill": "#284c4d"
+          },
+          {
+            "type": "text",
+            "value": "PASS",
+            "x": 332,
+            "y": 540,
+            "size": 108,
+            "fill": "#306457",
+            "weight": 700,
+            "states": [
+              1
+            ]
+          },
+          {
+            "type": "path",
+            "d": "M 1140 325 H 1810 V 738 H 1140 V 590 M 1140 475 V 325",
+            "stroke": "#a0835d",
+            "strokeWidth": 6,
+            "fill": "none"
+          },
+          {
+            "type": "text",
+            "value": "OUTING",
+            "x": 1280,
+            "y": 433,
+            "size": 76,
+            "fill": "#36535a"
+          },
+          {
+            "type": "text",
+            "value": "UNRESOLVED",
+            "x": 1190,
+            "y": 614,
+            "size": 70,
+            "width": 590,
+            "fill": "#8d5c2c",
+            "weight": 700
+          }
+        ]
+      },
+      "02/09": {
+        "camera": [
+          0,
+          -9,
+          0,
+          11
+        ],
+        "shade": [
+          {
+            "x": 0,
+            "y": 90,
+            "width": 1920,
+            "height": 700,
+            "fill": "#061521",
+            "opacity": 0.62
+          },
+          {
+            "x": 75,
+            "y": 660,
+            "width": 1750,
+            "height": 180,
+            "fill": "#071420",
+            "opacity": 0.92
+          }
+        ],
+        "elements": [
+          {
+            "type": "text",
+            "ref": "title",
+            "x": 100,
+            "y": 222,
+            "size": 81,
+            "width": 1740,
+            "fill": "#d4e6e5"
+          },
+          {
+            "type": "text",
+            "value": "SUCCESS",
+            "x": 135,
+            "y": 475,
+            "size": 141,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "text",
+            "value": "≠",
+            "x": 890,
+            "y": 480,
+            "size": 160,
+            "fill": "#efc28b"
+          },
+          {
+            "type": "text",
+            "value": "DONE",
+            "x": 1145,
+            "y": 475,
+            "size": 141,
+            "fill": "#ffffff",
+            "weight": 700
+          },
+          {
+            "type": "path",
+            "d": "M 145 562 H 1770",
+            "stroke": "#91b7ba",
+            "strokeWidth": 3
+          },
+          {
+            "type": "text",
+            "value": "Action / Result / Evidence / Stop",
+            "x": 235,
+            "y": 690,
+            "size": 70,
+            "width": 1510,
+            "fill": "#d4e6e5"
+          },
+          {
+            "type": "text",
+            "value": "Keep the useful partial result.",
+            "x": 410,
+            "y": 790,
+            "size": 62,
+            "width": 1420,
+            "fill": "#efc28b",
+            "states": [
+              1
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

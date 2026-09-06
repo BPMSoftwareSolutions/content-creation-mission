@@ -16,15 +16,18 @@ Now the producer can listen, bring the voice into the cut, and continue the work
 The provider changed. The story stayed hers.'''
 SHORT_VOICEOVER='''Her cut is ready, but the voice provider is not. Keep the script. Check the route. The first alternative cannot make audio. The next one can. Materialize the response, verify the file, and return the narration to the producer. The provider changed. The story stayed hers.'''
 def digest(b):return hashlib.sha256(b).hexdigest()
-def speech(text,name):
-    payload={'contents':[{'parts':[{'text':'Read the following exact script with natural documentary pacing, approximately 145 words per minute. No introduction or added words.\n'+text}]}],
-      'generationConfig':{'responseModalities':['AUDIO'],'speechConfig':{'voiceConfig':{'prebuiltVoiceConfig':{'voiceName':'Kore'}}}}}
+def speech(text,name,profile=None):
+    profile=profile or {'provider':'Gemini','model':'gemini-2.5-flash-preview-tts','voice':'Kore',
+      'instruction':'Read the following exact script with natural documentary pacing, approximately 145 words per minute. No introduction or added words.\n'}
+    if profile['provider']!='Gemini':raise ValueError('Unsupported speech provider')
+    payload={'contents':[{'parts':[{'text':profile['instruction']+text}]}],
+      'generationConfig':{'responseModalities':['AUDIO'],'speechConfig':{'voiceConfig':{'prebuiltVoiceConfig':{'voiceName':profile['voice']}}}}}
     raw=json.dumps(payload).encode();request_digest=digest(raw)
     audio=OUT/f'{name}.wav';receipt=OUT/f'{name}.receipt.json'
     if audio.exists() and receipt.exists():
         r=json.loads(receipt.read_bytes())
-        if r['requestDigest']==request_digest and digest(audio.read_bytes())==r['audioDigest']:return r
-    req=urllib.request.Request('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent',data=raw,
+        if r['requestDigest']==request_digest and r['model']==profile['model'] and digest(audio.read_bytes())==r['audioDigest']:return r
+    req=urllib.request.Request('https://generativelanguage.googleapis.com/v1beta/models/'+profile['model']+':generateContent',data=raw,
       headers={'Content-Type':'application/json','x-goog-api-key':api_key()})
     start=time.monotonic()
     with urllib.request.urlopen(req,timeout=180) as response:result=json.load(response)
@@ -34,7 +37,7 @@ def speech(text,name):
     pcm=base64.b64decode(inline['data'],validate=True)
     if not pcm or len(pcm)%2:raise ValueError('UNUSABLE_AUDIO_PAYLOAD')
     with wave.open(str(audio),'wb') as w:w.setnchannels(1);w.setsampwidth(2);w.setframerate(24000);w.writeframes(pcm)
-    r={'provider':'Gemini','model':'gemini-2.5-flash-preview-tts','voice':'Kore','script':text,'requestDigest':request_digest,
+    r={'provider':profile['provider'],'model':profile['model'],'voice':profile['voice'],'script':text,'requestDigest':request_digest,
        'audioDigest':digest(audio.read_bytes()),'audioFile':audio.name,'durationSeconds':len(pcm)/48000,
        'elapsedSeconds':round(time.monotonic()-start,3),'status':'MATERIALIZED','execution':'LIVE_PROVIDER_IN_LOCAL_LAB'}
     receipt.write_text(json.dumps(r,indent=2));return r

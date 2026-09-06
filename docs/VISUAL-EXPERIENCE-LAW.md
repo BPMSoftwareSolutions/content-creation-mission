@@ -31,3 +31,24 @@ hashes. Regeneration invalidates the old receipt.
 
 The original ceramic-tabletop pilot fails this law. Its media remain historical
 artifacts and must not be described as the accepted visual system.
+
+## Subsection direction and visual production
+
+The user explicitly rejected blanket layout reuse. Each subsection must have its
+own teaching purpose, visual format, composition, camera, material asset and motion
+direction authored in JSON. Reusing fonts, colors or rendering primitives does not
+authorize reusing a subsection skeleton. A missing composition stops the build;
+there is no default card layout. Assess the resulting teaching experience visually,
+not by counting format names.
+
+Infographic grammar governs composition. Canonical meaning projects through SCL
+and deterministic SVG; it does not become execution proof. Gemini Nano Banana is
+the preferred material/environment enhancement provider. Generated pixels may
+never author topology, labels, identities, routes, claims, evidence or status.
+Keep the clean SVG independently. Review the generated material before compositing
+and the encoded composite afterward, binding both reviews to exact artifact hashes.
+
+Revision 03 uses individually staged stills, camera motion and authored semantic
+reveals. It does not claim generated human performances or label-free comprehension
+of exact authority/evidence distinctions. Continuous human playback and learner
+assessment remain separate from sampled production review.

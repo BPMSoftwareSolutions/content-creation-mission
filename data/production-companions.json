@@ -1,0 +1,33 @@
+{
+  "companionVersion": "production-companions.v1",
+  "records": [
+    {
+      "id": "boundary-evidence-checklist",
+      "title": "Before trusting an agent permission label",
+      "filename": "boundary-evidence-checklist.md",
+      "sections": [
+        {"title": "Use it on one consequential action", "items": ["Name the effect and exact object. What would change for whom?", "Write the user's request separately from the organization's grant and any operator approval.", "Bind the permitted action, object, arguments, caller and policy version. Who can change that grant?", "Locate the dispatcher and the effect credential. Which component can actually prevent dispatch?", "Observe one denied attempt and one permitted output in the same session. State what the observer can and cannot see.", "Change an object or argument. Does the old grant stop matching? Test unavailable authorization too.", "Name an alternate route, such as a shell or second adapter. Mark it unverified until there is evidence."]},
+        {"title": "Worked example / frozen rule", "items": ["For operation ADJUDICATE, the frozen name test returns OPERATOR_REQUIRED for dangerous-tool and ALLOW for publish-alias. This is a local evaluation of a pinned expression, not an escaped live effect.", "That expression contains no grant check. Its returned ALLOW label is not the proposed design's PERMIT decision."]},
+        {"title": "Worked example / local toy simulation", "items": ["Grant: editor may inspect C-17 with readOnly=true, policy toy-v1. Publication attempt held; the local dispatcher records zero effect calls.", "Inspection returns title and owner as passing, required summary as missing. C-17 published state remains false.", "Inspection of C-18 with the C-17 grant is held. Changed readOnly arguments and unavailable authorization are also held.", "The observer is the local dispatcher function, not the agent. Its record covers only this toy route. Production credential isolation, shell routes, other adapters and other sessions remain unverified."]},
+        {"title": "Fresh public exercise", "items": ["A draft-email agent has a grant to draft message M-8 for recipient A. Its tool returns ALLOW after the recipient is changed to B. What additional checks and observations would you need before sending?", "Write your effect, bound identity, enforcing component, changed condition and unobserved route. Do not infer that a send occurred from the label."]},
+        {"title": "Relationship to established guidance", "items": ["OWASP Excessive Agency guidance recommends limiting tool functionality and permissions and validating downstream requests. This lesson isolates one concrete failure of a name test and one proposed place to enforce a bound grant."]}
+      ],
+      "links": [{"label": "OWASP: Excessive Agency", "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/"}],
+      "scope": "Public exercise newly authored for this edition. No reserved pilot assessment is included. No production boundary proof or learner validation is claimed."
+    },
+    {
+      "id": "outcome-check-worksheet",
+      "title": "Before an agent says the task is done",
+      "filename": "outcome-check-worksheet.md",
+      "sections": [
+        {"title": "Write five lines", "items": ["Action completed: what did the tool actually return?", "Result required: whose need or constraint must be met?", "Evidence: what resulting state was checked independently of the tool transcript?", "Remaining limitation: what is unresolved, and who may accept it?", "Stopping rule: which bounded next check is authorized, and when must the agent hand off?"]},
+        {"title": "Worked case / newly authored fiction", "items": ["Tool response: reservation R-17 succeeded. Venue fixture: reservation exists. Two members report they cannot attend because their last bus leaves before the event ends. Others have planned around the original time.", "Grant: check one alternative time with the venue; do not change the booking. Completion would overstate the result; rescheduling would exceed authority.", "New fictional venue reply: no alternative time exists for this room that day. Moving within that room and day is removed. Travel, other venues and other dates have not been exhausted.", "Handoff: room reserved and unchanged; two members still cannot attend; the authorized check is complete. Coordinator: authorize a travel check, consider another venue, or keep the booking with its limitation explicit."]},
+        {"title": "Compare alternatives on the same dimensions", "items": ["KEEP — People: existing plans preserved, two excluded. Unknown: acceptable travel option. Authority: coordinator decides whether to retain with limitation explicit.", "MOVE — People: might help two, might disrupt others. Unknown: acceptable different venue/date. Authority: coordinator must authorize any booking change.", "After the new fact, moving within this room and day is unavailable. That does not resolve the attendance conflict or justify changing some other booking."]},
+        {"title": "Evaluate the report separately from the outing", "items": ["Supported facts: reservation exists; no unsupported claim that everyone can attend.", "Unmet requirement visible: attendance conflict explicitly reported.", "Authority respected: no booking change.", "Inquiry bounded: one authorized check completed, then stopped and handed off.", "A corrected handoff can pass these behavioral checks while the required outing result remains unresolved. This is an illustrative rubric over authored fields, not an agent benchmark."]},
+        {"title": "Fresh public exercise", "items": ["An agent creates a support ticket and reports the customer's issue fixed. The ticket exists, but the customer has not tested the proposed repair. The agent may request one diagnostic result; it may not close the ticket. Write its corrected report and stopping rule.", "Separate ticket creation, evidence of a working repair, the permitted inquiry and the decision to close. Do not invent a customer response."]}
+      ],
+      "links": [],
+      "scope": "A-W1-public-engineering-r2 is a newly authored public variant. The controlled A-W1 workshop and reserved assessments remain unchanged. No learner validation is claimed."
+    }
+  ]
+}

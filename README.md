@@ -1,5 +1,26 @@
 # Content Creation Mission
 
+## Revised Episodes 1 and 2 / published September 6, 2026
+
+Revision 03 is public on the SideFX YouTube channel:
+- [Episode 1 — An AI Permission Check Is Not an Off Switch](https://youtu.be/lmhvnrWeniU)
+- [Episode 2 — The AI Tool Succeeded. The Task Is Still Unresolved.](https://youtu.be/PgEm0vHZ_6s)
+
+Both have prepared custom thumbnails, published English SRT tracks, chaptered descriptions and AI disclosures. Publication facts and exact uploaded asset hashes are in [`data/youtube-publications.json`](data/youtube-publications.json). Original uploads remain available. The local review package and immutable render receipts preserve their pre-publication review state.
+
+### Local review artifacts
+
+The revised films and companion worksheets are at
+[`releases/revision-review/index.html`](releases/revision-review/index.html).
+The revised films are now published at the links above. The previously deployed landing pages still show their earlier editions.
+Episode content now lives in [`data/content-production.json`](data/content-production.json),
+with shared workers consuming versioned records. See the
+[production store guide](docs/CONTENT-PRODUCTION-STORE.md) for authoring and rebuilds.
+Revision 03 gives all 19 subsections individually authored compositions and Gemini Nano Banana material assets, with independent SVG semantics and timed reveals. Visual direction and geometry live in JSON alongside the content.
+
+The [critique response](releases/revision-review/critique-response.md) separates completed
+production checks from pending human listening, learner feedback and publication checks.
+
 ## SideFX Circuit Language
 
 The [SCL workbench](http://127.0.0.1:8766/samples/scl/index.html) reveals all
@@ -267,7 +288,7 @@ Gemini request manifests. It writes only inside this content lab.
 cd C:\lab\repos\content-creation-mission
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe scripts/content_lab.py --source 
+.\.venv\Scripts\python.exe scripts/content_lab.py --source
 ..\agentic-harness --samples 20 --formats scenario-triptych,linkedin-square,youtube-thumbnail,shorts,website-hero,infographic,capability-cover
 .\.venv\Scripts\python.exe scripts/test_content_lab.py
 .\.venv\Scripts\python.exe scripts/generate_gemini.py --limit 1

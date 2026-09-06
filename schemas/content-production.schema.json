@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content production records v1",
+  "type": "object",
+  "required": [
+    "storeVersion",
+    "revisions"
+  ],
+  "properties": {
+    "storeVersion": {
+      "const": "content-production.v1"
+    },
+    "revisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/revision"
+      }
+    }
+  },
+  "$defs": {
+    "revision": {
+      "type": "object",
+      "required": [
+        "revisionId",
+        "episodeId",
+        "status",
+        "title",
+        "promise",
+        "audience",
+        "productionProfileRef",
+        "brandLine",
+        "outputDirectory",
+        "filmFile",
+        "publication",
+        "scenes"
+      ],
+      "properties": {
+        "revisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "episodeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "DRAFT_NOT_REVIEWED",
+            "REVIEW_READY",
+            "APPROVED"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promise": {
+          "type": "string",
+          "minLength": 1
+        },
+        "productionProfileRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publication": {
+          "type": "object",
+          "required": [
+            "status",
+            "videoUrl"
+          ]
+        },
+        "scenes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/scene"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "sectionDirectionRef"
+            ]
+          },
+          "then": {
+            "required": [
+              "sectionCompositionRef",
+              "sectionAssetReviewRef"
+            ],
+            "properties": {
+              "scenes": {
+                "items": {
+                  "required": [
+                    "sectionVisualId",
+                    "visualAssetRef"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "scene": {
+      "type": "object",
+      "required": [
+        "sceneId",
+        "id",
+        "status",
+        "narration",
+        "audioRef",
+        "direction",
+        "pause",
+        "states"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "sceneId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "narration": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audioRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pause": {
+          "type": "number",
+          "minimum": 0
+        },
+        "states": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/state"
+          }
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "stateId",
+        "title",
+        "lines",
+        "trigger",
+        "kind"
+      ],
+      "properties": {
+        "stateId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lines": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "type": "string"
+          }
+        },
+        "trigger": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "cards",
+            "route",
+            "time",
+            "strike",
+            "comparison",
+            "report"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "route"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "routeNodes",
+              "routeStopIndex",
+              "routeCaption"
+            ],
+            "properties": {
+              "routeNodes": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "routeStopIndex": {
+                "const": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

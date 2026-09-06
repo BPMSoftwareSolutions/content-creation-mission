@@ -1,0 +1,755 @@
+{
+  "revision": {
+    "title": "An AI Permission Check Is Not an Off Switch | SideFX Episode 1",
+    "thumbnail": [
+      "WHO",
+      "STOPS IT?"
+    ],
+    "promise": "Find the missing boundary between a permission label and an action.",
+    "takeaway": "boundary-evidence-checklist.md",
+    "scenes": [
+      {
+        "id": "01",
+        "status": "FICTIONAL REQUEST",
+        "narration": "Inspect candidate C seventeen. Do not publish it. The agent queues publication anyway. That would put an unreviewed change in front of users. Same candidate, different action. Before that command runs, what actually stops it?",
+        "states": [
+          {
+            "title": "One request. Wrong action.",
+            "lines": [
+              "REQUEST  /  Inspect C-17",
+              "QUEUED  /  Publish C-17"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-01:state-1"
+          },
+          {
+            "title": "Before review is complete.",
+            "lines": [
+              "Publish C-17 to users",
+              "Review still pending."
+            ],
+            "trigger": "That would",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-01:state-consequence"
+          },
+          {
+            "title": "What stops publication?",
+            "lines": [
+              "Inspect C-17",
+              "Publish C-17  /  NOT REQUESTED"
+            ],
+            "trigger": "Before",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-01:state-2"
+          }
+        ],
+        "photo": "outputs/generated/b3b0ce166fe14edd41c98030c2d126e800ce1e7909c248c64be0314c80d9decf-0.jpg",
+        "direction": "Brief engineer establishing shot, then cut into the exact requested and queued action. Focus moves from person to mismatched verb.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-01",
+        "audioRef": "releases/episode-01/revision-02/audio/01.wav"
+      },
+      {
+        "id": "02",
+        "status": "FROZEN RULE / LOCAL EVALUATION",
+        "narration": "Here is one frozen SideFX decision expression. For an adjudicate request, it compares the tool name with dangerous tool. A match returns operator required. Any other name returns allow. These are returned labels. Neither label, by itself, stops a command.",
+        "states": [
+          {
+            "title": "The check is a name test.",
+            "lines": [
+              "operation = ADJUDICATE",
+              "toolId = dangerous-tool"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-02:state-1"
+          },
+          {
+            "title": "Exact name matches.",
+            "lines": [
+              "\"OPERATOR_REQUIRED\"",
+              "RETURNED LABEL ONLY"
+            ],
+            "trigger": "A match",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-02:state-2"
+          },
+          {
+            "title": "Every other name.",
+            "lines": [
+              "\"ALLOW\"",
+              "RETURNED LABEL ONLY"
+            ],
+            "trigger": "Any other",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-02:state-3"
+          }
+        ],
+        "photo": null,
+        "direction": "Isolate input, comparison, returned string. No full circuit or activation badges; returned-label qualification has equal visual priority.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-02",
+        "audioRef": "releases/episode-01/revision-02/audio/02.wav"
+      },
+      {
+        "id": "03",
+        "status": "FROZEN RULE / LOCAL EVALUATION",
+        "narration": "Try an unrecognized name: publish alias. The expression still returns allow. Which checked fact establishes permission to publish? None. This counterexample breaks the claim that this name test establishes authorization. It does not demonstrate an escaped effect on a live platform.",
+        "states": [
+          {
+            "title": "Change only the tool name.",
+            "lines": [
+              "toolId = publish-alias",
+              "Same operation: ADJUDICATE"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-03:state-1"
+          },
+          {
+            "title": "Unknown name → \"ALLOW\"",
+            "lines": [
+              "No grant checked here.",
+              "No live effect tested."
+            ],
+            "trigger": "The expression",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-03:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Keep operation fixed, replace only the name, then reveal the evaluated output. The observable result is local expression evaluation.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-03",
+        "audioRef": "releases/episode-01/revision-02/audio/03.wav"
+      },
+      {
+        "id": "04",
+        "status": "PROPOSED DESIGN / NOT LIVE PROOF",
+        "narration": "Separate three responsibilities. The person requests an inspection. The organization grants inspection of C seventeen, with read only arguments. An operator may approve an exception only within delegated authority. Approval cannot create power the organization never delegated.",
+        "states": [
+          {
+            "title": "Request ≠ permission",
+            "lines": [
+              "PERSON  /  asks to inspect",
+              "ORGANIZATION  /  grants scope"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-04:state-1"
+          },
+          {
+            "title": "Bind the grant.",
+            "lines": [
+              "Inspect + C-17 + read-only",
+              "Operator stays within delegation."
+            ],
+            "trigger": "An operator",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-04:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Build the authority relationship before introducing dispatcher. Grant belongs outside the agent; no invented SCL altitude.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-04",
+        "audioRef": "releases/episode-01/revision-02/audio/04.wav"
+      },
+      {
+        "id": "05",
+        "status": "PROPOSED DESIGN / NOT LIVE PROOF",
+        "narration": "The proposed dispatcher owns the effect credential. It checks the protected grant before dispatch. The agent cannot edit that grant or acquire the credential. Unavailable authorization means hold. This is the trust boundary to build and test, not evidence that SideFX already enforces it.",
+        "states": [
+          {
+            "title": "Decision ≠ dispatch",
+            "lines": [
+              "AGENT  →  DISPATCHER  →  EFFECT",
+              "Credential stays at dispatcher."
+            ],
+            "trigger": "",
+            "kind": "route",
+            "stateId": "episode-01:revision-02:scene-05:state-1",
+            "routeNodes": [
+              "AGENT",
+              "DISPATCHER",
+              "EFFECT"
+            ],
+            "routeStopIndex": 1,
+            "routeCaption": "Credential stays at dispatcher."
+          },
+          {
+            "title": "No valid check? Hold.",
+            "lines": [
+              "Grant outside agent control.",
+              "No dispatch while unavailable."
+            ],
+            "trigger": "Unavailable",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-05:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "A request trace reaches the dispatcher and stops there. The effect segment never lights up; diagram explicitly proposed.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-05",
+        "audioRef": "releases/episode-01/revision-02/audio/05.wav"
+      },
+      {
+        "id": "06",
+        "status": "LOCAL TOY SIMULATION",
+        "narration": "Now a deliberately small simulation. Publication reaches our dispatcher with an inspection only grant. It is held. A separate inspection of the same candidate is permitted. The dispatcher records these calls; the agent does not write that observation. This covers only this toy route.",
+        "states": [
+          {
+            "title": "Attempt: publish C-17",
+            "lines": [
+              "Grant: inspection only",
+              "Effect calls: 0"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-06:state-1"
+          },
+          {
+            "title": "Attempt: inspect C-17",
+            "lines": [
+              "Decision: PERMIT",
+              "Inspection calls: 1"
+            ],
+            "trigger": "A separate",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-06:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Two actual local toy calls, one denied publication then one allowed read. Values must match worked-evidence.json; no claim of managed execution.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-06",
+        "audioRef": "releases/episode-01/revision-02/audio/06.wav"
+      },
+      {
+        "id": "07",
+        "status": "LOCAL TOY SIMULATION",
+        "narration": "Open the returned report: two checks pass; one required summary is missing. The engineer now has something to repair. Candidate C seventeen remains unpublished. That is a useful inspection result, not a publication success and not a production security certification.",
+        "states": [
+          {
+            "title": "C-17 / inspection report",
+            "lines": [
+              "PASS  /  title and owner",
+              "MISSING  /  required summary"
+            ],
+            "trigger": "",
+            "kind": "report",
+            "stateId": "episode-01:revision-02:scene-07:state-1",
+            "fields": [
+              {
+                "label": "Title",
+                "value": "PASS",
+                "attention": false
+              },
+              {
+                "label": "Owner",
+                "value": "PASS",
+                "attention": false
+              },
+              {
+                "label": "Summary",
+                "value": "MISSING",
+                "attention": true
+              }
+            ],
+            "resultLines": [
+              "Published",
+              "false → false"
+            ]
+          },
+          {
+            "title": "Useful work. Limited result.",
+            "lines": [
+              "Inspection report returned.",
+              "Published: false → false"
+            ],
+            "trigger": "The engineer",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-07:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Open a concrete report artifact; reveal missing summary and unchanged state. The payoff is knowledge, with no fabricated live recovery.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-07",
+        "audioRef": "releases/episode-01/revision-02/audio/07.wav"
+      },
+      {
+        "id": "08",
+        "status": "LOCAL TOY SIMULATION",
+        "narration": "Change the object to C eighteen, keeping the old grant. The dispatcher holds the request: the object no longer matches. Changing approved arguments must also invalidate the match. Permission belongs to the bound action, object, and arguments, not to a reassuring label.",
+        "states": [
+          {
+            "title": "Change one condition.",
+            "lines": [
+              "Grant: inspect C-17",
+              "Request: inspect C-18"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-08:state-1"
+          },
+          {
+            "title": "Mismatch → HOLD",
+            "lines": [
+              "No inspection of C-18.",
+              "Recheck changed arguments too."
+            ],
+            "trigger": "The dispatcher",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-08:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Replace object in request only; retain grant visibly. Freeze trace at mismatch; evidence comes from toy model.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-08",
+        "audioRef": "releases/episode-01/revision-02/audio/08.wav"
+      },
+      {
+        "id": "09",
+        "status": "EVIDENCE SCOPE / LIVE GAP OPEN",
+        "narration": "For a real boundary, observe the denied attempt at dispatch and the permitted inspection output in the same session. Match caller, object, arguments, and policy version. Then test another route. Our toy observer sees no shell or second adapter. Those paths remain unverified.",
+        "states": [
+          {
+            "title": "Two observations. One scope.",
+            "lines": [
+              "Denied dispatch + returned report",
+              "Same session and bound request"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-09:state-1"
+          },
+          {
+            "title": "What can the observer miss?",
+            "lines": [
+              "Shell / alternate adapter",
+              "UNVERIFIED"
+            ],
+            "trigger": "Then test",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-09:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Pair two observations, then expose a separate unobserved route. No animated traversal presented as execution or proof.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-09",
+        "audioRef": "releases/episode-01/revision-02/audio/09.wav"
+      },
+      {
+        "id": "10",
+        "status": "TAKEAWAY / REVIEW EDITION",
+        "narration": "Use the boundary evidence checklist: name the effect, bind the grant, locate the dispatcher, and test a changed condition. A permission label is not an off switch. Next, the tool succeeds. Can the agent truthfully say the task is complete?",
+        "states": [
+          {
+            "title": "Before trusting the label:",
+            "lines": [
+              "Effect · grant · dispatcher",
+              "Evidence · changed condition"
+            ],
+            "trigger": "",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-10:state-1"
+          },
+          {
+            "title": "Next: booked. Still stuck.",
+            "lines": [
+              "Tool success ≠ task complete",
+              "Use the companion checklist."
+            ],
+            "trigger": "Next",
+            "kind": "cards",
+            "stateId": "episode-01:revision-02:scene-10:state-2"
+          }
+        ],
+        "photo": null,
+        "direction": "Land the tested distinction; sequel promise matches Episode 2 exactly. Hold CTA long enough to read.",
+        "pause": 0,
+        "sceneId": "episode-01:revision-02:scene-10",
+        "audioRef": "releases/episode-01/revision-02/audio/10.wav"
+      }
+    ],
+    "episodeId": "01",
+    "revisionId": "episode-01:revision-02",
+    "status": "DRAFT_NOT_REVIEWED",
+    "audience": {
+      "audience": "Engineers and technical leads building or evaluating agents; ordinary language before SideFX vocabulary.",
+      "seriesPromise": "One agent claim, one visible check, one bounded conclusion.",
+      "demandTheme": "Trusting agent action and completion reports",
+      "humanStake": "People retain authority over consequential changes and can see unmet needs.",
+      "hookVariants": [
+        "WHO STOPS IT?",
+        "INSPECT ≠ PUBLISH",
+        "BOOKED. STILL STUCK.",
+        "SUCCESS ≠ DONE"
+      ],
+      "curiosityQuestion": "Which observed fact justifies this claim?",
+      "visualTriggers": [
+        "changed tool name",
+        "unchanged publication state",
+        "changed object",
+        "crossed-out unsupported claim",
+        "new venue reply"
+      ],
+      "intensityCurve": "Conflict immediately; concentrate motion on counterexample and new fact; settle on usable report.",
+      "emotionalArc": "Unease → investigation → bounded clarity",
+      "payoff": "Concrete report or handoff, with remaining uncertainty visible.",
+      "shareHypothesis": "A useful checklist may invite discussion among agent builders; unmeasured.",
+      "evidenceStatus": "Creative hypotheses only. No audience, retention, conversion or learning claims."
+    },
+    "outputDirectory": "releases/episode-01/revision-02",
+    "filmFile": "episode-01-revision-02.mp4",
+    "publication": {
+      "status": "REVIEW_BEFORE_PUBLISHING",
+      "videoUrl": null,
+      "liveThumbnailVerified": false
+    },
+    "productionProfileRef": "data/production-profile.json",
+    "brandLine": "SideFX / ENGINEERING 01 / REVISION 02",
+    "evidenceRef": "releases/episode-01/revision-02/worked-evidence.json",
+    "evidenceRecord": {
+      "sourceDigest": "18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38",
+      "sourcePointer": "/mechanicBindings/2/configuration/expression",
+      "method": "Local subset interpreter of frozen expression; no harness execution.",
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input",
+            "path": ""
+          },
+          {
+            "op": "object",
+            "fields": {
+              "adjudicationOutcome": {
+                "op": "if",
+                "when": {
+                  "op": "equals",
+                  "left": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "payload.operation"
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": "ADJUDICATE"
+                  }
+                },
+                "then": {
+                  "op": "if",
+                  "when": {
+                    "op": "equals",
+                    "left": {
+                      "op": "path",
+                      "from": "input",
+                      "path": "payload.toolId"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": "dangerous-tool"
+                    }
+                  },
+                  "then": {
+                    "op": "literal",
+                    "value": "OPERATOR_REQUIRED"
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": "ALLOW"
+                  }
+                },
+                "else": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "adjudicationOutcome"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "classificationTests": [
+        {
+          "input": {
+            "payload": {
+              "operation": "ADJUDICATE",
+              "toolId": "dangerous-tool"
+            }
+          },
+          "returnedLabel": "OPERATOR_REQUIRED"
+        },
+        {
+          "input": {
+            "payload": {
+              "operation": "ADJUDICATE",
+              "toolId": "inspection-tool"
+            }
+          },
+          "returnedLabel": "ALLOW"
+        },
+        {
+          "input": {
+            "payload": {
+              "operation": "ADJUDICATE",
+              "toolId": "publish-alias"
+            }
+          },
+          "returnedLabel": "ALLOW"
+        }
+      ],
+      "simulation": {
+        "kind": "AUTHORED_LOCAL_TOY_NOT_MANAGED_EXECUTION",
+        "grant": {
+          "action": "inspect",
+          "object": "C-17",
+          "arguments": {
+            "readOnly": true
+          },
+          "policy": "toy-v1",
+          "caller": "editor"
+        },
+        "observations": [
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "publish",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": false
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": true
+            },
+            "decision": "PERMIT",
+            "effectCalls": 0,
+            "inspectionCalls": 1,
+            "report": {
+              "object": "C-17",
+              "passed": [
+                "title",
+                "owner"
+              ],
+              "missing": [
+                "summary"
+              ],
+              "published": false
+            },
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-18",
+            "arguments": {
+              "readOnly": true
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": false
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": true
+          },
+          {
+            "session": "toy-session-01",
+            "observer": "local dispatcher function",
+            "caller": "editor",
+            "policy": "toy-v1",
+            "action": "inspect",
+            "object": "C-17",
+            "arguments": {
+              "readOnly": true
+            },
+            "decision": "HOLD",
+            "effectCalls": 0,
+            "inspectionCalls": 0,
+            "report": null,
+            "authorizationAvailable": false
+          }
+        ],
+        "finalCandidates": {
+          "C-17": {
+            "title": "Release candidate",
+            "owner": "Editor",
+            "summary": "",
+            "published": false
+          },
+          "C-18": {
+            "title": "Other candidate",
+            "owner": "Editor",
+            "summary": "",
+            "published": false
+          }
+        },
+        "unverified": [
+          "shell",
+          "second adapter",
+          "other sessions",
+          "credential isolation in production"
+        ]
+      },
+      "note": "Toy fixtures and outputs teach a proposed boundary. Frozen ALLOW and toy PERMIT belong to different models.",
+      "sourceArtifactRef": "data/capsule-evidence/entries/18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38-f69129442ac57290.json"
+    },
+    "companionStoreRef": "data/production-companions.json",
+    "companionId": "boundary-evidence-checklist",
+    "description": "Find the missing boundary between a permission label and an action.\n\nOne agent claim, one visible check, one bounded conclusion.\n\nReview edition: fictional staging, synthetic narration, deterministic SVG graphics. Source evidence, proposed design and local simulation remain distinct.\n\nCompanion: boundary-evidence-checklist.md"
+  },
+  "profile": {
+    "profileId": "sidefx-public-review-v1",
+    "speech": {
+      "provider": "Gemini",
+      "model": "gemini-2.5-flash-preview-tts",
+      "voice": "Kore",
+      "instruction": "Read the following exact script with natural documentary pacing, approximately 145 words per minute. No introduction or added words.\n"
+    },
+    "visual": {
+      "templateId": "large-decision-plate-v1",
+      "width": 1920,
+      "height": 1080,
+      "fps": 24,
+      "background": "#08131e",
+      "foreground": "#f2f5ed",
+      "muted": "#b1c1cb",
+      "accent": "#6ce4cd",
+      "status": "#ffc884",
+      "panel": "#142633",
+      "fontFamily": "Segoe UI",
+      "fontFile": "C:/Windows/Fonts/segoeui.ttf",
+      "boldFontFile": "C:/Windows/Fonts/segoeuib.ttf",
+      "statusSize": 52,
+      "titleSize": 86,
+      "bodySize": 70,
+      "establishingSeconds": 2.5,
+      "revealSeconds": 0.28,
+      "chapterTailSeconds": 0.7,
+      "videoCRF": 19,
+      "videoPreset": "veryfast"
+    },
+    "captions": {
+      "model": "base.en",
+      "minimumSimilarity": 0.9,
+      "lineCharacters": 42,
+      "maximumCharacters": 82,
+      "minimumSeconds": 1.0,
+      "preferredMinimumSeconds": 1.2,
+      "maximumSeconds": 6.8,
+      "sampleWidths": [
+        480,
+        375
+      ]
+    },
+    "mastering": {
+      "integratedLUFS": -16,
+      "targetTruePeakDBTP": -2,
+      "maximumEncodedTruePeakDBTP": -1,
+      "loudnessRangeLU": 7,
+      "audioBitrate": "192k",
+      "sampleRate": 48000
+    },
+    "review": {
+      "label": "LOCAL REVIEW / NOT PUBLISHED",
+      "disclosure": "Fictional teaching scenes and simulations; reused Gemini Nano Banana human imagery; synthetic narration; deterministic animated SVG. No live platform enforcement or real venue booking is demonstrated.",
+      "continuousHumanListening": "PENDING_USER_REVIEW",
+      "unfamiliarViewerAssessment": "NOT_COLLECTED",
+      "audiencePerformance": "UNMEASURED"
+    }
+  },
+  "companion": {
+    "id": "boundary-evidence-checklist",
+    "title": "Before trusting an agent permission label",
+    "filename": "boundary-evidence-checklist.md",
+    "sections": [
+      {
+        "title": "Use it on one consequential action",
+        "items": [
+          "Name the effect and exact object. What would change for whom?",
+          "Write the user's request separately from the organization's grant and any operator approval.",
+          "Bind the permitted action, object, arguments, caller and policy version. Who can change that grant?",
+          "Locate the dispatcher and the effect credential. Which component can actually prevent dispatch?",
+          "Observe one denied attempt and one permitted output in the same session. State what the observer can and cannot see.",
+          "Change an object or argument. Does the old grant stop matching? Test unavailable authorization too.",
+          "Name an alternate route, such as a shell or second adapter. Mark it unverified until there is evidence."
+        ]
+      },
+      {
+        "title": "Worked example / frozen rule",
+        "items": [
+          "For operation ADJUDICATE, the frozen name test returns OPERATOR_REQUIRED for dangerous-tool and ALLOW for publish-alias. This is a local evaluation of a pinned expression, not an escaped live effect.",
+          "That expression contains no grant check. Its returned ALLOW label is not the proposed design's PERMIT decision."
+        ]
+      },
+      {
+        "title": "Worked example / local toy simulation",
+        "items": [
+          "Grant: editor may inspect C-17 with readOnly=true, policy toy-v1. Publication attempt held; the local dispatcher records zero effect calls.",
+          "Inspection returns title and owner as passing, required summary as missing. C-17 published state remains false.",
+          "Inspection of C-18 with the C-17 grant is held. Changed readOnly arguments and unavailable authorization are also held.",
+          "The observer is the local dispatcher function, not the agent. Its record covers only this toy route. Production credential isolation, shell routes, other adapters and other sessions remain unverified."
+        ]
+      },
+      {
+        "title": "Fresh public exercise",
+        "items": [
+          "A draft-email agent has a grant to draft message M-8 for recipient A. Its tool returns ALLOW after the recipient is changed to B. What additional checks and observations would you need before sending?",
+          "Write your effect, bound identity, enforcing component, changed condition and unobserved route. Do not infer that a send occurred from the label."
+        ]
+      },
+      {
+        "title": "Relationship to established guidance",
+        "items": [
+          "OWASP Excessive Agency guidance recommends limiting tool functionality and permissions and validating downstream requests. This lesson isolates one concrete failure of a name test and one proposed place to enforce a bound grant."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "OWASP: Excessive Agency",
+        "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/"
+      }
+    ],
+    "scope": "Public exercise newly authored for this edition. No reserved pilot assessment is included. No production boundary proof or learner validation is claimed."
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "sourceDigest": "18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38",
+  "sourcePointer": "/mechanicBindings/2/configuration/expression",
+  "method": "Local subset interpreter of frozen expression; no harness execution.",
+  "expression": {
+    "op": "merge",
+    "values": [
+      {
+        "op": "path",
+        "from": "input",
+        "path": ""
+      },
+      {
+        "op": "object",
+        "fields": {
+          "adjudicationOutcome": {
+            "op": "if",
+            "when": {
+              "op": "equals",
+              "left": {
+                "op": "path",
+                "from": "input",
+                "path": "payload.operation"
+              },
+              "right": {
+                "op": "literal",
+                "value": "ADJUDICATE"
+              }
+            },
+            "then": {
+              "op": "if",
+              "when": {
+                "op": "equals",
+                "left": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "payload.toolId"
+                },
+                "right": {
+                  "op": "literal",
+                  "value": "dangerous-tool"
+                }
+              },
+              "then": {
+                "op": "literal",
+                "value": "OPERATOR_REQUIRED"
+              },
+              "else": {
+                "op": "literal",
+                "value": "ALLOW"
+              }
+            },
+            "else": {
+              "op": "path",
+              "from": "input",
+              "path": "adjudicationOutcome"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "classificationTests": [
+    {
+      "input": {
+        "payload": {
+          "operation": "ADJUDICATE",
+          "toolId": "dangerous-tool"
+        }
+      },
+      "returnedLabel": "OPERATOR_REQUIRED"
+    },
+    {
+      "input": {
+        "payload": {
+          "operation": "ADJUDICATE",
+          "toolId": "inspection-tool"
+        }
+      },
+      "returnedLabel": "ALLOW"
+    },
+    {
+      "input": {
+        "payload": {
+          "operation": "ADJUDICATE",
+          "toolId": "publish-alias"
+        }
+      },
+      "returnedLabel": "ALLOW"
+    }
+  ],
+  "simulation": {
+    "kind": "AUTHORED_LOCAL_TOY_NOT_MANAGED_EXECUTION",
+    "grant": {
+      "action": "inspect",
+      "object": "C-17",
+      "arguments": {
+        "readOnly": true
+      },
+      "policy": "toy-v1",
+      "caller": "editor"
+    },
+    "observations": [
+      {
+        "session": "toy-session-01",
+        "observer": "local dispatcher function",
+        "caller": "editor",
+        "policy": "toy-v1",
+        "action": "publish",
+        "object": "C-17",
+        "arguments": {
+          "readOnly": false
+        },
+        "decision": "HOLD",
+        "effectCalls": 0,
+        "inspectionCalls": 0,
+        "report": null,
+        "authorizationAvailable": true
+      },
+      {
+        "session": "toy-session-01",
+        "observer": "local dispatcher function",
+        "caller": "editor",
+        "policy": "toy-v1",
+        "action": "inspect",
+        "object": "C-17",
+        "arguments": {
+          "readOnly": true
+        },
+        "decision": "PERMIT",
+        "effectCalls": 0,
+        "inspectionCalls": 1,
+        "report": {
+          "object": "C-17",
+          "passed": [
+            "title",
+            "owner"
+          ],
+          "missing": [
+            "summary"
+          ],
+          "published": false
+        },
+        "authorizationAvailable": true
+      },
+      {
+        "session": "toy-session-01",
+        "observer": "local dispatcher function",
+        "caller": "editor",
+        "policy": "toy-v1",
+        "action": "inspect",
+        "object": "C-18",
+        "arguments": {
+          "readOnly": true
+        },
+        "decision": "HOLD",
+        "effectCalls": 0,
+        "inspectionCalls": 0,
+        "report": null,
+        "authorizationAvailable": true
+      },
+      {
+        "session": "toy-session-01",
+        "observer": "local dispatcher function",
+        "caller": "editor",
+        "policy": "toy-v1",
+        "action": "inspect",
+        "object": "C-17",
+        "arguments": {
+          "readOnly": false
+        },
+        "decision": "HOLD",
+        "effectCalls": 0,
+        "inspectionCalls": 0,
+        "report": null,
+        "authorizationAvailable": true
+      },
+      {
+        "session": "toy-session-01",
+        "observer": "local dispatcher function",
+        "caller": "editor",
+        "policy": "toy-v1",
+        "action": "inspect",
+        "object": "C-17",
+        "arguments": {
+          "readOnly": true
+        },
+        "decision": "HOLD",
+        "effectCalls": 0,
+        "inspectionCalls": 0,
+        "report": null,
+        "authorizationAvailable": false
+      }
+    ],
+    "finalCandidates": {
+      "C-17": {
+        "title": "Release candidate",
+        "owner": "Editor",
+        "summary": "",
+        "published": false
+      },
+      "C-18": {
+        "title": "Other candidate",
+        "owner": "Editor",
+        "summary": "",
+        "published": false
+      }
+    },
+    "unverified": [
+      "shell",
+      "second adapter",
+      "other sessions",
+      "credential isolation in production"
+    ]
+  },
+  "note": "Toy fixtures and outputs teach a proposed boundary. Frozen ALLOW and toy PERMIT belong to different models.",
+  "sourceArtifactRef": "data/capsule-evidence/entries/18457e0707fc58e068a67f54d17d6df95e9b1ce0bcb4f5af9653433ab0986b38-f69129442ac57290.json"
+}
