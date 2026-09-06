@@ -2,7 +2,7 @@
 
 > **SideFX does not claim to encode wisdom. It proposes a set of challengeable principles for reasoning about consequential effects, and teaches learners to test those principles against reality, evidence, competing perspectives, and their own limitations.**
 
-**Status: Revision 2 — bounded pilot design; validation pending.** Revised in response to the supplied Professor Voss review. The SideFX Wisdom Principles are proposed tests for disciplined judgment under consequential capability. They are not claimed to be a complete theory of wisdom, ethics, morality, or justice. Their sufficiency, the effectiveness of this instruction, and the reliability of its assessment remain unproven.
+**Status: Revision 4 — bounded pilot design; validation pending.** The SideFX Wisdom Principles are proposed tests for disciplined judgment under consequential capability. They are not claimed to be a complete theory of wisdom, ethics, morality, or justice. Their sufficiency, the effectiveness of this instruction, and the reliability of its assessment remain unproven.
 
 The five-channel strategy below is the production roadmap. The immediate pilot covers only **Consequences, Humility, and Adversarial survivability**, with one learner cohort and limited assets. The broader curriculum and cross-channel rollout depend on what that pilot reveals. This document does not claim that proposed lessons, website features, or animation sequences have already been built.
 
@@ -32,9 +32,9 @@ Start with the source's opening lesson: **Before Intelligence: Effects, Responsi
 
 > What was true before? What action is proposed? Who may authorize it? What should become true afterward? Who experiences the consequences? How would we know? Why should we produce this effect at all?
 
-Use five levels of learner performance throughout the program:
+Use five task types when designing lessons. These are design vocabulary, not proficiency levels or a pilot assessment instrument. A response may involve several types; learners do not receive a Recognize/Explain/Decide/Defend/Transfer grade. Section 8 defines the separate assessment dimensions and descriptive judgments.
 
-| Level | What the learner does | Evidence of learning |
+| Task type | What the learner does | Example behavior to elicit |
 |---|---|---|
 | Recognize | Spots a consequential distinction. | Identifies that a provider's success message is not yet proof of the promised outcome. |
 | Explain | Connects the distinction to a mechanism and a person. | Explains how an apparently successful move could leave someone unable to use an exit. |
@@ -79,7 +79,7 @@ Use a written conflict account, not weights or an aggregate wisdom score:
 5. **Decide within scope—or leave the decision open.** Refer an unresolved issue to the accountable human decision-maker or appropriate review process. “Human required” names a responsibility still to be fulfilled; it does not settle the moral dispute.
 6. **Specify reconsideration.** Record what new evidence, changed context, or sustained objection should reopen the judgment, and who is responsible for reviewing it.
 
-**Teaching case:** A shared workshop proposes identical evening access hours for everyone. Consistency favors the same schedule; consequences and reciprocity reveal that some members cannot use those hours. A budget limits alternatives. Learners compare schedules, identify the committee's actual decision rights and member input, and justify a revisable choice or explain why a decision cannot yet be made. The assessment concerns the quality of that account, not selection of the instructor's favorite schedule.
+**Instructor-only worked case:** A shared workshop proposes identical evening access hours for everyone. Consistency favors the same schedule; consequences and reciprocity reveal that some members cannot use those hours. A budget limits alternatives. Instructors compare schedules, identify the committee's actual decision rights and member input, and model a revisable choice or explain why a decision cannot yet be made. Use this to prepare the explanation, not as a pilot diagnostic or transfer item. Withhold it from pilot learners until their diagnostic and transfer responses have been collected; record any prior exposure under the assessment procedure in §8.
 
 ## 3. The common teaching pattern
 
@@ -108,6 +108,23 @@ The explanatory spine is **claim → mechanism → competing explanation → exp
 | **What is missing** | Label **GAP / REQUIRED**; keep the unfinished boundary visible. | The missing mechanic, observation, provider, test, or enforcement boundary needed for closure. |
 
 Label fictional human scenes **ILLUSTRATIVE**. Reserve claims of observation or proof for supported claims; a solid line, green glow, silver ball, or complete animation is not evidence by itself. A telemetry event says something was observed. Testimony attributes a provider's assertion to an execution. Admission determines whether the evidence establishes the required outcome. Preserve those distinctions in narration and graphics.
+
+### Map visual labels to contract claims
+
+The [Capability Content Contract](CAPABILITY-CONTENT-CONTRACT.md) and its [schema](../schemas/capability-content-contract.schema.json) define four claim kinds. Viewer-facing labels describe their presentation; they do not introduce new kinds or change a claim's authority.
+
+| Viewer-facing treatment | Contract claim kind | Binding rule |
+|---|---|---|
+| Current / declared, with a source pointer | `CAPSULE_DECLARATION` | Preserve the claim's `id`, `kind`, and `evidenceIds`; describe only what the referenced capsule declares. |
+| Current / observed local demo, with its exact scope | `OBSERVED_LOCAL_DEMO` | Bind the inspectable local result. Observation of an authored simulation does not establish live execution of the depicted target. |
+| **ILLUSTRATIVE** human scene | `EDITORIAL_STAGING` | Bind the authored story or direction; fictional staging is not evidence that the human event occurred. |
+| **TARGET / INTENDED** architecture or outcome | `TARGET_DESIGN` | Bind the intended design and preserve its target status through every projection. |
+| **GAP / REQUIRED** unfinished boundary | **No claim kind** | Reference an identified item in the engineering improvement brief, including its missing obligation and acceptance criteria. Keep it associated with the relevant current and target claims without adding a `GAP` claim. |
+| **PROOF NOT ESTABLISHED** | **No claim kind** | Display an evidence-limit annotation tied to the affected claim and gap reference. It is neither a receipt nor a new claim kind, and does not replace the claim's existing kind. |
+
+For example, the [Episode 1 contract](../declarations/capability-content/interlock-agent-operation.json) retains `current-semantics` as `CAPSULE_DECLARATION`, `target-experience` as `TARGET_DESIGN`, `local-simulation` as `OBSERVED_LOCAL_DEMO`, and `human-story` as `EDITORIAL_STAGING`. Its evidence entry `gaps` references the [improvement brief](../evaluations/episode-01-platform-gap.json); `G01` there identifies the missing pre-effect interception boundary. `gaps` is an evidence ID and `G01` is a brief item ID—neither is a claim ID.
+
+When projecting a scene into another surface, preserve its contract claim IDs and evidence references. Record each gap annotation's brief path, item ID, and related claim IDs in the editorial lesson brief; these are proposed editorial bookkeeping, not new compiler schema fields. In a compiled surface, use the existing `claimIds` and `evidenceIds` fields: do not insert `G01` into `claimIds`. The schema requires evidence references even for target and staging claims; those references establish design or story provenance, not that the portrayed effect happened. A gap report can support a scoped statement about missing proof without becoming a fifth claim kind.
 
 ### Translate the terminology
 
@@ -268,21 +285,27 @@ Start with one cohort of engineers or operators who review consequential softwar
 
 Test exactly three learning claims:
 
-| Lesson | Question being tested | Initial practice in ordinary language | Unfamiliar transfer case |
+| Lesson | Question being tested | Reserved diagnostic in ordinary language | Reserved unfamiliar transfer case |
 |---|---|---|---|
 | **A — Consequences** | Can learners distinguish a completed step from the result a person needs? | Workshop invitations were sent, but some invitees cannot open the instructions. What has happened, what remains unmet, and what should be checked? | Library returns were logged, but a requested book cannot be found for the next reader. Explain the relevant result without referring to the invitation case. |
 | **B — Humility** | Can learners separate sensing, observation, inference, supported knowledge, and unknowns? | A dated photograph shows an empty meeting room. What does it support about the room now? State the limits and what new information is needed. | An undated excerpt is offered as proof that a person still endorses a statement. Distinguish what the excerpt shows from what the claimant infers. |
-| **C — Adversarial survivability** | Can learners reconsider a position after a serious counterexample without reflexively yielding or defending? | A club proposes the same meeting time for everyone as a fair rule. New information shows unequal access. Reconsider the proposal and explain what changed. | A document team requires immediate replies to every request. A colleague explains how this disrupts other responsibilities; a second objection makes an unsupported claim. Evaluate each on its merits. |
+| **C — Adversarial survivability** | Can learners reconsider a position after a serious counterexample without reflexively yielding or defending? | A club proposes that every decision about an activity, including approving a decision, must first receive a separate approval. After the learner responds, a critic asks: “The first approval is itself a decision. What approves it?” Explain whether the rule can get started and what, if anything, should change. | One editor promises to give every request exclusive attention immediately. A critic asks how this promise handles two simultaneous requests. Another concludes that no scheduling rule can ever work. Evaluate each argument. |
 
-These six early exercise prompts and their initial feedback contain **no SideFX vocabulary, branded diagrams, or required circuit labels**. Keep lesson names and assessor terminology out of the initial learner prompts as well. This exceeds the minimum that half of early exercises be free of SideFX vocabulary. Learners may explain themselves in their own words. Introduce the architectural crosswalk only after collecting the initial reasoning and transfer responses.
+These six early exercise prompts and their initial feedback contain **no SideFX vocabulary, branded diagrams, or required circuit labels**. Keep lesson names and assessor terminology out of the initial learner prompts as well. Learners may explain themselves in their own words. Introduce the architectural crosswalk only after collecting the initial reasoning and transfer responses.
 
-For each lesson, collect a brief diagnostic response, teach a worked example, invite a reasoned decision before showing feedback, and use a different case for transfer. Prepare equivalent variants so assessment does not merely repeat the demonstrated answer. In a later session, use one further unfamiliar case without labels. Record which examples and hints each learner saw. Recognition of terms is a separate observation and cannot substitute for independent reasoning.
+For each lesson, collect the diagnostic before instruction; for Lesson C, retain both the initial judgment and the response to the critic's argument. Then teach a distinct worked example, invite a reasoned decision before showing feedback, and collect the reserved transfer response without hints or model answers. Prepare equivalent variants so assessment does not merely repeat the demonstrated answer; changing only names or settings is insufficient. In a later session, use one further unfamiliar case without labels.
+
+In Lesson C, keep the stated premises fixed: the challenge is a consequence of the proposed rule, not newly discovered evidence. Reviewers examine whether the learner engages with the argument and justifies a revision, a limited exception, or retention of an already adequate judgment. The approval regress challenges this unbounded rule, not every use of approval; the simultaneous-request argument challenges this promise, not the possibility of scheduling. Do not reward a changed answer by itself. These distinctions are instructor guidance and remain withheld with the answer exemplars.
+
+This document is instructor planning material, not a learner handout. Keep diagnostic prompts, transfer prompts, worked examples, and answer exemplars separately identified. Record prior access to this document and which examples or hints each learner saw. If a reserved case or a substantively equivalent worked answer was already seen, retain that fact and use a genuinely unseen variant; do not count the exposed response as an independent baseline or transfer demonstration. If none is available, record that measurement as unavailable. Recognition of terms is a separate observation and cannot substitute for independent reasoning.
 
 The pilot bundle contains three short teaching scripts, three decision plates, ordinary-language exercises, written feedback exemplars, one reference page or document, and de-identified learner responses. The same materials can support a small online lesson and a narrated video prototype. This is one instructional test, not five separate channel launches.
 
 ### Assess reasoning before assigning numbers
 
-Begin with written judgments against five dimensions: scenario and purpose; decision rights and boundaries; evidence and uncertainty; consequences and reciprocity; and reconsideration and transfer. Reviewers cite the learner's actual words and the case facts. A dimension not elicited by a prompt is **not assessed**, not scored as absent. The three-lesson pilot does not establish mastery of all seven lenses.
+Begin with written judgments against five dimensions: scenario and purpose; decision rights and boundaries; evidence and uncertainty; consequences and reciprocity; and reconsideration under challenge. Reviewers cite the learner's actual words and the case facts. A dimension not elicited by a prompt is **not assessed**, not scored as absent. The three-lesson pilot does not establish mastery of all seven lenses.
+
+The §1 task types select what a prompt asks the learner to do; these dimensions describe which aspects of the response reviewers examine. **Defend** means responding to an objection with reasons, assessed under reconsideration under challenge when the prompt supplies an objection. It does not require retaining the original position. **Transfer** is the unfamiliar-case condition, recorded with the exposure history, not a second dimension or a proficiency grade. Review an unfamiliar response against the same elicited dimensions; do not count it again merely because it was a transfer task.
 
 Use annotated exemplars to make distinctions concrete. For Lesson A:
 
@@ -302,7 +325,7 @@ Before using any numerical rubric for consequential decisions, run this **review
 4. Compare exact agreement and disagreement by dimension, showing raw counts, denominators, category differences, and disputed examples. Discuss whether the prompt, the anchor, a legitimate value disagreement, or reviewer preference caused the difference. Do not hide disagreement inside a mean score.
 5. Revise anchors and feedback using those findings. Check the revised guidance on fresh responses; agreement reached by discussion on the original set is not independent validation.
 
-No **2-in-every-dimension** pass rule remains in effect. Before proposing any later threshold, justify its intended use, show that reviewers can apply it consistently, and examine whether it measures the intended reasoning rather than vocabulary, rhetorical skill, or agreement with SideFX. Calibration in a small pilot does not by itself validate an assessment.
+The pilot uses descriptive judgments without a passing threshold. Before proposing any later threshold, justify its intended use, show that reviewers can apply it consistently, and examine whether it measures the intended reasoning rather than vocabulary, rhetorical skill, or agreement with SideFX. Calibration in a small pilot does not by itself validate an assessment.
 
 ### Decide what the pilot supports
 
@@ -396,7 +419,7 @@ The target's completed illustrative route must retain **GAP / REQUIRED** and **P
 
 Use one reviewed lesson brief to project the five surfaces. Extend the approach in the [Capability Content Contract](CAPABILITY-CONTENT-CONTRACT.md); do not imply that the following instructional fields are already implemented compiler schema.
 
-Every proposed lesson package should record: lesson identity and revision; exact source section; proposed lens and learning claim; audience and observable objective; whether formalization is appropriate; scenario and any applicable capability references; human stakes and affected roles; competing values and decision rights; claims and evidence references with scope; illustrative and target elements; any circuit identities; prediction question; explanation and alternatives; falsifier; known gaps; animation directions; accessible equivalents; assessment exemplars; selected surfaces; and reviewer decisions. Ordinary-language exercises do not need invented capability references or a circuit to satisfy the brief.
+Every proposed lesson package should record: lesson identity and revision; exact source section; proposed lens and learning claim; audience and observable objective; whether formalization is appropriate; scenario and any applicable capability references; human stakes and affected roles; competing values and decision rights; claims and evidence references with scope; illustrative and target elements; any circuit identities; prediction question; explanation and alternatives; falsifier; known gaps, including each gap annotation's improvement-brief path, item ID, and related claim IDs; animation directions; accessible equivalents; assessment exemplars; assessment case identities and versions, with each case's role as diagnostic, worked example, or transfer; a reference to de-identified per-learner exposure history recording prior document access, cases and hints seen, any substitute case, and whether the response qualifies as an independent baseline or unfamiliar transfer or is unavailable; selected surfaces; and reviewer decisions. Ordinary-language exercises do not need invented capability references or a circuit to satisfy the brief. Keep learner exposure and response records in the assessment package referenced by the brief, not in public media.
 
 Keep claim identities and evidence scope consistent when a video becomes a post or an infographic becomes a course exercise. A reviewer changing an explanation should identify every affected surface. A target design does not become an observed capability when copied into a new format.
 
@@ -461,7 +484,7 @@ Record unresolved objections as open. A review result describes the reviewed mat
 
 ### Review disposition and open evidence
 
-This revision addresses the supplied review through changes in the strategy. It does not turn those changes into empirical findings or close the underlying philosophical questions.
+The following tables record changes made in response to the supplied reviews. They do not turn document changes into empirical findings or close the underlying philosophical questions.
 
 | Review finding | Change in Revision 2 | What remains open |
 |---|---|---|
@@ -469,9 +492,19 @@ This revision addresses the supplied review through changes in the strategy. It 
 | Conflicting tests lack a resolution model. | A conflict account records claims, decision rights, alternatives, trade-offs, dissent, and reconsideration. | The process makes judgment inspectable; it does not algorithmically settle moral disputes. |
 | Formalization is presumed beneficial. | The formalization question precedes automation; no-circuit and descriptive-only responses are valid. | Each proposed representation must still be examined for lost context and exclusion. |
 | Judgment may mean conformity to our worldview. | Separate judgment, authority, and legitimacy; require competing perspectives and accept supported dissent. | Pilot review must check whether feedback actually honors those distinctions. |
-| Vocabulary may be mistaken for learning. | Six early exercises in ordinary language, followed by unfamiliar unlabeled transfer cases. | Transfer and instructional effectiveness have not yet been demonstrated. |
-| Scores suggest precision without reliability. | Remove the numerical pass rule; use exemplars and independent reviewer calibration. | Agreement, validity, and any later consequential use require evidence. |
+| Vocabulary may be mistaken for learning. | Adopt six early exercises in ordinary language, exceeding the first review's request that at least half avoid SideFX vocabulary; follow with unfamiliar unlabeled cases. | Transfer and instructional effectiveness have not yet been demonstrated. |
+| Scores suggest precision without reliability. | Remove the former 2-in-every-dimension pass rule; use exemplars and independent reviewer calibration. | Agreement, validity, and any later consequential use require evidence. |
 | Voss may reward debate performance. | Reward reasoned uncertainty, correction, and justified resistance; permit reflection and written responses. | Observe whether the actual teaching interaction follows this rule. |
 | Terminology appears universal. | Add a plain-language crosswalk and identify specialized SideFX uses. | This is an explanatory mapping, not external standardization or validation. |
 | Realistic physical examples imply operational authority. | Put domain-review and visual-status requirements into teaching and release criteria. | Any later operational guidance needs review appropriate to its actual domain and scope. |
 | The rollout is too broad to validate at once. | Limit the pilot to three lessons, one cohort, and shared simple assets; defer full rollout. | Each added audience, lens, assessment use, and channel interaction needs its own evaluation. |
+
+| Follow-up finding | Change in Revision 3 |
+|---|---|
+| Lesson C repeats the conflict-handling example. | Replace its diagnostic with a source-reliability counterexample, mark the workshop example instructor-only, and require separate case uses and exposure records. |
+| Performance levels and assessment dimensions are disconnected. | Define Recognize/Explain/Decide/Defend/Transfer as lesson-design task types; explain how Defend is assessed and Transfer is recorded without double counting. |
+| Visual labels lack a contract claim-kind crosswalk. | Map all four kinds and distinguish gap/proof annotations from claim IDs, with the actual Episode 1 contract and improvement brief as examples. |
+| The strategy and source lack repository discoverability. | Add links and a pilot-status description to the README. |
+| Revision history appears as teaching rules. | State the current vocabulary and assessment requirements directly; retain the superseded threshold and reviewer's minimum only in this disposition history. |
+
+**Revision 4 follow-up:** Promote the README strategy section to a top-level heading while keeping the film sections under their own parent. Complete §10's lesson-package enumeration with gap annotation references, assessment case roles, and linked exposure records. Replace Lesson C's record-based cases with arguments about approval regress and incompatible simultaneous commitments, to distinguish reconsideration under challenge from Lesson B's evidence assessment. Whether the revised cases successfully separate those skills remains a pilot question.

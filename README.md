@@ -99,6 +99,17 @@ and franchise yield. Rebuild and verify it with:
 .\.venv\Scripts\python.exe scripts/build_editorial_ranking.py
 ```
 
+## Wisdom Principles / Training strategy
+
+Read [the Wisdom Principles source](<docs/SideFX Wisdom Principles - Agentic Engineering.md>)
+and [the training strategy](<docs/SideFX Wisdom Principles - Training Strategies.md>).
+The strategy covers YouTube animation, infographics, LinkedIn, the website, and
+online courses. Its immediate pilot tests Consequences, Humility, and Adversarial
+survivability using ordinary-language exercises and independent reviewer
+calibration. The seven lenses remain proposed; learning and assessment validation
+are pending. The strategy also defines contract claim labels and open-gap
+annotations for the media projections.
+
 ## Watch the human-experience film
 
 ### Season 1 / Evidence and intended design
@@ -247,7 +258,8 @@ Gemini request manifests. It writes only inside this content lab.
 cd C:\lab\repos\content-creation-mission
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe scripts/content_lab.py --source C:\lab\repos\agentic-harness --samples 20 --formats scenario-triptych,linkedin-square,youtube-thumbnail,shorts,website-hero,infographic,capability-cover
+.\.venv\Scripts\python.exe scripts/content_lab.py --source 
+..\agentic-harness --samples 20 --formats scenario-triptych,linkedin-square,youtube-thumbnail,shorts,website-hero,infographic,capability-cover
 .\.venv\Scripts\python.exe scripts/test_content_lab.py
 .\.venv\Scripts\python.exe scripts/generate_gemini.py --limit 1
 ```
