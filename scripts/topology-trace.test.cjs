@@ -5,7 +5,8 @@ const test=require('node:test');
 const context={module:{exports:{}}};
 vm.runInNewContext(readFileSync('templates/estate-topology/viewer.js','utf8'),context);
 const {planTrace}=context.module.exports;
-function covers(graph,steps){
+function covers(graph,waves){
+ const steps=waves.flat();
  assert.equal(new Set(steps.filter(s=>s.edgeId).map(s=>s.edgeId)).size,graph.edges.length);
  assert.equal(steps.filter(s=>s.edgeId).length,graph.edges.length);
  const nodes=new Set(steps.flatMap(s=>s.nodeId?[s.nodeId]:[s.source,s.target]));
@@ -13,8 +14,25 @@ function covers(graph,steps){
 }
 test('trace crosses every fan-out member before continuing beyond convergence',()=>{
  const graph={nodes:['a','b','c','d','end'].map(id=>({id,kind:id==='d'?'convergence':'event'})),edges:[['ab','a','b','FAN_OUT_MEMBER'],['ac','a','c','FAN_OUT_MEMBER'],['bd','b','d','CONVERGENCE_REQUIREMENT'],['cd','c','d','CONVERGENCE_REQUIREMENT'],['de','d','end','TRANSITION']].map(([id,source,target,kind])=>({id,source,target,kind}))};
- const steps=planTrace(graph);covers(graph,steps);const ids=steps.map(s=>s.edgeId);
+ const steps=planTrace(graph);covers(graph,steps);const ids=steps.flat().map(s=>s.edgeId);
+ assert.deepEqual(Array.from(steps[0],s=>s.edgeId),['ab','ac']);
+ assert.deepEqual(Array.from(steps[1],s=>s.edgeId),['bd','cd']);
  assert.ok(ids.indexOf('de')>ids.indexOf('bd')&&ids.indexOf('de')>ids.indexOf('cd'));
+});
+test('unequal fan-out paths stay parallel and convergence waits for the longer branch',()=>{
+ const graph={nodes:['start','short','long','middle','join','end'].map(id=>({id,kind:id==='join'?'convergence':'event'})),edges:[['s','start','short','FAN_OUT_MEMBER'],['l','start','long','FAN_OUT_MEMBER'],['sj','short','join','CONVERGENCE_REQUIREMENT'],['lm','long','middle','TRANSITION'],['mj','middle','join','CONVERGENCE_REQUIREMENT'],['je','join','end','TRANSITION']].map(([id,source,target,kind])=>({id,source,target,kind}))};
+ const waves=planTrace(graph);covers(graph,waves);
+ assert.deepEqual(Array.from(waves[1],e=>e.edgeId),['sj','lm']);
+ const waveOf=id=>waves.findIndex(w=>w.some(e=>e.edgeId===id));assert.ok(waveOf('je')>waveOf('mj'));
+});
+test('operation continuation and scenario-call traces fork in the same visual step',()=>{
+ const graph={nodes:['operation','scenario-input','next-operation'].map(id=>({id,kind:'event'})),edges:[{id:'call',source:'operation',target:'scenario-input',kind:'scenario-call'},{id:'next',source:'operation',target:'next-operation',kind:'operation-order'}]};
+ const waves=planTrace(graph,'operation');covers(graph,waves);
+ assert.equal(waves[0].length,2);assert.deepEqual(Array.from(waves[0],e=>e.edgeId),['call','next']);
+});
+test('independent mechanic operands flow together and their result waits for both',()=>{
+ const graph={kind:'expression',nodes:['a','b','result','end'].map(id=>({id,kind:'event'})),edges:[['a','a','result'],['b','b','result'],['end','result','end']].map(([id,source,target])=>({id,source,target,kind:'argument-dependency'}))};
+ const waves=planTrace(graph);covers(graph,waves);assert.equal(waves[0].length,2);assert.equal(waves[1][0].edgeId,'end');
 });
 test('cycles, disconnected routes, references and isolated nodes all finish exactly once',()=>{
  const graph={nodes:['a','b','c','d','provider','alone'].map(id=>({id,kind:'event'})),edges:[['ab','a','b','sequence'],['ba','b','a','recurrence'],['cd','c','d','sequence'],['pa','provider','a','provider-binding']].map(([id,source,target,kind])=>({id,source,target,kind}))};
