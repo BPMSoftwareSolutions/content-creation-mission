@@ -1,4 +1,40 @@
 'use strict';
+// A finite inspection of every declared route, including all branch alternatives.
+// Each edge is visited once; cycles are illustrated once, never executed.
+function planTrace(graph, preferred) {
+  const visited = new Set(), reached = new Set(), steps = [], queue = [];
+  const flow = graph.edges.filter(e => e.kind !== 'provider-binding');
+  const outgoing = id => flow.filter(e => e.source === id && !visited.has(e.id));
+  const enqueue = id => {
+    const node = graph.nodes.find(n => n.id === id);
+    const requirements = flow.filter(e => e.target === id && e.kind === 'CONVERGENCE_REQUIREMENT');
+    if (node?.kind === 'convergence' && requirements.some(e => !visited.has(e.id))) return;
+    queue.unshift(...outgoing(id));
+  };
+  const roots = graph.nodes.filter(n => !flow.some(e => e.target === n.id));
+  const start = preferred || roots.find(n => outgoing(n.id).length)?.id || graph.nodes[0]?.id;
+  if (start) enqueue(start);
+  while (visited.size < flow.length) {
+    if (!queue.length) {
+      const next = flow.find(e => !visited.has(e.id) && reached.has(e.source)) || flow.find(e => !visited.has(e.id));
+      if (!next) break;
+      queue.push(next);
+    }
+    const edge = queue.shift();
+    if (visited.has(edge.id)) continue;
+    visited.add(edge.id); reached.add(edge.source); reached.add(edge.target);
+    steps.push({edgeId:edge.id,source:edge.source,target:edge.target,kind:edge.kind});
+    enqueue(edge.target);
+  }
+  for (const edge of graph.edges.filter(e => e.kind === 'provider-binding')) {
+    visited.add(edge.id); reached.add(edge.source); reached.add(edge.target);
+    steps.push({edgeId:edge.id,source:edge.source,target:edge.target,kind:edge.kind});
+  }
+  for (const node of graph.nodes) if (!reached.has(node.id)) steps.push({nodeId:node.id});
+  return steps;
+}
+if (typeof module === 'object' && module.exports) module.exports = {planTrace};
+else
 (() => {
   const $ = (id) => document.getElementById(id),
     catalog = window.ESTATE_TOPOLOGY_CATALOG,
@@ -9,7 +45,19 @@
     running = false,
     token = 0,
     loadToken = 0,
-    visited = new Set();
+    visited = new Set(),
+    visitedNodes = new Set(),
+    trace = [],
+    cursor = 0,
+    playToken = 0;
+  const speed = document.createElement('select');
+  speed.id = 'trace-speed'; speed.setAttribute('aria-label', 'Trace speed');
+  for (const value of [1,4,16,64]) { const o=document.createElement('option');o.value=value;o.textContent=value+'×';speed.append(o); }
+  const speedLabel=document.createElement('label');speedLabel.className='trace-control';speedLabel.append('Speed ',speed);
+  const follow=document.createElement('input');follow.type='checkbox';follow.checked=true;follow.id='trace-follow';
+  const followLabel=document.createElement('label');followLabel.className='trace-control';followLabel.append(follow,' Follow flow');
+  $('play').parentElement.insertBefore(speedLabel,$('flow-status'));
+  $('play').parentElement.insertBefore(followLabel,$('flow-status'));
   const report = () =>
     parent.postMessage(
       { type: 'sidefx-circuit-height', height: document.body.scrollHeight },
@@ -39,9 +87,11 @@
     if (group.children.length) $('view').append(group);
   }
   function stop() {
+    if(running)$('flow-status').textContent=`Trace paused · ${visited.size} / ${view.edges.length} routes`;
     running = false;
     token++;
-    $('play').textContent = 'Trace flow';
+    playToken++;
+    $('play').textContent = trace.length && cursor < trace.length ? 'Resume trace' : 'Trace flow';
   }
   function sizing() {
     if (!view) return;
@@ -85,6 +135,7 @@
   }
   function inspect(id) {
     stop();
+    trace=[];cursor=0;$('play').textContent='Trace flow';
     const node = view.nodes.find((n) => n.id === id),
       edge = view.edges.find((e) => e.id === id),
       item = node || edge;
@@ -132,15 +183,32 @@
         e.label + ' → ' + view.nodes.find((n) => n.id === e.target).label;
       button.onclick = () => {
         stop();
-        travel(e, false);
+        travel(e);
       };
       $('routes').append(button);
     }
   }
-  async function travel(edge, continuePlaying) {
+  function showNode(id) {
+    selected=id;visitedNodes.add(id);
+    for (const el of $('stage').querySelectorAll('.selected')) el.classList.remove('selected');
+    $(id)?.classList.add('selected');
+    const n=view.nodes.find(n=>n.id===id);
+    $('kind').textContent=n.kind;$('title').textContent=n.label;
+    $('detail').textContent=n.facts.responsibility ?? n.detail;
+    $('facts').textContent=JSON.stringify({identity:n.identity,...n.facts},null,2);
+    $('source').textContent=n.source.label+' · SHA-256 '+n.source.sha256+' · '+n.source.pointer;
+  }
+  function followPoint(p) {
+    if (!follow.checked || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const viewport=$('viewport');
+    if (view.layout.width*scale > viewport.clientWidth) viewport.scrollLeft=Math.max(0,p.x*scale-viewport.clientWidth/2);
+    if (view.layout.height*scale > viewport.clientHeight) viewport.scrollTop=Math.max(0,p.y*scale-viewport.clientHeight/2);
+  }
+  async function travel(edge) {
     const mine = ++token;
     const path = $(edge.id)?.querySelector('.route-path');
-    if (!path) return;
+    if (!path) throw new Error('Trace route geometry missing: '+edge.id);
+    visitedNodes.add(edge.source);
     $(edge.id).classList.add('active-route');
     const ball = document.createElementNS(
       'http://www.w3.org/2000/svg',
@@ -156,71 +224,53 @@
       start = performance.now();
     await new Promise((resolve) => {
       const frame = (now) => {
-        const t = reduce ? 1 : Math.min(1, (now - start) / 800),
+        const t = reduce ? 1 : Math.min(1, (now - start) / (800 / Number(speed.value))),
           p = path.getPointAtLength(length * t);
         ball.setAttribute('cx', p.x);
         ball.setAttribute('cy', p.y);
+        followPoint(p);
         if (t === 1 || mine !== token) resolve();
         else requestAnimationFrame(frame);
       };
       requestAnimationFrame(frame);
     });
     ball.remove();
-    if (mine !== token) return;
+    if (mine !== token) {if(!visited.has(edge.id))$(edge.id)?.classList.remove('active-route');return false;}
     visited.add(edge.id);
-    selected = edge.target;
-    for (const el of $('stage').querySelectorAll('.selected'))
-      el.classList.remove('selected');
-    $(selected)?.classList.add('selected');
-    const n = view.nodes.find((n) => n.id === selected);
-    $('kind').textContent = n.kind;
-    $('title').textContent = n.label;
-    $('detail').textContent = n.detail;
-    $('facts').textContent = JSON.stringify(
-      { identity: n.identity, ...n.facts },
-      null,
-      2,
-    );
-    $('source').textContent =
-      n.source.label +
-      ' · SHA-256 ' +
-      n.source.sha256 +
-      ' · ' +
-      n.source.pointer;
-    choices();
-    const next = outgoing();
-    if (
-      continuePlaying &&
-      running &&
-      next.length === 1 &&
-      n.kind !== 'convergence' &&
-      !visited.has(next[0].id)
-    )
-      await travel(next[0], true);
-    else {
-      stop();
-      if (next.some((e) => visited.has(e.id)))
-        $('flow-status').textContent =
-          'Return or recurrence reached. Inspect the route and its declared bound before continuing.';
-    }
+    showNode(edge.target);
+    if(!running)choices();
+    return true;
   }
-  function step(play) {
+  async function step(play) {
     if (!view) return;
-    if (!selected) {
-      selected = view.nodes.find(n =>
-        view.edges.some(e => e.source === n.id && traversable(e)) &&
-        !view.edges.some(e => e.target === n.id && traversable(e)),
-      )?.id ?? view.nodes[0]?.id;
-      choices();
+    if(!trace.length || cursor >= trace.length){
+      trace=planTrace(view,trace.length?undefined:selected);cursor=0;visited.clear();visitedNodes.clear();
+      for(const el of $('stage').querySelectorAll('.active-route'))el.classList.remove('active-route');
     }
-    const edges = outgoing();
-    if (edges.length === 1) {
-      running = play;
-      $('play').textContent = play ? 'Pause trace' : 'Trace flow';
-      travel(edges[0], play);
-    } else {
-      stop();
-      choices();
+    const mine=++playToken;running=play;$('play').textContent=play?'Pause trace':'Trace flow';
+    delete $('flow-status').dataset.state;
+    $('routes').replaceChildren();
+    do {
+      const item=trace[cursor];if(!item)break;
+      if(item.edgeId){
+        const edge=view.edges.find(e=>e.id===item.edgeId);
+        $('flow-status').textContent=`Tracing ${visited.size+1} / ${view.edges.length} · ${edge.kind} · ${edge.label}`;
+        if(!await travel(edge))return;
+      }else{
+        showNode(item.nodeId);const [x,y,w,h]=view.layout.boxes[item.nodeId];followPoint({x:x+w/2,y:y+h/2});
+        await new Promise(resolve=>requestAnimationFrame(resolve));
+      }
+      if(mine!==playToken)return;
+      cursor++;
+    }while(play && running && cursor<trace.length);
+    if(mine!==playToken)return;
+    if(cursor===trace.length){
+      stop();$('play').textContent='Replay trace';
+      $('flow-status').textContent=`Trace complete · ${visited.size} / ${view.edges.length} routes · ${visitedNodes.size} / ${view.nodes.length} components. All declared alternatives inspected.`;
+      $('flow-status').dataset.state='complete';
+    }else{
+      running=false;$('play').textContent='Resume trace';
+      $('flow-status').textContent=`Trace paused · ${visited.size} / ${view.edges.length} routes`;
     }
   }
   async function load(id) {
@@ -241,6 +291,9 @@
       }
       selected = null;
       visited.clear();
+      visitedNodes.clear();trace=[];cursor=0;delete $('flow-status').dataset.state;
+      $('play').textContent='Trace flow';
+      speed.value=view.edges.length>500?'64':view.edges.length>80?'16':'1';
       $('stage').innerHTML = view.svg;
       for (const el of $('stage').querySelectorAll(
         '[data-entity],[data-route]',
@@ -328,6 +381,8 @@
   $('reset').onclick = () => {
     stop();
     visited.clear();
+    visitedNodes.clear();trace=[];cursor=0;delete $('flow-status').dataset.state;
+    $('play').textContent='Trace flow';
     selected = null;
     for (const el of $('stage').querySelectorAll('.selected,.active-route'))
       el.classList.remove('selected', 'active-route');
