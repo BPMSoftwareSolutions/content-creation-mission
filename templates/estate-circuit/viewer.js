@@ -12,6 +12,7 @@
  }
  function draw(){
   flow?.destroy();flow=null;$('stage').innerHTML=material?data.materialSVG:data.baseSVG;
+  $('stage').firstElementChild?.setAttribute('role','group');
   $('material').setAttribute('aria-pressed',String(material));$('base').setAttribute('aria-pressed',String(!material));
   for(const el of $('stage').querySelectorAll('[data-entity]')){el.setAttribute('tabindex','0');el.setAttribute('role','button');const n=[...p.nodes,...p.junctions].find(n=>n.id===el.id);if(n)el.setAttribute('aria-label',n.label);el.onclick=()=>inspect(el.id);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();inspect(el.id);}};}
   if(p.animationBeats.some(b=>b.edgeIds.length)){
