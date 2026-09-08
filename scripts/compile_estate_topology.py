@@ -10,7 +10,8 @@ def dump(v):return json.dumps(v,ensure_ascii=False,separators=(',',':'))
 def sha(b):return hashlib.sha256(b).hexdigest()
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--inventory',type=Path,required=True);parser.add_argument('--capabilities');parser.add_argument('--part',type=int,default=0);parser.add_argument('--shards',type=int,default=1);a=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--inventory',type=Path,required=True);parser.add_argument('--capabilities');parser.add_argument('--part',type=int,default=0);parser.add_argument('--shards',type=int,default=1);parser.add_argument('--index-name');a=parser.parse_args()
+    if a.index_name and (Path(a.index_name).name!=a.index_name or not a.index_name.endswith('.json')):raise ValueError('TOPOLOGY_INDEX_NAME_INVALID')
     inventory=json.loads(a.inventory.read_bytes());prior=json.loads((ROOT/'outputs/estate-circuits/index.json').read_bytes())
     if prior['source']!=inventory['source']:raise ValueError('TOPOLOGY_SOURCE_CHANGED')
     dest=ROOT/'outputs/estate-topology';dest.mkdir(exist_ok=True)
@@ -59,8 +60,8 @@ def main():
             template=(ROOT/'templates/estate-topology/index.html').read_text(encoding='utf-8').replace('{{TITLE}}',html.escape(g.title)).replace('{{CATALOG}}','/media/library/'+catalog)
             entry=write(folder+'/index.html',template)
             products.append({k:scenario[k] for k in ('scenarioId','definitionPk','objectPk','definitionDigest','label')}|{'folder':folder,'files':[data,entry],'data':data,'entry':entry,'topologyViews':len(views)})
-        index['capabilities'].append({k:cap[k] for k in ('id','definitionPk','definitionDigest','capsuleDigest')}|{'original':sorted(set(original)),'scenarios':products,'topologyViews':len(views)})
-        output=dest/('index.json' if a.shards==1 else 'index-'+str(a.part)+'.json');output.write_text(dump(index),encoding='utf-8')
+        index['capabilities'].append({k:cap[k] for k in ('id','definitionPk','definitionDigest','capsuleDigest')}|{'original':sorted(set(original)),'scenarios':products,'topologyViews':len(views)}|({'blueprintDefinitionPk':blueprints[0]['definitionPk']} if blueprints else {}))
+        output=dest/(a.index_name or ('index.json' if a.shards==1 else 'index-'+str(a.part)+'.json'));output.write_text(dump(index),encoding='utf-8')
         print(dump({'capability':cap['id'],'views':len(views),'nodes':sum(len(v['nodes']) for v in views),'edges':sum(len(v['edges']) for v in views),'totals':totals}),flush=True)
     print(dump({'state':'FULL_TOPOLOGY_COMPILED','totals':totals}),flush=True)
 

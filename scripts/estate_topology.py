@@ -78,12 +78,16 @@ def native_views(g,plan,source):
     need(nx.is_directed_acyclic_graph(parents),'NATIVE_CONTAINMENT_CYCLE')
     records={r.nativeId:r for r in g.records if r.kind=='cell'}
     views=[]
-    for scenario in g.scenarios:
-        selected={cid for cid,r in records.items() if scenario.id in r.scenarioIds}
+    for scenario in [*g.scenarios,None]:
+        if scenario:
+            selected={cid for cid,r in records.items() if scenario.id in r.scenarioIds}
+        else:
+            rendered_nodes={n['identity'] for v in views for n in v['nodes']};rendered_edges={e['identity'] for v in views for e in v['edges']}
+            selected=(set(cells)-rendered_nodes)|{e[end]['cellId'] for e in native['edges'] if e['edgeId'] not in rendered_edges for end in ('from','to')}
         if not selected:continue
         internal=[e for e in native['edges'] if e['from']['cellId'] in selected or e['to']['cellId'] in selected]
         visible=selected|{e[end]['cellId'] for e in internal for end in ('from','to')}
-        d=Diagram(g.id+'/native/'+scenario.id,'Execution · '+scenario.label,'native',source);ids={}
+        d=Diagram(g.id+'/native/'+(scenario.id if scenario else 'unassigned-source'),'Execution · '+(scenario.label if scenario else 'Additional source cells and routes'),'native',source);ids={}
         for i,c in enumerate(native['cells']):
             if c['cellId'] not in visible:continue
             ex=c['execution'];authority=ex['authorityId'];typ='decision' if ex['kind']=='junction' else 'event'
@@ -98,7 +102,9 @@ def native_views(g,plan,source):
                 c=cells[e[end]['cellId']];need(e[end]['portId'] in (c['input']['portId'],c['outcome']['portId']),'NATIVE_UNKNOWN_PORT')
             d.edge(e['edgeId'],ids[e['from']['cellId']],ids[e['to']['cellId']],e['kind'],e.get('selectsVariant') or e['kind'],source_at(source,'/canonicalGraph/edges/'+str(i)),**{k:v for k,v in e.items() if k not in ('edgeId','kind')})
             d.expected_edges.append(e['edgeId'])
-        views.append({**d.finish(),'scenarioId':scenario.id})
+        views.append({**d.finish(),**({'scenarioId':scenario.id} if scenario else {'scope':'SOURCE_CELLS_WITHOUT_SCENARIO_ASSIGNMENT'})})
+    need({n['identity'] for v in views for n in v['nodes']}==set(cells),'NATIVE_SOURCE_CELL_COVERAGE')
+    need({e['identity'] for v in views for e in v['edges']}=={e['edgeId'] for e in native['edges']},'NATIVE_SOURCE_ROUTE_COVERAGE')
     return views
 
 def legacy_views(g,plan,source):

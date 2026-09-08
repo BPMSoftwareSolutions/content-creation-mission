@@ -39,6 +39,12 @@ class EstateTopologyTests(unittest.TestCase):
         views=expression_views(g,plan,{'pointer':'','path':'fixture','sha256':'0'*64},{})
         self.assertEqual(['literal'],[n['facts']['mechanicId'] for n in views[0]['nodes']]);self.assertEqual([],views[0]['edges'])
 
+    def test_native_cells_without_scenario_assignment_have_an_explicit_source_view(self):
+        views=topology_views(graph('write-binary-artifact'),INVENTORY)
+        additional=[v for v in views if v.get('scope')=='SOURCE_CELLS_WITHOUT_SCENARIO_ASSIGNMENT']
+        self.assertEqual(1,len(additional));self.assertNotIn('scenarioId',additional[0])
+        self.assertTrue(any(n['identity']=='cell:mechanic:observe-readback-bytes.operation.1' for n in additional[0]['nodes']))
+
     def test_coverage_gate_rejects_omitted_source_nodes_and_routes(self):
         d=Diagram('fixture','Fixture','blueprint',{});d.node('a','event','A');d.expected_nodes=['a','b']
         with self.assertRaisesRegex(ValueError,'SOURCE_NODE_OMITTED'):d.finish()
